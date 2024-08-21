@@ -1,0 +1,26 @@
+{# form control 
+ @param {string} id The hint id. Will escape text. Optional
+ @param {string} classes Additional classes to add to the outer div. Optional 
+ @param {string} isError Is there a validation error and need to render the errror variant? Optional, default is false. Can be true,false 
+ @param {array} elements If defidned will be rendered elements inside the form. 
+    i.e. `[
+            {element:"button",params:{text:{en:"Button 1",el:"Κουμπί 1"},lang:"en",id:"govcy-test-23b"} },
+            {element:"button",params:{text:{en:"Button 2",el:"Κουμπί 2"},variant:'secondary',lang:"en",id:"govcy-test-23c"} },
+        ]`
+@returns govcy form control html 
+#}
+{% macro formControl(params) -%}
+{# set default values #}
+{%- set isError = params.isError | default(false) -%}
+<div {% if params.id %}id="{{ params.id }}" {% endif %}class="govcy-form-control{% if isError %} govcy-form-control-error{% endif %}{% if params.classes %} {{ params.classes }}{% endif %}">
+    {{ caller() }}
+    {#- if it has elements to be called -#}
+    {%- if params.elements -%}
+        {#- Import localizer from utilities -#}
+        {%- from "../govcyElement.njk" import govcyElement -%}
+        {%- for element in params.elements -%}
+            {%- call govcyElement(element.element, element.params) %}{% endcall -%}
+        {%- endfor -%}
+    {%- endif -%}
+</div>
+{%- endmacro %}

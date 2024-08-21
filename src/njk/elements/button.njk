@@ -1,0 +1,19 @@
+{# Button 
+ @param {string} lang The language used. Can be 'en','el'. Optional. 
+ @param {object} text The button text. Will escape text. Example `{en:"Content",el:"Περιεχομένο"}` 
+ @param {string} variant The button variant. Optional, default is 'primary'. Can be 'primary', 'secondary', 'warning', 'success' 
+ @param {string} id The id of the button. Optional 
+ @param {string} type The button input type. Optional, default is button. Can be button or submit 
+ @param {string} classes Additional classes to add to the button. Optional 
+ @param {string} prototypeNavigate WARNING Only to be used for prototypes. the URL to navigate when clicked Optional 
+ @returns govcy button html 
+#}
+{% macro button(params) -%}
+{#- Import localizer from utilities -#}
+{%- from "../utilities/govcyUtilities.njk" import govcyLocalizeContent -%}
+{# set default values #}
+{%- set variant = params.variant | default('primary') -%}
+{%- set type = params.type | default('button') -%}
+{%- set lang = params.lang | default('el') -%}
+<button type="{{ type }}"{% if params.id %}  id="{{ params.id }}" {% endif %}class="govcy-btn-{{ variant }}{% if params.classes %} {{ params.classes }}{% endif %}"{% if params.prototypeNavigate %} onclick="location.href='{{ params.prototypeNavigate }}'"{% endif %}>{{ govcyLocalizeContent(params.text, lang) }}</button>
+{%- endmacro %}

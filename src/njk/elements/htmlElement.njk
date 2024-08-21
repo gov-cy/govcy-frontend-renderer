@@ -1,0 +1,15 @@
+{# htmlElement (use with caution - no escaping)
+ @param {string} lang The language used. Can be 'en','el'. Optional. 
+ @param {object} text The text. Will not escape text, Example `{en:"Content",el:"Περιεχομένο"}` 
+ @returns html Elements with sanitzed html 
+#}
+{% macro htmlElement(params) -%}
+{# set default values #}
+{%- set lang = params.lang | default('el') -%}
+{# text is mandatory #}
+{%- if params.text -%}
+    {#- Import localizer from utilities -#}
+    {%- from "../utilities/govcyUtilities.njk" import govcyLocalizeContent -%}
+    {{ govcyLocalizeContent(params.text, lang, true) }}    
+{%- endif -%}
+{%- endmacro %}

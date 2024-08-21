@@ -1,0 +1,25 @@
+{# label 
+ @param {string} lang The language used. Can be 'en','el'. Optional. 
+ @param {object} label The label text. Will escape text. Example `{en:"Content",el:"Περιεχομένο"}` 
+ @param {string} id The label id. Will escape text 
+ @param {string} for The input id used in `for`. Will escape text 
+ @param {boolean} isPrimary Is the label a primary? Optional, default is true. Can be true,false 
+ @param {boolean} isPageHeading Is the label also the page heading? Optional, default is false. Can be true,false 
+ @param {boolean} isHTML Is the label an HTML and can be reproduced without escaping? Optional, default is false. Can be true,false 
+ @param {string} classes Additional classes to add to the outer div. Optional 
+ @returns govcy label html 
+#}
+{% macro label(params) -%}
+{#- Import localizer from utilities -#}
+{%- from "../utilities/govcyUtilities.njk" import govcyLocalizeContent -%}
+{#- set default values -#}
+{%- set isPrimary = params.isPrimary | default(true) -%}
+{%- set isHTML = params.isHTML | default(false) -%}
+{%- set lang = params.lang | default('el') -%}
+{# label and for are mandatory #}
+{%- if params.label and params.for -%}
+{%- if params.isPageHeading -%}<h1>{%- endif -%}
+    <label {% if params.id %}id="{{ params.id }}" {% endif %}class="govcy-label{% if isPrimary == true %} govcy-label-primary{% endif %}{% if params.classes %} {{ params.classes }}{% endif %}" for="{{ params.for }}">{{ govcyLocalizeContent(params.label, lang, isHTML) }}</label>
+{%- if params.isPageHeading -%}</h1>{%- endif -%}
+{%- endif -%}
+{%- endmacro %}

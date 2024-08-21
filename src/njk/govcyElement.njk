@@ -1,0 +1,42 @@
+{# Define the macro blocks to be imported for each component. 
+
+These macros imported must:
+- be in the directory `elements`
+- have the same name for file and macro
+- be added in the  `macroBlocks` or `callMacroBlocks` arrays
+
+To use:
+1. Import the macro for example `{% from "govcyElement.njk" import govcyElement %}`
+2. call the macro using the name of the element and it's parameters. For example
+```
+{{ govcyElement(
+    'hint',
+    {
+        hint:'This is the hint element by itself ', 
+        classes:'govcy-test-class', 
+        id:'govcy-test-2'
+    }) 
+}}
+```
+
+ #}
+{%- set macroSimpleBlocks = ['label', 'legend', 'hint', 'button', 'errorMessage','select','textElement','htmlElement'] -%}
+{%- set macroCallerBlocks = ['formControl','form'] -%}
+{%- macro govcyElement(component, params) -%}
+    {#- Simple blocks -#}
+    {%- for c in macroSimpleBlocks -%}
+        {%- if c == component -%}
+            {%- import "./elements/" + c + ".njk" as comp -%}
+            {{ comp[c](params) }}
+        {%- endif -%}
+    {%- endfor -%}
+    {#- Caller blocks -#}
+    {%- for c in macroCallerBlocks -%}
+        {%- if c == component -%}
+            {%- import "./elements/" + c + ".njk" as compm -%}
+            {%- call compm[c](params) -%}
+                {{ caller() }}
+            {%- endcall -%}
+        {%- endif -%}
+    {%- endfor -%}
+{%- endmacro -%}

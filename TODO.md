@@ -1,0 +1,20 @@
+- [X] Copy structure
+- [X] Create 1 component
+- [X] Update test
+- [ ] Read me
+- [X] Change log
+- [X] Notes 
+- [X] Localized content `{% from "../utilities/govcyUtilities.njk" import govcyLocalizeContent %}`
+- [ ] Handle localized content in a page or site level
+    - pass lang parameter in govcyElement
+- [ ] Page template
+    - Params used
+        - page.title
+        - page.layout = `two-thirds`, `max-width`
+        - service.lang
+        - service.title
+        - service.description
+        - service.url
+        - cdn.dist = `https://cdn.jsdelivr.net/gh/gov-cy/govcy-design-system@3.0.0/dist`
+        - cdn.cssIntegrity = `sha384-1zLHWOtnS0hOIz5mVEPZp0UH5gUE6eo0CQcCGA3sF2TyYhHyKOd3Ni8Iy/NjEASU`
+        - cdn.jsIntegrity = `sha384-zOuDuogVaaTveh/Ou2iYwCk14zFiSmMk7Ax8yRnXDtOJMyKZH5+ZNibNVwZSKtw+`

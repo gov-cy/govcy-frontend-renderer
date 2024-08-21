@@ -1,0 +1,37 @@
+{
+  "name": "@gov-cy/govcy-frontend-renderer",
+  "version": "0.0.1",
+  "description": "Render html for design elements of the Unified design system using njk or json template.",
+  "author": "DMRID - DSF Team",
+  "license": "MIT",
+  "type": "module",
+  "main": "src/index.mjs",
+  "module": "src/index.mjs",
+  "keywords": [
+    "govcy",
+    "unified design system",
+    "uds",
+    "dsf",
+    "template",
+    "builder"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gov-cy/govcy-frontend-renderer.git"
+  },
+  "homepage": "https://github.com/gov-cy/govcy-frontend-renderer",
+  "dependencies": {
+    "express": "^4.19.2",
+    "nunjucks": "^3.2.4",
+    "semver": ">=7.5.2"
+  },
+  "scripts": {
+    "test": "mocha --timeout 60000 ./test/**/*.test.mjs",
+    "start": "nodemon app.mjs"
+  },
+  "devDependencies": {
+    "chai": "^5.1.0",
+    "mocha": "^10.4.0",
+    "nodemon": "^3.1.4"
+  }
+}

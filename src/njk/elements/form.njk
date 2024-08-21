@@ -1,0 +1,24 @@
+{# form 
+ @param {string} action. Will escape text 
+ @param {string} id The hint id. Will escape text 
+ @param {string} classes Additional classes to add to the outer div. Optional 
+ @param {array} elements If defidned will be rendered elements inside the form. 
+    i.e. `[
+            {element:"button",params:{text:{en:"Button 1",el:"Κουμπί 1"},lang:"en",id:"govcy-test-23b"} },
+            {element:"button",params:{text:{en:"Button 2",el:"Κουμπί 2"},variant:'secondary',lang:"en",id:"govcy-test-23c"} },
+        ]`
+ @returns govcy form html 
+#}
+{% macro form(params) -%}
+<form {% if params.id %}id="{{ params.id }}" {% endif %}action="{{ params.action }}" class="govcy-form{% if params.classes %} {{ params.classes }}{% endif %}" novalidate="">
+    {{ caller() }}
+    {#- if it has elements to be called -#}
+    {%- if params.elements -%}
+        {#- Import localizer from utilities -#}
+        {%- from "../govcyElement.njk" import govcyElement -%}
+        {%- for element in params.elements -%}
+            {%- call govcyElement(element.element, element.params) %}{% endcall -%}
+        {%- endfor -%}
+    {%- endif -%}
+</form>
+{%- endmacro %}

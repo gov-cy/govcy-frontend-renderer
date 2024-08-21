@@ -1,0 +1,5 @@
+{
+    "title" : "Page title",
+    "layout" : "layouts/govcyBase.njk", 
+    "mainLayout" : "max-width"
+}

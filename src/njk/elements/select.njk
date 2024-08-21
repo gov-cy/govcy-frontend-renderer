@@ -1,0 +1,59 @@
+
+{# select 
+ @param {object} label The label text. Will escape text. Example `{en:"Content",el:"Περιεχομένο"}`  
+ @param {string} id The id of the select. Will escape text. 
+ @param {string} name The name of the select. Will escape text. 
+ @param {array} items The array of items to turn onto select options. Array contains object with `text` and `value`. i.e. `{"text":{en:"Cyprus",el:"Κύπρος"},"value":"cy"}` 
+ @param {object} hint The hint text. Optional. Will escape text. Example `{en:"Content",el:"Περιεχομένο"}`  
+ @param {boolean} isPageHeading Is the label also the page heading? Optional, default is false. Can be true,false 
+ @param {string} classes Additional classes to add to the outer `govcy-form-control` container. Optional 
+ @param {object} error If not empty there is an error message and displays the error variant. Optional, default is ''. Will escape text. Example `{en:"Content",el:"Περιεχομένο"}`  
+ @param {string} lang The language used. Can be 'en','el'. Optional.
+ @returns govcy select html 
+#}
+{% macro select(params) -%}
+{#- set default values -#}
+{%- set isPageHeading = params.isPageHeading | default(false) -%}
+{%- set lang = params.lang | default('el') -%}
+{#- legend, id and name are mandatory -#}
+{%- if params.label and params.id and params.name -%}
+    {#- Import localizer from utilities -#}
+    {%- from "../utilities/govcyUtilities.njk" import govcyLocalizeContent -%}
+    {%- from "./hint.njk" import hint -%}
+    {%- from "./label.njk" import label -%}
+    {%- from "./errorMessage.njk" import errorMessage -%}
+    {%- from "./formControl.njk" import formControl -%}
+    {#- set hint id -#}
+    {%- if params.hint -%}
+        {%- set hintId = [params.id, "-hint"] | join -%}
+    {%- else -%}
+        {%- set hintId = '' -%}
+    {%- endif -%}
+    {#- set error id -#}
+    {%- if params.error -%}
+        {%- set errorId = [params.id, "-error"] | join -%}
+    {%- else -%}
+        {%- set errorId = '' -%}
+    {%- endif -%}
+    {# set aria described by #}
+    {%- if params.error or params.hint -%}
+        {% set ariaDescribedBy = hintId ~ ' ' ~ errorId %}
+    {%- else -%}
+        {% set ariaDescribedBy = '' %}
+    {%- endif -%}
+    {% call formControl({isError:params.error,classes:params.classes}) %}
+        {% call label({label:params.label, id:labelId, for:params.id, isPageHeading:isPageHeading, lang:lang}) %}{% endcall %}
+        {% call hint({hint:params.hint, id:hintId, lang:lang}) %}{% endcall %}
+        {#- render error message -#}
+        {% call errorMessage({message:params.error,id:errorId,lang:lang}) %}{% endcall %}
+        <select id="{{ params.id }}" name="{{ params.name }}" class="govcy-select{% if params.error %} govcy-select-error{% endif %}" {%if ariaDescribedBy %} aria-describedby="{{ ariaDescribedBy }}"{% endif%}>
+            {# for each item render checkbox item #}
+            {%- for item in params.items -%}
+                {%- if item.text -%}
+                    <option value="{{ item.value }}">{{ govcyLocalizeContent(item.text, lang) }}</option>
+                {%- endif -%}
+            {%- endfor -%}
+        </select>
+    {% endcall %}
+{%- endif -%}
+{%- endmacro %}

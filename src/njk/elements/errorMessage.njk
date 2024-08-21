@@ -1,0 +1,22 @@
+{# error Message 
+ @param {object} message The error message text. Will escape text. Example `{en:"Content",el:"Περιεχομένο"}` 
+ @param {string} id The error message id. Will escape text 
+ @param {string} lang The language used. Can be 'en','el'. Optional, default is 'el'.
+ @param {string} classes Additional classes to add to the outer div. Optional 
+ @returns govcy error message html 
+#}
+{% macro errorMessage(params) -%}
+{#- Import localizer from utilities -#}
+{%- from "../utilities/govcyUtilities.njk" import govcyLocalizeContent -%}
+{#- set default values -#}
+{%- set lang = params.lang | default('el') -%}
+{%- set hiddenError -%} 
+   {{- 'Error' if lang=='en' -}} 
+   {{- 'Σφάλμα' if lang=='el' -}} 
+{%- endset -%}
+{%- if params.message -%}
+<p {% if params.id %}id="{{ params.id }}"{% endif %} class="govcy-input-error-msg{% if params.classes %} {{ params.classes }}{% endif %}">
+    <span class="govcy-visually-hidden-error">{{ hiddenError }}:</span>{{ govcyLocalizeContent(params.message, lang) }}
+</p>
+{%- endif -%}
+{%- endmacro %}
