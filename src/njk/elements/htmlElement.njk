@@ -4,12 +4,10 @@
  @returns html Elements with sanitzed html 
 #}
 {% macro htmlElement(params) -%}
-{# set default values #}
-{%- set lang = params.lang | default('el') -%}
 {# text is mandatory #}
 {%- if params.text -%}
     {#- Import localizer from utilities -#}
     {%- from "../utilities/govcyUtilities.njk" import govcyLocalizeContent -%}
-    {{ govcyLocalizeContent(params.text, lang, true) }}    
+    {{ govcyLocalizeContent(params.text, params.lang, true) }}    
 {%- endif -%}
 {%- endmacro %}

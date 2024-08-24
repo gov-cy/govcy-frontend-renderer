@@ -10,10 +10,9 @@
 #}
 {% macro button(params) -%}
 {#- Import localizer from utilities -#}
-{%- from "../utilities/govcyUtilities.njk" import govcyLocalizeContent -%}
+{%- from "../utilities/govcyUtilities.njk" import govcyLocalizeContent, govcyLangAttribute -%}
 {# set default values #}
 {%- set variant = params.variant | default('primary') -%}
 {%- set type = params.type | default('button') -%}
-{%- set lang = params.lang | default('el') -%}
-<button type="{{ type }}"{% if params.id %}  id="{{ params.id }}" {% endif %}class="govcy-btn-{{ variant }}{% if params.classes %} {{ params.classes }}{% endif %}"{% if params.prototypeNavigate %} onclick="location.href='{{ params.prototypeNavigate }}'"{% endif %}>{{ govcyLocalizeContent(params.text, lang) }}</button>
+<button type="{{ type }}"{% if params.id %}  id="{{ params.id }}" {% endif %}class="govcy-btn-{{ variant }}{% if params.classes %} {{ params.classes }}{% endif %}"{% if params.prototypeNavigate %} onclick="location.href='{{ params.prototypeNavigate }}'"{% endif %}{{ govcyLangAttribute(params.lang) }}>{{ govcyLocalizeContent(params.text, params.lang) }}</button>
 {%- endmacro %}

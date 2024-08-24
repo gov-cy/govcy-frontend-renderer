@@ -14,11 +14,10 @@
 {% macro select(params) -%}
 {#- set default values -#}
 {%- set isPageHeading = params.isPageHeading | default(false) -%}
-{%- set lang = params.lang | default('el') -%}
 {#- legend, id and name are mandatory -#}
 {%- if params.label and params.id and params.name -%}
     {#- Import localizer from utilities -#}
-    {%- from "../utilities/govcyUtilities.njk" import govcyLocalizeContent -%}
+    {%- from "../utilities/govcyUtilities.njk" import govcyLocalizeContent, govcyLangAttribute -%}
     {%- from "./hint.njk" import hint -%}
     {%- from "./label.njk" import label -%}
     {%- from "./errorMessage.njk" import errorMessage -%}
@@ -42,15 +41,15 @@
         {% set ariaDescribedBy = '' %}
     {%- endif -%}
     {% call formControl({isError:params.error,classes:params.classes}) %}
-        {% call label({label:params.label, id:labelId, for:params.id, isPageHeading:isPageHeading, lang:lang}) %}{% endcall %}
-        {% call hint({hint:params.hint, id:hintId, lang:lang}) %}{% endcall %}
+        {% call label({label:params.label, id:labelId, for:params.id, isPageHeading:isPageHeading, lang:params.lang}) %}{% endcall %}
+        {% call hint({hint:params.hint, id:hintId, lang:params.lang}) %}{% endcall %}
         {#- render error message -#}
-        {% call errorMessage({message:params.error,id:errorId,lang:lang}) %}{% endcall %}
-        <select id="{{ params.id }}" name="{{ params.name }}" class="govcy-select{% if params.error %} govcy-select-error{% endif %}" {%if ariaDescribedBy %} aria-describedby="{{ ariaDescribedBy }}"{% endif%}>
+        {% call errorMessage({message:params.error,id:errorId,lang:params.lang}) %}{% endcall %}
+        <select id="{{ params.id }}" name="{{ params.name }}" class="govcy-select{% if params.error %} govcy-select-error{% endif %}" {%if ariaDescribedBy %} aria-describedby="{{ ariaDescribedBy }}"{% endif%}{{ govcyLangAttribute(params.lang) }}>
             {# for each item render checkbox item #}
             {%- for item in params.items -%}
                 {%- if item.text -%}
-                    <option value="{{ item.value }}">{{ govcyLocalizeContent(item.text, lang) }}</option>
+                    <option value="{{ item.value }}">{{ govcyLocalizeContent(item.text, params.lang) }}</option>
                 {%- endif -%}
             {%- endfor -%}
         </select>

@@ -7,18 +7,6 @@ import { fileURLToPath } from 'url';
  */
 
 export default class govcyFrontendRenderer {
-    /**
-     * The class constructor. Configures nunjucks 
-     */
-    constructor() {
-        
-        const __dirname = dirname(fileURLToPath(import.meta.url));
-        // console.log(__dirname)
-
-        // Construct the absolute path to the template directory
-        const templateDirectory = join(__dirname, 'njk');
-        nunjucks.configure(templateDirectory);
-      }
 
     /**
      * Returns the rendered html as string, based on the nunjucks templates
@@ -28,7 +16,18 @@ export default class govcyFrontendRenderer {
      */
       renderFromString(input,data = {}) {
         // Render template
-        const renderedContent = nunjucks.renderString(input, data);
+        const __dirname = dirname(fileURLToPath(import.meta.url));
+        // console.log(__dirname)
+
+        // Construct the absolute path to the template directory
+        const templateDirectory = join(__dirname, 'njk');
+
+        // Create a new nunjucks environment
+        const env =  new nunjucks.Environment(new nunjucks.FileSystemLoader(templateDirectory));
+        // Add a global nunjucks variable 'globalData' with the data passed 
+        env.addGlobal('globalData', data);
+
+        const renderedContent = env.renderString(input, data);
         //console.log(renderedContent);
         // Return the rendered template
         return renderedContent;

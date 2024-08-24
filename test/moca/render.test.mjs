@@ -32,5 +32,20 @@ function renderTest(inputMode){
     return rtn;
 }
 
+function renderLangTest(){
+    const renderer = new govcyFrontendRenderer();
+
+    let inputString = (num) =>
+        `{% from "govcyElement.njk" import govcyElement %}
+        {{ govcyElement("textElement",{text:{en:"English ",el:"Greek"}, type:"p", id:"govcy-test-3-${num}-1"}) }}
+        {{ govcyElement("textElement",{text:{en:"English ",el:"Greek"}, lang:"en", type:"p", id:"govcy-test-3-${num}-2"}) }}
+        {{ govcyElement("textElement",{text:{en:"English ",el:"Greek"}, lang:"el", type:"p", id:"govcy-test-3-${num}-3"}) }}
+        `;
+    let rtn = renderer.renderFromString(inputString(1), {})
+    rtn += renderer.renderFromString(inputString(2), {site:{lang:'en'}});
+    rtn += renderer.renderFromString(inputString(3), {site:{lang:'el'}});
+    return rtn;
+}
+
 // Export the renderTest function
-export { renderTest };
+export { renderTest,renderLangTest };

@@ -11,15 +11,14 @@
 #}
 {% macro label(params) -%}
 {#- Import localizer from utilities -#}
-{%- from "../utilities/govcyUtilities.njk" import govcyLocalizeContent -%}
+{%- from "../utilities/govcyUtilities.njk" import govcyLocalizeContent, govcyLangAttribute -%}
 {#- set default values -#}
 {%- set isPrimary = params.isPrimary | default(true) -%}
 {%- set isHTML = params.isHTML | default(false) -%}
-{%- set lang = params.lang | default('el') -%}
 {# label and for are mandatory #}
 {%- if params.label and params.for -%}
 {%- if params.isPageHeading -%}<h1>{%- endif -%}
-    <label {% if params.id %}id="{{ params.id }}" {% endif %}class="govcy-label{% if isPrimary == true %} govcy-label-primary{% endif %}{% if params.classes %} {{ params.classes }}{% endif %}" for="{{ params.for }}">{{ govcyLocalizeContent(params.label, lang, isHTML) }}</label>
+    <label {% if params.id %}id="{{ params.id }}" {% endif %}class="govcy-label{% if isPrimary == true %} govcy-label-primary{% endif %}{% if params.classes %} {{ params.classes }}{% endif %}" for="{{ params.for }}"{{ govcyLangAttribute(params.lang) }}>{{ govcyLocalizeContent(params.label, params.lang, isHTML) }}</label>
 {%- if params.isPageHeading -%}</h1>{%- endif -%}
 {%- endif -%}
 {%- endmacro %}

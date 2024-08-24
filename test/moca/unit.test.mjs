@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { renderTest } from './render.test.mjs';
+import { renderTest,renderLangTest } from './render.test.mjs';
 
 describe('1. Testing `govcyFrontendRenderer.renderFromString` `macros`', () => {
     let renderedHTML = renderTest("njk");
@@ -13,6 +13,35 @@ describe('2. Testing `govcyFrontendRenderer.renderFromJson`', () => {
     renderChecks(renderedHTML, '2.');
     //console.log(renderedHTML);
 });
+describe('3. Testing `govcyFrontendRenderer.renderFromString` global lang test', () => {
+    let renderedHTML = renderLangTest();
+    //perform render checks
+    // console.log(renderedHTML);
+    it('3.1 `renderFromString` without global lang ', async () => {
+        let expectedRegex = /<p id="govcy-test-3-1-1">\s*Greek\s*<\/p>/;
+        expect(renderedHTML).to.match(expectedRegex);
+        expectedRegex = /<p id="govcy-test-3-1-2"\s*lang="en">\s*English\s*<\/p>/;
+        expect(renderedHTML).to.match(expectedRegex);
+        expectedRegex = /<p id="govcy-test-3-1-3"\s*lang="el">\s*Greek\s*<\/p>/;
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+    it('3.2 `renderFromString` with global lang "en" ', async () => {
+        let expectedRegex = /<p id="govcy-test-3-2-1">\s*English\s*<\/p>/;
+        expect(renderedHTML).to.match(expectedRegex);
+        expectedRegex = /<p id="govcy-test-3-2-2"\s*lang="en">\s*English\s*<\/p>/;
+        expect(renderedHTML).to.match(expectedRegex);
+        expectedRegex = /<p id="govcy-test-3-2-3"\s*lang="el">\s*Greek\s*<\/p>/;
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+    it('3.3 `renderFromString` with global lang "el" ', async () => {
+        let expectedRegex = /<p id="govcy-test-3-3-1">\s*Greek\s*<\/p>/;
+        expect(renderedHTML).to.match(expectedRegex);
+        expectedRegex = /<p id="govcy-test-3-3-2"\s*lang="en">\s*English\s*<\/p>/;
+        expect(renderedHTML).to.match(expectedRegex);
+        expectedRegex = /<p id="govcy-test-3-3-3"\s*lang="el">\s*Greek\s*<\/p>/;
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+});
 
 /**
  * Perform tests on rendered HTML
@@ -21,7 +50,6 @@ describe('2. Testing `govcyFrontendRenderer.renderFromJson`', () => {
  * @param {string} checksNum The prefix of the checksNum 
  */
 function renderChecks(renderedHTML, checksNum){
-    console.log(renderedHTML)
     it(checksNum+'1 `renderFromString` should not be empty ', async () => {
         expect(renderedHTML).to.not.be.empty;
     });
@@ -65,9 +93,9 @@ function renderChecks(renderedHTML, checksNum){
         let expectedRegex = /<button\s*type="button"\s*id="govcy-test-9"([\s\S]*?)class="govcy-btn-success"([\s\S]*?)>([\s\S]*?)<\/button>/;
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'10 `errorMessage` macro render as expected. Options id, classes. default language', async () => {
+    it(checksNum+'10 `errorMessage` macro render as expected. Options id, classes. lang: "el"', async () => {
         // check for structure  
-        let expectedRegex = /<p\s*id="govcy-test-10"\s*class="govcy-input-error-msg govcy-test-class"\s*>([\s\S]*?)<span class="govcy-visually-hidden-error">Σφάλμα:<\/span>([\s\S]*?)<\/p>/;
+        let expectedRegex = /<p\s*id="govcy-test-10"\s*class="govcy-input-error-msg govcy-test-class"\s*lang="el"\s*>([\s\S]*?)<span class="govcy-visually-hidden-error">Σφάλμα:<\/span>([\s\S]*?)<\/p>/;
         expect(renderedHTML).to.match(expectedRegex);
     });
     it(checksNum+'11 `errorMessage` macro render as expected. Options lang: en', async () => {
@@ -186,10 +214,10 @@ function renderChecks(renderedHTML, checksNum){
         // check for structure   
         let expectedRegex =  new RegExp ([ 
             `<div\\s*class="govcy-form-control\\s*govcy-form-control-error">`,//form control
-            `\\s*<label\\s*class="govcy-label\\s*govcy-label-primary"\\s*for="govcy-test-21"([\\s\\S]*?)>\\s*Περιεχομένο label\\s*<\\/label>`,//label
-            `\\s*<span\\s*id="govcy-test-21-hint"([\\s\\S]*?)>\\s*Περιεχομένο hint\\s*<\\/span>`,//hint
-            `([\\s\\S]*?)<p id="govcy-test-21-error"([\\s\\S]*?)Περιεχομένο error\\s*<\\/p>`,//error
-            `\\s*<select\\s*id="govcy-test-21"([\\s\\S]*?)>`,//select
+            `\\s*<label\\s*class="govcy-label\\s*govcy-label-primary"\\s*for="govcy-test-21"([\\s\\S]*?)lang="el">\\s*Περιεχομένο label\\s*<\\/label>`,//label
+            `\\s*<span\\s*id="govcy-test-21-hint"([\\s\\S]*?)lang="el">\\s*Περιεχομένο hint\\s*<\\/span>`,//hint
+            `([\\s\\S]*?)<p id="govcy-test-21-error"([\\s\\S]*?)lang="el">([\\s\\S]*?)Περιεχομένο error\\s*<\\/p>`,//error
+            `\\s*<select\\s*id="govcy-test-21"([\\s\\S]*?)lang="el">`,//select
             `([\\s\\S]*?)<\\/select>\\s*<\\/div>` //closing tags
         ].join(''));
         expect(renderedHTML).to.match(expectedRegex);
@@ -222,7 +250,7 @@ function renderChecks(renderedHTML, checksNum){
         ].join(''));
         expect(renderedHTML).to.match(expectedRegex);
         expectedRegex =  new RegExp ([ 
-            `<h3\\s*id="govcy-test-24b"\\s*>\\s*Default Περιεχομένο\\s*<\\/h3>`//h3
+            `<h3\\s*id="govcy-test-24b"\\s*lang="el">\\s*Default Περιεχομένο\\s*<\\/h3>`//h3
         ].join(''));
         expect(renderedHTML).to.match(expectedRegex);
     });
@@ -233,6 +261,19 @@ function renderChecks(renderedHTML, checksNum){
             `\\s*<p\\s*id="govcy-test-25">`,//p
             `([\\s\\S]*?)<\\/p>\\s*<\\/section>` //closing tags
         ].join(''));
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+    it(checksNum+'26 Lang attribute with `govcyLocalizeContent` macro renders as expected for `button`,`hint`, `legend`, `textElement`.', async () => {
+        // check for structure  
+        // error message is checked in 10. 
+        // hint, label, legend error message, select is checked in 21.
+        let expectedRegex = /<button\s*type="button"\s*id="govcy-test-26a"([\s\S]*?)lang="el">\s*Ελληνικά\s*<\/button>/;
+        expect(renderedHTML).to.match(expectedRegex);
+        expectedRegex = /<span\s*id="govcy-test-26b"\s*class="govcy-hint"\s*lang="el">\s*Ελληνικά\s*<\/span>/;
+        expect(renderedHTML).to.match(expectedRegex);
+        expectedRegex = /<legend\s*id="govcy-test-26c"\s*class="govcy-legend"\s*lang="el">\s*Ελληνικά\s*<\/legend>/;
+        expect(renderedHTML).to.match(expectedRegex);
+        expectedRegex = /<p\s*id="govcy-test-26d"\s*lang="el">\s*Ελληνικά\s*<\/p>/;
         expect(renderedHTML).to.match(expectedRegex);
     });
     

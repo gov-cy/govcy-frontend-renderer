@@ -1,12 +1,22 @@
-{# govcyLocalizeContent 
+{#- govcyLocalizeContent 
  @param {string} content The content
  @param {string} lang The language used. Can be 'en','el'. Optional.
  @param {boolean} isHTML Is the content an HTML and can be reproduced without escaping? Optional, default is false. Can be true,false 
  @returns localized content 
-#}
+-#}
 {% macro govcyLocalizeContent(content,lang,isHTML) -%}
 {#- set default values -#}
-{%- set inlang = lang | default('el') -%}
+{#- Set the language with priority: lang > globalData.site.lang > 'el' -#}
+{%- set inlang = lang | default(globalData.site.lang) | default('el') -%}
+{# {%- set inlang = lang | default('el') -%} #}
 {%- set inIsHTML = isHTML | default(false) -%}
 {% if inIsHTML %}{{- content[inlang] | safe -}}{% else %}{{- content[inlang] -}}{% endif %}
+{%- endmacro %}
+{#- govcyLangAttribute 
+ @param {string} lang The language used. Can be 'en','el'
+ @returns lang attribute if lang is defined 
+-#}
+{% macro govcyLangAttribute(lang) -%}
+{# If lang is defined, use it #}
+{%- if lang %} lang="{{ lang }}"{%- endif %} 
 {%- endmacro %}

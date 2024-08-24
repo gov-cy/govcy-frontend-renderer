@@ -1,6 +1,6 @@
 {
   "name": "@gov-cy/govcy-frontend-renderer",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Render html for design elements of the Unified design system using njk or json template.",
   "author": "DMRID - DSF Team",
   "license": "MIT",
@@ -9,10 +9,14 @@
   "module": "src/index.mjs",
   "keywords": [
     "govcy",
+    "cyprus",
     "unified design system",
     "uds",
     "dsf",
+    "digital service framework",
     "template",
+    "renderer",
+    "frontend",
     "builder"
   ],
   "repository": {

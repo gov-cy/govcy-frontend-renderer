@@ -8,16 +8,15 @@
 #}
 {% macro legend(params) -%}
 {#- Import localizer from utilities -#}
-{%- from "../utilities/govcyUtilities.njk" import govcyLocalizeContent -%}
+{%- from "../utilities/govcyUtilities.njk" import govcyLocalizeContent, govcyLangAttribute -%}
 {# set default values #}
 {%- set isPageHeading = params.isPageHeading | default(false) -%}
-{%- set lang = params.lang | default('el') -%}
 {# legend is mandatory #}
 {%- if params.legend -%}
     {%- if isPageHeading -%}
-        <legend {% if params.id %}id="{{ params.id }}" {% endif %}class="govcy-legend{% if params.classes %} {{ params.classes }}{% endif %}"><h1>{{ govcyLocalizeContent(params.legend , lang) }}</h1></legend>
+        <legend {% if params.id %}id="{{ params.id }}" {% endif %}class="govcy-legend{% if params.classes %} {{ params.classes }}{% endif %}"{{ govcyLangAttribute(params.lang) }}><h1>{{ govcyLocalizeContent(params.legend , params.lang) }}</h1></legend>
     {%- else -%}
-        <legend {% if params.id %}id="{{ params.id }}" {% endif %}class="govcy-legend{% if params.classes %} {{ params.classes }}{% endif %}">{{ govcyLocalizeContent(params.legend , lang) }}</legend>
+        <legend {% if params.id %}id="{{ params.id }}" {% endif %}class="govcy-legend{% if params.classes %} {{ params.classes }}{% endif %}"{{ govcyLangAttribute(params.lang) }}>{{ govcyLocalizeContent(params.legend , params.lang) }}</legend>
     {%- endif -%}
 {%- endif -%}
 {%- endmacro %}

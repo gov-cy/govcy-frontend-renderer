@@ -7,16 +7,14 @@
 #}
 {% macro errorMessage(params) -%}
 {#- Import localizer from utilities -#}
-{%- from "../utilities/govcyUtilities.njk" import govcyLocalizeContent -%}
+{%- from "../utilities/govcyUtilities.njk" import govcyLocalizeContent, govcyLangAttribute -%}
 {#- set default values -#}
-{%- set lang = params.lang | default('el') -%}
 {%- set hiddenError -%} 
-   {{- 'Error' if lang=='en' -}} 
-   {{- 'Σφάλμα' if lang=='el' -}} 
+    {{- govcyLocalizeContent({en:'Error',el:'Σφάλμα'}, params.lang) -}}
 {%- endset -%}
 {%- if params.message -%}
-<p {% if params.id %}id="{{ params.id }}"{% endif %} class="govcy-input-error-msg{% if params.classes %} {{ params.classes }}{% endif %}">
-    <span class="govcy-visually-hidden-error">{{ hiddenError }}:</span>{{ govcyLocalizeContent(params.message, lang) }}
+<p {% if params.id %}id="{{ params.id }}"{% endif %} class="govcy-input-error-msg{% if params.classes %} {{ params.classes }}{% endif %}"{{ govcyLangAttribute(params.lang) }}>
+    <span class="govcy-visually-hidden-error">{{ hiddenError }}:</span>{{ govcyLocalizeContent(params.message, params.lang) }}
 </p>
 {%- endif -%}
 {%- endmacro %}

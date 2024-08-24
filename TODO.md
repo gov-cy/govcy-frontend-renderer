@@ -5,8 +5,13 @@
 - [X] Change log
 - [X] Notes 
 - [X] Localized content `{% from "../utilities/govcyUtilities.njk" import govcyLocalizeContent %}`
-- [ ] Handle localized content in a page or site level
-    - pass lang parameter in govcyElement
+- [X] Handle localized content in a page or site level
+    - [X] pass global lang parameter 
+    - [X] set priotity on lang in `govcyUtilities.govcyLocalizeContent`
+    - [X] remove lang from test.mjk and test.json
+    - [X] add a unit test with no lang in site data
+    - [X] add `lang='{{ params.lang }}'` in components
+- [ ] Handle site data in a better way. Uniform for both njk and json. Consider how json file will look like
 - [ ] Page template
     - Params used
         - page.title
