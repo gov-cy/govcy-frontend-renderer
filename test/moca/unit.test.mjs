@@ -301,7 +301,7 @@ function renderChecks(renderedHTML, checksNum){
     it(checksNum+'27c `textInput` macro render as expected. Ελληνικά. with most options, type:tel, fixedWidth:50', async () => {
         // check for structure   
         let expectedRegex =  new RegExp ([ 
-            `<div\\s*class="govcy-form-control\\s*govcy-form-control-error\\s*govcy-test-class\\s*">`,//form control 
+            `<div\\s*class="govcy-form-control\\s*govcy-form-control-error\\s*govcy-test-class\\s*"\\s*lang="el">`,//form control 
             `\\s*<label\\s*id="govcy-test-27c-label"\\s*class="govcy-label\\s*govcy-label-primary"\\s*for="govcy-test-27c"\\s*lang="el">\\s*3. Ελληνικά. Text input with most options, type:tel, fixedWidth:50\\s*<\\/label>`,//label
             `\\s*<span\\s*id="govcy-test-27c-hint"\\s*class="govcy-hint"\\s*lang="el">\\s*Περιεχομένο\\s*hint\\s*<\\/span>`,//hint
             `\\s*<p\\s*id="govcy-test-27c-error"\\s*class="govcy-input-error-msg"\\s*lang="el"\\s*>\\s*<span\\s*class="govcy-visually-hidden-error"\\s*>\\s*Σφάλμα:\\s*<\\/span>\\s*Περιεχομένο error\\s*<\\/p>`,//error message
@@ -373,6 +373,38 @@ function renderChecks(renderedHTML, checksNum){
             `\\s*<label\\s*id="govcy-test-27j-label"\\s*class="govcy-label\\s*govcy-label-primary"\\s*for="govcy-test-27j"\\s*>\\s*10. Text autocomplete:tel\\s*<\\/label>`,//label
             `\\s*<input\\s*id="govcy-test-27j"\\s*name="govcy-test-27j"\\s*type="text"\\s*spellcheck="false"\\s*autocomplete="tel"\\s*class="govcy-text-input"\\s*>`, //input
             `\\s*<\\/div>` //closing tags
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+    it(checksNum+'28 `fieldset` macro render as expected. defaults', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([ 
+            `<fieldset\\s*id="govcy-test-28"\\s*class="govcy-fieldset">`,//fieldset 
+            `\\s*<\\/fieldset>` //closing tags
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+    it(checksNum+'29 `fieldset` macro render as expected. options classes, ariaDescribedBy, lang', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([ 
+            `<fieldset\\s*id="govcy-test-29"\\s*class="govcy-fieldset\\s*govcy-test-class"\\s*aria-describedby="govcy-test-29-aria"\\s*lang="el"\\s*>`,//fieldset 
+            `\\s*<\\/fieldset>` //closing tags
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+    it(checksNum+'30 `fieldset` macro render as expected. has elements', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([ 
+            `<fieldset\\s*id="govcy-test-30"\\s*class="govcy-fieldset"\\s*>`,//fieldset 
+            `\\s*<div\\s*class="govcy-form-control">`,//input form control
+            `\\s*<label\\s*id="govcy-test-30a-label"([\\s\\S]*?)</label>`,//label
+            `\\s*<input\\s*id="govcy-test-30a"([\\s\\S]*?)>`,//input
+            `\\s*<\\/div>`, //input closing tags
+            `\\s*<p>English text govcy-test-30<\\/p>`, //input closing tags
+            `\\s*<\\/fieldset>` //closing tags
         ].join(''));
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);

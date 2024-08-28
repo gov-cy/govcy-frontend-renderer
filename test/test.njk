@@ -253,6 +253,39 @@
                 }
             ]
         }) %}{% endcall %}
+    <hr><h2>Fieldset</h2>
+    {% call govcyElement("form",{
+        elements:[
+            {element: "fieldset",
+            params: {id:"govcy-test-28"}
+            }
+            ,{element: "fieldset",
+            params: {
+                id:"govcy-test-29", 
+                classes:"govcy-test-class", 
+                ariaDescribedby:"govcy-test-29-aria",
+                lang:"el"}
+            }
+            ,{element: "fieldset",
+            params: {
+                id:"govcy-test-30"
+                ,elements:[
+                    {element: "textInput",
+                    params: {
+                        label:{en:"English label",el:"Ελληνικά label"}
+                        ,id:"govcy-test-30a"
+                        }
+                    }
+                    ,{element: "htmlElement",
+                    params: {
+                        text:{en:"<p>English text govcy-test-30</p>",el:"<p>Ελληνικά text</p>"}
+                        }
+                    }
+                ]
+                }
+            }
+    ]
+    }) %}{% endcall %}
 {% endblock %}
 {% block beforeMain %}
     {{ govcyElement("textElement",{text:{en:"Back ",el:"Πίσω"}, type:"p", id:"govcy-test-25"}) }}

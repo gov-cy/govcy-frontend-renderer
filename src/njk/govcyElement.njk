@@ -23,7 +23,7 @@ To use:
 
  #}
 {%- set macroSimpleBlocks = ['label', 'legend', 'hint', 'button', 'errorMessage','select','textElement','htmlElement','textInput'] -%}
-{%- set macroCallerBlocks = ['formControl','form'] -%}
+{%- set macroCallerBlocks = ['formControl','form','fieldset'] -%}
 {%- macro govcyElement(component, params) -%}
     {#- Simple blocks -#}
     {%- for c in macroSimpleBlocks -%}

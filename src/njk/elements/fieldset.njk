@@ -1,0 +1,27 @@
+{# fieldset 
+ @param {string} id The hint id. Will escape text. Optional
+ @param {string} classes Additional classes to add to the outer div. Optional 
+ @param {string} ariaDescribedby Ids of aria-describedby. To be used for hints and errors. Optional 
+ @param {string} lang The language used. Can be 'en','el'. Optional.
+ @param {array} elements If defidned will be rendered elements inside the form. 
+    i.e. `[
+            {element:"button",params:{text:{en:"Button 1",el:"Κουμπί 1"},lang:"en",id:"govcy-test-23b"} },
+            {element:"button",params:{text:{en:"Button 2",el:"Κουμπί 2"},variant:'secondary',lang:"en",id:"govcy-test-23c"} },
+        ]`
+ @returns govcy fieldset  html 
+#}
+{% macro fieldset(params) -%}
+{#- Import localizer from utilities -#}
+{%- from "../utilities/govcyUtilities.njk" import govcyLocalizeContent, govcyLangAttribute -%}
+<fieldset {% if params.id %}id="{{ params.id }}" {% endif %}class="govcy-fieldset{% if params.classes %} {{ params.classes }}{% endif %}"{% if params.ariaDescribedby %} aria-describedby="{{ params.ariaDescribedby }}"{% endif %}{{ govcyLangAttribute(params.lang) }}>
+{{ caller() }}
+    {#- if it has elements to be called -#}
+    {%- if params.elements -%}
+        {#- Import localizer from utilities -#}
+        {%- from "../govcyElement.njk" import govcyElement -%}
+        {%- for element in params.elements -%}
+            {%- call govcyElement(element.element, element.params) %}{% endcall -%}
+        {%- endfor -%}
+    {%- endif -%}
+</fieldset>
+{%- endmacro %}
