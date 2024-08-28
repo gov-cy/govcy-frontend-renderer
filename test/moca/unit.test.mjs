@@ -276,5 +276,106 @@ function renderChecks(renderedHTML, checksNum){
         expectedRegex = /<p\s*id="govcy-test-26d"\s*lang="el">\s*Ελληνικά\s*<\/p>/;
         expect(renderedHTML).to.match(expectedRegex);
     });
+    it(checksNum+'27a `textInput` macro render as expected. Text with minimum options', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([ 
+            `<div\\s*class="govcy-form-control">`,//form control 
+            `\\s*<label\\s*id="govcy-test-27a-label"\\s*class="govcy-label\\s*govcy-label-primary"\\s*for="govcy-test-27a">\\s*1. Text with minimum options\\s*<\\/label>`,//label
+            `\\s*<input\\s*id="govcy-test-27a"\\s*type="text"\\s*spellcheck="false"\\s*class="govcy-text-input">`, //input
+            `\\s*<\\/div>` //closing tags
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+    it(checksNum+'27b `textInput` macro render as expected. isPageHeading:true', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([ 
+            `<div\\s*class="govcy-form-control">`,//form control 
+            `\\s*<h1>\\s*<label\\s*id="govcy-test-27b-label"\\s*class="govcy-label\\s*govcy-label-primary"\\s*for="govcy-test-27b">\\s*2. Text input with isPageHeading:true\\s*<\\/label>\\s*<\\/h1>`,//label
+            `\\s*<input\\s*id="govcy-test-27b"\\s*type="text"\\s*spellcheck="false"\\s*class="govcy-text-input">`, //input
+            `\\s*<\\/div>` //closing tags
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+    it(checksNum+'27c `textInput` macro render as expected. Ελληνικά. with most options, type:tel, fixedWidth:50', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([ 
+            `<div\\s*class="govcy-form-control\\s*govcy-form-control-error\\s*govcy-test-class\\s*">`,//form control 
+            `\\s*<label\\s*id="govcy-test-27c-label"\\s*class="govcy-label\\s*govcy-label-primary"\\s*for="govcy-test-27c"\\s*lang="el">\\s*3. Ελληνικά. Text input with most options, type:tel, fixedWidth:50\\s*<\\/label>`,//label
+            `\\s*<span\\s*id="govcy-test-27c-hint"\\s*class="govcy-hint"\\s*lang="el">\\s*Περιεχομένο\\s*hint\\s*<\\/span>`,//hint
+            `\\s*<p\\s*id="govcy-test-27c-error"\\s*class="govcy-input-error-msg"\\s*lang="el"\\s*>\\s*<span\\s*class="govcy-visually-hidden-error"\\s*>\\s*Σφάλμα:\\s*<\\/span>\\s*Περιεχομένο error\\s*<\\/p>`,//error message
+            `\\s*<input id="govcy-test-27c"\\s*name="govcy-test-27c"\\s*type="tel"\\s*spellcheck="false"\\s*autocomplete="tel"\\s*class="govcy-text-input\\s*govcy-text-input-char_50\\s*govcy-text-input-error"\\s*aria-describedby="govcy-test-27c-hint\\s*govcy-test-27c-error\\s*"\\s*>`, //input
+            `\\s*<\\/div>` //closing tags
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+    it(checksNum+'27d `textInput` macro render as expected. type:email', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([ 
+            `<div\\s*class="govcy-form-control">`,//form control 
+            `\\s*<label\\s*id="govcy-test-27d-label"\\s*class="govcy-label\\s*govcy-label-primary"\\s*for="govcy-test-27d">\\s*4\\. Text type:email\\s*<\\/label>`,//label
+            `\\s*<input\\s*id="govcy-test-27d"\\s*name="govcy-test-27d"\\s*type="email"\\s*spellcheck="false"\\s*autocomplete="email"\\s*class="govcy-text-input">`, //input
+            `\\s*<\\/div>` //closing tags
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+    it(checksNum+'27e `textInput` macro render as expected. type:numeric', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([ 
+            `<div\\s*class="govcy-form-control">`,//form control 
+            `\\s*<label\\s*id="govcy-test-27e-label"\\s*class="govcy-label\\s*govcy-label-primary"\\s*for="govcy-test-27e"\\s*>\\s*5. Text type:numeric\\s*<\\/label>`,//label
+            `\\s*<input\\s*id="govcy-test-27e"\\s*name="govcy-test-27e"\\s*type="text"\\s*pattern="\\[0-9\\]\\*"\\s*inputmode="numeric"\\s*spellcheck="false"\\s*class="govcy-text-input"\\s*>`, //input
+            `\\s*<\\/div>` //closing tags
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+    it(checksNum+'27f `textInput` macro render as expected. type:name', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([ 
+            `<div\\s*class="govcy-form-control">`,//form control 
+            `\\s*<label\\s*id="govcy-test-27f-label"\\s*class="govcy-label\\s*govcy-label-primary"\\s*for="govcy-test-27f"\\s*>\\s*6. Text type:name\\s*<\\/label>`,//label
+            `\\s*<input\\s*id="govcy-test-27f"\\s*name="govcy-test-27f"\\s*type="text"\\s*spellcheck="false"\\s*autocomplete="name"\\s*class="govcy-text-input">`, //input
+            `\\s*<\\/div>` //closing tags
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+    it(checksNum+'27h `textInput` macro render as expected. fixedWidth:35', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([ 
+            `<div\\s*class="govcy-form-control">`,//form control 
+            `\\s*<label\\s*id="govcy-test-27g-label"\\s*class="govcy-label\\s*govcy-label-primary\\s*"\\s*for="govcy-test-27g"\\s*>\\s*7. Text fixedWidth:35\\s*<\\/label>`,//label
+            `\\s*<input\\s*id="govcy-test-27g"\\s*name="govcy-test-27g"\\s*type="text"\\s*spellcheck="false"\\s*class="govcy-text-input\\s*govcy-text-input-char_35\\s*"\\s*>`, //input
+            `\\s*<\\/div>` //closing tags
+        ].join(''));
+        // console.log(expectedRegex);
+        // expect(renderedHTML).to.match(expectedRegex);
+    });
+    it(checksNum+'27i `textInput` macro render as expected. isSpellcheck=true', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([ 
+            `<div\\s*class="govcy-form-control">`,//form control 
+            `\\s*<label\\s*id="govcy-test-27i-label"\\s*class="govcy-label\\s*govcy-label-primary"\\s*for="govcy-test-27i"\\s*>\\s*9. Text spellcheck true\\s*<\\/label>`,//label
+            `\\s*<input\\s*id="govcy-test-27i"\\s*name="govcy-test-27i"\\s*type="text"\\s*spellcheck="true"\\s*class="govcy-text-input"\\s*>`, //input
+            `\\s*<\\/div>` //closing tags
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+    it(checksNum+'27j `textInput` macro render as expected. autocomplete:tel', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([ 
+            `<div\\s*class="govcy-form-control">`,//form control 
+            `\\s*<label\\s*id="govcy-test-27j-label"\\s*class="govcy-label\\s*govcy-label-primary"\\s*for="govcy-test-27j"\\s*>\\s*10. Text autocomplete:tel\\s*<\\/label>`,//label
+            `\\s*<input\\s*id="govcy-test-27j"\\s*name="govcy-test-27j"\\s*type="text"\\s*spellcheck="false"\\s*autocomplete="tel"\\s*class="govcy-text-input"\\s*>`, //input
+            `\\s*<\\/div>` //closing tags
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
     
 }

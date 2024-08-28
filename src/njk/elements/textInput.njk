@@ -1,0 +1,71 @@
+{# text input 
+ @param {object} label The label text. Will escape text. Example `{en:"Content",el:"Περιεχομένο"}`  
+ @param {string} id The input id. Will escape text 
+ @param {string} name The input name. Will escape text. Optional
+ @param {object} hint The hint text. Optional. Will escape text. Example `{en:"Content",el:"Περιεχομένο"}`  
+ @param {boolean} isPageHeading Is the label also the page heading? Optional, default is false. Can be true,false 
+ @param {boolean} isSpellcheck true renders nothing, false renders spellcheck="false"? Optional, default is true. Can be true,false 
+ @param {string} type The text input type. Optional, default is text. Can be text,numeric,email,name,tel 
+ @param {string} autocomplete The autocomplete attribute. Optional. Can be email, name, ... 
+ @param {string} classes Additional classes to add to the outer div. Optional 
+ @param {object} error If not empty there is an error message and displays the error variant. Optional, default is ''. Will escape text. Example `{en:"Content",el:"Περιεχομένο"}`  
+ @param {string} fixedWidth width If not empty will add the fixed width class variant. Optional, default is ''. Can be 50,35,20,10,5,4,3,2 
+ @param {string} lang The language used. Can be 'en','el'. Optional.
+ @returns govcy input html 
+#}
+{% macro textInput(params) -%}
+{#- Import localizer from utilities -#}
+{%- from "../utilities/govcyUtilities.njk" import govcyLocalizeContent, govcyLangAttribute -%}
+{%- from "./formControl.njk" import formControl -%}
+{%- from "./hint.njk" import hint -%}
+{%- from "./label.njk" import label -%}
+{%- from "./errorMessage.njk" import errorMessage -%}
+{#- set default values -#}
+{%- set isPageHeading = params.isPageHeading | default(false) -%}
+{%- set isSpellcheck = params.isSpellcheck | default(false) -%}
+{%- set type = params.type | default("text") -%}
+{%- set autocomplete = params.autocomplete | default('') -%}
+{#- label and id are mandatory -#}
+{%- if params.label and params.id -%}
+    {#- set hint label error ids -#}
+    {%- set hintId = [params.id, "-hint"] | join -%}
+    {%- set labelId = [params.id, "-label"] | join -%}
+    {%- set errorId = [params.id, "-error"] | join -%}
+    {#- set fixed width class  -#}
+    {%- set fixedWidthClass = ["govcy-text-input-char_" , params.fixedWidth] | join -%}
+    {#- set the type of the input. Also overwrites autocomplete and spellcheck if needed -#}
+    {%- if type=='text' -%}
+        {%- set inputType = 'type="text"' -%}
+    {%- elif type=='email' -%}
+        {%- set inputType = 'type="email"' %}{% set isSpellcheck = false %}{% set autocomplete = 'email' -%}
+    {%- elif type=='tel' -%}
+        {%- set inputType = 'type="tel"' %}{% set isSpellcheck = false %}{% set autocomplete = 'tel' -%}
+    {%- elif type=='name' -%}
+        {%- set inputType = 'type="text"' %}{% set isSpellcheck = false %}{% set autocomplete = 'name' -%}
+    {%- elif type=='numeric' -%}
+        {%- set inputType = 'type="text" pattern="[0-9]*" inputmode="numeric"' %}{% set isSpellcheck = false -%}
+    {%- endif -%}
+    {#- set spellcheck to false if not empty -#}
+    {%- if isSpellcheck -%}
+        {%- set inputSpellcheck = 'spellcheck="true"' -%}
+    {%- else -%}
+        {%- set inputSpellcheck = 'spellcheck="false"' -%}
+    {%- endif -%}
+    {#- set autocomplete -#}
+    {%- if autocomplete -%}
+        {%- set inputAutocomplete %}autocomplete="{{ autocomplete | safe }}"{% endset -%}
+    {%- else -%}
+        {%- set inputAutocomplete = '' -%}
+    {%- endif -%}
+    {% call formControl({isError:params.error,classes:params.classes}) %}
+        {#- render label -#}
+        {% call label({label:params.label, id:labelId, for:params.id, isPageHeading:isPageHeading, lang:params.lang}) %}{% endcall %}
+        {#- render hint -#}
+        {% call hint({hint:params.hint,id:hintId, lang:params.lang}) %}{% endcall %}
+        {#- render error message -#}
+        {% call errorMessage({message:params.error,id:errorId, lang:params.lang}) %}{% endcall %}
+        {#- render input -#}
+        <input id="{{params.id}}"{% if params.name %} name="{{ params.name }}"{% endif %} {{ inputType | safe }} {{ inputSpellcheck | safe }} {{ inputAutocomplete | safe }} class="govcy-text-input{% if params.fixedWidth %} {{ fixedWidthClass }}{% endif %}{% if params.error %} govcy-text-input-error{% endif %}"{% if params.hint or params.error%} aria-describedby="{% if params.hint %}{{hintId}} {% endif %}{% if params.error %}{{errorId}} {% endif %}"{% endif %}>
+    {% endcall %}
+{%- endif -%}
+{%- endmacro %}

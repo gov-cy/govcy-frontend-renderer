@@ -11,7 +11,6 @@
                             "el": "Πίσω"
                         },
                         "type": "p",
-                        
                         "id": "govcy-test-25"
                     }
                 }
@@ -63,7 +62,6 @@
                             "en": "This is the label by <b>itself</b>. Options classes, for, id, isPrimary:false",
                             "el": "Περιεχομένο"
                         },
-                        
                         "classes": "govcy-test-class",
                         "for": "govcy-label-for-id",
                         "id": "govcy-test-3",
@@ -77,7 +75,6 @@
                             "en": "This is the label by <b>itself</b>. Options for, isPrimary, isPageHeading, isHTML, id ",
                             "el": "Περιεχομένο"
                         },
-                        
                         "for": "govcy-label-for-id",
                         "id": "govcy-test-4",
                         "isPrimary": true,
@@ -100,7 +97,6 @@
                             "en": "This is the legend by itself. Options isPageHeading, classes, id",
                             "el": "Περιεχομένο"
                         },
-                        
                         "id": "govcy-test-5",
                         "isPageHeading": true,
                         "classes": "govcy-test-class"
@@ -113,7 +109,6 @@
                             "en": "This is the legend by itself. Options isPageHeading:false, id",
                             "el": "Περιεχομένο"
                         },
-                        
                         "id": "govcy-test-6",
                         "isPageHeading": false
                     }
@@ -133,7 +128,6 @@
                             "en": "Primary default options",
                             "el": "Περιεχομένο"
                         },
-                        
                         "id": "govcy-test-7"
                     }
                 },
@@ -152,7 +146,6 @@
                             "en": "Options variant:secondary, type:submit, classes:govcy-test-class ",
                             "el": "Περιεχομένο"
                         },
-                        
                         "variant": "secondary",
                         "type": "submit",
                         "classes": "govcy-test-class",
@@ -174,7 +167,6 @@
                             "en": "Options variant:success",
                             "el": "Περιεχομένο"
                         },
-                        
                         "variant": "success",
                         "id": "govcy-test-9"
                     }
@@ -227,7 +219,6 @@
                                                     "en": "Error message. Options id, lang: en",
                                                     "el": "Περιεχομένο"
                                                 },
-                                                
                                                 "id": "govcy-test-11"
                                             }
                                         }
@@ -281,7 +272,6 @@
                                         "en": "Sort by",
                                         "el": "Περιεχομένο"
                                     },
-                                    
                                     "id": "govcy-test-17",
                                     "name": "govcy-test-17",
                                     "items": [
@@ -317,7 +307,6 @@
                                         "en": "Hint message",
                                         "el": "Περιεχομένο"
                                     },
-                                    
                                     "id": "govcy-test-18",
                                     "name": "govcy-test-18",
                                     "items": [
@@ -353,7 +342,6 @@
                                         "en": "Hint message",
                                         "el": "Περιεχομένο"
                                     },
-                                    
                                     "id": "govcy-test-19",
                                     "name": "govcy-test-19",
                                     "isPageHeading": true,
@@ -386,7 +374,6 @@
                                         "en": "Hint message",
                                         "el": "Περιεχομένο"
                                     },
-                                    
                                     "id": "govcy-test-20",
                                     "name": "govcy-test-20",
                                     "items": [
@@ -471,7 +458,6 @@
                                                     "en": "Sort by",
                                                     "el": "Περιεχομένο"
                                                 },
-                                                
                                                 "id": "govcy-test-23a",
                                                 "name": "govcy-test-23a",
                                                 "items": [
@@ -499,7 +485,6 @@
                                                     "en": "Button 1",
                                                     "el": "Κουμπί 1"
                                                 },
-                                                
                                                 "id": "govcy-test-23b"
                                             }
                                         },
@@ -511,7 +496,6 @@
                                                     "el": "Κουμπί 2"
                                                 },
                                                 "variant": "secondary",
-                                                
                                                 "id": "govcy-test-23c"
                                             }
                                         },
@@ -523,7 +507,6 @@
                                                     "el": "Κουμπί 3"
                                                 },
                                                 "variant": "success",
-                                                
                                                 "id": "govcy-test-23d"
                                             }
                                         }
@@ -548,7 +531,6 @@
                             "en": "Default content ",
                             "el": "Default Περιεχομένο"
                         },
-                        
                         "classes": "govcy-test-class",
                         "id": "govcy-test-24a"
                     }
@@ -617,6 +599,151 @@
                         "id": "govcy-test-26d",
                         "lang": "el",
                         "type": "p"
+                    }
+                },
+                {
+                    "element": "htmlElement",
+                    "params": {
+                        "text": {
+                            "en": "<hr><h2>Text input</h2>"
+                        }
+                    }
+                },
+                {
+                    "element": "form",
+                    "params": {
+                        "id": "govcy-test-27",
+                        "elements": [
+                            {
+                                "element": "textInput",
+                                "params": {
+                                    "label": {
+                                        "en": "1. Text with minimum options",
+                                        "el": "Ελληνικά label"
+                                    },
+                                    "id": "govcy-test-27a"
+                                }
+                            },
+                            {
+                                "element": "textInput",
+                                "params": {
+                                    "label": {
+                                        "en": "2. Text input with isPageHeading:true",
+                                        "el": "Ελληνικά"
+                                    },
+                                    "id": "govcy-test-27b",
+                                    "isPageHeading": true
+                                }
+                            },
+                            {
+                                "element": "textInput",
+                                "params": {
+                                    "label": {
+                                        "en": "English label",
+                                        "el": "3. Ελληνικά. Text input with most options, type:tel, fixedWidth:50"
+                                    },
+                                    "id": "govcy-test-27c",
+                                    "name": "govcy-test-27c",
+                                    "hint": {
+                                        "en": "Hint message",
+                                        "el": "Περιεχομένο hint"
+                                    },
+                                    "type": "tel",
+                                    "isPageHeading": false,
+                                    "classes": "govcy-test-class",
+                                    "error": {
+                                        "en": "Error message",
+                                        "el": "Περιεχομένο error"
+                                    },
+                                    "fixedWidth": "50",
+                                    "lang": "el"
+                                }
+                            },
+                            {
+                                "element": "textInput",
+                                "params": {
+                                    "label": {
+                                        "en": "4. Text type:email",
+                                        "el": "Ελληνικά"
+                                    },
+                                    "id": "govcy-test-27d",
+                                    "name": "govcy-test-27d",
+                                    "type": "email"
+                                }
+                            },
+                            {
+                                "element": "textInput",
+                                "params": {
+                                    "label": {
+                                        "en": "5. Text type:numeric",
+                                        "el": "Ελληνικά"
+                                    },
+                                    "id": "govcy-test-27e",
+                                    "name": "govcy-test-27e",
+                                    "type": "numeric"
+                                }
+                            },
+                            {
+                                "element": "textInput",
+                                "params": {
+                                    "label": {
+                                        "en": "6. Text type:name",
+                                        "el": "Ελληνικά"
+                                    },
+                                    "id": "govcy-test-27f",
+                                    "name": "govcy-test-27f",
+                                    "type": "name"
+                                }
+                            },
+                            {
+                                "element": "textInput",
+                                "params": {
+                                    "label": {
+                                        "en": "7. Text fixedWidth:35",
+                                        "el": "Ελληνικά"
+                                    },
+                                    "id": "govcy-test-27g",
+                                    "name": "govcy-test-27g",
+                                    "fixedWidth": "35"
+                                }
+                            },
+                            {
+                                "element": "textInput",
+                                "params": {
+                                    "label": {
+                                        "en": "8. Text fixedWidth:2",
+                                        "el": "Ελληνικά"
+                                    },
+                                    "id": "govcy-test-27h",
+                                    "name": "govcy-test-27h",
+                                    "fixedWidth": "2"
+                                }
+                            },
+                            {
+                                "element": "textInput",
+                                "params": {
+                                    "label": {
+                                        "en": "9. Text spellcheck true",
+                                        "el": "Ελληνικά"
+                                    },
+                                    "id": "govcy-test-27i",
+                                    "name": "govcy-test-27i",
+                                    "isSpellcheck": true
+                                }
+                            },
+                            {
+                                "element": "textInput",
+                                "params": {
+                                    "label": {
+                                        "en": "10. Text autocomplete:tel",
+                                        "el": "Ελληνικά"
+                                    },
+                                    "id": "govcy-test-27j",
+                                    "name": "govcy-test-27j",
+                                    "autocomplete": "tel"
+                                }
+                            }
+                        ]
                     }
                 },
                 {

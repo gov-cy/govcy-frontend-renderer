@@ -164,6 +164,95 @@
     {{ govcyElement("hint",{hint:{en:"English",el:"Ελληνικά"}, id:"govcy-test-26b", lang:"el"}) }}
     {{ govcyElement("legend",{legend:{en:"English",el:"Ελληνικά"}, id:"govcy-test-26c", isPageHeading : false, lang:"el"}) }}
     {{ govcyElement("textElement",{text:{en:"English ",el:"Ελληνικά"}, type:"p", id:"govcy-test-26d", lang:"el"}) }}
+    <hr><h2>Text input</h2>
+      {% call govcyElement("form",
+        {id:"govcy-test-27", 
+            elements:[
+                {element: "textInput",
+                params: {
+                    label:{en:"1. Text with minimum options",el:"Ελληνικά label"}
+                    ,id:"govcy-test-27a"
+                    }
+                }
+                ,{element: "textInput",
+                params: {
+                    label:{en:"2. Text input with isPageHeading:true",el:"Ελληνικά"}
+                    ,id:"govcy-test-27b"
+                    ,isPageHeading: true
+                    }
+                }
+                ,{element: "textInput",
+                params: {
+                    label:{en:"English label",el:"3. Ελληνικά. Text input with most options, type:tel, fixedWidth:50"}
+                    ,id:"govcy-test-27c"
+                    ,name:"govcy-test-27c"
+                    ,hint:{en:"Hint message",el:"Περιεχομένο hint"}
+                    ,type:"tel"
+                    ,isPageHeading: false
+                    ,classes:"govcy-test-class"
+                    ,error:{en:"Error message",el:"Περιεχομένο error"}
+                    ,fixedWidth:"50"
+                    ,lang:"el"
+                    }
+                }
+                ,{element: "textInput",
+                params: {
+                    label:{en:"4. Text type:email",el:"Ελληνικά"}
+                    ,id:"govcy-test-27d"
+                    ,name:"govcy-test-27d"
+                    ,type: "email"
+                    }
+                }
+                ,{element: "textInput",
+                params: {
+                    label:{en:"5. Text type:numeric",el:"Ελληνικά"}
+                    ,id:"govcy-test-27e"
+                    ,name:"govcy-test-27e"
+                    ,type: "numeric"
+                    }
+                }
+                ,{element: "textInput",
+                params: {
+                    label:{en:"6. Text type:name",el:"Ελληνικά"}
+                    ,id:"govcy-test-27f"
+                    ,name:"govcy-test-27f"
+                    ,type: "name"
+                    }
+                }
+                ,{element: "textInput",
+                params: {
+                    label:{en:"7. Text fixedWidth:35",el:"Ελληνικά"}
+                    ,id:"govcy-test-27g"
+                    ,name:"govcy-test-27g"
+                    ,fixedWidth:"35"
+                    }
+                }
+                ,{element: "textInput",
+                params: {
+                    label:{en:"8. Text fixedWidth:2",el:"Ελληνικά"}
+                    ,id:"govcy-test-27h"
+                    ,name:"govcy-test-27h"
+                    ,fixedWidth:"2"
+                    }
+                }
+                ,{element: "textInput",
+                params: {
+                    label:{en:"9. Text spellcheck true",el:"Ελληνικά"}
+                    ,id:"govcy-test-27i"
+                    ,name:"govcy-test-27i"
+                    ,isSpellcheck:"true"
+                    }
+                }
+                ,{element: "textInput",
+                params: {
+                    label:{en:"10. Text autocomplete:tel",el:"Ελληνικά"}
+                    ,id:"govcy-test-27j"
+                    ,name:"govcy-test-27j"
+                    ,autocomplete:"tel"
+                    }
+                }
+            ]
+        }) %}{% endcall %}
 {% endblock %}
 {% block beforeMain %}
     {{ govcyElement("textElement",{text:{en:"Back ",el:"Πίσω"}, type:"p", id:"govcy-test-25"}) }}

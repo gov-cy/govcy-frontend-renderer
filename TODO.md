@@ -11,6 +11,11 @@
     - [X] remove lang from test.mjk and test.json
     - [X] add a unit test with no lang in site data
     - [X] add `lang='{{ params.lang }}'` in components
+- [ ] Add components
+    - [X] textInput
+    - [ ] textArea
+    - [ ] rario
+    - [ ] checkbox
 - [ ] Handle site data in a better way. Uniform for both njk and json. Consider how json file will look like
 - [ ] Page template
     - Params used
