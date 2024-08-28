@@ -286,6 +286,159 @@
             }
     ]
     }) %}{% endcall %}
+    <hr><h2>Radios</h2>
+    {% call govcyElement("form",{
+        elements:[
+            {element: "radios",
+            params: {
+                id:"govcy-test-31"
+                ,name:"govcy-test-31"
+                ,legend:{en:"Radios: English default options",el:"Ελληνικά legend"}
+                }
+            },
+            {element: "radios",
+            params: {
+                id:"govcy-test-32"
+                ,name:"govcy-test-32"
+                ,legend:{en:"Radios: English with items",el:"Ελληνικά legend"}
+                ,items:[
+                    {
+                        value: "yes",
+                        text: {en:"Yes",el:"Ναι"}
+                    },
+                    {
+                        value: "no",
+                        text: {en:"No",el:"Όχι"}
+                    }
+                ]
+                }
+            },
+            {element: "radios",
+            params: {
+                id:"govcy-test-33"
+                ,name:"govcy-test-33"
+                ,legend:{en:"Radios: English with items and error",el:"Ελληνικά legend"}
+                ,error:{en:"English error",el:"Ελληνικά error"}
+                ,items:[
+                    {
+                        value: "yes",
+                        text: {en:"Yes",el:"Ναι"}
+                    },
+                    {
+                        value: "no",
+                        text: {en:"No",el:"Όχι"}
+                    }
+                ]
+                }
+            },
+            {element: "radios",
+            params: {
+                id:"govcy-test-34"
+                ,name:"govcy-test-34"
+                ,legend:{en:"Radios: English with and item",el:"Ελληνικά legend"}
+                ,items:[
+                    {
+                        value: "yes",
+                        text: {en:"Yes",el:"Ναι"}
+                    },
+                    {
+                        value: "no",
+                        text: {en:"No",el:"Όχι"}
+                    },
+                    {
+                        type: "and",
+                        value: "maybe",
+                        text: {en:"Maybe",el:"Ίσως"}
+                    }
+                ]
+                }
+            },
+            {element: "radios",
+            params: {
+                id:"govcy-test-35"
+                ,name:"govcy-test-35"
+                ,legend:{en:"Radios: English with inline items",el:"Ελληνικά legend"}
+                ,isInline: true
+                ,items:[
+                    {
+                        value: "yes",
+                        text: {en:"Yes",el:"Ναι"}
+                    },
+                    {
+                        value: "no",
+                        text: {en:"No",el:"Όχι"}
+                    },
+                    {
+                        type: "or",
+                        value: "maybe",
+                        text: {en:"Maybe",el:"Ίσως"}
+                    }
+                ]
+                }
+            },
+            {element: "radios",
+            params: {
+                id:"govcy-test-36"
+                ,name:"govcy-test-36"
+                ,legend:{en:"Radios: English with all options possible",el:"Ελληνικά legend"}
+                ,hint:{en:"English hint",el:"Ελληνικά hint"}
+                ,error:{en:"English error",el:"Ελληνικά error"}
+                ,isPageHeading: true
+                ,isInline: false
+                ,classes:"govcy-test-class"
+                ,items:[
+                    {
+                        value: "yes",
+                        text: {en:"Yes",el:"Ναι"}
+                    },
+                    {
+                        value: "no",
+                        hint: {en:"English hint for no",el:"Ελληνικά hint for no"},
+                        text: {en:"No",el:"Όχι"}
+                    },
+                    {
+                        type: "or",
+                        altOrText: {en:"If not",el:"Αν όχι"},
+                        value: "maybe",
+                        hint: {en:"We want you to be absolutely sure",el:"Θέλουμε να είστε απολύτως σίγουροι"},
+                        text: {en:"Maybe",el:"Ίσως"}
+                    }
+                ]
+                }
+            },
+            {element: "radios",
+            params: {
+                id:"govcy-test-37"
+                ,name:"govcy-test-37"
+                ,lang:"el"
+                ,legend:{en:"English legend",el:"Radios: Ελληνικά with all options possible"}
+                ,hint:{en:"English hint",el:"Ελληνικά hint"}
+                ,error:{en:"English error",el:"Ελληνικά error"}
+                ,isPageHeading: true
+                ,isInline: false
+                ,classes:"govcy-test-class"
+                ,items:[
+                    {
+                        value: "yes",
+                        text: {en:"Yes",el:"Ναι"}
+                    },
+                    {
+                        value: "no",
+                        hint: {en:"English hint for no",el:"Ελληνικά hint for no"},
+                        text: {en:"No",el:"Όχι"}
+                    },
+                    {
+                        type: "or",
+                        altOrText: {en:"If not",el:"Αν όχι"},
+                        value: "maybe",
+                        hint: {en:"We want you to be absolutely sure",el:"Θέλουμε να είστε απολύτως σίγουροι govcy-test-37-option-3"},
+                        text: {en:"Maybe",el:"Ίσως"}
+                    }
+                ]
+                }
+            }
+    ]
+    }) %}{% endcall %}
 {% endblock %}
 {% block beforeMain %}
     {{ govcyElement("textElement",{text:{en:"Back ",el:"Πίσω"}, type:"p", id:"govcy-test-25"}) }}

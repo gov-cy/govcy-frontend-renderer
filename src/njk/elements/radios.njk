@@ -1,0 +1,148 @@
+{# radio item
+ @param {object} params The parent parameters 
+ @param {boolean} isInline Is the radio inline type? Optional, default is false. Can be true,false 
+ @param {int} index The index number in the items array
+ @param {string} lang The language used. Can be 'en','el'. 
+ @param {object} item The item object 
+ i.e. 
+ item : {
+        type: "or",
+        altOrText: {en:"If not",el:"Αν όχι"},
+        value: "maybe",
+        hint: {en:"We want you to be absolutely sure",el:"Θέλουμε να είστε απολύτως σίγουροι"},
+        text: {en:"Maybe",el:"Ίσως"}
+    }
+    @param {string} item.type The item type. Can be empty,'or','and'. Optional, default is empty  
+    @param {string} item.value The value of the radio.  
+    @param {object} item.text The label of the radio. Example `{en:"Content",el:"Περιεχομένο"}`  
+    @param {object} item.hint The hint of the radio. Example `{en:"Content",el:"Περιεχομένο"}`  
+    @param {object} item.altAndText The and text. Optional, default is `{en:"And",el:"Και"}
+    @param {object} item.altOrText The or text. Optional, default is `{en:"Or",el:"Ή"}
+ @returns govcy radio item html 
+#}
+{%- macro _radioItem(params, item, isInline, index, lang) %}
+{#- Import localizer from utilities -#}
+{%- from "../utilities/govcyUtilities.njk" import govcyLocalizeContent, govcyLangAttribute -%}
+{%- from "./hint.njk" import hint -%}
+{%- from "./label.njk" import label -%}
+{#- set default values -#}
+{%- set isInline = isInline | default(false) -%}
+{#- set language labels -#}
+{#- set 'or' labels -#}
+{%- if item.altOrText -%}
+    {%- set orText -%} {{- govcyLocalizeContent(item.altOrText, lang) -}}{%- endset -%}
+{%- else -%}
+    {%- set orText -%} {{- govcyLocalizeContent({en:'Or',el:'Ή'}, lang) -}}{%- endset -%}
+{%- endif -%}
+{#- set 'and' labels -#}
+{%- if item.altAndText -%}
+    {%- set andText -%} {{- govcyLocalizeContent(item.altAndText, lang) -}}{%- endset -%}
+{%- else -%}
+    {%- set andText -%} {{- govcyLocalizeContent({en:'And',el:'Και'}, lang) -}}{%- endset -%}
+{%- endif -%}
+{#- set option id -#}
+{% set optionId = params.id ~ '-option-' ~ index %}
+{#- set hint id -#}
+{%- if item.hint -%}
+    {%- set hintId = [optionId, "-hint"] | join -%}
+{%- else -%}
+    {%- set hintId = '' -%}
+{%- endif -%}
+{# depending on the type, render html and set label#}
+{%- if item.type == 'or' -%}
+    <p class="govcy-ml-3 govcy-mb-3{% if isInline %} govcy-d-sm-inline-block govcy-mr-3{% endif %}">{{ orText }}</p>
+    {%- set label -%}
+        <span class="govcy-visually-hidden-error">{{ orText }}, </span> {{- govcyLocalizeContent(item.text, lang) -}}
+    {%- endset -%}
+{%- elif item.type == 'and' -%}
+    <p class="govcy-ml-3 govcy-mb-3{% if isInline %} govcy-d-sm-inline-block govcy-mr-3{% endif %}">{{ andText }}</p>
+    {%- set label -%}
+        <span class="govcy-visually-hidden-error">{{ andText }}, </span> {{- govcyLocalizeContent(item.text, lang) -}}
+    {%- endset -%}
+{% else %}
+    {%- set label -%}{{- govcyLocalizeContent(item.text, lang) -}}{%- endset -%}
+{%- endif -%}
+{#- render radio -#}
+<div class="govcy-radio{% if isInline %} govcy-d-sm-inline-block{% endif %}">
+    <input class="govcy-radio-input" name="{{ params.name }}" value="{{item.value}}" type="radio" id="{{ optionId }}" {% if item.hint%} aria-describedby="{{hintId}}"{% endif %}>
+    <label class="govcy-label" for="{{ optionId }}">{{ label | safe }}</label>
+    {#- {% call govcyLabel({label:label, for:optionId, isPrimary:false, isHTML:true, lang:lang}) %}{% endcall %} -#}
+    {% call hint({hint:item.hint, id:hintId, lang:lang}) %}{% endcall %}
+</div>
+{%- endmacro %}
+{# radio 
+ @param {object} legend The legend text. Will escape text. Example `{en:"Content",el:"Περιεχομένο"}`
+ @param {string} id The id prefix for the options. Will escape text. 
+ @param {string} name The name used in radio. Will escape text. 
+ @param {string} hint The hint text. Optional. Will escape text 
+ @param {boolean} isPageHeading Is the label also the page heading? Optional, default is false. Can be true,false 
+ @param {boolean} isInline Are the radios inline type? Optional, default is false. Can be true,false 
+ @param {string} classes Additional classes to add to the outer fieldset. Optional 
+ @param {string} error If not empty there is an error message and displays the error variant. Optional, default is ''. Will escape text 
+ @param {string} lang The language used. Can be 'en','el'. Optional.
+ @param {array} items The array of items to turn onto radio 
+    i.e. `[
+            {
+                        value: "yes",
+                        text: {en:"Yes",el:"Ναι"}
+            },
+            {
+                value: "no",
+                text: {en:"No",el:"Όχι"}
+            },
+            {
+                type: "or",
+                altOrText: {en:"If not",el:"Αν όχι"},
+                value: "maybe",
+                hint: {en:"We want you to be absolutely sure",el:"Θέλουμε να είστε απολύτως σίγουροι"},
+                text: {en:"Maybe",el:"Ίσως"}
+            }
+        ]`
+ @returns govcy radios html 
+#}
+{% macro radios(params) -%}
+{#- set default values -#}
+{%- set isPageHeading = params.isPageHeading | default(false) -%}
+{%- set isInline = params.isInline | default(false) -%}
+{#- legend, id and name are mandatory -#}
+{%- if params.legend and params.id and params.name -%}
+    {%- from "./fieldset.njk" import fieldset -%}
+    {%- from "./hint.njk" import hint -%}
+    {%- from "./label.njk" import label -%}
+    {%- from "./legend.njk" import legend -%}
+    {%- from "./errorMessage.njk" import errorMessage -%}
+    {%- from "./formControl.njk" import formControl -%}
+    {#- set hint id -#}
+    {%- if params.hint -%}
+        {%- set hintId = [params.id, "-hint"] | join -%}
+    {%- else -%}
+        {%- set hintId = '' -%}
+    {%- endif -%}
+    {#- set error id -#}
+    {%- if params.error -%}
+        {%- set errorId = [params.id, "-error"] | join -%}
+    {%- else -%}
+        {%- set errorId = '' -%}
+    {%- endif -%}
+    {# set aria described by #}
+    {%- if params.error or params.hint -%}
+        {% set ariaDescribedBy = hintId ~ ' ' ~ errorId %}
+    {%- else -%}
+        {% set ariaDescribedBy = '' %}
+    {%- endif -%}
+    {% call fieldset({ariaDescribedby:ariaDescribedBy,classes:params.classes, lang:params.lang}) %}
+        {% call legend({legend:params.legend, isPageHeading:isPageHeading,lang:params.lang}) %}{% endcall %}
+        {% call formControl({isError:params.error}) %}
+            {% call hint({hint:params.hint, id:hintId,lang:params.lang}) %}{% endcall %}
+            {#- render error message -#}
+            {% call errorMessage({message:params.error,id:errorId,lang:params.lang}) %}{% endcall %}
+            {# for each item render checkbox item #}
+            {%- for item in params.items -%}
+                {%- if item -%}
+                    {{- _radioItem(params, item, isInline, loop.index, params.lang) -}}
+                {%- endif -%}
+            {%- endfor -%}
+        {% endcall %}
+    {% endcall %}
+{%- endif -%}
+{%- endmacro %}

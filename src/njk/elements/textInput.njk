@@ -57,7 +57,7 @@
     {%- else -%}
         {%- set inputAutocomplete = '' -%}
     {%- endif -%}
-    {% call formControl({isError:params.error,classes:params.classes}) %}
+    {% call formControl({isError:params.error,classes:params.classes,lang:params.lang}) %}
         {#- render label -#}
         {% call label({label:params.label, id:labelId, for:params.id, isPageHeading:isPageHeading, lang:params.lang}) %}{% endcall %}
         {#- render hint -#}

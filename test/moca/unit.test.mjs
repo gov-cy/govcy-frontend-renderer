@@ -400,11 +400,151 @@ function renderChecks(renderedHTML, checksNum){
         let expectedRegex =  new RegExp ([ 
             `<fieldset\\s*id="govcy-test-30"\\s*class="govcy-fieldset"\\s*>`,//fieldset 
             `\\s*<div\\s*class="govcy-form-control">`,//input form control
-            `\\s*<label\\s*id="govcy-test-30a-label"([\\s\\S]*?)</label>`,//label
+            `\\s*<label\\s*id="govcy-test-30a-label"([\\s\\S]*?)<\\/label>`,//label
             `\\s*<input\\s*id="govcy-test-30a"([\\s\\S]*?)>`,//input
             `\\s*<\\/div>`, //input closing tags
             `\\s*<p>English text govcy-test-30<\\/p>`, //input closing tags
             `\\s*<\\/fieldset>` //closing tags
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+    it(checksNum+'31 `radios` macro render as expected. default options', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([ 
+            `<fieldset\\s*class="govcy-fieldset">`,//fieldset 
+            `\\s*<legend\\s*class="govcy-legend">\\s*Radios: English default options\\s*<\\/legend>`,//legend
+            `\\s*<div\\s*class="govcy-form-control">`,//form control
+            `\\s*<\\/div>\\s*<\\/fieldset>` //closing tags
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+    it(checksNum+'32 `radios` macro render as expected. with items', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([ 
+            `<fieldset\\s*class="govcy-fieldset">`,//fieldset 
+            `\\s*<legend\\s*class="govcy-legend">\\s*Radios: English with items\\s*<\\/legend>`,//legend
+            `\\s*<div\\s*class="govcy-form-control">`,//form control
+            `\\s*<div\\s*class="govcy-radio">`,//radio
+            `\\s*<input\\s*class="govcy-radio-input"\\s*name="govcy-test-32"\\s*value="yes"\\s*type="radio"\\s*id="govcy-test-32-option-1"\\s*>`,//input for radio
+            `\\s*<label\\s*class="govcy-label"\\s*for="govcy-test-32-option-1"\\s*>\\s*Yes\\s*<\\/label>`,//label for radio
+            `\\s*<\\/div>`, //closing tags for radio
+            `\\s*<div\\s*class="govcy-radio">`,//radio
+            `\\s*<input\\s*class="govcy-radio-input"\\s*name="govcy-test-32"\\s*value="no"\\s*type="radio"\\s*id="govcy-test-32-option-2"\\s*>`,//input for radio
+            `\\s*<label\\s*class="govcy-label"\\s*for="govcy-test-32-option-2"\\s*>\\s*No\\s*<\\/label>`,//label for radio
+            `\\s*<\\/div>`, //closing tags for radio
+            `\\s*<\\/div>\\s*<\\/fieldset>` //closing tags
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+    it(checksNum+'33 `radios` macro render as expected. with items and error', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([ 
+            `<fieldset\\s*class="govcy-fieldset"\\s*aria-describedby="\\s*govcy-test-33-error">`,//fieldset 
+            `\\s*<legend\\s*class="govcy-legend">\\s*Radios: English with items and error\\s*<\\/legend>`,//legend
+            `\\s*<div\\s*class="govcy-form-control\\s*govcy-form-control-error">`,//form control
+            `\\s*<p id="govcy-test-33-error"\\s*class="govcy-input-error-msg">([\\s\\S]*?)<\\/p>`,//error message
+            `\\s*<div\\s*class="govcy-radio">`,//radio
+            `\\s*<input\\s*class="govcy-radio-input"\\s*name="govcy-test-33"\\s*value="yes"\\s*type="radio"\\s*id="govcy-test-33-option-1"\\s*>`,//input for radio
+            `\\s*<label\\s*class="govcy-label"\\s*for="govcy-test-33-option-1"\\s*>\\s*Yes\\s*<\\/label>`,//label for radio
+            `\\s*<\\/div>`, //closing tags for radio
+            `\\s*<div\\s*class="govcy-radio">`,//radio
+            `\\s*<input\\s*class="govcy-radio-input"\\s*name="govcy-test-33"\\s*value="no"\\s*type="radio"\\s*id="govcy-test-33-option-2"\\s*>`,//input for radio
+            `\\s*<label\\s*class="govcy-label"\\s*for="govcy-test-33-option-2"\\s*>\\s*No\\s*<\\/label>`,//label for radio
+            `\\s*<\\/div>`, //closing tags for radio
+            `\\s*<\\/div>\\s*<\\/fieldset>` //closing tags
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+    it(checksNum+'34 `radios` macro render as expected. with `and` item', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([ 
+            `<fieldset\\s*class="govcy-fieldset">`,//fieldset 
+            `\\s*<legend\\s*class="govcy-legend">\\s*Radios: English with and item\\s*<\\/legend>`,//legend
+            `\\s*<div\\s*class="govcy-form-control">`,//form control
+            `\\s*<div\\s*class="govcy-radio">`,//radio
+            `([\\s\\S]*?)`,
+            `\\s*<p\\s*class="govcy-ml-3\\s*govcy-mb-3">\\s*And\\s*</p>\\s*`, //and item
+            `\\s*<div\\s*class="govcy-radio">`,//radio
+            `\\s*<input\\s*class="govcy-radio-input"\\s*name="govcy-test-34"\\s*value="maybe"\\s*type="radio"\\s*id="govcy-test-34-option-3"\\s*>`,//input for radio
+            `\\s*<label\\s*class="govcy-label"\\s*for="govcy-test-34-option-3"\\s*>\\s*<span\\s*class="govcy-visually-hidden-error">\\s*And,\\s*</span>\\s*Maybe\\s*<\\/label>`,//label for radio
+            `\\s*<\\/div>`, //closing tags for radio
+            `\\s*<\\/div>\\s*<\\/fieldset>` //closing tags
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+    it(checksNum+'35 `radios` macro render as expected. with inline items', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([ 
+            `<fieldset\\s*class="govcy-fieldset">`,//fieldset 
+            `\\s*<legend\\s*class="govcy-legend">\\s*Radios: English with inline items\\s*<\\/legend>`,//legend
+            `\\s*<div\\s*class="govcy-form-control">`,//form control
+            `\\s*<div\\s*class="govcy-radio\\s*govcy-d-sm-inline-block">`,//radio
+            `\\s*<input\\s*class="govcy-radio-input"\\s*name="govcy-test-35"\\s*value="yes"\\s*type="radio"\\s*id="govcy-test-35-option-1"\\s*>`,//input for radio
+            `\\s*<label\\s*class="govcy-label"\\s*for="govcy-test-35-option-1"\\s*>\\s*Yes\\s*<\\/label>`,//label for radio
+            `\\s*<\\/div>`, //closing tags for radio
+            `\\s*<div\\s*class="govcy-radio\\s*govcy-d-sm-inline-block">`,//radio
+            `\\s*<input\\s*class="govcy-radio-input"\\s*name="govcy-test-35"\\s*value="no"\\s*type="radio"\\s*id="govcy-test-35-option-2"\\s*>`,//input for radio
+            `\\s*<label\\s*class="govcy-label"\\s*for="govcy-test-35-option-2"\\s*>\\s*No\\s*<\\/label>`,//label for radio
+            `\\s*<\\/div>`, //closing tags for radio
+            `\\s*<p\\s*class="govcy-ml-3\\s*govcy-mb-3\\s*govcy-d-sm-inline-block\\s*govcy-mr-3">\\s*Or\\s*</p>\\s*`, //or item
+            `\\s*<div\\s*class="govcy-radio\\s*govcy-d-sm-inline-block">`,//radio
+            `\\s*<input\\s*class="govcy-radio-input"\\s*name="govcy-test-35"\\s*value="maybe"\\s*type="radio"\\s*id="govcy-test-35-option-3"\\s*>`,//input for radio
+            `\\s*<label\\s*class="govcy-label"\\s*for="govcy-test-35-option-3"\\s*>\\s*<span\\s*class="govcy-visually-hidden-error">\\s*Or,\\s*</span>\\s*Maybe\\s*<\\/label>`,//label for radio
+            `\\s*<\\/div>`, //closing tags for radio
+            `\\s*<\\/div>\\s*<\\/fieldset>` //closing tags
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+    it(checksNum+'36 `radios` macro render as expected. with all options possible, isPageHeading, radios with hint, altAndText', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([ 
+            `<fieldset\\s*class="govcy-fieldset\\s*govcy-test-class"\\s*aria-describedby="\\s*govcy-test-36-hint\\s*govcy-test-36-error\\s*"\\s*>`,//fieldset 
+            `\\s*<legend\\s*class="govcy-legend">\\s*<h1>\\s*Radios: English with all options possible\\s*<\\/h1>\\s*<\\/legend>`,//legend
+            `\\s*<div\\s*class="govcy-form-control\\s*govcy-form-control-error">`,//form control
+            `([\\s\\S]*?)`,
+            `\\s*<div\\s*class="govcy-radio">`,//radio
+            `\\s*<input\\s*class="govcy-radio-input"\\s*name="govcy-test-36"\\s*value="no"\\s*type="radio"\\s*id="govcy-test-36-option-2"\\s*aria-describedby="govcy-test-36-option-2-hint"\\s*>`,//input for radio
+            `\\s*<label\\s*class="govcy-label"\\s*for="govcy-test-36-option-2"\\s*>\\s*No\\s*<\\/label>`,//label for radio
+            `\\s*<span\\s*id="govcy-test-36-option-2-hint"\\s*class="govcy-hint">\\s*English hint for no\\s*<\\/span>`, //hint for radio
+            `\\s*<\\/div>`, //closing tags for radio
+            `\\s*<p\\s*class="govcy-ml-3\\s*govcy-mb-3">\\s*If not\\s*</p>`, //Add item
+            `\\s*<div\\s*class="govcy-radio">`,//radio
+            `\\s*<input\\s*class="govcy-radio-input"\\s*name="govcy-test-36"\\s*value="maybe"\\s*type="radio"\\s*id="govcy-test-36-option-3"\\s*aria-describedby="\\s*govcy-test-36-option-3-hint"\\s*>`,//input for radio
+            `\\s*<label\\s*class="govcy-label"\\s*for="govcy-test-36-option-3"\\s*>\\s*<span\\s*class="govcy-visually-hidden-error">\\s*If not,\\s*</span>\\s*Maybe\\s*<\\/label>`,//label for radio
+            `\\s*<span\\s*id="govcy-test-36-option-3-hint"\\s*class="govcy-hint">\\s*We want you to be absolutely sure\\s*<\\/span>`, //hint for radio
+            `\\s*<\\/div>`, //closing tags for radio
+            `\\s*<\\/div>\\s*<\\/fieldset>` //closing tags
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+    it(checksNum+'37 `radios` macro render as expected. lang:el', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([ 
+            `<fieldset\\s*class="govcy-fieldset\\s*govcy-test-class"\\s*aria-describedby="\\s*govcy-test-37-hint\\s*govcy-test-37-error\\s*"\\s*lang="el"\\s*>`,//fieldset 
+            `\\s*<legend\\s*class="govcy-legend"\\s*lang="el">\\s*<h1>\\s*Radios: Ελληνικά with all options possible\\s*<\\/h1>\\s*<\\/legend>`,//legend
+            `([\\s\\S]*?)`,
+            `Ελληνικά hint`,
+            `([\\s\\S]*?)`,
+            `Ελληνικά error`,
+            `([\\s\\S]*?)`,
+            `Ναι`,
+            `([\\s\\S]*?)`,
+            `Όχι`,
+            `([\\s\\S]*?)`,
+            `Ελληνικά hint for no`,
+            `([\\s\\S]*?)`,
+            `Αν όχι`,
+            `([\\s\\S]*?)`,
+            `Ίσως`,
+            `([\\s\\S]*?)`,
+            `\\s*<\\/div>\\s*<\\/fieldset>` //closing tags
         ].join(''));
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);

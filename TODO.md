@@ -14,8 +14,9 @@
 - [ ] Add components
     - [X] textInput
     - [ ] textArea
-    - [ ] rario
-    - [ ] checkbox
+    - [X] fieldSet
+    - [X] radios
+    - [ ] checkboxs
 - [ ] Handle site data in a better way. Uniform for both njk and json. Consider how json file will look like
 - [ ] Page template
     - Params used
