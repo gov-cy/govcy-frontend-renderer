@@ -544,6 +544,126 @@ function renderChecks(renderedHTML, checksNum){
             `([\\s\\S]*?)`,
             `Ίσως`,
             `([\\s\\S]*?)`,
+            `Θέλουμε να είστε απολύτως σίγουροι govcy-test-43-option-3`,
+            `([\\s\\S]*?)`,
+            `\\s*<\\/div>\\s*<\\/fieldset>` //closing tags
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+    it(checksNum+'38 `checkboxes` macro render as expected. default options', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([ 
+            `<fieldset\\s*class="govcy-fieldset">`,//fieldset 
+            `\\s*<legend\\s*class="govcy-legend">\\s*Checkboxes: English default options\\s*<\\/legend>`,//legend
+            `\\s*<div\\s*class="govcy-form-control">`,//form control
+            `\\s*<\\/div>\\s*<\\/fieldset>` //closing tags
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+    it(checksNum+'39 `checkboxes` macro render as expected. with items', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([ 
+            `<fieldset\\s*class="govcy-fieldset">`,//fieldset 
+            `\\s*<legend\\s*class="govcy-legend">\\s*Checkboxes: English with items\\s*<\\/legend>`,//legend
+            `\\s*<div\\s*class="govcy-form-control">`,//form control
+            `\\s*<div\\s*class="govcy-checkbox">`,//checkbox
+            `\\s*<input\\s*class="govcy-checkbox-input"\\s*name="govcy-test-39"\\s*value="yes"\\s*type="checkbox"\\s*id="govcy-test-39-option-1"\\s*>`,//input for checkbox
+            `\\s*<label\\s*class="govcy-label"\\s*for="govcy-test-39-option-1"\\s*>\\s*Yes\\s*<\\/label>`,//label for checkbox
+            `\\s*<\\/div>`, //closing tags for checkbox
+            `\\s*<div\\s*class="govcy-checkbox">`,//checkbox
+            `\\s*<input\\s*class="govcy-checkbox-input"\\s*name="govcy-test-39"\\s*value="no"\\s*type="checkbox"\\s*id="govcy-test-39-option-2"\\s*>`,//input for checkbox
+            `\\s*<label\\s*class="govcy-label"\\s*for="govcy-test-39-option-2"\\s*>\\s*No\\s*<\\/label>`,//label for checkbox
+            `\\s*<\\/div>`, //closing tags for checkbox
+            `\\s*<\\/div>\\s*<\\/fieldset>` //closing tags
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+    it(checksNum+'40 `checkboxes` macro render as expected. with items and error', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([ 
+            `<fieldset\\s*class="govcy-fieldset"\\s*aria-describedby="\\s*govcy-test-40-error">`,//fieldset 
+            `\\s*<legend\\s*class="govcy-legend">\\s*Checkboxes: English with items and error\\s*<\\/legend>`,//legend
+            `\\s*<div\\s*class="govcy-form-control\\s*govcy-form-control-error">`,//form control
+            `\\s*<p id="govcy-test-40-error"\\s*class="govcy-input-error-msg">([\\s\\S]*?)<\\/p>`,//error message
+            `\\s*<div\\s*class="govcy-checkbox">`,//checkbox
+            `\\s*<input\\s*class="govcy-checkbox-input"\\s*name="govcy-test-40"\\s*value="yes"\\s*type="checkbox"\\s*id="govcy-test-40-option-1"\\s*>`,//input for checkbox
+            `\\s*<label\\s*class="govcy-label"\\s*for="govcy-test-40-option-1"\\s*>\\s*Yes\\s*<\\/label>`,//label for checkbox
+            `\\s*<\\/div>`, //closing tags for checkbox
+            `\\s*<div\\s*class="govcy-checkbox">`,//checkbox
+            `\\s*<input\\s*class="govcy-checkbox-input"\\s*name="govcy-test-40"\\s*value="no"\\s*type="checkbox"\\s*id="govcy-test-40-option-2"\\s*>`,//input for checkbox
+            `\\s*<label\\s*class="govcy-label"\\s*for="govcy-test-40-option-2"\\s*>\\s*No\\s*<\\/label>`,//label for checkbox
+            `\\s*<\\/div>`, //closing tags for checkbox
+            `\\s*<\\/div>\\s*<\\/fieldset>` //closing tags
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+    it(checksNum+'41 `checkboxes` macro render as expected. with `and` item', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([ 
+            `<fieldset\\s*class="govcy-fieldset">`,//fieldset 
+            `\\s*<legend\\s*class="govcy-legend">\\s*Checkboxes: English with and item\\s*<\\/legend>`,//legend
+            `\\s*<div\\s*class="govcy-form-control">`,//form control
+            `\\s*<div\\s*class="govcy-checkbox">`,//checkbox
+            `([\\s\\S]*?)`,
+            `\\s*<p\\s*class="govcy-ml-3\\s*govcy-mb-3">\\s*And\\s*</p>\\s*`, //and item
+            `\\s*<div\\s*class="govcy-checkbox">`,//checkbox
+            `\\s*<input\\s*class="govcy-checkbox-input"\\s*name="govcy-test-41"\\s*value="maybe"\\s*type="checkbox"\\s*id="govcy-test-41-option-3"\\s*>`,//input for checkbox
+            `\\s*<label\\s*class="govcy-label"\\s*for="govcy-test-41-option-3"\\s*>\\s*<span\\s*class="govcy-visually-hidden-error">\\s*And,\\s*</span>\\s*Maybe\\s*<\\/label>`,//label for checkbox
+            `\\s*<\\/div>`, //closing tags for checkbox
+            `\\s*<\\/div>\\s*<\\/fieldset>` //closing tags
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+    it(checksNum+'42 `checkboxes` macro render as expected. with all options possible, isPageHeading, checkboxes with hint, altAndText', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([ 
+            `<fieldset\\s*class="govcy-fieldset\\s*govcy-test-class"\\s*aria-describedby="\\s*govcy-test-42-hint\\s*govcy-test-42-error\\s*"\\s*>`,//fieldset 
+            `\\s*<legend\\s*class="govcy-legend">\\s*<h1>\\s*Checkboxes: English with all options possible\\s*<\\/h1>\\s*<\\/legend>`,//legend
+            `\\s*<div\\s*class="govcy-form-control\\s*govcy-form-control-error">`,//form control
+            `([\\s\\S]*?)`,
+            `\\s*<div\\s*class="govcy-checkbox">`,//checkbox
+            `\\s*<input\\s*class="govcy-checkbox-input"\\s*name="govcy-test-42"\\s*value="no"\\s*type="checkbox"\\s*id="govcy-test-42-option-2"\\s*aria-describedby="govcy-test-42-option-2-hint"\\s*>`,//input for checkbox
+            `\\s*<label\\s*class="govcy-label"\\s*for="govcy-test-42-option-2"\\s*>\\s*No\\s*<\\/label>`,//label for checkbox
+            `\\s*<span\\s*id="govcy-test-42-option-2-hint"\\s*class="govcy-hint">\\s*English hint for no\\s*<\\/span>`, //hint for checkbox
+            `\\s*<\\/div>`, //closing tags for checkbox
+            `\\s*<p\\s*class="govcy-ml-3\\s*govcy-mb-3">\\s*If not\\s*</p>`, //Add item
+            `\\s*<div\\s*class="govcy-checkbox">`,//checkbox
+            `\\s*<input\\s*class="govcy-checkbox-input"\\s*name="govcy-test-42"\\s*value="maybe"\\s*type="checkbox"\\s*id="govcy-test-42-option-3"\\s*aria-describedby="\\s*govcy-test-42-option-3-hint"\\s*>`,//input for checkbox
+            `\\s*<label\\s*class="govcy-label"\\s*for="govcy-test-42-option-3"\\s*>\\s*<span\\s*class="govcy-visually-hidden-error">\\s*If not,\\s*</span>\\s*Maybe\\s*<\\/label>`,//label for checkbox
+            `\\s*<span\\s*id="govcy-test-42-option-3-hint"\\s*class="govcy-hint">\\s*We want you to be absolutely sure\\s*<\\/span>`, //hint for checkbox
+            `\\s*<\\/div>`, //closing tags for checkbox
+            `\\s*<\\/div>\\s*<\\/fieldset>` //closing tags
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+    it(checksNum+'43 `checkboxes` macro render as expected. lang:el', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([ 
+            `<fieldset\\s*class="govcy-fieldset\\s*govcy-test-class"\\s*aria-describedby="\\s*govcy-test-43-hint\\s*govcy-test-43-error\\s*"\\s*lang="el"\\s*>`,//fieldset 
+            `\\s*<legend\\s*class="govcy-legend"\\s*lang="el">\\s*<h1>\\s*Checkboxes: Ελληνικά with all options possible\\s*<\\/h1>\\s*<\\/legend>`,//legend
+            `([\\s\\S]*?)`,
+            `Ελληνικά hint`,
+            `([\\s\\S]*?)`,
+            `Ελληνικά error`,
+            `([\\s\\S]*?)`,
+            `Ναι`,
+            `([\\s\\S]*?)`,
+            `Όχι`,
+            `([\\s\\S]*?)`,
+            `Ελληνικά hint for no`,
+            `([\\s\\S]*?)`,
+            `Αν όχι`,
+            `([\\s\\S]*?)`,
+            `Ίσως`,
+            `([\\s\\S]*?)`,
+            `Θέλουμε να είστε απολύτως σίγουροι govcy-test-43-option-3`,
+            `([\\s\\S]*?)`,
             `\\s*<\\/div>\\s*<\\/fieldset>` //closing tags
         ].join(''));
         // console.log(expectedRegex);

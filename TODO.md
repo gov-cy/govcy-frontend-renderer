@@ -16,7 +16,7 @@
     - [ ] textArea
     - [X] fieldSet
     - [X] radios
-    - [ ] checkboxs
+    - [X] checkboxs
 - [ ] Handle site data in a better way. Uniform for both njk and json. Consider how json file will look like
 - [ ] Page template
     - Params used

@@ -436,6 +436,134 @@
                     }
                 ]
                 }
+            },
+            {element: "htmlElement",
+            params: {
+                text:{en:"<hr><h2>Checkboxes</h2>"}
+                }
+            },
+             {element: "checkboxes",
+            params: {
+                id:"govcy-test-38"
+                ,name:"govcy-test-38"
+                ,legend:{en:"Checkboxes: English default options",el:"Ελληνικά legend"}
+                }
+            },
+            {element: "checkboxes",
+            params: {
+                id:"govcy-test-39"
+                ,name:"govcy-test-39"
+                ,legend:{en:"Checkboxes: English with items",el:"Ελληνικά legend"}
+                ,items:[
+                    {
+                        value: "yes",
+                        text: {en:"Yes",el:"Ναι"}
+                    },
+                    {
+                        value: "no",
+                        text: {en:"No",el:"Όχι"}
+                    }
+                ]
+                }
+            },
+            {element: "checkboxes",
+            params: {
+                id:"govcy-test-40"
+                ,name:"govcy-test-40"
+                ,legend:{en:"Checkboxes: English with items and error",el:"Ελληνικά legend"}
+                ,error:{en:"English error",el:"Ελληνικά error"}
+                ,items:[
+                    {
+                        value: "yes",
+                        text: {en:"Yes",el:"Ναι"}
+                    },
+                    {
+                        value: "no",
+                        text: {en:"No",el:"Όχι"}
+                    }
+                ]
+                }
+            },
+            {element: "checkboxes",
+            params: {
+                id:"govcy-test-41"
+                ,name:"govcy-test-41"
+                ,legend:{en:"Checkboxes: English with and item",el:"Ελληνικά legend"}
+                ,items:[
+                    {
+                        value: "yes",
+                        text: {en:"Yes",el:"Ναι"}
+                    },
+                    {
+                        value: "no",
+                        text: {en:"No",el:"Όχι"}
+                    },
+                    {
+                        type: "and",
+                        value: "maybe",
+                        text: {en:"Maybe",el:"Ίσως"}
+                    }
+                ]
+                }
+            },
+            {element: "checkboxes",
+            params: {
+                id:"govcy-test-42"
+                ,name:"govcy-test-42"
+                ,legend:{en:"Checkboxes: English with all options possible",el:"Ελληνικά legend"}
+                ,hint:{en:"English hint",el:"Ελληνικά hint"}
+                ,error:{en:"English error",el:"Ελληνικά error"}
+                ,isPageHeading: true
+                ,classes:"govcy-test-class"
+                ,items:[
+                    {
+                        value: "yes",
+                        text: {en:"Yes",el:"Ναι"}
+                    },
+                    {
+                        value: "no",
+                        hint: {en:"English hint for no",el:"Ελληνικά hint for no"},
+                        text: {en:"No",el:"Όχι"}
+                    },
+                    {
+                        type: "or",
+                        altOrText: {en:"If not",el:"Αν όχι"},
+                        value: "maybe",
+                        hint: {en:"We want you to be absolutely sure",el:"Θέλουμε να είστε απολύτως σίγουροι"},
+                        text: {en:"Maybe",el:"Ίσως"}
+                    }
+                ]
+                }
+            },
+            {element: "checkboxes",
+            params: {
+                id:"govcy-test-43"
+                ,name:"govcy-test-43"
+                ,lang:"el"
+                ,legend:{en:"English legend",el:"Checkboxes: Ελληνικά with all options possible"}
+                ,hint:{en:"English hint",el:"Ελληνικά hint"}
+                ,error:{en:"English error",el:"Ελληνικά error"}
+                ,isPageHeading: true
+                ,classes:"govcy-test-class"
+                ,items:[
+                    {
+                        value: "yes",
+                        text: {en:"Yes",el:"Ναι"}
+                    },
+                    {
+                        value: "no",
+                        hint: {en:"English hint for no",el:"Ελληνικά hint for no"},
+                        text: {en:"No",el:"Όχι"}
+                    },
+                    {
+                        type: "or",
+                        altOrText: {en:"If not",el:"Αν όχι"},
+                        value: "maybe",
+                        hint: {en:"We want you to be absolutely sure",el:"Θέλουμε να είστε απολύτως σίγουροι govcy-test-43-option-3"},
+                        text: {en:"Maybe",el:"Ίσως"}
+                    }
+                ]
+                }
             }
     ]
     }) %}{% endcall %}

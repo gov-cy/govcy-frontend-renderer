@@ -1,6 +1,5 @@
-{# radio item
+{# checkbox item
  @param {object} params The parent parameters 
- @param {boolean} isInline Is the radio inline type? Optional, default is false. Can be true,false 
  @param {int} index The index number in the items array
  @param {string} lang The language used. Can be 'en','el'. 
  @param {object} item The item object 
@@ -13,20 +12,18 @@
         text: {en:"Maybe",el:"Ίσως"}
     }
     @param {string} item.type The item type. Can be empty,'or','and'. Optional, default is empty  
-    @param {string} item.value The value of the radio.  
-    @param {object} item.text The label of the radio. Example `{en:"Content",el:"Περιεχομένο"}`  
-    @param {object} item.hint The hint of the radio. Example `{en:"Content",el:"Περιεχομένο"}`  
+    @param {string} item.value The value of the checkbox.  
+    @param {object} item.text The label of the checkbox. Example `{en:"Content",el:"Περιεχομένο"}`  
+    @param {object} item.hint The hint of the checkbox. Example `{en:"Content",el:"Περιεχομένο"}`  
     @param {object} item.altAndText The and text. Optional, default is `{en:"And",el:"Και"}
     @param {object} item.altOrText The or text. Optional, default is `{en:"Or",el:"Ή"}
- @returns govcy radio item html 
+ @returns govcy checkbox item html 
 #}
-{%- macro _radioItem(params, item, isInline, index, lang) %}
+{%- macro _checkboxItem(params, item, index, lang) %}
 {#- Import localizer from utilities -#}
 {%- from "../utilities/govcyUtilities.njk" import govcyLocalizeContent, govcyLangAttribute -%}
 {%- from "./hint.njk" import hint -%}
 {%- from "./label.njk" import label -%}
-{#- set default values -#}
-{%- set isInline = isInline | default(false) -%}
 {#- set language labels -#}
 {#- set 'or' labels -#}
 {%- if item.altOrText -%}
@@ -50,37 +47,36 @@
 {%- endif -%}
 {# depending on the type, render html and set label#}
 {%- if item.type == 'or' -%}
-    <p class="govcy-ml-3 govcy-mb-3{% if isInline %} govcy-d-sm-inline-block govcy-mr-3{% endif %}">{{ orText }}</p>
+    <p class="govcy-ml-3 govcy-mb-3">{{ orText }}</p>
     {%- set label -%}
         <span class="govcy-visually-hidden-error">{{ orText }}, </span> {{- govcyLocalizeContent(item.text, lang) -}}
     {%- endset -%}
 {%- elif item.type == 'and' -%}
-    <p class="govcy-ml-3 govcy-mb-3{% if isInline %} govcy-d-sm-inline-block govcy-mr-3{% endif %}">{{ andText }}</p>
+    <p class="govcy-ml-3 govcy-mb-3">{{ andText }}</p>
     {%- set label -%}
         <span class="govcy-visually-hidden-error">{{ andText }}, </span> {{- govcyLocalizeContent(item.text, lang) -}}
     {%- endset -%}
 {% else %}
     {%- set label -%}{{- govcyLocalizeContent(item.text, lang) -}}{%- endset -%}
 {%- endif -%}
-{#- render radio -#}
-<div class="govcy-radio{% if isInline %} govcy-d-sm-inline-block{% endif %}">
-    <input class="govcy-radio-input" name="{{ params.name }}" value="{{item.value}}" type="radio" id="{{ optionId }}" {% if item.hint%} aria-describedby="{{hintId}}"{% endif %}>
+{#- render checkbox -#}
+<div class="govcy-checkbox">
+    <input class="govcy-checkbox-input" name="{{ params.name }}" value="{{item.value}}" type="checkbox" id="{{ optionId }}" {% if item.hint%} aria-describedby="{{hintId}}"{% endif %}>
     <label class="govcy-label" for="{{ optionId }}">{{ label | safe }}</label>
     {#- {% call govcyLabel({label:label, for:optionId, isPrimary:false, isHTML:true, lang:lang}) %}{% endcall %} -#}
     {% call hint({hint:item.hint, id:hintId, lang:lang}) %}{% endcall %}
 </div>
 {%- endmacro %}
-{# radio 
+{# checkbox 
  @param {object} legend The legend text. Will escape text. Example `{en:"Content",el:"Περιεχομένο"}`
  @param {string} id The id prefix for the options. Will escape text. 
- @param {string} name The name used in radio. Will escape text. 
+ @param {string} name The name used in checkbox. Will escape text. 
  @param {string} hint The hint text. Optional. Will escape text 
  @param {boolean} isPageHeading Is the label also the page heading? Optional, default is false. Can be true,false 
- @param {boolean} isInline Are the radios inline type? Optional, default is false. Can be true,false 
  @param {string} classes Additional classes to add to the outer fieldset. Optional 
  @param {string} error If not empty there is an error message and displays the error variant. Optional, default is ''. Will escape text 
  @param {string} lang The language used. Can be 'en','el'. Optional.
- @param {array} items The array of items to turn onto radio 
+ @param {array} items The array of items to turn onto checkbox 
     i.e. `[
             {
                         value: "yes",
@@ -98,12 +94,11 @@
                 text: {en:"Maybe",el:"Ίσως"}
             }
         ]`
- @returns govcy radios html 
+ @returns govcy checkboxes html 
 #}
-{% macro radios(params) -%}
+{% macro checkboxes(params) -%}
 {#- set default values -#}
 {%- set isPageHeading = params.isPageHeading | default(false) -%}
-{%- set isInline = params.isInline | default(false) -%}
 {#- legend, id and name are mandatory -#}
 {%- if params.legend and params.id and params.name -%}
     {%- from "./fieldset.njk" import fieldset -%}
@@ -138,7 +133,7 @@
             {# for each item render checkbox item #}
             {%- for item in params.items -%}
                 {%- if item -%}
-                    {{- _radioItem(params, item, isInline, loop.index, params.lang) -}}
+                    {{- _checkboxItem(params, item, loop.index, params.lang) -}}
                 {%- endif -%}
             {%- endfor -%}
         {% endcall %}
