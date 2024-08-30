@@ -1,0 +1,38 @@
+{# file input 
+ @param {object} label The label text. Will escape text. Example `{en:"Content",el:"Περιεχομένο"}`  
+ @param {string} id The input id. Will escape text 
+ @param {string} name The input name. Will escape text. Optional
+ @param {object} hint The hint text. Optional. Will escape text. Example `{en:"Content",el:"Περιεχομένο"}`   
+ @param {boolean} isPageHeading Is the label also the page heading? Optional, default is false. Can be true,false 
+ @param {string} classes Additional classes to add to the outer div. Optional 
+ @param {object} error If not empty there is an error message and displays the error variant. Optional, default is ''. Will escape text. Example `{en:"Content",el:"Περιεχομένο"}`   
+ @param {string} lang The language used. Can be 'en','el'. Optional.
+ @returns govcy file html 
+#}
+{% macro fileInput(params) -%}
+{#- Import localizer from utilities -#}
+{%- from "../utilities/govcyUtilities.njk" import govcyLocalizeContent, govcyLangAttribute -%}
+{%- from "./formControl.njk" import formControl -%}
+{%- from "./hint.njk" import hint -%}
+{%- from "./label.njk" import label -%}
+{%- from "./errorMessage.njk" import errorMessage -%}
+{#- set default values -#}
+{%- set isPageHeading = params.isPageHeading | default(false) -%}
+{#- label and id are mandatory -#}
+{%- if params.label and params.id -%}
+    {#- set hint label error ids -#}
+    {%- set hintId = [params.id, "-hint"] | join -%}
+    {%- set labelId = [params.id, "-label"] | join -%}
+    {%- set errorId = [params.id, "-error"] | join -%}
+    {% call formControl({isError:params.error,classes:params.classe, lang:params.langs}) %}
+        {#- render label -#}
+        {% call label({label:params.label, id:labelId, for:params.id, isPageHeading:isPageHeading, lang:params.lang}) %}{% endcall %}
+        {#- render hint -#}
+        {% call hint({hint:params.hint,id:hintId, lang:params.lang}) %}{% endcall %}
+        {#- render error message -#}
+        {% call errorMessage({message:params.error,id:errorId, lang:params.lang}) %}{% endcall %}
+        {#- render input -#}
+        <input id="{{params.id}}"{% if params.name %} name="{{ params.name }}"{% endif %} type="file" class="govcy-file-upload"{% if params.hint or params.error%} aria-describedby="{% if params.hint %}{{hintId}} {% endif %}{% if params.error %}{{errorId}} {% endif %}"{% endif %}>
+    {% endcall %}
+{%- endif -%}
+{%- endmacro %}

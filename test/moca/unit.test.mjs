@@ -669,5 +669,56 @@ function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
+    it(checksNum+'44 `fileInput` macro render as expected. with default options', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([ 
+            `<div\\s*class="govcy-form-control">`, //form control
+            `\\s*<label\\s*id="govcy-test-44-label"\\s*class="govcy-label\\s*govcy-label-primary"\\s*for="govcy-test-44"\\s*>\\s*File input: English with default options\\s*<\\/label>`, //label
+            `\\s*<input\\s*id="govcy-test-44"\\s*type="file"\\s*class="govcy-file-upload">`, //file input
+            `\\s*<\\/div>` //closing tags
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+    it(checksNum+'45 `fileInput` macro render as expected. with hint', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([ 
+            `<div\\s*class="govcy-form-control">`, //form control
+            `\\s*<label\\s*id="govcy-test-45-label"\\s*class="govcy-label\\s*govcy-label-primary"\\s*for="govcy-test-45"\\s*>\\s*File input: English with hint\\s*<\\/label>`, //label
+            `\\s*<span\\s*id="govcy-test-45-hint"\\s*class="govcy-hint"\\s*>\\s*PDF, JPG, JPEG, PNG are the acceptable formats\\s*<\\/span>`, //hint
+            `\\s*<input\\s*id="govcy-test-45"\\s*name="govcy-test-45"\\s*type="file"\\s*class="govcy-file-upload"\\s*aria-describedby="govcy-test-45-hint\\s*">`, //file input
+            `\\s*<\\/div>` //closing tags
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+    it(checksNum+'46 `fileInput` macro render as expected. with all possible options. id, name, classes, hint, label, error, isPageHeading', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([ 
+            `<div\\s*class="govcy-form-control govcy-form-control-error">`, //form control
+            `\\s*<h1>\\s*<label\\s*id="govcy-test-46-label"\\s*class="govcy-label\\s*govcy-label-primary"\\s*for="govcy-test-46"\\s*>\\s*File input: English with all possible options\\s*<\\/label>\\s*<\\/h1>`, //label
+            `\\s*<span\\s*id="govcy-test-46-hint"\\s*class="govcy-hint">\\s*English hint\\s*<\\/span>`, //hint
+            `\\s*<p\\s*id="govcy-test-46-error"\\s*class="govcy-input-error-msg">\\s*<span\\s*class="govcy-visually-hidden-error">\\s*Error:\\s*<\\/span>\\s*English error\\s*<\\/p>`, //error message
+            `\\s*<input\\s*id="govcy-test-46"\\s*name="govcy-test-46"\\s*type="file"\\s*class="govcy-file-upload"\\s*aria-describedby="govcy-test-46-hint\\s*govcy-test-46-error\\s*"\\s*>`, //file input
+            `\\s*<\\/div>` //closing tags
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+    it(checksNum+'47 `fileInput` macro render as expected. lang:el', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([ 
+            `<div\\s*class="govcy-form-control govcy-form-control-error">`, //form control
+            `\\s*<h1>\\s*<label\\s*id="govcy-test-47-label"\\s*class="govcy-label\\s*govcy-label-primary"\\s*for="govcy-test-47"\\s*lang="el"\\s*>\\s*Ελληνικά with all possible options\\s*<\\/label>\\s*<\\/h1>`, //label
+            `([\\s\\S]*?)`,
+            `Ελληνικά hint`,
+            `([\\s\\S]*?)`,
+            `Ελληνικά error govcy-test-47`,
+            `([\\s\\S]*?)`,
+            `\\s*<\\/div>` //closing tags
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
     
 }
