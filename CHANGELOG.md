@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [v0.0.7] - 2024-08-30
 ### Added
 - File input component
+- File view component
 
 ## [v0.0.6] - 2024-08-29
 ### Added

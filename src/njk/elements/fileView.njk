@@ -1,0 +1,34 @@
+{# file view and delete 
+ @param {object} label The label text. Will escape text. `{en:"Content",el:"Περιεχομένο"}`
+ @param {string} viewHref The view link's href. Will escape text 
+ @param {string} deleteHref The delete link's href. Will escape text 
+ @param {object} visuallyHiddenText The visuallyHiddenText text. Optional. Will escape text. `{en:"Content",el:"Περιεχομένο"}` 
+ @param {object} hint The hint text. Optional. Will escape text. `{en:"Content",el:"Περιεχομένο"}`
+ @param {string} classes Additional classes to add to the outer div. Optional
+ @param {boolean} isPageHeading Is the label also the page heading? Optional, default is false. Can be true,false 
+ @param {string} lang The language used. Can be 'en','el'. Optional.
+ @returns govcy file view and delete html 
+#}
+{% macro fileView(params) -%}
+{#- Import localizer from utilities -#}
+{%- from "../utilities/govcyUtilities.njk" import govcyLocalizeContent, govcyLangAttribute -%}
+{%- from "./formControl.njk" import formControl -%}
+{%- from "./hint.njk" import hint -%}
+{#- set language labels -#}
+{%- set viewLabel -%} {{- govcyLocalizeContent({en:'View',el:'Προβολή'}, params.lang) -}}{%- endset -%}
+{%- set deleteLabel -%} {{- govcyLocalizeContent({en:'Delete',el:'Διαγραφή'}, params.lang) -}}{%- endset -%}
+{#- label, viewHref and deleteHref are mandatory -#}
+{%- if params.label and params.viewHref and params.deleteHref -%}
+    <div class="govcy-form">
+    {% call formControl({classes:params.classes, lang:params.lang}) %}
+        {%- if params.isPageHeading -%}<h1>{%- else -%}<p class="govcy-label govcy-label-primary">{%- endif -%}{{- govcyLocalizeContent(params.label, params.lang) -}}{%- if params.isPageHeading -%}</h1>{%- else -%}</p>{%- endif -%}
+        {#- render hint -#}
+        {% call hint({hint:params.hint, lang:params.lang}) %}{% endcall %}
+        {#- render view -#}
+        <a href="{{ params.viewHref }}">{{viewLabel}}{%if params.visuallyHiddenText%}<span class="govcy-visually-hidden"> {{- govcyLocalizeContent(params.visuallyHiddenText, params.lang) -}}</span>{% endif %}</a>
+        {#- render delete -#}
+        <a class="govcy-ml-3" href="{{ params.deleteHref }}">{{deleteLabel}}{%if params.visuallyHiddenText%}<span class="govcy-visually-hidden"> {{- govcyLocalizeContent(params.visuallyHiddenText, params.lang) -}}</span>{% endif %}</a>
+    {% endcall %}
+    </div>
+{%- endif -%}
+{%- endmacro %}

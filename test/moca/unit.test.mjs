@@ -720,5 +720,57 @@ function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    
+    it(checksNum+'48 `fileView` macro render as expected. with default options', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([ 
+            `<div\\s*class="govcy-form">`, //form div
+            `\\s*<div class="govcy-form-control">`, //form control
+            `\\s*<p\\s*class="govcy-label\\s*govcy-label-primary">\\s*File view: English with default options\\s*<\\/p>`, //label
+            `\\s*<a\\s*href="#view48">\\s*View\\s*<\\/a>\\s*<a\\s*class="govcy-ml-3"\\s*href="#delete48">\\s*Delete\\s*<\\/a>`, //links
+            `\\s*<\\/div>\\s*<\\/div>` //closing tags
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+    it(checksNum+'49 `fileView` macro render as expected. with hint', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([ 
+            `<div\\s*class="govcy-form">`, //form div
+            `\\s*<div class="govcy-form-control">`, //form control
+            `\\s*<p\\s*class="govcy-label\\s*govcy-label-primary">\\s*File view: English with hint\\s*<\\/p>`, //label
+            `\\s*<span\\s*class="govcy-hint"\\s*>\\s*English hint\\s*<\\/span>`, //hint
+            `\\s*<a\\s*href="#view49">\\s*View\\s*<\\/a>\\s*<a\\s*class="govcy-ml-3"\\s*href="#delete49">\\s*Delete\\s*<\\/a>`, //links
+            `\\s*<\\/div>\\s*<\\/div>` //closing tags
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+    it(checksNum+'50 `fileView` macro render as expected. with all possible options', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([ 
+            `<div\\s*class="govcy-form">`, //form div
+            `\\s*<div class="govcy-form-control\\s*govcy-test-class">`, //form control
+            `\\s*<h1>\\s*File view: English with all possible options\\s*<\\/h1>`, //label
+            `\\s*<span\\s*class="govcy-hint"\\s*>\\s*English hint\\s*<\\/span>`, //hint
+            `\\s*<a\\s*href="#view50">\\s*View\\s*<span\\s*class="govcy-visually-hidden">\\s*English visuallyHiddenText\\s*<\\/span><\\/a>`, //view link
+            `\\s*<a\\s*class="govcy-ml-3"\\s*href="#delete50">\\s*Delete\\s*<span\\s*class="govcy-visually-hidden">\\s*English visuallyHiddenText\\s*<\\/span><\\/a>`, //delete link
+            `\\s*<\\/div>\\s*<\\/div>` //closing tags
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+    it(checksNum+'51 `fileView` macro render as expected. with lang:el', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([ 
+            `<div\\s*class="govcy-form">`, //form div
+            `\\s*<div class="govcy-form-control\\s*govcy-test-class"\\s*lang="el"\\s*>`, //form control
+            `\\s*<h1>\\s*Ελληνικά label with lang:el\\s*<\\/h1>`, //label
+            `\\s*<span\\s*class="govcy-hint"\\s*lang="el">\\s*Ελληνικά hint\\s*<\\/span>`, //hint
+            `\\s*<a\\s*href="#view51">\\s*Προβολή\\s*<span\\s*class="govcy-visually-hidden">\\s*Ελληνικά visuallyHiddenText govcy-test-51\\s*<\\/span><\\/a>`, //view link
+            `\\s*<a\\s*class="govcy-ml-3"\\s*href="#delete51">\\s*Διαγραφή\\s*<span\\s*class="govcy-visually-hidden">\\s*Ελληνικά visuallyHiddenText govcy-test-51\\s*<\\/span><\\/a>`, //delete link
+            `\\s*<\\/div>\\s*<\\/div>` //closing tags
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
 }

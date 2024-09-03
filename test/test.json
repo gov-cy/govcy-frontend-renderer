@@ -1133,6 +1133,53 @@
                                "isPageHeading": true,
                                "lang":"el"
                                }
+                           },
+                           {"element": "htmlElement",
+                           "params": {
+                               "text":{"en":"<hr><h2>File View</h2>"}
+                               }
+                           },
+                           {"element": "fileView",
+                           "params": {
+                               "id":"govcy-test-48",
+                               "viewHref":"#view48",
+                               "deleteHref":"#delete48",
+                               "label":{"en":"File view: English with default options","el":"Ελληνικά label"}
+                               }
+                           },
+                           {"element": "fileView",
+                           "params": {
+                               "id":"govcy-test-49",
+                               "viewHref":"#view49",
+                               "deleteHref":"#delete49",
+                               "hint":{"en":"English hint","el":"Ελληνικά hint"},
+                               "label":{"en":"File view: English with hint","el":"Ελληνικά label"}
+                               }
+                           },
+                           {"element": "fileView",
+                           "params": {
+                               "id":"govcy-test-50",
+                               "viewHref":"#view50",
+                               "deleteHref":"#delete50",
+                               "classes":"govcy-test-class",
+                               "isPageHeading": true,
+                               "label":{"en":"File view: English with all possible options","el":"Ελληνικά label"},
+                               "hint":{"en":"English hint","el":"Ελληνικά hint"},
+                               "visuallyHiddenText":{"en":"English visuallyHiddenText","el":"Ελληνικά visuallyHiddenText"}
+                               }
+                           },
+                           {"element": "fileView",
+                           "params": {
+                               "id":"govcy-test-51",
+                               "viewHref":"#view51",
+                               "deleteHref":"#delete51",
+                               "classes":"govcy-test-class",
+                               "isPageHeading": true,
+                               "label":{"en":"File view: English label","el":"Ελληνικά label with lang:el"},
+                               "hint":{"en":"English hint","el":"Ελληνικά hint"},
+                               "visuallyHiddenText":{"en":"English visuallyHiddenText","el":"Ελληνικά visuallyHiddenText govcy-test-51"},
+                               "lang":"el"
+                               }
                            }
                         ]
                     }
