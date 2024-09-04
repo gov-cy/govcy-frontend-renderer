@@ -3,23 +3,29 @@ To use this template you need to pass the following data:
 
 ```
 {
-    "site" : {
-        "lang" : "en",
-        "title" : "Service title", 
-        "description" : "Service description",
-        "url" : "https://gov.cy",
-        "cdn" : {
-            "dist" : "https://cdn.jsdelivr.net/gh/gov-cy/govcy-design-system@3.0.0/dist",
-            "cssIntegrity" : "sha384-1zLHWOtnS0hOIz5mVEPZp0UH5gUE6eo0CQcCGA3sF2TyYhHyKOd3Ni8Iy/NjEASU",
-            "jsIntegrity" : "sha384-zOuDuogVaaTveh/Ou2iYwCk14zFiSmMk7Ax8yRnXDtOJMyKZH5+ZNibNVwZSKtw+"
-        }
-    },
+  site: {
+    "lang": "en",
+    "title" : {"en":"Service title", "el":"Τιτλός υπηρεσίας"}, 
+    "headerTitle" : {"en":"Header title", "el":"Τιτλός επικεφαλιδας"},
+    "description" : {"en":"Service description", "el":"Περιγραφή υπηρεσίας"},
+    "isTesting" : true,
+    "url": "https://gov.cy",
+    "cdn": {
+      "dist": "https://cdn.jsdelivr.net/gh/gov-cy/govcy-design-system@3.0.0/dist",
+      "cssIntegrity": 'sha384-1zLHWOtnS0hOIz5mVEPZp0UH5gUE6eo0CQcCGA3sF2TyYhHyKOd3Ni8Iy/NjEASU",
+      "jsIntegrity": "sha384-zOuDuogVaaTveh/Ou2iYwCk14zFiSmMk7Ax8yRnXDtOJMyKZH5+ZNibNVwZSKtw+"
+    }
+  },
+  "pageData": {
+    "title": {"en": "Page title", "el": "Τιτλός σελιδας"},
     "layout": "layouts/govcyBase.njk",
-    "title" : "Page title",
-    "mainLayout" : "max-width"
+    "mainLayout": "max-width"
+  }
 }
 ```
 #}
+{#- Import localizer from utilities -#}
+{%- from "../utilities/govcyUtilities.njk" import govcyLocalizeContent, govcyLangAttribute -%}
 <!doctype html>
 <html lang="{{ site.lang }}">
   <head>
@@ -27,8 +33,8 @@ To use this template you need to pass the following data:
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Social -->
-    <meta property="og:description" content="{{ site.description }}">
-    <meta property="og:title" content="{% if title %}{{ title}} - {% endif %}{% if site.title %}{{ site.title}} - {% endif %}gov.cy">
+    <meta property="og:description" content="{{ govcyLocalizeContent(site.description, site.lang) }}">
+    <meta property="og:title" content="{% if pageData.title %}{{ govcyLocalizeContent(pageData.title, site.lang) }} - {% endif %}{% if site.title %}{{ govcyLocalizeContent(site.title, site.lang) }} - {% endif %}gov.cy">
     <meta property="og:url" content="{{ site.url }}">
     <meta property="og:type" content="website">
     <meta property="og:image" content="{{ site.cdn.dist }}/img/icons-512.png">
@@ -36,8 +42,8 @@ To use this template you need to pass the following data:
  
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="{{ site.url }}">
-    <meta property="twitter:title" content="{% if title %}{{ title}} - {% endif %}{% if site.title %}{{ site.title}} - {% endif %}gov.cy">
-    <meta property="twitter:description" content="{{ site.description }}">
+    <meta property="twitter:title" content="{% if pageData.title %}{{ govcyLocalizeContent(pageData.title, site.lang) }} - {% endif %}{% if site.title %}{{ govcyLocalizeContent(site.title, site.lang) }} - {% endif %}gov.cy">
+    <meta property="twitter:description" content="{{ govcyLocalizeContent(site.description, site.lang) }}">
     <meta property="twitter:image" content="{{ site.cdn.dist }}/img/icons-512.png">
  
     <!-- Theme --> 
@@ -56,8 +62,8 @@ To use this template you need to pass the following data:
     <!-- CSS -->
     <link rel="stylesheet" href="{{ site.cdn.dist }}/css/govcy.uds.min.css" integrity="{{ site.cdn.cssIntegrity }}" crossorigin="anonymous">
     
-    <title>{% if title %}{{ title}} - {% endif %}{% if site.title %}{{ site.title}} - {% endif %}gov.cy</title>
-    <meta name="description" content="{{ site.description }}">
+    <title>{% if pageData.title %}{{ govcyLocalizeContent(pageData.title, site.lang) }} - {% endif %}{% if site.title %}{{ govcyLocalizeContent(site.title, site.lang) }} - {% endif %}gov.cy</title>
+    <meta name="description" content="{{ govcyLocalizeContent(site.description, site.lang) }}">
 
   </head>
   <body>
@@ -75,7 +81,7 @@ To use this template you need to pass the following data:
                 <div class="govcy-navigation-container">
                     <div class="govcy-service-container">
                         <a href="https://gov.cy" class="govcy-logo" title="Go to the gov.cy homepage"><img alt="gov.cy Logo"></a>
-                        <span class="govcy-service-name">{{ site.headerTitle }}</span>
+                        <span class="govcy-service-name">{{ govcyLocalizeContent(site.headerTitle, site.lang) }}</span>
                     </div>
                 </div>
             </div>
@@ -86,12 +92,18 @@ To use this template you need to pass the following data:
     <!--beforeMain-->
     <section class="govcy-container" id="beforeMainContainer">
         {% block beforeMain %}{% endblock %}
+        {% if site.isTesting %}
+            <div class="govcy-phase-banner">
+                <span class="govcy-tag">TESTING</span>
+                <span class="govcy-ml-2">{{ govcyLocalizeContent({"en": "This is not a real service. It is only used for testing purposes. Any submissions made through this service will be ignored", "el": "Αυτή δεν είναι πραγματική υπηρεσία. Χρησιμοποιείται μόνο για σκοπούς δοκιμών. Οποιεσδήποτε υποβολές γίνουν μέσω της υπηρεσίας αυτής θα αγνοηθούν."}, site.lang) }}</span>
+            </div>
+        {% endif %}
     </section>
 
     <!--main-->
     <main class="govcy-container" id="mainContainer">
         <div class="govcy-row">
-            <article class="govcy-col-{% if mainLayout=='max-width' %}12{% else %}8{% endif %}">
+            <article class="govcy-col-{% if pageData.mainLayout=='max-width' %}12{% else %}8{% endif %}">
                 {% block main %}{% endblock %}
             </article>
         </div>

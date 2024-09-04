@@ -1,4 +1,4 @@
-{% if layout %} {% extends layout %} {% endif %}
+{% if pageData.layout %} {% extends pageData.layout %} {% endif %}
 {% from "govcyElement.njk" import govcyElement %}
 {% from "utilities/govcyUtilities.njk" import govcyLocalizeContent %}
 {% block main %}

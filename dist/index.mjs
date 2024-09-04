@@ -13090,7 +13090,7 @@ class govcyFrontendRenderer {
       renderFromString(input,data = {}) {
         // Render template
         const __dirname = dirname(fileURLToPath(import.meta.url));
-        // console.log(__dirname)
+        // console.log(data)
 
         // Construct the absolute path to the template directory
         const templateDirectory = join$1(__dirname,'../src/njk');
@@ -13109,7 +13109,7 @@ class govcyFrontendRenderer {
     renderFromJSON(input,data = {}) {
       //build the template from the jsonInput
       let jsonTemplate = `{% from "govcyElement.njk" import govcyElement %} `;
-      if(data.layout) jsonTemplate += `{% extends "${data.layout}" %} `;
+      if(data.pageData.layout) jsonTemplate += `{% extends "${data.pageData.layout}" %} `;
       //for each section
       input.sections.forEach(section => {
         jsonTemplate += `{% block ${section.name} -%}`;

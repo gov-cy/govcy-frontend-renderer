@@ -1,9 +1,10 @@
 {
     "site" : {
         "lang" : "en",
-        "title" : "Service title", 
-        "headerTitle" : "Header title",
-        "description" : "Service description",
+        "title" : {"en":"Service title", "el":"Τιτλός υπηρεσίας"}, 
+        "headerTitle" : {"en":"Header title", "el":"Τιτλός επικεφαλιδας"},
+        "description" : {"en":"Service description", "el":"Περιγραφή υπηρεσίας"},
+        "isTesting" : true,
         "url" : "https://gov.cy",
         "cdn" : {
             "dist" : "https://cdn.jsdelivr.net/gh/gov-cy/govcy-design-system@3.0.0/dist",

@@ -259,7 +259,7 @@ function renderChecks(renderedHTML, checksNum){
         let expectedRegex =  new RegExp ([ 
             `<section\\s*class="govcy-container"\\s*id="beforeMainContainer">`,//section 
             `\\s*<p\\s*id="govcy-test-25">`,//p
-            `([\\s\\S]*?)<\\/p>\\s*<\\/section>` //closing tags
+            `([\\s\\S]*?)<\\/p>([\\s\\S]*?)<\\/section>` //closing tags
         ].join(''));
         expect(renderedHTML).to.match(expectedRegex);
     });
