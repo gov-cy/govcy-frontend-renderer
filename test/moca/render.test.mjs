@@ -1,7 +1,7 @@
 import { fileURLToPath } from 'url';
 import fs from 'fs';
 import path from 'path';
-import { govcyFrontendRenderer } from '../../src/index.mjs';
+import { govcyFrontendRenderer } from '../../dist/index.mjs';
 
 /**
  * Render the html based on the test input either using the nkj or json method.

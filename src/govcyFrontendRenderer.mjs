@@ -20,7 +20,7 @@ export default class govcyFrontendRenderer {
         // console.log(__dirname)
 
         // Construct the absolute path to the template directory
-        const templateDirectory = join(__dirname, 'njk');
+        const templateDirectory = join(__dirname,'../src/njk');
 
         // Create a new nunjucks environment
         const env =  new nunjucks.Environment(new nunjucks.FileSystemLoader(templateDirectory));

@@ -1,12 +1,19 @@
 {
   "name": "@gov-cy/govcy-frontend-renderer",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Render html for design elements of the Unified design system using njk or json template.",
   "author": "DMRID - DSF Team",
   "license": "MIT",
-  "type": "module",
-  "main": "src/index.mjs",
-  "module": "src/index.mjs",
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "exports": {
+    "require": "./dist/index.cjs",
+    "import": "./dist/index.mjs"
+  },
+  "files": [
+    "dist",
+    "src/njk"  
+  ],
   "keywords": [
     "govcy",
     "cyprus",
@@ -31,11 +38,16 @@
   },
   "scripts": {
     "test": "mocha --timeout 60000 ./test/**/*.test.mjs",
+    "build": "rollup -c",
     "start": "nodemon app.mjs"
   },
   "devDependencies": {
+    "@rollup/plugin-commonjs": "^26.0.1",
+    "@rollup/plugin-json": "^6.1.0",
+    "@rollup/plugin-node-resolve": "^15.2.3",
     "chai": "^5.1.0",
     "mocha": "^10.4.0",
-    "nodemon": "^3.1.4"
+    "nodemon": "^3.1.4",
+    "rollup": "^4.21.2"
   }
 }
