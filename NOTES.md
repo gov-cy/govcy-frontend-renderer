@@ -25,3 +25,44 @@ Run `npm run build`
 Checks the HTML structure of the generated files are as expected.
 
 Run `npm test`
+
+## Deployment
+
+### Adding new components
+### Make changes
+<details>
+<summary>nunjucks file</summary>
+
+Create an `njk` file for the macro in the directory `src\njk\elements`.Macro must have the same name as it's file. For example `backLink.njk` should have `{% macro backLink(params) -%}`
+
+</details>
+
+<details>
+<summary>govcyElement.njk</summary>
+
+Update the `src\njk\govcyElement.njk` file macro with the new component, by adding the macro name in either the `macroBlocks` or `callMacroBlocks` arrays.
+
+</details>
+
+<details>
+<summary>test.njk</summary>
+
+update the `test\test.njk` file with all variant of the new component. When possible, give a distinctive id, or text content for each variant. For example `{{ govcyElement("backLink",{text:{en:"Back EN govcy-test-53",el:"Πίσω EL"} }) }}`
+
+</details>
+
+<details>
+<summary>test.json</summary>
+
+update the `test\test.json` file with the same variant of the new component as `test\test.njk`. For example `{"element": "backLink", "params": { "text": { "en": "Back EN govcy-test-53", "el": "Πίσω EL" } } },`
+
+</details>
+
+### Test changes
+- update the `test\moca\unit.test.mjs` file with tests for all the created variants. 
+- (Optional) build by running `npm run build`
+- View the rendered HTML on local host by running `npm start`
+- Test by running `npm run test`
+### Update version
+- Update the `package.json` with a new version number.
+- Update the `CHANGELOG.md` with the changes.

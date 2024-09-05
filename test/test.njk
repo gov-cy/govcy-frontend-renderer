@@ -659,4 +659,8 @@
 {% endblock %}
 {% block beforeMain %}
     {{ govcyElement("textElement",{text:{en:"Back ",el:"Πίσω"}, type:"p", id:"govcy-test-25"}) }}
+    {{ govcyElement("backLink",{}) }}{{ govcyElement("backLink",{text:{en:"Back EN govcy-test-53",el:"Πίσω EL"} }) }}
+    {{ govcyElement("backLink",{text:{en:"Back EN with classes",el:"Πίσω EL"}, classes:"govcy-test-54" }) }}
+    {{ govcyElement("backLink",{text:{en:"Back EN with classes and href",el:"Πίσω EL"}, classes:"govcy-test-55", href:"#" }) }}
+    {{ govcyElement("backLink",{text:{en:"Back EN",el:"Πίσω EL with classes and href"}, classes:"govcy-test-56", href:"#", lang:"el" }) }}
 {% endblock %}

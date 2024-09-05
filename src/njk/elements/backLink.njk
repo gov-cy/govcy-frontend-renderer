@@ -1,0 +1,15 @@
+{# Back link 
+ @param {string} lang The language used. Can be 'en','el'. Optional. 
+ @param {object} text The button text. Will escape text. Example `{en:"Content",el:"Περιεχομένο"}` 
+ @param {string} classes Additional classes to add to the button. Optional 
+ @param {string} href The URL to navigate when clicked. Optional, default is 'javascript:history.back()' 
+ @returns govcy back link html 
+#}
+{% macro backLink(params) -%}
+{#- Import localizer from utilities -#}
+{%- from "../utilities/govcyUtilities.njk" import govcyLocalizeContent, govcyLangAttribute -%}
+{# set default values #}
+{%- set text = govcyLocalizeContent(params.text, params.lang) if params.text  else govcyLocalizeContent({en:'Back',el:'Πίσω'}, params.lang) -%}
+{%- set href = params.href | default('javascript:history.back()') -%}
+<a class="govcy-back-link{% if params.classes %} {{ params.classes }}{% endif %}" href="{{ href }}"{{ govcyLangAttribute(params.lang) }}>{{ text}}</a>
+{%- endmacro %}
