@@ -776,7 +776,7 @@ function renderChecks(renderedHTML, checksNum){
     it(checksNum+'52 `backLink` macro render as expected. default options', async () => {
         // check for structure   
         let expectedRegex =  new RegExp ([ 
-            `<a\\s*class="govcy-back-link"\\s*href="javascript:history.back\\(\\)">\\s*Back\\s*<\\/a>`, //form div
+            `<a\\s*class="govcy-back-link"\\s*href="javascript:history.back\\(\\)">\\s*Back\\s*<\\/a>`, //back link
         ].join(''));
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
@@ -784,7 +784,7 @@ function renderChecks(renderedHTML, checksNum){
     it(checksNum+'53 `backLink` macro render as expected. with text options', async () => {
         // check for structure   
         let expectedRegex =  new RegExp ([ 
-            `<a\\s*class="govcy-back-link"\\s*href="javascript:history.back\\(\\)">\\s*Back EN govcy-test-53\\s*<\\/a>`, //form div
+            `<a\\s*class="govcy-back-link"\\s*href="javascript:history.back\\(\\)">\\s*Back EN govcy-test-53\\s*<\\/a>`, //back link
         ].join(''));
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
@@ -792,7 +792,7 @@ function renderChecks(renderedHTML, checksNum){
     it(checksNum+'54 `backLink` macro render as expected. with text and classes options', async () => {
         // check for structure   
         let expectedRegex =  new RegExp ([ 
-            `<a\\s*class="govcy-back-link\\s*govcy-test-54"\\s*href="javascript:history.back\\(\\)">\\s*Back EN with classes\\s*<\\/a>`, //form div
+            `<a\\s*class="govcy-back-link\\s*govcy-test-54"\\s*href="javascript:history.back\\(\\)">\\s*Back EN with classes\\s*<\\/a>`, //back link
         ].join(''));
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
@@ -800,7 +800,7 @@ function renderChecks(renderedHTML, checksNum){
     it(checksNum+'55 `backLink` macro render as expected. with text, href and classes options', async () => {
         // check for structure   
         let expectedRegex =  new RegExp ([ 
-            `<a\\s*class="govcy-back-link\\s*govcy-test-55"\\s*href="#">\\s*Back EN with classes and href\\s*<\\/a>`, //form div
+            `<a\\s*class="govcy-back-link\\s*govcy-test-55"\\s*href="#">\\s*Back EN with classes and href\\s*<\\/a>`, //back link
         ].join(''));
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
@@ -808,7 +808,31 @@ function renderChecks(renderedHTML, checksNum){
     it(checksNum+'56 `backLink` macro render as expected. with text, href and classes options', async () => {
         // check for structure   
         let expectedRegex =  new RegExp ([ 
-            `<a\\s*class="govcy-back-link\\s*govcy-test-56"\\s*href="#"\\s*lang="el">\\s*Πίσω EL with classes and href\\s*<\\/a>`, //form div
+            `<a\\s*class="govcy-back-link\\s*govcy-test-56"\\s*href="#"\\s*lang="el">\\s*Πίσω EL with classes and href\\s*<\\/a>`, //back link
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+    it(checksNum+'57 `tag` macro render as expected. default options', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([ 
+            `<span\\s*class="govcy-tag">\\s*ENGLISH tag 57\\s*<\\/span>`, //tag
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+    it(checksNum+'58 `tag` macro render as expected. with classes options', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([ 
+            `<span\\s*class="govcy-tag\\s*govcy-tag-gray">\\s*ENGLISH tag 58\\s*<\\/span>`, //tag
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+    it(checksNum+'59 `tag` macro render as expected. with classes and lang options', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([ 
+            `<span\\s*class="govcy-tag\\s*govcy-tag-orange"\\s*lang="el">\\s*ΕΛΛΗΝΙΚΑ tag 59\\s*<\\/span>`, //tag
         ].join(''));
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);

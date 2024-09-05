@@ -1,0 +1,14 @@
+{# Tag 
+ @param {string} lang The language used. Can be 'en','el'. Optional. 
+ @param {object} text The button text. Will escape text. Example `{en:"Content",el:"Περιεχομένο"}` 
+ @param {string} classes Additional classes to add to the button. Optional 
+ @returns govcy tag html 
+#}
+{% macro tag(params) -%}
+{#- Import localizer from utilities -#}
+{%- from "../utilities/govcyUtilities.njk" import govcyLocalizeContent, govcyLangAttribute -%}
+{# text is mandatory #}
+{%- if params.text -%}
+<span class="govcy-tag{% if params.classes %} {{ params.classes }}{% endif %}"{{ govcyLangAttribute(params.lang) }}>{{ govcyLocalizeContent(params.text, params.lang) }}</span>
+{% endif %}
+{%- endmacro %}
