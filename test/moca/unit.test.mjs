@@ -837,4 +837,180 @@ function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
+    it(checksNum+'60 `table` default options', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([ 
+            `<table\\s*id="govcy-test-60"\\s*class="govcy-table">`, //table
+            `\\s*<tbody>`, //tbody
+            `\\s*<\\/tbody>\\s*<\\/table>` //closing tags
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+    it(checksNum+'61 `table` simple table', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([ 
+            `<table\\s*id="govcy-test-61"\\s*class="govcy-table">`, //table
+            `\\s*<thead>`, //thead
+            `\\s*<tr>`, //tr
+            `\\s*<th>\\s*Month\\s*<\\/th>`, //th
+            `\\s*<th>\\s*Amount\\s*<\\/th>`, //th
+            `\\s*<\\/tr>`, ///tr
+            `\\s*<\\/thead>`, //thead
+            `\\s*<tbody>`, //tbody
+            `\\s*<tr>`, //tr
+            `\\s*<td>\\s*January\\s*<\\/td>`, //td
+            `\\s*<td>\\s*€85\\s*<\\/td>`, //td
+            `\\s*<\\/tr>`, ///tr
+            `\\s*<tr>`, //tr
+            `\\s*<td>\\s*February\\s*<\\/td>`, //td
+            `\\s*<td>\\s*€75\\s*<\\/td>`, //td
+            `\\s*<\\/tr>`, ///tr
+            `\\s*<\\/tbody>\\s*<\\/table>` //closing tags
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+    it(checksNum+'62 `table` Simple table with firstCellIsHeader:ture and responsiveType:vertical-headers', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([ 
+            `<table\\s*id="govcy-test-62"\\s*class="govcy-table\\s*govcy-table-responsive-vertical">`, //table
+            `\\s*<thead>`, //thead
+            `\\s*<tr>`, //tr
+            `\\s*<th>\\s*Month\\s*<\\/th>`, //th
+            `\\s*<th>\\s*Amount\\s*<\\/th>`, //th
+            `\\s*<\\/tr>`, ///tr
+            `\\s*<\\/thead>`, //thead
+            `\\s*<tbody>`, //tbody
+            `\\s*<tr>`, //tr
+            `\\s*<th\\s*scope="row">\\s*<div\\s*class="govcy-d-md-none\\s*govcy-fw-bolder\\s*govcy-my-2">\\s*Month\\s*<\\/div>\\s*January\\s*<\\/th>`, //th scope row
+            `\\s*<td>\\s*<div\\s*class="govcy-d-md-none\\s*govcy-fw-bolder\\s*govcy-my-2">\\s*Amount\\s*<\\/div>\\s*€85\\s*<\\/td>`, //td
+            `\\s*<\\/tr>`, ///tr
+            `\\s*<tr>`, //tr
+            `\\s*<th\\s*scope="row">\\s*<div\\s*class="govcy-d-md-none\\s*govcy-fw-bolder\\s*govcy-my-2">\\s*Month\\s*<\\/div>\\s*February\\s*<\\/th>`, //th scope row
+            `\\s*<td>\\s*<div\\s*class="govcy-d-md-none\\s*govcy-fw-bolder\\s*govcy-my-2">\\s*Amount\\s*<\\/div>\\s*€75\\s*<\\/td>`, //td
+            // `([\\s\\S]*?)`,
+            `\\s*<\\/tr>`, ///tr
+            `\\s*<\\/tbody>\\s*<\\/table>` //closing tags
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+    it(checksNum+'63 `table` Simple table with firstCellIsHeader:ture and responsiveType:vertical-no-headers', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([ 
+            `<table\\s*id="govcy-test-63"\\s*class="govcy-table\\s*govcy-table-responsive-vertical">`, //table
+            `\\s*<thead>`, //thead
+            `\\s*<tr>`, //tr
+            `\\s*<th>\\s*Month\\s*<\\/th>`, //th
+            `\\s*<th>\\s*Amount\\s*<\\/th>`, //th
+            `\\s*<\\/tr>`, ///tr
+            `\\s*<\\/thead>`, //thead
+            `\\s*<tbody>`, //tbody
+            `\\s*<tr>`, //tr
+            `\\s*<th\\s*scope="row">\\s*January\\s*<\\/th>`, //th scope row
+            `\\s*<td>\\s*€85\\s*<\\/td>`, //td
+            `\\s*<\\/tr>`, ///tr
+            `\\s*<tr>`, //tr
+            `\\s*<th\\s*scope="row">\\s*February\\s*<\\/th>`, //th scope row
+            `\\s*<td>\\s*€75\\s*<\\/td>`, //td
+            // `([\\s\\S]*?)`,
+            `\\s*<\\/tr>`, ///tr
+            `\\s*<\\/tbody>\\s*<\\/table>` //closing tags
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+    it(checksNum+'64 `table` Simple table with firstCellIsHeader:ture and responsiveType:horisontal', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([ 
+            `<div\\s*class="govcy-table-responsive">`, //table
+            `\\s*<table\\s*id="govcy-test-64"\\s*class="govcy-table">`, //table
+            `\\s*<thead>`, //thead
+            `\\s*<tr>`, //tr
+            `\\s*<th>\\s*Month\\s*<\\/th>`, //th
+            `\\s*<th>\\s*Amount\\s*<\\/th>`, //th
+            `\\s*<\\/tr>`, ///tr
+            `\\s*<\\/thead>`, //thead
+            `\\s*<tbody>`, //tbody
+            `\\s*<tr>`, //tr
+            `\\s*<th\\s*scope="row">\\s*January\\s*<\\/th>`, //th scope row
+            `\\s*<td>\\s*€85\\s*<\\/td>`, //td
+            `\\s*<\\/tr>`, ///tr
+            `\\s*<tr>`, //tr
+            `\\s*<th\\s*scope="row">\\s*February\\s*<\\/th>`, //th scope row
+            `\\s*<td>\\s*€75\\s*<\\/td>`, //td
+            // `([\\s\\S]*?)`,
+            `\\s*<\\/tr>`, ///tr
+            `\\s*<\\/tbody>\\s*<\\/table>\\s*<\\/div>` //closing tags
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+    it(checksNum+'65 `table` Table with most options. On rows and head with colspan and rowspan, classes and multiple elements', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([ 
+            `<table\\s*id="govcy-test-65"\\s*class="govcy-table\\s*govcy-test-class">`, //table
+            `\\s*<thead>`, //thead
+            `\\s*<tr>`, //tr
+            `\\s*<th>\\s*Month\\s*<\\/th>`, //th
+            `\\s*<th\\s*class="govcy-text-md-end"\\s*colspan="1"\\s*rowspan="1">\\s*Amount\\s*<\\/th>`, //th
+            `\\s*<th>\\s*Status\\s*<\\/th>`, //th
+            `\\s*<\\/tr>`, ///tr
+            `\\s*<\\/thead>`, //thead
+            `\\s*<tbody>`, //tbody
+            `\\s*<tr>`, //tr
+            `\\s*<th\\s*scope="row">\\s*January\\s*<\\/th>`, //th scope row
+            `\\s*<td\\s*class="govcy-text-md-end"\\s*colspan="1"\\s*rowspan="1">\\s*€85\\s*<\\/td>`, //td
+            `\\s*<td>\\s*<span\\s*class="govcy-tag\\s*govcy-tag-green">\\s*PAYED\\s*<\\/span>\\s*<\\/td>`, //td
+            `\\s*<\\/tr>`, ///tr
+            `\\s*<tr>`, //tr
+            `\\s*<th\\s*scope="row">\\s*February\\s*<\\/th>`, //th scope row
+            `\\s*<td\\s*class="govcy-text-md-end">\\s*<p><b>test<\\/b><\\/p>\\s*€75\\s*<\\/td>`, //td
+            `\\s*<td>\\s*<span\\s*class="govcy-tag\\s*govcy-tag-orange">\\s*NOT PAYED\\s*<\\/span>\\s*<\\/td>`, //td
+            `\\s*<\\/tr>`, ///tr
+            // `([\\s\\S]*?)`,
+            `\\s*<\\/tbody>\\s*<\\/table>` //closing tags
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+    it(checksNum+'66 `Table` Table with most options in lang:el', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([ 
+            `<table\\s*id="govcy-test-66"\\s*class="govcy-table\\s*govcy-table-responsive-vertical"\\s*lang="el">`, //table
+            `([\\s\\S]*?)`,
+            `Μηνας`,
+            `([\\s\\S]*?)`,
+            `Ποσό`,
+            `([\\s\\S]*?)`,
+            `Κατάσταση`,
+            `([\\s\\S]*?)`,
+            `Μηνας`,
+            `([\\s\\S]*?)`,
+            `Ιανουάριος`,
+            `([\\s\\S]*?)`,
+            `Ποσό`,
+            `([\\s\\S]*?)`,
+            `€85`,
+            `([\\s\\S]*?)`,
+            `Κατάσταση`,
+            `([\\s\\S]*?)`,
+            `PAYED`,
+            `([\\s\\S]*?)`,
+            `Μηνας`,
+            `([\\s\\S]*?)`,
+            `Φεβάριος`,
+            `([\\s\\S]*?)`,
+            `Ποσό`,
+            `([\\s\\S]*?)`,
+            `<p>test el<\/p>\\s*€75`,
+            `([\\s\\S]*?)`,
+            `ΔΕΝ ΠΛΗΡΩΘΗΚΕ govcy-test-66`,
+            // `([\\s\\S]*?)`,
+            `\\s*<\\/span>\\s*<\\/td>\\s*<\\/tr>\\s*<\\/tbody>\\s*<\\/table>` //closing tags
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
 }

@@ -10,5 +10,5 @@
 {# text is mandatory #}
 {%- if params.text -%}
 <span class="govcy-tag{% if params.classes %} {{ params.classes }}{% endif %}"{{ govcyLangAttribute(params.lang) }}>{{ govcyLocalizeContent(params.text, params.lang) }}</span>
-{% endif %}
+{%- endif %}
 {%- endmacro %}

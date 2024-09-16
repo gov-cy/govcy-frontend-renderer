@@ -656,9 +656,288 @@
             }
     ]
     }) %}{% endcall %}
+    {{ govcyElement("htmlElement",{text:{en:"<hr><h2>Tag</h2>"} }) }}
     {{ govcyElement("tag",{text:{en:"ENGLISH tag 57",el:"ΕΛΛΗΝΙΚΑ tag 57"} }) }}
     {{ govcyElement("tag",{text:{en:"ENGLISH tag 58",el:"ΕΛΛΗΝΙΚΑ tag 58"},classes:"govcy-tag-gray" }) }}
     {{ govcyElement("tag",{text:{en:"ENGLISH tag 59",el:"ΕΛΛΗΝΙΚΑ tag 59"},classes:"govcy-tag-orange",lang: "el" }) }}
+    {{ govcyElement("htmlElement",{text:{en:"<hr><h2>Table</h2>"} }) }}
+    {{ govcyElement("htmlElement",{text:{en:"<h3>Empty Table</h3>"} }) }}
+    {{ govcyElement("table",{id:"govcy-test-60"}) }}
+    {{ govcyElement("htmlElement",{text:{en:"<h3>Simple table</h3>"} }) }}
+    {{ govcyElement("table",{id:"govcy-test-61",
+        head:[
+            {
+                text:{en:"Month",el:"Μηνας"}
+            },
+            {
+                text:{en:"Amount",el:"Ποσό"}
+            }
+        ],
+        rows: [
+                [
+                    {
+                        elements: [
+                            {element:"htmlElement",params:{text:{en:"January",el:"Ιανουάριος"} } }
+                        ]
+                    },
+                    {
+                        elements: [
+                            {element:"htmlElement",params:{text:{en:"€85",el:"€85"} } }
+                        ]
+                    }
+                ],
+                [
+                    {
+                        elements: [
+                            {element:"htmlElement",params:{text:{en:"February",el:"Φεβάριος"} } }
+                        ]
+                    },
+                    {
+                        elements: [
+                            {element:"htmlElement",params:{text:{en:"€75",el:"€75"} } }
+                        ]
+                    }
+                ]
+            ]
+    }) }}
+    {{ govcyElement("htmlElement",{text:{en:"<h3>Simple table with firstCellIsHeader:ture and responsiveType:vertical-headers</h3>"} }) }}
+    {{ govcyElement("table",{id:"govcy-test-62",
+        firstCellIsHeader:true,
+        responsiveType:"vertical-headers",
+        head:[
+            {
+                text:{en:"Month",el:"Μηνας"}
+            },
+            {
+                text:{en:"Amount",el:"Ποσό"}
+            }
+        ],
+        rows: [
+                [
+                    {
+                        elements: [
+                            {element:"htmlElement",params:{text:{en:"January",el:"Ιανουάριος"} } }
+                        ]
+                    },
+                    {
+                        elements: [
+                            {element:"htmlElement",params:{text:{en:"€85",el:"€85"} } }
+                        ]
+                    }
+                ],
+                [
+                    {
+                        elements: [
+                            {element:"htmlElement",params:{text:{en:"February",el:"Φεβάριος"} } }
+                        ]
+                    },
+                    {
+                        elements: [
+                            {element:"htmlElement",params:{text:{en:"€75",el:"€75"} } }
+                        ]
+                    }
+                ]
+            ]
+    }) }}
+    {{ govcyElement("htmlElement",{text:{en:"<h3>Simple table with firstCellIsHeader:ture and responsiveType:vertical-no-headers</h3>"} }) }}
+    {{ govcyElement("table",{id:"govcy-test-63",
+        firstCellIsHeader:true,
+        responsiveType:"vertical-no-headers",
+        head:[
+            {
+                text:{en:"Month",el:"Μηνας"}
+            },
+            {
+                text:{en:"Amount",el:"Ποσό"}
+            }
+        ],
+        rows: [
+                [
+                    {
+                        elements: [
+                            {element:"htmlElement",params:{text:{en:"January",el:"Ιανουάριος"} } }
+                        ]
+                    },
+                    {
+                        elements: [
+                            {element:"htmlElement",params:{text:{en:"€85",el:"€85"} } }
+                        ]
+                    }
+                ],
+                [
+                    {
+                        elements: [
+                            {element:"htmlElement",params:{text:{en:"February",el:"Φεβάριος"} } }
+                        ]
+                    },
+                    {
+                        elements: [
+                            {element:"htmlElement",params:{text:{en:"€75",el:"€75"} } }
+                        ]
+                    }
+                ]
+            ]
+    }) }}
+    {{ govcyElement("htmlElement",{text:{en:"<h3>Simple table with firstCellIsHeader:ture and responsiveType:horisontal</h3>"} }) }}
+    {{ govcyElement("table",{id:"govcy-test-64",
+        firstCellIsHeader:true,
+        responsiveType:"horisontal",
+        head:[
+            {
+                text:{en:"Month",el:"Μηνας"}
+            },
+            {
+                text:{en:"Amount",el:"Ποσό"}
+            }
+        ],
+        rows: [
+                [
+                    {
+                        elements: [
+                            {element:"htmlElement",params:{text:{en:"January",el:"Ιανουάριος"} } }
+                        ]
+                    },
+                    {
+                        elements: [
+                            {element:"htmlElement",params:{text:{en:"€85",el:"€85"} } }
+                        ]
+                    }
+                ],
+                [
+                    {
+                        elements: [
+                            {element:"htmlElement",params:{text:{en:"February",el:"Φεβάριος"} } }
+                        ]
+                    },
+                    {
+                        elements: [
+                            {element:"htmlElement",params:{text:{en:"€75",el:"€75"} } }
+                        ]
+                    }
+                ]
+            ]
+    }) }}
+    {{ govcyElement("htmlElement",{text:{en:"<h3>Table with most options. On rows and head with colspan and rowspan, classes and multiple elements</h3>"} }) }}
+    {{ govcyElement("table",{id:"govcy-test-65",
+        firstCellIsHeader:true,
+        classes:"govcy-test-class",
+        head:[
+            {
+                text:{en:"Month",el:"Μηνας"}
+            },
+            {
+                text:{en:"Amount",el:"Ποσό"},
+                classes: "govcy-text-md-end",
+                colspan : 1,
+                rowspan : 1
+            },
+            {
+                text:{en:"Status",el:"Κατάσταση"}
+            }
+        ],
+        rows: [
+                [
+                    {
+                        elements: [
+                            {element:"htmlElement",params:{text:{en:"January",el:"Ιανουάριος"} } }
+                        ]
+                    },
+                    {
+                        elements: [
+                            {element:"htmlElement",params:{text:{en:"€85",el:"€85"} } }
+                        ],
+                        classes: "govcy-text-md-end",
+                        colspan : 1,
+                        rowspan : 1
+                    },
+                    {
+                        elements: [
+                            {element:"tag",params:{text:{en:"PAYED",el:"ΠΛΗΡΩΘΗΚΕ"}, classes:"govcy-tag-green"} }
+                        ]
+                    }
+                ],
+                [
+                    {
+                        elements: [
+                            {element:"htmlElement",params:{text:{en:"February",el:"Φεβάριος"} } }
+                        ]
+                    },
+                    {
+                        elements: [
+                            {element:"htmlElement",params:{text:{en:"<p><b>test</b></p>",el:"<p>test el</p>"} } },
+                            {element:"htmlElement",params:{text:{en:"€75",el:"€75"} } }
+                        ],
+                        classes: "govcy-text-md-end"
+                    },
+                    {
+                        elements: [
+                            {element:"tag",params:{text:{en:"NOT PAYED",el:"ΔΕΝ ΠΛΗΡΩΘΗΚΕ"}, classes:"govcy-tag-orange"} }
+                        ]
+                    }
+                ]
+            ]
+    }) }}
+    {{ govcyElement("htmlElement",{text:{en:"<h3>Table with most options in greek</h3>"} }) }}
+    {{ govcyElement("table",{id:"govcy-test-66",
+        lang:"el",
+        firstCellIsHeader:true,
+        responsiveType:"vertical-headers",
+        head:[
+            {
+                text:{en:"Month",el:"Μηνας"}
+            },
+            {
+                text:{en:"Amount",el:"Ποσό"},
+                classes: "govcy-text-md-end",
+                colspan : 1,
+                rowspan : 1
+            },
+            {
+                text:{en:"Status",el:"Κατάσταση"}
+            }
+        ],
+        rows: [
+                [
+                    {
+                        elements: [
+                            {element:"htmlElement",params:{text:{en:"January",el:"Ιανουάριος"} } }
+                        ]
+                    },
+                    {
+                        elements: [
+                            {element:"htmlElement",params:{text:{en:"€85",el:"€85"} } }
+                        ],
+                        classes: "govcy-text-md-end",
+                        colspan : 1,
+                        rowspan : 1
+                    },
+                    {
+                        elements: [
+                            {element:"tag",params:{text:{en:"PAYED",el:"ΠΛΗΡΩΘΗΚΕ"},lang: "en", classes:"govcy-tag-green"} }
+                        ]
+                    }
+                ],
+                [
+                    {
+                        elements: [
+                            {element:"htmlElement",params:{text:{en:"February",el:"Φεβάριος"} } }
+                        ]
+                    },
+                    {
+                        elements: [
+                            {element:"htmlElement",params:{text:{en:"<p><b>test</b></p>",el:"<p>test el</p>"} } },
+                            {element:"htmlElement",params:{text:{en:"€75",el:"€75"} } }
+                        ],
+                        classes: "govcy-text-md-end"
+                    },
+                    {
+                        elements: [
+                            {element:"tag",params:{text:{en:"NOT PAYED",el:"ΔΕΝ ΠΛΗΡΩΘΗΚΕ govcy-test-66"}, classes:"govcy-tag-orange"} }
+                        ]
+                    }
+                ]
+            ]
+    }) }}
 {% endblock %}
 {% block beforeMain %}
     {{ govcyElement("textElement",{text:{en:"Back ",el:"Πίσω"}, type:"p", id:"govcy-test-25"}) }}

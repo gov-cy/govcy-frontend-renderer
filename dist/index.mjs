@@ -13099,7 +13099,10 @@ class govcyFrontendRenderer {
         const env =  new nunjucks$1.Environment(new nunjucks$1.FileSystemLoader(templateDirectory));
         // Add a global nunjucks variable 'globalData' with the data passed 
         env.addGlobal('globalData', data);
-
+        // Add a custom 'merge' filter
+        env.addFilter('merge', (obj1, obj2) => {
+          return Object.assign({}, obj1, obj2);
+        });
         const renderedContent = env.renderString(input, data);
         //console.log(renderedContent);
         // Return the rendered template
