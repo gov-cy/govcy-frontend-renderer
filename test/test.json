@@ -2132,6 +2132,198 @@
                                 ]
                             ]
                     }
+                },
+                {
+                    "element": "htmlElement",
+                    "params": {
+                        "text": {
+                            "en": "<hr><h2>Summary list</h2>"
+                        }
+                    }
+                },
+                {
+                    "element": "htmlElement",
+                    "params": {
+                        "text": {
+                            "en": "<h3>Empty summary list</h3>"
+                        }
+                    }
+                },
+                {
+                    "element": "summaryList",
+                    "params": {
+                        "id":"govcy-test-67"
+                    }
+                },
+                {
+                    "element": "htmlElement",
+                    "params": {
+                        "text": {
+                            "en": "<h3>Simple summary list, no actions</h3>"
+                        }
+                    }
+                },
+                {
+                    "element": "summaryList",
+                    "params": {
+                        "id":"govcy-test-68",
+                        "items":[
+                            {
+                                "key":{"en":"Name","el":"el Name"},
+                                "value":
+                                [
+                                    {"element":"htmlElement","params":{"text":{"en":"Andreas Andreou","el":"EL Andreas Andreou"} } }
+                                ]
+                            },
+                            {
+                                "key":{"en":"Date of birth","el":"el Date of birth"},
+                                "value":
+                                [
+                                    {"element":"htmlElement","params":{"text":{"en":"10 March 1990<br>","el":"EL 10 March 1990<br>"} } }
+                                ]
+                            },
+                            {
+                                "key":{"en":"Address","el":"el Address"},
+                                "value":
+                                [
+                                    {"element":"htmlElement","params":{"text":{"en":"50 Enton Street<br>Nicosia<br>2066","el":"50 Enton Street<br>Nicosia<br>2066"} } }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "element": "htmlElement",
+                    "params": {
+                        "text": {
+                            "en": "<h3>Summary list with multiple elements and actions</h3>"
+                        }
+                    }
+                },
+                {
+                    "element": "summaryList",
+                    "params": {
+                        "id":"govcy-test-69",
+                        "items":[
+                            {
+                                "key":{"en":"Name","el":"el Name"},
+                                "value":
+                                [
+                                    {"element":"htmlElement","params":{"text":{"en":"Andreas Andreou","el":"EL Andreas Andreou"} } }
+                                ]
+                            },
+                            {
+                                "key":{"en":"Date of birth","el":"el Date of birth"},
+                                "value":
+                                [
+                                    {"element":"htmlElement","params":{"text":{"en":"10 March 1990<br>","el":"EL 10 March 1990<br>"} } }
+                                    ,{"element":"tag","params":{"text":{"en":"Adult","el":"el Adult"}, "classes":"govcy-tag-green"} }
+                                ],
+                                "actions":[
+                                    {
+                                        "text":{"en":"Change","el":"Αλλαγή"},
+                                        "href": "#",
+                                        "visuallyHiddenText": {"en":"Date of birth","el":"Ημερομηνία γέννησης"}
+                                    }
+                                ]
+                            },
+                            {
+                                "key":{"en":"Address","el":"el Address"},
+                                "value":
+                                [
+                                    {"element":"htmlElement","params":{"text":{"en":"50 Enton Street<br>Nicosia<br>2066","el":"50 Enton Street<br>Nicosia<br>2066"} } }
+                                ],
+                                "actions":[
+                                    {
+                                        "text":{"en":"Change","el":"Αλλαγή"},
+                                        "href": "#",
+                                        "visuallyHiddenText": {"en":"Address","el":"el Address"}
+                                    },
+                                    {
+                                        "text":{"en":"Remove","el":"Διαγραφή"},
+                                        "href": "#2", 
+                                        "visuallyHiddenText": {"en":"Address","el":"el Address"}
+                                    }
+                                ]
+                            },
+                            {
+                                "key":{"en":"Contact details","el":"el Contact details"},
+                                "actions":[
+                                    {
+                                        "text":{"en":"Enter contact","el":"el Enter contact"},
+                                        "href": "#1"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "element": "htmlElement",
+                    "params": {
+                        "text": {
+                            "en": "<h3>Summary list with multiple elements and actions in Greek</h3>"
+                        }
+                    }
+                },
+                {
+                    "element": "summaryList",
+                    "params": {
+                        "id":"govcy-test-70",
+                        "lang": "el",
+                        "items":[
+                            {
+                                "key":{"en":"Name","el":"el Name"},
+                                "value":
+                                [
+                                    {"element":"htmlElement","params":{"text":{"en":"Andreas Andreou","el":"EL Andreas Andreou"} } }
+                                ]
+                            },
+                            {
+                                "key":{"en":"Date of birth","el":"el Date of birth"},
+                                "value":
+                                [
+                                    {"element":"htmlElement","params":{"text":{"en":"10 March 1990<br>","el":"EL 10 March 1990<br>"} } }
+                                    ,{"element":"tag","params":{"text":{"en":"Adult","el":"el Adult"}, "classes":"govcy-tag-green"} }
+                                ],
+                                "actions":[
+                                    {
+                                        "text":{"en":"Change","el":"Αλλαγή"},
+                                        "href": "#",
+                                        "visuallyHiddenText": {"en":"Date of birth","el":"Ημερομηνία γέννησης"}
+                                    }
+                                ]
+                            },
+                            {
+                                "key":{"en":"Address","el":"el Address"},
+                                "value":
+                                [
+                                    {"element":"htmlElement","params":{"text":{"en":"50 Enton Street<br>Nicosia<br>2066","el":"el 50 Enton Street<br>Nicosia<br>2066"} } }
+                                ],
+                                "actions":[
+                                    {
+                                        "text":{"en":"Change","el":"Αλλαγή"},
+                                        "href": "#",
+                                        "visuallyHiddenText": {"en":"Address","el":"el Address"}
+                                    },
+                                    {
+                                        "text":{"en":"Remove","el":"Διαγραφή"},
+                                        "href": "#2", 
+                                        "visuallyHiddenText": {"en":"Address","el":"el Address"}
+                                    }
+                                ]
+                            },
+                            {
+                                "key":{"en":"Contact details","el":"el Contact details"},
+                                "actions":[
+                                    {
+                                        "text":{"en":"Enter contact","el":"Εισαγάγετε τα στοιχεία επικοινωνίας govcy-test-70"},
+                                        "href": "#1"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
                 }
             ]
         }

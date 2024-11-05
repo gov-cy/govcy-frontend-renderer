@@ -12,6 +12,7 @@
 {%- set inIsHTML = isHTML | default(false) -%}
 {% if inIsHTML %}{{- content[inlang] | safe -}}{% else %}{{- content[inlang] -}}{% endif %}
 {%- endmacro %}
+{#- --------------------------------------- -#}
 {#- govcyLangAttribute 
  @param {string} lang The language used. Can be 'en','el'
  @returns lang attribute if lang is defined 
@@ -19,4 +20,17 @@
 {% macro govcyLangAttribute(lang) -%}
 {# If lang is defined, use it #}
 {%- if lang %} lang="{{ lang }}"{%- endif %} 
+{%- endmacro %}
+{#- --------------------------------------- -#}
+{#- render govcyElements from an array -#}
+{%- macro govcyElementsFromArray(elements, lang) %}
+{%- from "../govcyElement.njk" import govcyElement -%}
+    {%- for element in elements -%}
+        {%- if lang and not element.params.lang -%}
+            {%- set params = element.params | merge({lang: lang}) -%}
+        {%- else -%}
+            {%- set params = element.params -%}
+        {%- endif -%}
+        {%- call govcyElement(element.element, params) %}{% endcall -%}
+    {%- endfor -%}
 {%- endmacro %}

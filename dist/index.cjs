@@ -13092,7 +13092,7 @@ class govcyFrontendRenderer {
      */
       renderFromString(input,data = {}) {
         // Render template
-        const __dirname = require$$0$3.dirname(url.fileURLToPath((typeof document === 'undefined' ? require('u' + 'rl').pathToFileURL(__filename).href : (_documentCurrentScript && _documentCurrentScript.src || new URL('index.cjs', document.baseURI).href))));
+        const __dirname = require$$0$3.dirname(url.fileURLToPath((typeof document === 'undefined' ? require('u' + 'rl').pathToFileURL(__filename).href : (_documentCurrentScript && _documentCurrentScript.tagName.toUpperCase() === 'SCRIPT' && _documentCurrentScript.src || new URL('index.cjs', document.baseURI).href))));
         // console.log(data)
 
         // Construct the absolute path to the template directory

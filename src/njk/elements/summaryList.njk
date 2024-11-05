@@ -1,0 +1,106 @@
+{# summaryList 
+ @param {string} id The id prefix for the options. Will escape text. 
+ @param {string} classes Additional classes to add to the outer fieldset. Optional 
+ @param {string} lang The language used. Can be 'en','el'. Optional.
+ @param {array} items The array of items which contain elements
+ @param {string} item.key The item key. Will escape text.
+ @param {array} item.value The value. This will be an array of elements.
+ i.e. `
+[
+    {
+        elements: [
+            {element:"htmlElement",params:{text:{en:"January",el:"Ιανουάριος"}} }
+        ]
+    },
+    {
+        elements: [
+            {element:"htmlElement",params:{text:{en:"€85",el:"€85"}} }
+        ],
+        classes: "govcy-text-end",
+    },
+    {
+        elements: [
+            {element:"tag",params:{text:{en:"PAYED",el:"ΠΛΗΡΩΘΗΚΕ"}, classes:"govcy-tag-green"} }
+        ]
+    }
+]
+ `
+ @param {array} item.actions The array of actions objects. 
+ i.e. `
+[
+    {
+        text:{en:"Change",el:"Αλλαγή"},
+        href: "#",
+        classes: "govcy-link",
+        visuallyHiddenText: {en:"Date of birth",el:"Ημερομηνία γέννησης"}
+    },
+    {
+        text:{en:"Remove",el:"Διαγραφή"},
+        href: "#", 
+        visuallyHiddenText: {en:"Date of birth",el:"Ημερομηνία γέννησης"}
+    }
+]
+`
+ @returns govcy summaryList html 
+#}
+{% macro summaryList(params) -%}
+{#- Import localizer from utilities -#}
+{%- from "../utilities/govcyUtilities.njk" import govcyLocalizeContent, govcyLangAttribute, govcyElementsFromArray -%}
+<dl {% if params.id %}id="{{ params.id }}" {% endif %}class="govcy-summary-list{% if params.classes %} {{ params.classes }}{% endif %}">
+    {%- for item in params.items %}
+    <div class="govcy-summary-list-row">
+        <dt class="govcy-summary-list-key"{{ govcyLangAttribute(params.lang) }}>
+            {{ govcyLocalizeContent(item.key, params.lang) }}
+        </dt>
+        <dd class="govcy-summary-list-value">
+            {%- if item.value -%}
+            {{ govcyElementsFromArray(item.value, params.lang) }}
+            {%- elif item.actions -%}
+                {{ _summaryListActions(item.actions, params.lang) }}
+            {%- endif -%}
+        </dd>
+        {%- if item.actions and item.value %}
+        <dd class="govcy-summary-list-actions">
+            {{ _summaryListActions(item.actions, params.lang) }}
+        </dd>
+        {%- endif %}
+    </div>
+    {%- endfor %}
+</dl>
+{%- endmacro %}
+{# summary list action item
+ @param {array} actions The array of actions objects. 
+ i.e. `
+[
+    {
+        text:{en:"Change",el:"Αλλαγή"},
+        href: "#",
+        visuallyHiddenText: {en:"Date of birth",el:"Ημερομηνία γέννησης"}
+    },
+    {
+        text:{en:"Remove",el:"Διαγραφή"},
+        href: "#", 
+        visuallyHiddenText: {en:"Date of birth",el:"Ημερομηνία γέννησης"}
+    }
+]
+`
+ @param {string} lang The language used. Can be 'en','el'.
+ @returns govcy summary list actions html 
+#}
+{%- macro _summaryListActions(actions,lang) %}
+    <ul class="list-inline govcy-my-0">
+    {%- for action in actions %}
+        <li class="list-inline-item">
+            {#- render href -#}
+            <a href="{% if action.href %}{{ action.href }}{% else %}#{% endif %}">
+                {#- render content -#}
+                {{ govcyLocalizeContent(action.text, lang) }}
+                {#- If visuallyHiddenText is set -#}
+                {%- if action.visuallyHiddenText %}
+                <span class="govcy-visually-hidden"> {{ govcyLocalizeContent(action.visuallyHiddenText, lang) }}</span>
+                {% endif -%}
+            </a>
+        </li>
+    {%- endfor %}
+    </ul>
+{%- endmacro %} 

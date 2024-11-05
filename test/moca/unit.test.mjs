@@ -1013,4 +1013,120 @@ function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
+    it(checksNum+'67 `summaryList` default options', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([ 
+            `<dl\\s*id="govcy-test-67"\\s*class="govcy-summary-list">`, //dl
+            `\\s*<\\/dl>` //closing tags
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+    it(checksNum+'68 `summaryList` Simple, no actions', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([ 
+            `<dl\\s*id="govcy-test-68"\\s*class="govcy-summary-list">`, //dl
+            `\\s*<div\\s*class="govcy-summary-list-row">`, //row div
+            `\\s*<dt\\s*class="govcy-summary-list-key">\\s*Name\\s*<\\/dt>`, //dt
+            `\\s*<dd\\s*class="govcy-summary-list-value">\\s*Andreas Andreou\\s*<\\/dd>`, //dd
+            `\\s*<\\/div>`, //closing div
+            `\\s*<div\\s*class="govcy-summary-list-row">`, //row div
+            `\\s*<dt\\s*class="govcy-summary-list-key">\\s*Date of birth\\s*<\\/dt>`, //dt
+            `\\s*<dd\\s*class="govcy-summary-list-value">\\s*10 March 1990<br>\\s*<\\/dd>`, //dd
+            `\\s*<\\/div>`, //closing div
+            `\\s*<div\\s*class="govcy-summary-list-row">`, //row div
+            `\\s*<dt\\s*class="govcy-summary-list-key">\\s*Address\\s*<\\/dt>`, //dt
+            `\\s*<dd\\s*class="govcy-summary-list-value">\\s*50 Enton Street<br>Nicosia<br>2066\\s*<\\/dd>`, //dd
+            `\\s*<\\/div>`, //closing div
+            // `([\\s\\S]*?)`,
+            `\\s*<\\/dl>` //closing tags
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+    it(checksNum+'69 `summaryList` with multiple elements and actions', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([ 
+            `<dl\\s*id="govcy-test-69"\\s*class="govcy-summary-list">`, //dl
+            `\\s*<div\\s*class="govcy-summary-list-row">`, //row div
+            `\\s*<dt\\s*class="govcy-summary-list-key">\\s*Name\\s*<\\/dt>`, //dt
+            `\\s*<dd\\s*class="govcy-summary-list-value">\\s*Andreas Andreou\\s*<\\/dd>`, //dd
+            `\\s*<\\/div>`, //closing div
+            `\\s*<div\\s*class="govcy-summary-list-row">`, //row div
+            `\\s*<dt\\s*class="govcy-summary-list-key">\\s*Date of birth\\s*<\\/dt>`, //dt
+            `\\s*<dd\\s*class="govcy-summary-list-value">\\s*10 March 1990<br>\\s*<span\\s*class="govcy-tag govcy-tag-green">\\s*Adult\\s*<\\/span><\\/dd>`, //dd
+            `\\s*<dd\\s*class="govcy-summary-list-actions">\\s*<ul\\s*class="list-inline govcy-my-0">`, //open action
+            `\\s*<li\\s*class="list-inline-item">`, //open list
+            `\\s*<a href="#">\\s*Change\\s*<span class="govcy-visually-hidden">\\s*Date of birth\\s*<\\/span>\\s*</a>`, //action
+            `\\s*</li>`, //close list
+            `\\s*</ul>\\s*</dd>`, //close action
+            `\\s*<\\/div>`, //closing div
+            `\\s*<div\\s*class="govcy-summary-list-row">`, //row div
+            `\\s*<dt\\s*class="govcy-summary-list-key">\\s*Address\\s*<\\/dt>`, //dt
+            `\\s*<dd\\s*class="govcy-summary-list-value">\\s*50 Enton Street<br>Nicosia<br>2066\\s*<\\/dd>`, //dd
+            `\\s*<dd\\s*class="govcy-summary-list-actions">\\s*<ul\\s*class="list-inline govcy-my-0">`, //open action
+            `\\s*<li\\s*class="list-inline-item">`, //open list
+            `\\s*<a href="#">\\s*Change\\s*<span class="govcy-visually-hidden">\\s*Address\\s*<\\/span>\\s*</a>`, //action
+            `\\s*</li>`, //close list
+            `\\s*<li\\s*class="list-inline-item">`, //open list
+            `\\s*<a href="#2">\\s*Remove\\s*<span class="govcy-visually-hidden">\\s*Address\\s*<\\/span>\\s*</a>`, //action
+            `\\s*</li>`, //close list
+            `\\s*</ul>\\s*</dd>`, //close action
+            `\\s*<\\/div>`, //closing div
+            `\\s*<div\\s*class="govcy-summary-list-row">`, //row div
+            `\\s*<dt\\s*class="govcy-summary-list-key">\\s*Contact details\\s*<\\/dt>`, //dt
+            `\\s*<dd\\s*class="govcy-summary-list-value">`, //open dd
+            `\\s*<ul\\s*class="list-inline govcy-my-0">`, //open list
+            `\\s*<li\\s*class="list-inline-item">`, //open list
+            `\\s*<a href="#1">\\s*Enter contact\\s*</a>`, //action
+            `\\s*</li>`, //close list
+            ,`\\s*<\\/ul>`, //close dd
+            ,`\\s*<\\/dd>`, //close dd
+            `\\s*<\\/div>`, //closing div
+            // `([\\s\\S]*?)`,
+            `\\s*<\\/dl>` //closing tags
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+    it(checksNum+'70 `summaryList` multiple elements and actions in Greek', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([            
+            `<dl\\s*id="govcy-test-70"\\s*class="govcy-summary-list">`, //dl
+            `([\\s\\S]*?)`,
+            `el Name`,
+            `([\\s\\S]*?)`,
+            `EL Andreas Andreou`,
+            `([\\s\\S]*?)`,
+            `el Date of birth`,
+            `([\\s\\S]*?)`,
+            `EL 10 March 1990`,
+            `([\\s\\S]*?)`,
+            `el Adult`,
+            `([\\s\\S]*?)`,
+            `Αλλαγή`,
+            `([\\s\\S]*?)`,
+            `Ημερομηνία γέννησης`,
+            `([\\s\\S]*?)`,
+            `el Address`,
+            `([\\s\\S]*?)`,
+            `el 50 Enton Street<br>Nicosia<br>2066`,
+            `([\\s\\S]*?)`,
+            `Αλλαγή`,
+            `([\\s\\S]*?)`,
+            `el Address`,
+            `([\\s\\S]*?)`,
+            `Διαγραφή`,
+            `([\\s\\S]*?)`,
+            `el Address`,
+            `([\\s\\S]*?)`,
+            `el Contact details`,
+            `([\\s\\S]*?)`,
+            `Εισαγάγετε τα στοιχεία επικοινωνίας govcy-test-70`,
+            // `([\\s\\S]*?)`,
+            // `\\s*<\\/span>\\s*<\\/td>\\s*<\\/tr>\\s*<\\/tbody>\\s*<\\/table>` //closing tags
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
 }
