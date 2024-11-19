@@ -74,7 +74,8 @@
  @param {string} hint The hint text. Optional. Will escape text 
  @param {boolean} isPageHeading Is the label also the page heading? Optional, default is false. Can be true,false 
  @param {string} classes Additional classes to add to the outer fieldset. Optional 
- @param {string} error If not empty there is an error message and displays the error variant. Optional, default is ''. Will escape text 
+ @param {object} error If not empty there is an error message and displays the error variant. Optional, default is ''. Will escape text. Example `{en:"Content",el:"Περιεχομένο"}`
+ @param {boolean} hideFormControlError If true, hides the form control error (red line on the left). Mostly used in conditional radio elements. Optional    
  @param {string} lang The language used. Can be 'en','el'. Optional.
  @param {array} items The array of items to turn onto checkbox 
     i.e. `[
@@ -126,7 +127,7 @@
     {%- endif -%}
     {% call fieldset({ariaDescribedby:ariaDescribedBy,classes:params.classes, lang:params.lang}) %}
         {% call legend({legend:params.legend, isPageHeading:isPageHeading,lang:params.lang}) %}{% endcall %}
-        {% call formControl({isError:params.error}) %}
+        {% call formControl({isError: false if params.hideFormControlError else params.error}) %}
             {% call hint({hint:params.hint, id:hintId,lang:params.lang}) %}{% endcall %}
             {#- render error message -#}
             {% call errorMessage({message:params.error,id:errorId,lang:params.lang}) %}{% endcall %}

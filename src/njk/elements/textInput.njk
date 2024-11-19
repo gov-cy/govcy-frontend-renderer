@@ -9,6 +9,7 @@
  @param {string} autocomplete The autocomplete attribute. Optional. Can be email, name, ... 
  @param {string} classes Additional classes to add to the outer div. Optional 
  @param {object} error If not empty there is an error message and displays the error variant. Optional, default is ''. Will escape text. Example `{en:"Content",el:"Περιεχομένο"}`  
+ @param {boolean} hideFormControlError If true, hides the form control error (red line on the left). Mostly used in conditional radio elements. Optional  
  @param {string} fixedWidth width If not empty will add the fixed width class variant. Optional, default is ''. Can be 50,35,20,10,5,4,3,2 
  @param {string} lang The language used. Can be 'en','el'. Optional.
  @returns govcy input html 
@@ -57,7 +58,7 @@
     {%- else -%}
         {%- set inputAutocomplete = '' -%}
     {%- endif -%}
-    {% call formControl({isError:params.error,classes:params.classes,lang:params.lang}) %}
+    {% call formControl({isError: false if params.hideFormControlError else params.error,classes:params.classes,lang:params.lang}) %}
         {#- render label -#}
         {% call label({label:params.label, id:labelId, for:params.id, isPageHeading:isPageHeading, lang:params.lang}) %}{% endcall %}
         {#- render hint -#}

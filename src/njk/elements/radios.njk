@@ -18,11 +18,13 @@
     @param {object} item.hint The hint of the radio. Example `{en:"Content",el:"Περιεχομένο"}`  
     @param {object} item.altAndText The and text. Optional, default is `{en:"And",el:"Και"}
     @param {object} item.altOrText The or text. Optional, default is `{en:"Or",el:"Ή"}
+    @param {array} item.conditionalElements The conditional elements for this radio item. Optional. This will be an array of elements.
+    @param {boolean} item.conditionalHasErrors The conditional elements for this radio item has error. Optional.
  @returns govcy radio item html 
 #}
 {%- macro _radioItem(params, item, isInline, index, lang) %}
 {#- Import localizer from utilities -#}
-{%- from "../utilities/govcyUtilities.njk" import govcyLocalizeContent, govcyLangAttribute -%}
+{%- from "../utilities/govcyUtilities.njk" import govcyLocalizeContent, govcyLangAttribute, govcyElementsFromArray -%}
 {%- from "./hint.njk" import hint -%}
 {%- from "./label.njk" import label -%}
 {#- set default values -#}
@@ -48,6 +50,14 @@
 {%- else -%}
     {%- set hintId = '' -%}
 {%- endif -%}
+{#- set conditional id -#}
+{%- if item.conditionalElements -%}
+    {%- set conditionalElementsId = [optionId, "-conditional"] | join -%}
+    {%- set conditionalLabel = govcyLocalizeContent({en:"This option expands and has more questions,",el:"Αυτή η επιλογή επεκτείνεται και έχει περισσότερες ερωτήσεις,"}, lang) -%}
+{%- else -%}
+    {%- set conditionalElementsId = '' -%}
+    {%- set conditionalLabel = '' -%}
+{%- endif -%}
 {# depending on the type, render html and set label#}
 {%- if item.type == 'or' -%}
     <p class="govcy-ml-3 govcy-mb-3{% if isInline %} govcy-d-sm-inline-block govcy-mr-3{% endif %}">{{ orText }}</p>
@@ -64,11 +74,31 @@
 {%- endif -%}
 {#- render radio -#}
 <div class="govcy-radio{% if isInline %} govcy-d-sm-inline-block{% endif %}">
-    <input class="govcy-radio-input" name="{{ params.name }}" value="{{item.value}}" type="radio" id="{{ optionId }}" {% if item.hint%} aria-describedby="{{hintId}}"{% endif %}>
-    <label class="govcy-label" for="{{ optionId }}">{{ label | safe }}</label>
+    <input class="govcy-radio-input" name="{{ params.name }}" value="{{item.value}}" type="radio" id="{{ optionId }}" {% if item.hint%} aria-describedby="{{hintId}}"{% endif %}{% if item.conditionalElements %} data-aria-controls="{{conditionalElementsId}}"{% endif %}>
+    <label class="govcy-label" for="{{ optionId }}">{% if item.conditionalElements %} <span class="govcy-visually-hidden">{{conditionalLabel}}</span>{% endif %}{{ label | safe }}</label>
     {#- {% call govcyLabel({label:label, for:optionId, isPrimary:false, isHTML:true, lang:lang}) %}{% endcall %} -#}
     {% call hint({hint:item.hint, id:hintId, lang:lang}) %}{% endcall %}
 </div>
+{#- conditional elements -#}
+{%- if item.conditionalElements %}
+    {#- Transform conditional elements, add hideFormControlError -#}
+    {%- set updatedConditionalElements = [] -%}
+    {%- for element in item.conditionalElements -%}
+        {%- set updatedElement = element | merge({
+            params: element.params | merge({"hideFormControlError": true})
+        }) -%}
+        {%- set updatedConditionalElements = updatedConditionalElements.concat([updatedElement]) -%}
+    {%- endfor -%}
+        <style>
+            .govcy-radio__conditional label,
+            .govcy-radio__conditional legend {
+                font-size: 1rem !important;
+            }
+        </style>
+        <div class="govcy-form-control{% if item.conditionalHasErrors %} govcy-form-control-error{% else %} govcy-form-control-hint{% endif %} govcy-pl-4 govcy-ml-5 govcy-radio__conditional govcy-radio__conditional--hidden" id="{{conditionalElementsId}}">
+            {{ govcyElementsFromArray(updatedConditionalElements, params.lang) }}
+        </div>
+{%- endif -%}
 {%- endmacro %}
 {# radio 
  @param {object} legend The legend text. Will escape text. Example `{en:"Content",el:"Περιεχομένο"}`
@@ -77,8 +107,9 @@
  @param {string} hint The hint text. Optional. Will escape text 
  @param {boolean} isPageHeading Is the label also the page heading? Optional, default is false. Can be true,false 
  @param {boolean} isInline Are the radios inline type? Optional, default is false. Can be true,false 
- @param {string} classes Additional classes to add to the outer fieldset. Optional 
- @param {string} error If not empty there is an error message and displays the error variant. Optional, default is ''. Will escape text 
+ @param {string} classes Additional classes to add to the outer fieldset. Optional  
+ @param {object} error If not empty there is an error message and displays the error variant. Optional, default is ''. Will escape text. Example `{en:"Content",el:"Περιεχομένο"}`
+ @param {boolean} hideFormControlError If true, hides the form control error (red line on the left). Mostly used in conditional radio elements. Optional    
  @param {string} lang The language used. Can be 'en','el'. Optional.
  @param {array} items The array of items to turn onto radio 
     i.e. `[
@@ -131,7 +162,7 @@
     {%- endif -%}
     {% call fieldset({ariaDescribedby:ariaDescribedBy,classes:params.classes, lang:params.lang}) %}
         {% call legend({legend:params.legend, isPageHeading:isPageHeading,lang:params.lang}) %}{% endcall %}
-        {% call formControl({isError:params.error}) %}
+        {% call formControl({isError: false if params.hideFormControlError else params.error}) %}
             {% call hint({hint:params.hint, id:hintId,lang:params.lang}) %}{% endcall %}
             {#- render error message -#}
             {% call errorMessage({message:params.error,id:errorId,lang:params.lang}) %}{% endcall %}

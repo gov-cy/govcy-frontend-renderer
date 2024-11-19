@@ -1129,4 +1129,37 @@ function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
+    it(checksNum+'71 `conditional radios` macro render as expected. with all options possible and elements in items', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([ 
+            `<fieldset\\s*class="govcy-fieldset\\s*govcy-test-class"\\s*aria-describedby="\\s*govcy-test-71-hint\\s*govcy-test-71-error\\s*"\\s*lang="el"\\s*>`,//fieldset 
+            `\\s*<legend\\s*class="govcy-legend"\\s*lang="el">\\s*<h1>\\s*Radios: Ελληνικά with all options possible\\s*<\\/h1>\\s*<\\/legend>`,//legend
+            `\\s*<div\\s*class="govcy-form-control\\s*govcy-form-control-error">`,//form control
+            `([\\s\\S]*?)`, // not interested in radio specifics here, tested before
+            `\\s*<div\\s*class="govcy-radio">`,//radio (with conditional elements)
+            `\\s*<input\\s*class="govcy-radio-input"\\s*name="govcy-test-71"\\s*value="no"\\s*type="radio"\\s*id="govcy-test-71-option-2"\\s*aria-describedby="govcy-test-71-option-2-hint"\\s*data-aria-controls="govcy-test-71-option-2-conditional"\\s*>`,//input for radio
+            `\\s*<label\\s*class="govcy-label"\\s*for="govcy-test-71-option-2"\\s*>\\s*<span class="govcy-visually-hidden">\\s*Αυτή η επιλογή επεκτείνεται και έχει περισσότερες ερωτήσεις,\\s*<\\/span>\\s*Όχι\\s*<\\/label>`,//label for radio
+            `([\\s\\S]*?)`, // not interested in radio specifics here, tested before
+            // `\\s*<\\/div>`, //closing tags for radio (uncomment when styles are removed)
+            `\\s*<div\\s*class="govcy-form-control\\s*govcy-form-control-error\\s*govcy-pl-4\\s*govcy-ml-5\\s*govcy-radio__conditional\\s*govcy-radio__conditional--hidden"\\s*id="govcy-test-71-option-2-conditional"\\s*>`, // conditional div
+            `\\s*<div\\s*class="govcy-form-control"\\s*lang="el"\\s*>`, //form control 1 for conditional text input (withour error, controlled via hideFormControlError)
+            `\\s*<label\\s*id="govcy-test-71a-label"\\s*class="govcy-label\\s*govcy-label-primary"\\s*for="govcy-test-71a"\\s*lang="el"\\s*>\\s*Όνομα\\s*<\\/label>`, //label for conditional text input
+            `\\s*<p\\s*id="govcy-test-71a-error"\\s*class="govcy-input-error-msg"\\s*lang="el"\\s*>\\s*<span\\s*class="\\s*govcy-visually-hidden-error\\s*"\\s*>\\s*Σφάλμα:\\s*<\\/span>\\s*Ελληνικά error\\s*<\\/p>`, //error for conditional text input
+            `\\s*<input\\s*id="govcy-test-71a"\\s*name="govcy-test-71a"\\s*type="text"\\s*spellcheck="false"\\s*class="govcy-text-input\\s*govcy-text-input-error\\s*"\\s*aria-describedby="\\s*govcy-test-71a-error\\s*">`, //input for conditional text input
+            `\\s*<\\/div>`, //closing tags for conditional div 1
+            `\\s*<div\\s*class="govcy-form-control"\\s*>`, //form control 2 for conditional text input (withour error, controlled via hideFormControlError)
+            `([\\s\\S]*?)govcy-test-71a1([\\s\\S]*?)`, // not interested in control specifics here, tested before 
+            `\\s*<\\/div>`, //closing tags for conditional div 2
+            `([\\s\\S]*?)`, 
+            `\\s*<div\\s*class="govcy-form-control">`, //form control in last conditional element
+            `\\s*<label\\s*class="\\s*govcy-label\\s*govcy-label-primary"\\s*for="govcy-test-71c"\\s*lang="el"\\s*>\\s*Χώρα\\s*<\\/label>`, //label in last conditional element
+            `\\s*<select\\s*id="govcy-test-71c"\\s*name="govcy-test-71c"\\s*class="govcy-select"\\s*lang="el"\\s*>`, //select in last conditional element
+            `\\s*<option\\s*value=""\\s*>\\s*Επιλέξετε Χώρα\\s*<\\/option>\\s*<option\\s*value="357"\\s*>\\s*ΚΥΠΡΟΣ\\s*<\\/option>\\s*<option\\s*value="9">\\s*ΕΛΛΑΔΑ\\s*<\\/option>`, //options in last conditional element,
+            `\\s*<\\/select>\\s*<\\/div>`, //closing tags in last conditional element
+            `\\s*<\\/div>`, //closing tags in last conditional area
+            `\\s*<\\/div>\\s*<\\/fieldset>` //closing tags
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
 }

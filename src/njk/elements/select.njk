@@ -7,7 +7,8 @@
  @param {object} hint The hint text. Optional. Will escape text. Example `{en:"Content",el:"Περιεχομένο"}`  
  @param {boolean} isPageHeading Is the label also the page heading? Optional, default is false. Can be true,false 
  @param {string} classes Additional classes to add to the outer `govcy-form-control` container. Optional 
- @param {object} error If not empty there is an error message and displays the error variant. Optional, default is ''. Will escape text. Example `{en:"Content",el:"Περιεχομένο"}`  
+ @param {object} error If not empty there is an error message and displays the error variant. Optional, default is ''. Will escape text. Example `{en:"Content",el:"Περιεχομένο"}`
+ @param {boolean} hideFormControlError If true, hides the form control error (red line on the left). Mostly used in conditional radio elements. Optional    
  @param {string} lang The language used. Can be 'en','el'. Optional.
  @returns govcy select html 
 #}
@@ -40,7 +41,7 @@
     {%- else -%}
         {% set ariaDescribedBy = '' %}
     {%- endif -%}
-    {% call formControl({isError:params.error,classes:params.classes}) %}
+    {% call formControl({isError: false if params.hideFormControlError else params.error,classes:params.classes}) %}
         {% call label({label:params.label, id:labelId, for:params.id, isPageHeading:isPageHeading, lang:params.lang}) %}{% endcall %}
         {% call hint({hint:params.hint, id:hintId, lang:params.lang}) %}{% endcall %}
         {#- render error message -#}

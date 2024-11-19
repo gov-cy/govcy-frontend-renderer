@@ -1078,6 +1078,173 @@
             }
         ]
     }) }}
+    {% call govcyElement("form",{
+        "elements":[
+            {"element": "htmlElement",
+            "params": {
+                "text":{"en":"<h2>Conditional radios lang:el</h2>","el":"Ελληνικά legend"}
+                }
+            },
+            {"element": "radios",
+            "params": {
+                "id":"govcy-test-71"
+                ,"name":"govcy-test-71"
+                ,"lang":"el"
+                ,"legend":{"en":"English legend","el":"Radios: Ελληνικά with all options possible"}
+                ,"hint":{"en":"English hint","el":"Ελληνικά hint"}
+                ,"error":{"en":"English error","el":"Ελληνικά error"}
+                ,"isPageHeading": true
+                ,"isInline": false
+                ,"classes":"govcy-test-class"
+                ,"items":[
+                    {
+                        "value": "yes",
+                        "text": {"en":"Yes","el":"Ναι"}
+                    },
+                    {
+                        "value": "no",
+                        "hint": {"en":"English hint for no","el":"Ελληνικά hint for no"},
+                        "text": {"en":"No","el":"Όχι"},
+                        "conditionalHasErrors": true,
+                        "conditionalElements": [
+                            {
+                                "element": "textInput",
+                                "params": {
+                                    "label":{"en":"English","el":"Όνομα"}
+                                    ,"id":"govcy-test-71a"
+                                    ,"name":"govcy-test-71a"
+                                    ,"error":{"en":"English error","el":"Ελληνικά error"}
+                                }
+                            },
+                            {
+                                "element": "fileInput",
+                                "params": {
+                                    "label":{"en":"English","el":"File"}
+                                    ,"id":"govcy-test-71a1"
+                                    ,"name":"govcy-test-71a1"
+                                    ,"error":{"en":"English error","el":"Ελληνικά error"}
+                                }
+                            },
+                            {
+                                "element":"select", 
+                                "params": {
+                                    "label":{"en":"country","el":"Χώρα"},
+                                    "id":"govcy-test-71a2",
+                                    "name":"govcy-test-71a2",
+                                    "error":{"en":"English error","el":"Ελληνικά error"},
+                                    "items": [
+                                        {
+                                            "value": "",
+                                            "text": {"en":"Select a country","el":"Επιλέξετε Χώρα"}
+                                        },
+                                        {
+                                            "value": "357",
+                                            "text": {"en":"English","el":"ΚΥΠΡΟΣ"}
+                                        },
+                                        {
+                                            "value": "9",
+                                            "text": {"en":"English","el":"ΕΛΛΑΔΑ"}
+                                        }
+                                    ]
+                                }
+                            },
+                            {"element": "checkboxes",
+                            "params": {
+                                "id":"govcy-test-71a3"
+                                ,"name":"govcy-test-71a3"
+                                ,"legend":{"en":"Checkboxes: English with items","el":"Ελληνικά legend"}
+                                ,"error":{"en":"English error","el":"Ελληνικά error"}
+                                ,"items":[
+                                    {
+                                        "value": "yes",
+                                        "text": {"en":"Yes","el":"Ναι"}
+                                    },
+                                    {
+                                        "value": "no",
+                                        "text": {"en":"No","el":"Όχι"}
+                                    }
+                                ]
+                                }
+                            },
+                            {"element": "radios",
+                            "params": {
+                                "id":"govcy-test-71a4"
+                                ,"name":"govcy-test-71a4"
+                                ,"legend":{"en":"Radios: English with items","el":"Ελληνικά legend"}
+                                ,"error":{"en":"English error","el":"Ελληνικά error"}
+                                ,"items":[
+                                    {
+                                        "value": "yes",
+                                        "text": {"en":"Yes","el":"Ναι"}
+                                    },
+                                    {
+                                        "value": "no",
+                                        "text": {"en":"No","el":"Όχι"}
+                                    }
+                                ]
+                                }
+                            },
+                            {
+                                "element": "textInput",
+                                "params": {
+                                    "label":{"en":"English","el":"Επώνυμο"}
+                                    ,"id":"govcy-test-71a10"
+                                    ,"name":"govcy-test-71a10"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "type": "or",
+                        "altOrText": {"en":"If not","el":"Αν όχι"},
+                        "value": "maybe",
+                        "hint": {"en":"We want you to be absolutely sure","el":"Θέλουμε να είστε απολύτως σίγουροι"},
+                        "text": {"en":"Maybe","el":"Ίσως"},
+                        "conditionalElements": [
+                            {
+                                "element": "textElement",
+                                "params": {
+                                    "text":{"en":"Conditional element","el":"Ελληνικά conditional element"}
+                                }
+                            },
+                            {
+                                "element": "textInput",
+                                "params": {
+                                    "label":{"en":"English","el":"Email"}
+                                    ,"id":"govcy-test-71b"
+                                    ,"name":"govcy-test-71b"
+                                    ,"type": "email"
+                                }
+                            },
+                            {
+                                "element":"select", 
+                                "params": {
+                                    "label":{"en":"country","el":"Χώρα"},
+                                    "id":"govcy-test-71c",
+                                    "name":"govcy-test-71c",
+                                    "items": [
+                                        {
+                                            "value": "",
+                                            "text": {"en":"Select a country","el":"Επιλέξετε Χώρα"}
+                                        },
+                                        {
+                                            "value": "357",
+                                            "text": {"en":"English","el":"ΚΥΠΡΟΣ"}
+                                        },
+                                        {
+                                            "value": "9",
+                                            "text": {"en":"English","el":"ΕΛΛΑΔΑ"}
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                ]
+                }
+            }
+    ]
+    }) %}{% endcall %}
 {% endblock %}
 {% block beforeMain %}
     {{ govcyElement("textElement",{text:{en:"Back ",el:"Πίσω"}, type:"p", id:"govcy-test-25"}) }}

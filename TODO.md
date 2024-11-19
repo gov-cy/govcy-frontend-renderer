@@ -16,13 +16,13 @@
     - [ ] textArea
     - [X] fieldSet
     - [X] radios
-        - [ ] conditional radios
+        - [x] conditional radios
     - [X] checkboxes
     - [X] fileInput
     - [X] fileView
-    - [ ] summaryList
-- [ ] Handle site data in a better way. Uniform for both njk and json. Consider how json file will look like
-- [ ] Page template
+    - [x] summaryList
+- [x] Handle site data in a better way. Uniform for both njk and json. Consider how json file will look like
+- [x] Page template
     - Params used
         - page.title
         - page.layout = `two-thirds`, `max-width`
