@@ -25,9 +25,9 @@ The package currently works with the **version 3.0.0** of the design system.
 The package can:
  can:
 
-- Generate HTML programmatically from input nunjucks template, using the project's base template and macros.
-- Generate HTML programmatically from input JSON data
-- Generate complete pages as well as individual components
+- Generate HTML programmatically from [input nunjucks template](#nunjucks-template-example), using the project's base template and macros.
+- Generate HTML programmatically from [input JSON](#json-template-example) data
+- Generate complete pages as well as [individual components](#render-individual-components-example)
 
 ## Pre-requisites
 - You need to have [Node.js](https://nodejs.org/en/) installed. The package has been tested on node version 20. 
@@ -128,8 +128,8 @@ In the example above, a sting will be written in the console containing the rend
 
 It is important to start your template string with the following:
 - `{% if pageData.layout %} {% extends pageData.layout %} {% endif %}`: Will extend the gov.cy page template as defined in the `pageData.layout` property.
-- `{% from "govcyElement.njk" import govcyElement %}`: Will import the `govcyElement` macro which is responsible for rendering all the [[design elements]].
-- `{% from "utilities/govcyUtilities.njk" import govcyLocalizeContent %}`: (Optional) Will import the `govcyUtilities` macro which includes [[localization and other utilities]]. 
+- `{% from "govcyElement.njk" import govcyElement %}`: Will import the `govcyElement` macro which is responsible for rendering all the [design elements](#included-design-elements).
+- `{% from "utilities/govcyUtilities.njk" import govcyLocalizeContent %}`: (Optional) Will import the `govcyUtilities` macro which includes [localization](#localization) and other utilities. 
 
 To render design elements, the packages uses the `govcyElement` macro. See more details in the [[design elements]] section.
 
@@ -282,9 +282,9 @@ The `inputData` object has the following structure:
 - **site.title**: the title of the site. It is used in the `<title>`, `<meta property="og:title"` and `<meta property="twitter:title"` tags of the head.
 - **site.description**: the description of the site. It is used in the `<meta name="description"`, `<meta property="og:description"` and `<meta property="twitter:description"` tags of the head.
 - **site.url**: the URL of the site. It is used in the `<meta property="og:url"` and `<meta property="twitter:url"` tags of the head.
-- **site.cdn.dist**: the CDN of the site. It is used to define the URL of the CDN used for the CSS and JS files.
-- **site.cdn.cssIntegrity**: the integrity of the CSS file. It is used to define the integrity of the CSS file.
-- **site.cdn.jsIntegrity**: the integrity of the JS file. It is used to define the integrity of the JS file.
+- **site.cdn.dist**: the CDN of the site. It is used to define the URL of the CDN used for the CSS and JS files. If you need to change the version of the CDN, you can do it by changing this value (in this case you will need to change the `site.cdn.cssIntegrity` and `site.cdn.jsIntegrity` values as well)
+- **site.cdn.cssIntegrity**: the integrity of the CSS file. It is used to define the integrity of the CSS file. If you need to change the version of the CDN, you will need to change this value. https://www.srihash.org/ can help you generate the integrity value.
+- **site.cdn.jsIntegrity**: the integrity of the JS file. It is used to define the integrity of the JS file. If you need to change the version of the CDN, you will need to change this value. https://www.srihash.org/ can help you generate the integrity value.
 - **pageData.title**: the title of the page. It is used in the `<title>`, `<meta property="og:title"` and `<meta property="twitter:title"` tags of the head.
 - **pageData.layout**: the layout of the page. It is used to define the layout (or page template) of the page, which is defined in the `layouts/govcyBase.njk` template.
 - **pageData.mainLayout**: the main layout of the page. It can be either `two-thirds` or `max-width`.
@@ -409,7 +409,7 @@ Define your design elements for each `sections` under the `elements` array. Thes
 
 will use the `govcyElement` macro to render the `textInput` design element as follows:
 
-```jinja
+```Nunjucks
 {{ 
     govcyElement({
     "textInput", 
@@ -422,16 +422,17 @@ will use the `govcyElement` macro to render the `textInput` design element as fo
 
 More details in defining design elements see in the [[design elements]] section.
 
-#### Input template design elements 
+#### Included design elements 
 TODO:
 
-### Language handling in elements
-TODO:
+### Localization
+All content in design elements are defined with an object defining the available languages and their content. For example `label":{"en":"What is your name?","el":"Ποιο είναι το όνομα σας;"}`. When rendering the package will determin which language to use with the following logic and order:
 
-### Changing the design system's version
-TODO:
+1. if `params.lang` is defined in the design element, use that
+2. else if `site.lang` is defined in the `siteData`, use that
+3. else use `el`
 
-Use https://www.srihash.org/
+If the `params.lang` is defined in the design element, the package will also render element with a `lang` attribute. 
 
 
 ## License
