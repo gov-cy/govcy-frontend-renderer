@@ -48,15 +48,15 @@ import { govcyFrontendRenderer } from '@gov-cy/govcy-frontend-renderer';
 ```
 
 The package's main functions accept an input:
-- a [[**JSON object**]] with the site and page meta data 
-- and a [[**template**]] which can either be a `nunjucks` template or a `JSON` object, that define the design elements to be rendered.
+- a **JSON object** with the [site and page meta data](#site-and-page-meta-data-explained) 
+- and a **template** which can either be a [nunjucks template](#nunjucks-template-example) or a [JSON object](#json-template-example), that define the design elements to be rendered.
 
 Whether you are using a nunjucks template or a JSON object, the result is identical as they are both rendered using the same nunjucks macros.
 
 The output returned is a string with the rendered HTML.
 
 ### Nunjucks template example
-Use a [[string with a nunjucks template]] and the `renderFromString` function to render HTML from a nunjucks template. See the example below.
+Use a [string with a nunjucks template](#nunjucks-input-template) and the `renderFromString` function to render HTML from a nunjucks template. See the example below.
 
 ```js
 import { govcyFrontendRenderer } from '@gov-cy/govcy-frontend-renderer';
@@ -131,10 +131,10 @@ It is important to start your template string with the following:
 - `{% from "govcyElement.njk" import govcyElement %}`: Will import the `govcyElement` macro which is responsible for rendering all the [design elements](#included-design-elements).
 - `{% from "utilities/govcyUtilities.njk" import govcyLocalizeContent %}`: (Optional) Will import the `govcyUtilities` macro which includes [localization](#localization) and other utilities. 
 
-To render design elements, the packages uses the `govcyElement` macro. See more details in the [[design elements]] section.
+To render design elements, the packages uses the `govcyElement` macro. See more details in the [design elements](DESIGN_ELEMENTS.md) section.
 
 ### JSON template example
-Use a [[JSON object as the template]] and the `renderFromJSON` function to render HTML from a nunjucks template. See the example below.
+Use a [JSON object as the template](#json-input-template) and the `renderFromJSON` function to render HTML from a nunjucks template. See the example below.
 
 ```js
 import { govcyFrontendRenderer } from '@gov-cy/govcy-frontend-renderer';
@@ -207,7 +207,7 @@ console.log(rtn);
 ```
 In the example above, a sting will be written in the console containing the rendered HTML of a complete page.
 
-More details in defining design elements see in the [[design elements]] section.
+More details in defining design elements see in the [design elements](DESIGN_ELEMENTS.md) section.
 
 ### Render individual components example
 
@@ -332,7 +332,7 @@ let inputString =
 `;
 ```
 
-If your using the `pageData.layout`, you can render html in each of the following [[gov.cy page template]] blocks:
+If your using the `pageData.layout`, you can render html in each of the following [gov.cy page template](https://gov-cy.github.io/govcy-design-system-docs/getting-started/page-template/) blocks:
 - **bodyStart**: the start of the body
 - **header**: the header section (where the gov.cy logo and service name are rendered)
 - **beforeMain**: the section before the main content
@@ -340,7 +340,7 @@ If your using the `pageData.layout`, you can render html in each of the followin
 - **footer**: the footer section
 - **bodyEnd**: the end of the body
 
-Use the `govcyElement` macro inside the blocks to render the design elements defined in the `govcyElement.njk` template. More details in defining design elements see in the [[design elements]] section.
+Use the `govcyElement` macro inside the blocks to render the design elements defined in the `govcyElement.njk` template. More details in defining design elements see in the [design elements](DESIGN_ELEMENTS.md) section.
 
 #### JSON input template
 When using a JSON input template, there is no need to import or extend anything.
@@ -387,7 +387,7 @@ let inputJson =
 
 ```
 
-If your using the `pageData.layout`, you can render html in each of the following [[gov.cy page template]] blocks, by using the `sections` array (in a similar way `blocks` is use ) :
+If your using the `pageData.layout`, you can render html in each of the following [gov.cy page template](https://gov-cy.github.io/govcy-design-system-docs/getting-started/page-template/) blocks, by using the `sections` array (in a similar way `blocks` is use ) :
 - **bodyStart**: the start of the body
 - **header**: the header section (where the gov.cy logo and service name are rendered)
 - **beforeMain**: the section before the main content
@@ -420,10 +420,10 @@ will use the `govcyElement` macro to render the `textInput` design element as fo
 }}
 ```
 
-More details in defining design elements see in the [[design elements]] section.
+More details in defining design elements see in the [design elements](DESIGN_ELEMENTS.md) section.
 
 #### Included design elements 
-TODO:
+More details on the elements that are supported by the package and how to include them in your templates, can be found on the [design elements](DESIGN_ELEMENTS.md) document.
 
 ### Localization
 All content in design elements are defined with an object defining the available languages and their content. For example `label":{"en":"What is your name?","el":"Ποιο είναι το όνομα σας;"}`. When rendering the package will determin which language to use with the following logic and order:
@@ -434,6 +434,9 @@ All content in design elements are defined with an object defining the available
 
 If the `params.lang` is defined in the design element, the package will also render element with a `lang` attribute. 
 
+## Change the package
+
+Details on how to build, test and update the project can be found in the [project notes](NOTES.md) document.
 
 ## License
 
