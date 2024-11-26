@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [v0.0.15] - 2024-11-26
 ### Added
+- Version control workflow
+
+## [v0.0.15] - 2024-11-26
+### Added
 - Text Area component
 
 ## [v0.0.14] - 2024-11-19
