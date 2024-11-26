@@ -62,8 +62,11 @@ jobs:
         uses: actions/github-script@v5
         with:
           script: |
-            const majorVersion = "${{ steps.major-version.outputs.major }}";
+            const majorVersion = process.env.major || "0"; // Default to "0" if not set
+            console.log(`Extracted Major Version: ${majorVersion}`); // Debugging output
             const tagName = `v${majorVersion}.x.x`;
+            console.log(`Tag to create: ${tagName}`); // Debugging output
+            
             const tagExists = await github.rest.git.getRef({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
