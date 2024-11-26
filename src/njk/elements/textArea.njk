@@ -1,0 +1,75 @@
+{# text Area 
+ @param {object} label The label text. Will escape text. Example `{en:"Content",el:"Περιεχομένο"}`  
+ @param {string} id The input id. Will escape text 
+ @param {string} name The input name. Will escape text. Optional
+ @param {object} hint The hint text. Optional. Will escape text. Example `{en:"Content",el:"Περιεχομένο"}`  
+ @param {boolean} isPageHeading Is the label also the page heading? Optional, default is false. Can be true,false 
+ @param {boolean} isSpellcheck true renders nothing, false renders spellcheck="false"? Optional, default is true. Can be true,false 
+ @param {string} autocomplete The autocomplete attribute. Optional. Can be email, name, ... 
+ @param {string} classes Additional classes to add to the outer div. Optional 
+ @param {object} error If not empty there is an error message and displays the error variant. Optional, default is ''. Will escape text. Example `{en:"Content",el:"Περιεχομένο"}`  
+ @param {boolean} hideFormControlError If true, hides the form control error (red line on the left). Mostly used in conditional radio elements. Optional  
+ @param {string} lang The language used. Can be 'en','el'. Optional.
+ @param {string} rows The rows attribute of the textarea. Optional, default is '5' 
+ @param {object} characterCount The character count object. Optional. i.e. {"type":"char","max":150}
+ @param {string} characterCount.type The character count type. Optional, default is 'char'. Can be 'char' or 'word'
+ @param {int} characterCount.max The character count maxchars or maxwords. Default is 100
+ @returns govcy text Area 
+#}
+{% macro textArea(params) -%}
+{#- Import localizer from utilities -#}
+{%- from "../utilities/govcyUtilities.njk" import govcyLocalizeContent, govcyLangAttribute -%}
+{%- from "./formControl.njk" import formControl -%}
+{%- from "./hint.njk" import hint -%}
+{%- from "./label.njk" import label -%}
+{%- from "./errorMessage.njk" import errorMessage -%}
+{#- set default values -#}
+{%- set isPageHeading = params.isPageHeading | default(false) -%}
+{%- set isSpellcheck = params.isSpellcheck | default(false) -%}
+{%- set autocomplete = params.autocomplete | default(false) -%}
+{%- set rows = params.rows | default('5') -%}
+{#- label and id are mandatory -#}
+{%- if params.label and params.id -%}
+    {#- set hint label error ids -#}
+    {%- set hintId = [params.id, "-hint"] | join -%}
+    {%- set labelId = [params.id, "-label"] | join -%}
+    {%- set errorId = [params.id, "-error"] | join -%}
+    {%- set charactercountId = [params.id, "-char-count"] | join -%}
+    {#- set spellcheck to false if not empty -#}
+    {%- if isSpellcheck -%}
+        {%- set inputSpellcheck = 'spellcheck="true"' -%}
+    {%- else -%}
+        {%- set inputSpellcheck = 'spellcheck="false"' -%}
+    {%- endif -%}
+    {#- set autocomplete -#}
+    {%- if autocomplete -%}
+        {%- set inputAutocomplete %}autocomplete="{{ autocomplete | safe }}"{% endset -%}
+    {%- else -%}
+        {%- set inputAutocomplete = '' -%}
+    {%- endif -%}
+    {% call formControl({isError: false if params.hideFormControlError else params.error,classes:params.classes,lang:params.lang}) %}
+        {#- render label -#}
+        {% call label({label:params.label, id:labelId, for:params.id, isPageHeading:isPageHeading, lang:params.lang}) %}{% endcall %}
+        {#- render hint -#}
+        {% call hint({hint:params.hint,id:hintId, lang:params.lang}) %}{% endcall %}
+        {#- render error message -#}
+        {% call errorMessage({message:params.error,id:errorId, lang:params.lang}) %}{% endcall %}
+        {#- render input -#}
+        <textarea id="{{params.id}}"{% if params.name %} name="{{ params.name }}"{% endif %} rows="{{rows}}" {{ inputSpellcheck | safe }} {{ inputAutocomplete | safe }} class="govcy-text-area{% if params.error %} govcy-text-area-error{% endif %}"{% if params.hint or params.error or params.characterCount%} aria-describedby="{%- if params.characterCount -%}{{charactercountId}}{% endif %}{% if params.hint %} {{hintId}}{% endif %}{% if params.error %} {{errorId}}{% endif %}"{% endif %}></textarea>
+        {# character count #}
+        {%- if params.characterCount -%}
+            {%- set charactercountType = params.characterCount.type | default('char') -%}
+            {%- set charactercountMax = params.characterCount.max | default(100) -%}
+            {#- set language labels -#}
+            {%- set charRemaining = govcyLocalizeContent({en:"You have <span></span> characters remaining",el:"Έχετε <span></span> χαρακτήρες που απομένουν"}, params.lang, true) -%}
+            {%- set charExceeding = govcyLocalizeContent({en:"You have entered <span></span> characters more",el:"Έχετε περάσει <span></span> χαρακτήρες περισσότερους"}, params.lang, true) -%}
+            {%- set wordRemaining = govcyLocalizeContent({en:"You have <span></span> words remaining",el:"Έχετε <span></span> λέξεις που απομένουν"}, params.lang, true) -%}
+            {%- set wordsExceeding = govcyLocalizeContent({en:"You have entered <span></span> words more",el:"Έχετε περάσει <span></span> λέξεις περισσότερες"}, params.lang, true) -%}
+            <div id="{{ charactercountId }}" class="govcy-character-count" {%- if charactercountType=='word' -%} data-maxwords{%- else -%} data-maxchars{%- endif -%}="{{ charactercountMax }}">
+                <div class="govcy-character-remaining-counter">{%- if charactercountType=='word' -%}{{ wordRemaining | safe }}{%- else -%}{{ charRemaining | safe }}{%- endif -%}</div>
+                <div class="govcy-character-more-counter">{%- if charactercountType=='word' -%}{{ wordsExceeding | safe }}{%- else -%}{{ charExceeding | safe }}{%- endif -%}</div>
+            </div>
+        {%- endif -%}
+    {% endcall %}
+{%- endif -%}
+{%- endmacro %}

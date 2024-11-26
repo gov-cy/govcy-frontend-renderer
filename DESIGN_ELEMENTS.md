@@ -1884,3 +1884,106 @@ This element is used to add textInput as defined in the [UDS - textInput](https:
 In order to get the gov.cy styles, you need to add it inside a `form` element. 
 
 </details>
+
+<details>
+  <summary>textArea (and character count)</summary>
+  
+## textArea (and character count)
+
+This element is used to add textArea as defined in the [UDS - textArea](https://gov-cy.github.io/govcy-design-system-docs/components/textarea/) and it's variant [UDS - charachet count](https://gov-cy.github.io/govcy-design-system-docs/components/character_count/).
+
+To use convert the element into a character count component, add the `params.characterCount` parameter.
+
+**Element name** : `textArea`
+
+**Parameters** :
+```js
+/**
+ @param {object} label The label text. Will escape text. Example `{en:"Content",el:"Περιεχομένο"}`  
+ @param {string} id The input id. Will escape text 
+ @param {string} name The input name. Will escape text. Optional
+ @param {object} hint The hint text. Optional. Will escape text. Example `{en:"Content",el:"Περιεχομένο"}`  
+ @param {boolean} isPageHeading Is the label also the page heading? Optional, default is false. Can be true,false 
+ @param {boolean} isSpellcheck true renders nothing, false renders spellcheck="false"? Optional, default is true. Can be true,false 
+ @param {string} autocomplete The autocomplete attribute. Optional. Can be email, name, ... 
+ @param {string} classes Additional classes to add to the outer div. Optional 
+ @param {object} error If not empty there is an error message and displays the error variant. Optional, default is ''. Will escape text. Example `{en:"Content",el:"Περιεχομένο"}`  
+ @param {boolean} hideFormControlError If true, hides the form control error (red line on the left). Mostly used in conditional radio elements. Optional  
+ @param {string} lang The language used. Can be 'en','el'. Optional.
+ @param {string} rows The rows attribute of the textarea. Optional, default is '5' 
+ @param {object} characterCount The character count object. Optional. i.e. {"type":"char","max":150}
+ @param {string} characterCount.type The character count type. Optional, default is 'char'. Can be 'char' or 'word'
+ @param {int} characterCount.max The character count maxchars or maxwords. Default is 100
+**/
+```
+
+**JSON Example** 
+```json
+{
+    "element": "textArea",
+    "params": {
+        "label": {
+            "en":"Default Text area with most options, autocomplete, character count char",
+            "el":"Ελληνικά label"
+        }
+        ,"id":"govcy-test-73"
+        ,"name":"govcy-test-73"
+        ,"rows": 7
+        ,"hint": {
+            "en":"English hint",
+            "el":"Ελληνικά hint"
+        }
+        ,"error": {
+            "en":"English error",
+            "el":"Ελληνικά error"
+        }
+        ,"isPageHeading": true
+        ,"isSpellcheck": true
+        ,"autocomplete": "street-address"
+        ,"classes": "govcy-test-class"
+        ,"characterCount": {
+            "type":"char"
+            ,"max":150
+        }
+    }
+}
+```
+
+**Nunjucks Example** 
+
+```Nunjucks
+{{ 
+    govcyElement(
+        "textArea",
+        {
+            "label": {
+                "en":"Default Text area with most options, autocomplete, character count char",
+                "el":"Ελληνικά label"
+            }
+            ,"id":"govcy-test-73"
+            ,"name":"govcy-test-73"
+            ,"rows": 7
+            ,"hint": {
+                "en":"English hint",
+                "el":"Ελληνικά hint"
+            }
+            ,"error": {
+                "en":"English error",
+                "el":"Ελληνικά error"
+            }
+            ,"isPageHeading": true
+            ,"isSpellcheck": true
+            ,"autocomplete": "street-address"
+            ,"classes": "govcy-test-class"
+            ,"characterCount": {
+                "type":"char"
+                ,"max":150
+            }
+        }
+    ) 
+}}
+```
+**Notes** :
+In order to get the gov.cy styles, you need to add it inside a `form` element. 
+
+</details>

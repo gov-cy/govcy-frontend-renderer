@@ -2496,6 +2496,59 @@
                                 }
                         ] 
                     }
+                },
+                {
+                    "element": "form",
+                    "params": {
+                        "elements": [
+                            {
+                                "element": "htmlElement",
+                                "params": {
+                                    "text":{"en":"<h2>Text Area, Character count</h2>","el":"Ελληνικά legend"}
+                                }
+                            },
+                            {
+                                "element": "textArea",
+                                "params": {
+                                    "label":{"en":"Default Text area","el":"Όνομα"}
+                                    ,"id":"govcy-test-72"
+                                }
+                            },
+                            {
+                                "element": "textArea",
+                                "params": {
+                                    "label":{"en":"Default Text area with most options, autocomplete, character count char","el":"Όνομα"}
+                                    ,"id":"govcy-test-73"
+                                    ,"name":"govcy-test-73"
+                                    ,"rows": 7
+                                    ,"hint": {"en":"English hint","el":"Ελληνικά hint"}
+                                    ,"error": {"en":"English error","el":"Ελληνικά error"}
+                                    ,"isPageHeading": true
+                                    ,"isSpellcheck": true
+                                    ,"autocomplete": "street-address"
+                                    ,"classes": "govcy-test-class"
+                                    ,"characterCount": {"type":"char","max":150}
+                                }
+                            },
+                            {
+                                "element": "textArea",
+                                "params": {
+                                    "label":{"en":"English label","el":"Default Text area with most options, autocomplete, character count word, lang el"}
+                                    ,"id":"govcy-test-74"
+                                    ,"name":"govcy-test-74"
+                                    ,"lang":"el"
+                                    ,"rows": 7
+                                    ,"hint": {"en":"English hint","el":"Ελληνικά hint"}
+                                    ,"error": {"en":"English error","el":"Ελληνικά error"}
+                                    ,"isPageHeading": true
+                                    ,"isSpellcheck": true
+                                    ,"autocomplete": "street-address"
+                                    ,"classes": "govcy-test-class"
+                                    ,"characterCount": {"type":"word","max":150}
+                                }
+                            }
+                        ]
+                    }
                 }
             ]
         }

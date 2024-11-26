@@ -1,7 +1,7 @@
 - [X] Copy structure
 - [X] Create 1 component
 - [X] Update test
-- [ ] Read me
+- [x] Read me
 - [X] Change log
 - [X] Notes 
 - [X] Localized content `{% from "../utilities/govcyUtilities.njk" import govcyLocalizeContent %}`
@@ -13,7 +13,7 @@
     - [X] add `lang='{{ params.lang }}'` in components
 - [ ] Add components
     - [X] textInput
-    - [ ] textArea
+    - [x] textArea
     - [X] fieldSet
     - [X] radios
         - [x] conditional radios

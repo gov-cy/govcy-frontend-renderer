@@ -1162,4 +1162,53 @@ function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
+    it(checksNum+'72 `textArea` macro render as expected. Default options', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([ 
+            `<div\\s*class="govcy-form-control">`,//form control 
+            `\\s*<label\\s*id="govcy-test-72-label"\\s*class="govcy-label\\s*govcy-label-primary"\\s*for="govcy-test-72"\\s*>\\s*Default Text area\\s*<\\/label>`,//label
+            `\\s*<textarea\\s*id="govcy-test-72"\\s*rows="5"\\s*spellcheck="false"\\s*class="govcy-text-area">\\s*<\\/textarea>`, //textarea
+            `\\s*<\\/div>` //closing tags
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+    it(checksNum+'73 `textArea` macro render as expected. Default Text area with most options, autocomplete, character count char', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([ 
+            `<div\\s*class="govcy-form-control\\s*govcy-form-control-error\\s*govcy-test-class">`,//form control 
+            `\\s*<h1>\\s*<label\\s*id="govcy-test-73-label"\\s*class="govcy-label\\s*govcy-label-primary"\\s*for="govcy-test-73"\\s*>\\s*Default Text area with most options, autocomplete, character count char\\s*<\\/label>\\s*<\\/h1>`,//label
+            `\\s*<span\\s*id="govcy-test-73-hint"\\s*class="govcy-hint">\\s*English hint\\s*<\\/span>`, //hint
+            `\\s*<p\\s*id="govcy-test-73-error"\\s*class="govcy-input-error-msg">\\s*<span class="govcy-visually-hidden-error">\\s*Error:\\s*<\\/span>\\s*English error\\s*<\\/p>`, //error
+            `\\s*<textarea\\s*id="govcy-test-73"\\s*name="govcy-test-73"\\s*rows="7"\\s*spellcheck="true"\\s*autocomplete="street-address"\\s*class="govcy-text-area\\s*govcy-text-area-error"\\s*aria-describedby="govcy-test-73-char-count\\s*govcy-test-73-hint\\s*govcy-test-73-error">\\s*<\\/textarea>`, //textarea
+            `\\s*<div\\s*id="govcy-test-73-char-count"\\s*class="govcy-character-count"\\s*data-maxchars="150">`, //character count
+            `\\s*<div\\s*class="govcy-character-remaining-counter">\\s*You have <span><\\/span> characters remaining\\s*<\\/div>`, //remaining counter
+            `\\s*<div\\s*class="govcy-character-more-counter">\\s*You have entered <span><\\/span> characters more\\s*<\\/div>`, //more counter
+            `\\s*<\\/div>`, //closing character count
+            `\\s*<\\/div>` //closing tags
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+    it(checksNum+'74 `summaryList` multiple elements and actions in Greek', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([            
+            `<div\\s*class="govcy-form-control\\s*govcy-form-control-error\\s*govcy-test-class"\\s* lang="el">`,//form control 
+            `\\s*<h1>\\s*<label\\s*id="govcy-test-74-label"`,//label
+            `([\\s\\S]*?)`,
+            `Default Text area with most options, autocomplete, character count word, lang el`,
+            `([\\s\\S]*?)`,
+            `Ελληνικά hint`,
+            `([\\s\\S]*?)`,
+            `Σφάλμα:`,
+            `([\\s\\S]*?)`,
+            `Ελληνικά error`,
+            `([\\s\\S]*?)`,
+            `Έχετε <span><\\/span> λέξεις που απομένουν`,
+            `([\\s\\S]*?)`,
+            `Έχετε περάσει <span><\\/span> λέξεις περισσότερες`
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
 }

@@ -48,3 +48,7 @@ Here's a checklist to follow when releasing a new version of the project.
 
 - [ ] **9. update version number**. Update the `package.json` with a new version number.
 - [ ] **10. update changelog**. Update the `CHANGELOG.md` with the changes.
+
+### Document
+
+- [ ] **11. update design elements documentation**. Update the `DESIGN_ELEMENTS.md` documenting the change.
