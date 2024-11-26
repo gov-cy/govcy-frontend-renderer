@@ -56,7 +56,7 @@ jobs:
       - name: Extract Major Version
         if: steps.version-check.outputs.changed == 'true'
         id: major-version
-        run: echo "::set-output name=major::$(echo '${{ steps.version-check.outputs.version }}' | cut -d. -f1)"
+        run: echo "major=$(echo '${{ steps.version-check.outputs.version }}' | cut -d. -f1)" >> $GITHUB_ENV
       - name: Create 'vX.x.x' version git tag
         if: steps.version-check.outputs.changed == 'true'
         uses: actions/github-script@v5
@@ -78,10 +78,10 @@ jobs:
               });
             }
 
-            github.rest.git.createRef({
+            await.github.rest.git.createRef({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              ref: 'refs/tags/${tagName}',
+              ref: `refs/tags/${tagName}`,
               sha: context.sha
             })
       # Publish on npm
