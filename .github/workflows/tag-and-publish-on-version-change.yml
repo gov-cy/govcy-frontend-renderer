@@ -65,25 +65,25 @@ jobs:
             const majorVersion = "${{ steps.major-version.outputs.major }}";
             const tagName = `v${majorVersion}.x.x`;
             const tagExists = await github.rest.git.getRef({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              ref: `tags/${tagName}`
-            }).catch(() => null);
-
-            if (tagExists) {
-              await github.rest.git.deleteRef({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 ref: `tags/${tagName}`
-              });
+            }).catch(() => null);
+
+            if (tagExists) {
+                await github.rest.git.deleteRef({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                ref: `tags/${tagName}`
+                });
             }
 
-            await.github.rest.git.createRef({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              ref: `refs/tags/${tagName}`,
-              sha: context.sha
-            })
+            await github.rest.git.createRef({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                ref: `refs/tags/${tagName}`,
+                sha: context.sha
+            });
       # Publish on npm
     #   - name: Setup Node
     #     uses: actions/setup-node@v2
