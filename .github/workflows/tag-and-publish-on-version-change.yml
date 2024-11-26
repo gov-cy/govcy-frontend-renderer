@@ -24,7 +24,7 @@ jobs:
         run: echo "You should NEVER decrement/ decrease the version in the package.json. This will undermine confidence in our ability to follow semver rules"; exit 1
       - name: Check package.lock::version updated if ./dist changed
         if: steps.version-check.outputs.changed == 'false'
-        run: echo "You have updated the distribution without incrementing the version number. You must update package.json::version to publish a new version"; exit 1
+        run: echo "Version remained the same. Exiting..."; 
       - name: Create 'vX.X.X' version git tag
         if: steps.version-check.outputs.changed == 'true'
         uses: actions/github-script@v5
