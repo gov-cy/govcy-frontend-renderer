@@ -88,14 +88,14 @@ jobs:
                 sha: context.sha
             });
       # Publish on npm
-    #   - name: Setup Node
-    #     uses: actions/setup-node@v2
-    #     with:
-    #       node-version: '18.x'
-    #       registry-url: 'https://registry.npmjs.org'
-    #   - name: Install dependencies 
-    #     run: npm install
-    #   - name: Publish package on NPM 📦
-    #     run: npm publish --access=public
-    #     env:
-    #       NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18.x'
+          registry-url: 'https://registry.npmjs.org'
+      - name: Install dependencies 
+        run: npm install
+      - name: Publish package on NPM 📦
+        run: npm publish --access=public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

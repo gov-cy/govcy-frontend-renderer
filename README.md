@@ -1,5 +1,5 @@
 [![npm (scoped)](https://img.shields.io/npm/v/@govcy-frontend-renderers)](https://www.npmjs.com/package/@govcy-frontend-renderers)
-![License](https://img.shields.io/github/license/govcy-frontend-renderer)
+![License](https://img.shields.io/github/license/gov-cy/govcy-frontend-renderer)
 [![Unit test](https://github.com/gov-cy/govcy-frontend-renderer/actions/workflows/unit-test.yml/badge.svg)](https://github.com/gov-cy/govcy-frontend-renderer/actions/workflows/unit-test.yml)
 [![tag-and-publish-on-version-change](https://github.com/gov-cy/govcy-frontend-renderer/actions/workflows/tag-and-publish-on-version-change.yml/badge.svg)](https://github.com/gov-cy/govcy-frontend-renderer/actions/workflows/tag-and-publish-on-version-change.yml)
 
