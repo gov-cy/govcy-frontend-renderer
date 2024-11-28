@@ -21,7 +21,7 @@
     - [X] fileInput
     - [X] fileView
     - [x] summaryList
-        - [ ] complicated summaryList
+        - [x] complicated summaryList
     - [x] table
     - [x] tag
     - [x] button

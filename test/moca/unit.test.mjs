@@ -1092,7 +1092,7 @@ function renderChecks(renderedHTML, checksNum){
     it(checksNum+'70 `summaryList` multiple elements and actions in Greek', async () => {
         // check for structure   
         let expectedRegex =  new RegExp ([            
-            `<dl\\s*id="govcy-test-70"\\s*class="govcy-summary-list">`, //dl
+            `<dl\\s*id="govcy-test-70"\\s*class="govcy-summary-list" lang="el">`, //dl
             `([\\s\\S]*?)`,
             `el Name`,
             `([\\s\\S]*?)`,
@@ -1190,7 +1190,7 @@ function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'74 `summaryList` multiple elements and actions in Greek', async () => {
+    it(checksNum+'74 `textArea` with most options, autocomplete, character count word, lang el', async () => {
         // check for structure   
         let expectedRegex =  new RegExp ([            
             `<div\\s*class="govcy-form-control\\s*govcy-form-control-error\\s*govcy-test-class"\\s* lang="el">`,//form control 
@@ -1207,6 +1207,111 @@ function renderChecks(renderedHTML, checksNum){
             `Έχετε <span><\\/span> λέξεις που απομένουν`,
             `([\\s\\S]*?)`,
             `Έχετε περάσει <span><\\/span> λέξεις περισσότερες`
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+    it(checksNum+'75 `summaryList` Complex Summary List', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([            
+            `\\s*<dl\\s*id="govcy-test-75"\\s*class="govcy-summary-list">`,//external dl 
+            //1st row simple 
+            `\\s*<div\\s*class="govcy-summary-list-row">`,//div
+            `\\s*<dt\\s*class="govcy-summary-list-key">\\s*Name\\s*<\\/dt>`,//key simple
+            `\\s*<dd\\s*class="govcy-summary-list-value"\\s*>\\s*Andreas Andreou\\s*<\/dd>`,//value simple
+            `\\s*<dd\\s*class="govcy-summary-list-actions">`,//action dd
+            `\\s*<ul\\s*class="list-inline govcy-my-0">`,//action ul
+            `\\s*<li\\s*class="list-inline-item">\\s*<a\\s*href="#">\\s*Change\\s*<span\\s*class="govcy-visually-hidden">\\s*Date of birth\\s*<\\/span>\\s*<\\/a>\\s*<\\/li>`,//action li
+            `\\s*<\\/ul>\\s*<\\/dd>\\s*<\\/div>`,//closing ul dd div
+            // 2nd row complex 1 entry
+            `\\s*<div\\s*class="govcy-summary-list-row">`,//div
+            `\\s*<dt\\s*class="govcy-summary-list-key">\\s*Date of birth\\s*<span\\s*class="govcy-visually-hidden">\\s*1 Entries\\s*<\\/span>\\s*<\\/dt>`,//key complex with 1 entry
+            `\\s*<dd\\s*class="govcy-summary-list-value"\\s*>`,//opening value dd comlpex
+            `\\s*10 March 1990`,//simple value in complex example#
+            // INNET DL START
+            `\\s*<dl\\s*class="govcy-summary-list-row-internal">`,//inner dl in complex example
+            `\\s*<dt><span\\s*class="govcy-visually-hidden">\\s*Entry 1\\s*<\\/span><\\/dt>`,//entry count in complex example
+            `\\s*<dt\\s*class="govcy-summary-list-key-internal">\\s*Day 1\\s*<\\/dt>`,//dt inner key in complex example
+            `\\s*<dd\\s*class="govcy-summary-list-value-internal">\\s*10\\s*<\\/dd>`,//dd inner value in complex example
+            `\\s*<dt\\s*class="govcy-summary-list-key-internal">\\s*Month\\s*<\\/dt>`,//dt inner key in complex example
+            `\\s*<dd\\s*class="govcy-summary-list-value-internal">\\s*March\\s*<\\/dd>`,//dd inner value in complex example
+            `\\s*<dt\\s*class="govcy-summary-list-key-internal">\\s*Year\\s*<\\/dt>`,//dt inner key in complex example
+            `\\s*<dd\\s*class="govcy-summary-list-value-internal">\\s*1990\\s*<\\/dd>`,//dd inner value in complex example
+            `\\s*<\\/dl>`,//closing dl inner value in complex example
+            // INNET DL END
+            `\\s*<\\/dd>`,//closing value dd complex
+            `\\s*<dd\\s*class="govcy-summary-list-actions">`,//action dd
+            `\\s*<ul\\s*class="list-inline govcy-my-0">`,//action ul
+            `\\s*<li\\s*class="list-inline-item">\\s*<a\\s*href="#">\\s*Change\\s*<span\\s*class="govcy-visually-hidden">\\s*Date of birth\\s*<\\/span>\\s*<\\/a>\\s*<\\/li>`,//action li
+            `\\s*<\\/ul>\\s*<\\/dd>\\s*<\\/div>`,//closing ul dd div
+            // 3nd row complex 2 entry
+            `\\s*<div\\s*class="govcy-summary-list-row">`,//div
+            `\\s*<dt\\s*class="govcy-summary-list-key">\\s*Address\\s*<span\\s*class="govcy-visually-hidden">\\s*2 Entries\\s*<\\/span>\\s*<\\/dt>`,//key complex with 2 entries
+            `\\s*<dd\\s*class="govcy-summary-list-value"\\s*>`,//opening value dd comlpex
+            // INNET DL START
+            `\\s*<dl\\s*class="govcy-summary-list-row-internal">`,//inner dl in complex example
+            `\\s*<dt><span\\s*class="govcy-visually-hidden">\\s*Entry 1\\s*<\\/span><\\/dt>`,//entry count in complex example
+            `\\s*<dt\\s*class="govcy-summary-list-key-internal">\\s*Address line 1\\s*<\\/dt>`,//dt inner key in complex example
+            `\\s*<dd\\s*class="govcy-summary-list-value-internal">\\s*1 Some Steet\\s*<\\/dd>`,//dd inner value in complex example
+            `\\s*<dt\\s*class="govcy-summary-list-key-internal">\\s*Town\\s*<\\/dt>`,//dt inner key in complex example
+            `\\s*<dd\\s*class="govcy-summary-list-value-internal">\\s*Nicosia\\s*<\\/dd>`,//dd inner value in complex example
+            `\\s*<dt\\s*class="govcy-summary-list-key-internal">\\s*Post code\\s*<\\/dt>`,//dt inner key in complex example
+            `\\s*<dd\\s*class="govcy-summary-list-value-internal">\\s*2040\\s*<\\/dd>`,//dd inner value in complex example
+            `\\s*<\\/dl>`,//closing dl inner value in complex example
+            // INNET DL END
+            // INNET DL START
+            `\\s*<dl\\s*class="govcy-summary-list-row-internal">`,//inner dl in complex example
+            `\\s*<dt><span\\s*class="govcy-visually-hidden">\\s*Entry 2\\s*<\\/span><\\/dt>`,//entry count in complex example
+            `\\s*<dt\\s*class="govcy-summary-list-key-internal">\\s*Address line 1\\s*<\\/dt>`,//dt inner key in complex example
+            `\\s*<dd\\s*class="govcy-summary-list-value-internal">\\s*1 Some Steet\\s*<\\/dd>`,//dd inner value in complex example
+            `\\s*<dt\\s*class="govcy-summary-list-key-internal">\\s*Town\\s*<\\/dt>`,//dt inner key in complex example
+            `\\s*<dd\\s*class="govcy-summary-list-value-internal">\\s*Nicosia\\s*<\\/dd>`,//dd inner value in complex example
+            `\\s*<dt\\s*class="govcy-summary-list-key-internal">\\s*Post code\\s*<\\/dt>`,//dt inner key in complex example
+            `\\s*<dd\\s*class="govcy-summary-list-value-internal">\\s*2040\\s*<\\/dd>`,//dd inner value in complex example
+            `\\s*<\\/dl>`,//closing dl inner value in complex example
+            // INNET DL END
+            `\\s*<\\/dd>`,//closing value dd complex
+            `\\s*<dd\\s*class="govcy-summary-list-actions">`,//action dd
+            `\\s*<ul\\s*class="list-inline govcy-my-0">`,//action ul
+            `\\s*<li\\s*class="list-inline-item">\\s*<a\\s*href="#">\\s*Change\\s*<span\\s*class="govcy-visually-hidden">\\s*Address\\s*<\\/span>\\s*<\\/a>\\s*<\\/li>`,//action li
+            `\\s*<li\\s*class="list-inline-item">\\s*<a\\s*href="#2">\\s*Remove\\s*<span\\s*class="govcy-visually-hidden">\\s*Address\\s*<\\/span>\\s*<\\/a>\\s*<\\/li>`,//action li
+            `\\s*<\\/ul>\\s*<\\/dd>\\s*<\\/div>`,//closing ul dd div
+            `\\s*<\\/dl>`,//closing dl
+            // `([\\s\\S]*?)`,
+
+            // `([\\s\\S]*?)`
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+    it(checksNum+'76 `summaryList` Complex Summary List EL', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([            
+            `\\s*<dl\\s*id="govcy-test-76"\\s*class="govcy-summary-list" lang="el">`,//external dl 
+            `([\\s\\S]*?)`,
+            `EL Date of birth`,
+            `([\\s\\S]*?)`,
+            `1 Καταχωρήσεις`,
+            `([\\s\\S]*?)`,
+            `EL 10 March 1990`,
+            `([\\s\\S]*?)`,
+            `Καταχώρηση 1`,
+            `([\\s\\S]*?)`,
+            `EL Day`,
+            `([\\s\\S]*?)`,
+            `EL 10`,
+            `([\\s\\S]*?)`,
+            `EL Month`,
+            `([\\s\\S]*?)`,
+            `EL March`,
+            `([\\s\\S]*?)`,
+            `EL Year`,
+            `([\\s\\S]*?)`,
+            `Αλλαγή`,
+            `([\\s\\S]*?)`,
+            `Ημερομηνία γέννησης`,
+            `([\\s\\S]*?)`,
+            `EL Address govcy-test-76`
         ].join(''));
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);

@@ -1295,6 +1295,238 @@
             }
         ]
     }) %}{% endcall %}
+    <h2>Complex Summary List</h2>
+    {{ govcyElement("summaryList",{
+        "id":"govcy-test-75",
+        "items":[
+            {
+                "key":{"en":"Name","el":"el Name"},
+                "value":
+                [
+                    {"element":"htmlElement","params":{"text":{"en":"Andreas ","el":"EL Andreas"} } }
+                    ,{"element":"htmlElement","params":{"text":{"en":"Andreou","el":"Andreou"} } }
+                    
+                ],
+                "actions":[
+                    {
+                        "text":{"en":"Change","el":"Αλλαγή"},
+                        "href": "#",
+                        "visuallyHiddenText": {"en":"Date of birth","el":"Ημερομηνία γέννησης"}
+                    }
+                ]
+            },
+            {
+                "key":{"en":"Date of birth","el":"el Date of birth"},
+                "value":
+                [
+                    {"element":"htmlElement","params":{"text":{"en":"10 March 1990","el":"EL 10 March 1990"} } }
+                    ,{"element":"summaryList",
+                    "params":
+                        {
+                            "items":[
+                                {
+                                    "key":{"en":"Day 1","el":"el Day"},
+                                    "value":
+                                    [
+                                        {"element":"htmlElement","params":{"text":{"en":"10","el":"EL"} } }
+                                    ]
+                                },
+                                {
+                                    "key":{"en":"Month","el":"el Month"},
+                                    "value":
+                                    [
+                                        {"element":"htmlElement","params":{"text":{"en":"March","el":"EL"} } }
+                                    ]
+                                },
+                                {
+                                    "key":{"en":"Year","el":"el Year"},
+                                    "value":
+                                    [
+                                        {"element":"htmlElement","params":{"text":{"en":"1990","el":"EL"} } }
+                                    ]
+                                }
+                            ]
+                        } 
+                    }
+                ],
+                "actions":[
+                    {
+                        "text":{"en":"Change","el":"Αλλαγή"},
+                        "href": "#",
+                        "visuallyHiddenText": {"en":"Date of birth","el":"Ημερομηνία γέννησης"}
+                    }
+                ]
+            },
+            {
+                "key":{"en":"Address","el":"el Address"},
+                "value":
+                [
+                    {"element":"summaryList",
+                    "params":
+                        {
+                            "items":[
+                                {
+                                    "key":{"en":"Address line 1","el":"el Address line 1 EL"},
+                                    "value":
+                                    [
+                                        {"element":"htmlElement","params":{"text":{"en":"1 Some Steet","el":"EL"} } }
+                                    ]
+                                },
+                                {
+                                    "key":{"en":"Town","el":"el Town"},
+                                    "value":
+                                    [
+                                        {"element":"htmlElement","params":{"text":{"en":"Nicosia","el":"EL"} } }
+                                    ]
+                                },
+                                {
+                                    "key":{"en":"Post code","el":"el Post postcode"},
+                                    "value":
+                                    [
+                                        {"element":"htmlElement","params":{"text":{"en":"2040","el":"EL"} } }
+                                    ]
+                                }
+                            ]
+                        } 
+                    },
+                    {"element":"summaryList",
+                    "params":
+                        {
+                            "items":[
+                                {
+                                    "key":{"en":"Address line 1","el":"el Address line 1 EL"},
+                                    "value":
+                                    [
+                                        {"element":"htmlElement","params":{"text":{"en":"1 Some Steet","el":"EL"} } }
+                                    ]
+                                },
+                                {
+                                    "key":{"en":"Town","el":"el Town"},
+                                    "value":
+                                    [
+                                        {"element":"htmlElement","params":{"text":{"en":"Nicosia","el":"EL"} } }
+                                    ]
+                                },
+                                {
+                                    "key":{"en":"Post code","el":"el Post postcode"},
+                                    "value":
+                                    [
+                                        {"element":"htmlElement","params":{"text":{"en":"2040","el":"EL"} } }
+                                    ]
+                                }
+                            ]
+                        } 
+                    }
+                ],
+                "actions":[
+                    {
+                        "text":{"en":"Change","el":"Αλλαγή"},
+                        "href": "#",
+                        "visuallyHiddenText": {"en":"Address","el":"el Address"}
+                    },
+                    {
+                        "text":{"en":"Remove","el":"Διαγραφή"},
+                        "href": "#2", 
+                        "visuallyHiddenText": {"en":"Address","el":"el Address"}
+                    }
+                ]
+            }
+        ]
+    })}}
+    {{ govcyElement("summaryList",{
+        "id":"govcy-test-76",
+        "lang":"el",
+        "items":[
+            {
+                "key":{"en":"Date of birth","el":"EL Date of birth"},
+                "value":
+                [
+                    {"element":"htmlElement","params":{"text":{"en":"10 March 1990","el":"EL 10 March 1990"} } }
+                    ,{"element":"summaryList",
+                    "params":
+                        {
+                            "items":[
+                                {
+                                    "key":{"en":"Day 1","el":"EL Day"},
+                                    "value":
+                                    [
+                                        {"element":"htmlElement","params":{"text":{"en":"10","el":"EL 10"} } }
+                                    ]
+                                },
+                                {
+                                    "key":{"en":"Month","el":"EL Month"},
+                                    "value":
+                                    [
+                                        {"element":"htmlElement","params":{"text":{"en":"March","el":"EL March"} } }
+                                    ]
+                                },
+                                {
+                                    "key":{"en":"Year","el":"EL Year"},
+                                    "value":
+                                    [
+                                        {"element":"htmlElement","params":{"text":{"en":"1990","el":"EL 1990"} } }
+                                    ]
+                                }
+                            ]
+                        } 
+                    }
+                ],
+                "actions":[
+                    {
+                        "text":{"en":"Change","el":"Αλλαγή"},
+                        "href": "#",
+                        "visuallyHiddenText": {"en":"Date of birth","el":"Ημερομηνία γέννησης"}
+                    }
+                ]
+            },
+            {
+                "key":{"en":"Address","el":"EL Address"},
+                "value":
+                [
+                    {"element":"summaryList",
+                    "params":
+                        {
+                            "items":[
+                                {
+                                    "key":{"en":"Address line 1","el":"EL Address line 1"},
+                                    "value":
+                                    [
+                                        {"element":"htmlElement","params":{"text":{"en":"1 Some Steet","el":"EL 1 Some Steet"} } }
+                                    ]
+                                },
+                                {
+                                    "key":{"en":"Town","el":"EL Town"},
+                                    "value":
+                                    [
+                                        {"element":"htmlElement","params":{"text":{"en":"Nicosia","el":"EL Nicosia"} } }
+                                    ]
+                                },
+                                {
+                                    "key":{"en":"Post code","el":"EL Post postcode"},
+                                    "value":
+                                    [
+                                        {"element":"htmlElement","params":{"text":{"en":"2040","el":"EL 2024"} } }
+                                    ]
+                                }
+                            ]
+                        } 
+                    }
+                ],
+                "actions":[
+                    {
+                        "text":{"en":"Change","el":"Αλλαγή"},
+                        "href": "#",
+                        "visuallyHiddenText": {"en":"Address","el":"EL Address"}
+                    },
+                    {
+                        "text":{"en":"Remove","el":"Διαγραφή"},
+                        "href": "#2", 
+                        "visuallyHiddenText": {"en":"Address","el":"EL Address govcy-test-76"}
+                    }
+                ]
+            }
+        ]
+    })}}
 {% endblock %}
 {% block beforeMain %}
     {{ govcyElement("textElement",{text:{en:"Back ",el:"Πίσω"}, type:"p", id:"govcy-test-25"}) }}
