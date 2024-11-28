@@ -2,6 +2,8 @@
  @param {string} id The id prefix for the options. Will escape text. 
  @param {string} classes Additional classes to add to the outer fieldset. Optional 
  @param {string} lang The language used. Can be 'en','el'. Optional.
+ @param {int} entryCount (NOT TO BE USED BY USERS) The count of the entry to be used in a visually hidden text for screen readers when the list is an inner list. (used in https://gov-cy.github.io/govcy-design-system-docs/components/summary_list/#making-arrays-screen-reader-friendly). Optional
+ @param {Boolean} isInnerList (NOT TO BE USED BY USERS) Determines if the list is an inner list (used in https://gov-cy.github.io/govcy-design-system-docs/components/summary_list/#showing-complex-information). Optional
  @param {array} items The array of items which contain elements
  @param {string} item.key The item key. Will escape text.
  @param {array} item.value The value. This will be an array of elements.
@@ -46,25 +48,35 @@
 {% macro summaryList(params) -%}
 {#- Import localizer from utilities -#}
 {%- from "../utilities/govcyUtilities.njk" import govcyLocalizeContent, govcyLangAttribute, govcyElementsFromArray -%}
-<dl {% if params.id %}id="{{ params.id }}" {% endif %}class="govcy-summary-list{% if params.classes %} {{ params.classes }}{% endif %}">
+<dl {% if params.id %}id="{{ params.id }}" {% endif %}class="{% if not params.isInnerList %}govcy-summary-list{% else %}govcy-summary-list-row-internal{% endif %}{% if params.classes %} {{ params.classes }}{% endif %}"{{ govcyLangAttribute(params.lang) }}>
+    {#- Render visually hidden text for screen readers the entry number -#}
+    {%- if params.entryCount -%}
+        {%- set entryText = govcyLocalizeContent({en:"Entry",el:"Καταχώρηση"}, params.lang) -%}
+        <dt><span class="govcy-visually-hidden">{{ entryText }} {{ params.entryCount}}</span></dt>
+    {%- endif -%}
     {%- for item in params.items %}
-    <div class="govcy-summary-list-row">
-        <dt class="govcy-summary-list-key"{{ govcyLangAttribute(params.lang) }}>
+    {% if not params.isInnerList %}<div class="govcy-summary-list-row">{% endif %}
+        {#- KEY -#}
+        <dt class="{% if not params.isInnerList %}govcy-summary-list-key{% else %}govcy-summary-list-key-internal{% endif %}">
             {{ govcyLocalizeContent(item.key, params.lang) }}
+            {#- Render visually hidden text for screen readers the count of inner entries -#}
+            {%- if not params.isInnerList %}{{ _countSummaryListsRenderVisualyHidden(item.value, params.lang) }}{% endif -%}
         </dt>
-        <dd class="govcy-summary-list-value">
+        {#- VALUE -#}
+        <dd class="{% if not params.isInnerList %}govcy-summary-list-value{% else %}govcy-summary-list-value-internal{% endif %}">
             {%- if item.value -%}
-            {{ govcyElementsFromArray(item.value, params.lang) }}
+            {{ _govcySummayListElementsFromArray(item.value, params.lang) }}
             {%- elif item.actions -%}
                 {{ _summaryListActions(item.actions, params.lang) }}
             {%- endif -%}
         </dd>
-        {%- if item.actions and item.value %}
+        {#- ACTIONS -#}
+        {%- if item.actions and item.value and not params.isInnerList -%}
         <dd class="govcy-summary-list-actions">
             {{ _summaryListActions(item.actions, params.lang) }}
         </dd>
         {%- endif %}
-    </div>
+    {% if not params.isInnerList %}</div>{% endif %}
     {%- endfor %}
 </dl>
 {%- endmacro %}
@@ -104,3 +116,34 @@
     {%- endfor %}
     </ul>
 {%- endmacro %} 
+{#- --------------------------------------- -#}
+{#- render govcyElements from an array -#}
+{%- macro _govcySummayListElementsFromArray(elements, lang) %}
+{%- from "../govcyElement.njk" import govcyElement -%}
+    {%- set summaryListCount = 0 -%} {# Initialize a counter #}
+    {%- for element in elements -%}
+        {%- if lang and not element.params.lang -%}
+            {%- set params = element.params | merge({lang: lang}) -%}
+        {%- else -%}
+            {%- set params = element.params -%}
+        {%- endif -%}
+        {%- if element.element == "summaryList" %}
+            {%- set summaryListCount = summaryListCount + 1 -%} {# Increment the counter #}
+            {%- set params = params | merge({isInnerList: true}) -%}
+            {%- set params = params | merge({entryCount: summaryListCount}) -%}
+        {% endif -%}
+        {%- call govcyElement(element.element, params) %}{% endcall -%}
+    {%- endfor -%}
+{%- endmacro %}
+{#- --------------------------------------- -#}
+{%- macro _countSummaryListsRenderVisualyHidden(elements, lang) -%}
+        {%- set totalCount = 0 -%}
+        {%- for item in elements -%}
+            {%- if item.element == "summaryList" -%}
+                {%- set totalCount = totalCount + 1 -%}
+            {%- endif -%}
+        {%- endfor -%}
+        {%- set entriesText = govcyLocalizeContent({en:"Entries",el:"Καταχωρήσεις"}, lang) -%}
+        {%- if totalCount > 0 %}<span class="govcy-visually-hidden">{{ totalCount }} {{ entriesText }}</span>{% endif -%}
+{%- endmacro %}
+
