@@ -923,6 +923,58 @@ Individual input elements have the legend element included, so there is no need 
 </details>
 
 <details>
+  <summary>markdown</summary>
+  
+## markdown
+
+This element is used to add a html using markdown. There is no distinct definition for the markdown element in the design system. Use it when you want to render custom HTML using markdown.
+
+<u>**CAUTION**</u>
+
+Ths element will also allow you to add scripts and other potentially dangerous elements that could have negative consequences, so use with care.
+
+**Element name** : `markdown`
+
+**Parameters** :
+```js
+/**
+ @param {string} lang The language used. Can be 'en','el'. Optional. 
+ @param {object} text The text. Will not escape text, Example `{en:"\n## Header 2\nThis is a **Markdown-it**",el:"## Τίτλος 2\nΑυτό είναι **Markdown-it**"}` 
+**/ 
+```
+
+**JSON Example** 
+```json
+{
+    "element": "markdown",
+    "params": {
+        "text": {
+            "el": "## Τίτλος 2\nΑυτό είναι **Markdown-it**",
+            "en":"\n## Header 2\nThis is a **Markdown-it**"
+        }
+    }
+}
+```
+
+**Nunjucks Example** 
+
+```Nunjucks
+{{ govcyElement(
+    "markdown",
+        {
+            "text": 
+            {
+                "el": "## Τίτλος 2\nΑυτό είναι **Markdown-it**",
+                "en":"\n## Header 2\nThis is a **Markdown-it**"
+            }
+        }
+    ) 
+}}
+```
+
+</details>
+
+<details>
   <summary>radios</summary>
   
 ## radios
