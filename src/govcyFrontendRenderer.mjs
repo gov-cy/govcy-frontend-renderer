@@ -1,4 +1,6 @@
 import nunjucks from 'nunjucks';
+import MarkdownIt from 'markdown-it';
+import markdownItAttrs from 'markdown-it-attrs';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -29,6 +31,15 @@ export default class govcyFrontendRenderer {
         // Add a custom 'merge' filter
         env.addFilter('merge', (obj1, obj2) => {
           return Object.assign({}, obj1, obj2);
+        });
+        // Initialize Markdown-it
+        const md = new MarkdownIt();
+        md.use(markdownItAttrs);
+        // Add a custom Markdown filter
+        env.addFilter('markdown', (input) => {
+          if (!input) return ''; // Handle empty input
+            const htmlOutput = md.render(input); // Convert Markdown to HTML
+            return new nunjucks.runtime.SafeString(htmlOutput); // Mark as safe to prevent escaping
         });
         const renderedContent = env.renderString(input, data);
         //console.log(renderedContent);

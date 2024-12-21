@@ -1316,4 +1316,17 @@ function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
+    it(checksNum+'77 `markdown` English', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([            
+            `<p>\\s*govcy-test-77-start<\\/p>`,
+            `\\s*<h2>\\s*Header 2\\s*<\\/h2>`,
+            `\\s*<p>\\s*This is a <strong>\\s*Markdown-it\\s*<\\/strong>\\s*example rendered in <em>\\s*Nunjucks\\s*<\\/em>\\s*.\\s*<br>`,
+            `\\s*This is a <a\\s*href="https://google.com"\\s*target="_blank"\\s*>\\s*link\\s*<\\/a>\\s*<\\/p>`,
+            `\\s*<ul>\\s*<li\\s*class="govcy-text-success"\\s*>\\s*test\\s*<\\/li>\\s*<li>\\s*test\\s*<\\/li>\\s*<\\/ul>`,
+            `\\s*<p>\\s*govcy-test-77-end<\\/p>`
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
 }

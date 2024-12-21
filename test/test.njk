@@ -1527,6 +1527,14 @@
             }
         ]
     })}}
+    <h2>Markdown</h2>
+    {{ govcyElement("markdown",{
+        "text":{"en":"govcy-test-77-start\n## Header 2\nThis is a **Markdown-it** example rendered in _Nunjucks_.  \nThis is a [link](https://google.com){target=\"_blank\"}\n- test{.govcy-text-success}\n- test\n\n govcy-test-77-end","el":"Ελληνικά"}
+    })}}
+    {{ govcyElement("markdown",{
+        "lang":"el",
+        "text":{"el":"govcy-test-78-start\n## Τίτλος 2\nΑυτό είναι **Markdown-it** example rendered in _Nunjucks_.  \nΑυτό είναι [λίνκ](https://google.com){target=\"_blank\"}\n- τεστ{.govcy-text-success}\n- τεστ\n\n govcy-test-78-end","en":"English"}
+    })}}
 {% endblock %}
 {% block beforeMain %}
     {{ govcyElement("textElement",{text:{en:"Back ",el:"Πίσω"}, type:"p", id:"govcy-test-25"}) }}

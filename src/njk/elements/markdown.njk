@@ -1,0 +1,13 @@
+{# markdown (use with caution - no escaping)
+ @param {string} lang The language used. Can be 'en','el'. Optional. 
+ @param {object} text The text. Will not escape text, Example `{en:"\n## Header 2\nThis is a **Markdown-it**",el:"## Τίτλος 2\nΑυτό είναι **Markdown-it**"}` 
+ @returns html from markdown  
+#}
+{% macro markdown(params) -%}
+{# text is mandatory #}
+{%- if params.text -%}
+    {#- Import localizer from utilities -#}
+    {%- from "../utilities/govcyUtilities.njk" import govcyLocalizeContent -%}
+    {{ ("" + govcyLocalizeContent(params.text, params.lang, true)) | markdown }}
+{%- endif -%}
+{%- endmacro %}
