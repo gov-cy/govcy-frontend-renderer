@@ -2,7 +2,7 @@ import commonjs from '@rollup/plugin-commonjs';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import json from '@rollup/plugin-json';
 
-export default {
+const nodeConfig = {
   input: 'src/index.mjs',
   output: [
     {
@@ -20,3 +20,23 @@ export default {
     json() // Add the JSON plugin here
   ]
 };
+
+const browserConfig = {
+  input: 'src/govcyFrontendRendererBrowser.mjs',
+  output: [
+    {
+      file: 'dist/govcyFrontendRenderer.browser.js',
+      format: 'iife',
+      name: 'GovcyFrontendRendererBrowser'
+    }
+  ],
+  plugins: [
+    nodeResolve({
+      browser: true,
+    }),
+    commonjs(),
+    json() // Add the JSON plugin here
+  ]
+};
+
+export default [browserConfig, nodeConfig];

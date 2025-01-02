@@ -14,6 +14,7 @@ export default class govcyFrontendRenderer {
      * Returns the rendered html as string, based on the nunjucks templates
      * 
      * @param {string} input The input
+     * @param {Object} data The data
      * @returns {string} Rendered  html as string
      */
       renderFromString(input,data = {}) {
@@ -47,6 +48,13 @@ export default class govcyFrontendRenderer {
         return renderedContent;
     }
 
+     /**
+     * Returns the rendered html as string, based on the json templates
+     * 
+     * @param {onject} input The JSON input
+     * @param {Object} data The data
+     * @returns {string} Rendered  html as string
+     */
     renderFromJSON(input,data = {}) {
       //build the template from the jsonInput
       let jsonTemplate = `{% from "govcyElement.njk" import govcyElement %} `;

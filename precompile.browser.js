@@ -1,25 +1,31 @@
+// Import required modules
 const nunjucks = require('nunjucks');
 const fs = require('fs');
 const path = require('path');
 
-// Define an array of folder paths
+// Define an array of folder paths containing the Nunjucks templates
 const templateDirs = [
     'src/njk/utilities/',
     'src/njk/elements/',
     'src/njk/'
 ];
-const outputFile = './compiled-templates.js';
+
+// Define the output file for the precompiled templates
+const outputFile = './dist/govcyCompiledTemplates.browser.js';
+
+// Create a new Nunjucks environment with a file system loader
+let env = new nunjucks.Environment(new nunjucks.FileSystemLoader('src/njk'));
 
 // Function to precompile templates from multiple folders
-const precompileTemplates = (templateDirs, outputFile) => {
+const precompileTemplates = (templateDirs, outputFile, env) => {
     console.log(`Starting precompilation from multiple folders...`);
 
-    let compiledTemplates = '';
+    let compiledTemplates = ''; // Initialize a string to hold the compiled templates
 
     // Counter to track completed directories
     let processedFolders = 0;
 
-    // Function to write to output file
+    // Function to write the compiled templates to the output file
     const writeOutput = () => {
         fs.writeFile(outputFile, compiledTemplates, (writeErr) => {
             if (writeErr) {
@@ -58,13 +64,27 @@ const precompileTemplates = (templateDirs, outputFile) => {
                 return;
             }
 
+            // Loop through each .njk file in the directory
             njkFiles.forEach((file) => {
-                const filePath = path.join(templateDir, file);
+                const filePath = path.join(templateDir, file); // Get the full path to the file
+                const templateName = path.relative('src/njk', filePath).replace(/\\/g, '/'); // Get the relative path for the template name
 
                 try {
+                    // Read the file content
+                    let fileContent = fs.readFileSync(filePath, 'utf8');
+
+                    // Replace instances of '../' with ''
+                    fileContent = fileContent.replace(/(\.\.\/)+/g, '');
+
+                    // Replace instances of './elements/' with 'elements/'
+                    fileContent = fileContent.replace(/\.\/elements\//g, 'elements/');
+                    
+                    // Replace instances of './' with 'elements/'
+                    fileContent = fileContent.replace(/\.\//g, 'elements/');
+
                     // Precompile the template
-                    const precompiled = nunjucks.precompile(filePath, { name: file });
-                    compiledTemplates += precompiled + '\n';
+                    const precompiled = nunjucks.precompileString(fileContent, { name: templateName, "env": env });
+                    compiledTemplates += precompiled + '\n'; // Append the precompiled template to the compiledTemplates string
 
                     console.log(`Compiled: ${file}`);
                 } catch (precompileErr) {
@@ -82,4 +102,4 @@ const precompileTemplates = (templateDirs, outputFile) => {
 };
 
 // Precompile templates from multiple folders
-precompileTemplates(templateDirs, outputFile);
+precompileTemplates(templateDirs, outputFile, env);
