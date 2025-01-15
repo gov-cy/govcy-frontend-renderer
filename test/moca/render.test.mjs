@@ -1063,7 +1063,7 @@ async function renderChecks(renderedHTML, checksNum){
             `\\s*<dd\\s*class="govcy-summary-list-value">\\s*10 March 1990<br>\\s*<span\\s*class="govcy-tag govcy-tag-green">\\s*Adult\\s*<\\/span><\\/dd>`, //dd
             `\\s*<dd\\s*class="govcy-summary-list-actions">\\s*<ul\\s*class="list-inline govcy-my-0">`, //open action
             `\\s*<li\\s*class="list-inline-item">`, //open list
-            `\\s*<a href="#">\\s*Change\\s*<span class="govcy-visually-hidden">\\s*Date of birth\\s*<\\/span>\\s*</a>`, //action
+            `\\s*<a href="#"\\s*class="govcy-link">\\s*Change\\s*<span class="govcy-visually-hidden">\\s*Date of birth\\s*<\\/span>\\s*</a>`, //action
             `\\s*</li>`, //close list
             `\\s*</ul>\\s*</dd>`, //close action
             `\\s*<\\/div>`, //closing div
