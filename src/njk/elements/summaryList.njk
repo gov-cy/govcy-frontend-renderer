@@ -104,7 +104,7 @@
     {%- for action in actions %}
         <li class="list-inline-item">
             {#- render href -#}
-            <a href="{% if action.href %}{{ action.href }}{% else %}#{% endif %}">
+            <a href="{% if action.href %}{{ action.href }}{% else %}#{% endif %}"{% if action.classes %}class="{{ action.classes }}"{% endif %}>
                 {#- render content -#}
                 {{ govcyLocalizeContent(action.text, lang) }}
                 {#- If visuallyHiddenText is set -#}

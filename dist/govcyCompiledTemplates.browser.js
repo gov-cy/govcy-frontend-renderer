@@ -3325,7 +3325,14 @@ else {
 t_15 += "#";
 ;
 }
-t_15 += "\">";
+t_15 += "\"";
+if(runtime.memberLookup((t_19),"classes")) {
+t_15 += "class=\"";
+t_15 += runtime.suppressValue(runtime.memberLookup((t_19),"classes"), env.opts.autoescape);
+t_15 += "\"";
+;
+}
+t_15 += ">";
 t_15 += runtime.suppressValue((lineno = 108, colno = 39, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "govcyLocalizeContent"), "govcyLocalizeContent", context, [runtime.memberLookup((t_19),"text"),l_lang])), env.opts.autoescape);
 if(runtime.memberLookup((t_19),"visuallyHiddenText")) {
 t_15 += "\r\n                <span class=\"govcy-visually-hidden\"> ";

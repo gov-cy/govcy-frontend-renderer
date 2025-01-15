@@ -2222,6 +2222,7 @@
                                 "actions":[
                                     {
                                         "text":{"en":"Change","el":"Αλλαγή"},
+                                        "classes": "govcy-link",
                                         "href": "#",
                                         "visuallyHiddenText": {"en":"Date of birth","el":"Ημερομηνία γέννησης"}
                                     }

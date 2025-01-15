@@ -38,3 +38,5 @@
         - cdn.dist = `https://cdn.jsdelivr.net/gh/gov-cy/govcy-design-system@3.0.0/dist`
         - cdn.cssIntegrity = `sha384-1zLHWOtnS0hOIz5mVEPZp0UH5gUE6eo0CQcCGA3sF2TyYhHyKOd3Ni8Iy/NjEASU`
         - cdn.jsIntegrity = `sha384-zOuDuogVaaTveh/Ou2iYwCk14zFiSmMk7Ax8yRnXDtOJMyKZH5+ZNibNVwZSKtw+`
+- [x] Browser renderer
+- [ ] Documentation for browser renderer
