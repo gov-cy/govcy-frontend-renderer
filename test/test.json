@@ -2813,6 +2813,55 @@
                         "text":{"el":"govcy-test-78-start\n## Τίτλος 2\nΑυτό είναι **Markdown-it** example rendered in _Nunjucks_.  \nΑυτό είναι [λίνκ](https://google.com){target=\"_blank\"}\n- τεστ{.govcy-text-success}\n- τεστ\n\n govcy-test-78-end","en":"English"}
                     }
                 }
+                ,{
+                    "element": "htmlElement",
+                    "params": {
+                        "text":{"en":"<h2>Panel</h2>","el":"Panel legend"}
+                    }
+                }
+                ,{
+                    "element": "panel",
+                    "params" : {
+                        "id":"govcy-test-79"
+                    }
+                }
+                ,{
+                    "element": "panel",
+                    "params" : {
+                        "id":"govcy-test-80",
+                        "background": "govcy-bg-danger",
+                        "header": {"en":"Your application has been sent","el":"Η αίτησή σας έχει σταλεί"},
+                        "body": {"en":"Your Reference Number","el":"Ο αριθμός αναφοράς σας"},
+                        "referenceNumber": {"en":"C123456","el":"Π123456"}
+                    }
+                }
+                ,{
+                    "element": "panel",
+                    "params" : {
+                        "id":"govcy-test-81",
+                        "header": {"en":"Your application has been sent","el":"Η αίτησή σας έχει σταλεί"},
+                        "body": {"en":"Your Reference Number","el":"Ο αριθμός αναφοράς σας"},
+                        "referenceNumber": {"en":"C123456","el":"Π123456"},
+                        "elements": [
+                            {"element":"htmlElement","params":{"text":{"en":"test ","el":"test el "} } }
+                            ,{"element":"tag","params":{"lang":"el", "text":{"en":"Adult","el":"el Adult"}, "classes":"govcy-tag-gray"} }
+                        ]
+                    }
+                }
+                ,{
+                    "element": "panel",
+                    "params" : {
+                        "id":"govcy-test-82",
+                        "lang":"el",
+                        "header": {"en":"Your application has been sent","el":"Η αίτησή σας έχει σταλεί"},
+                        "body": {"en":"Your Reference Number","el":"Ο αριθμός αναφοράς σας"},
+                        "referenceNumber": {"en":"C123456","el":"Π123456"},
+                        "elements": [
+                            {"element":"htmlElement","params":{"text":{"en":"test ","el":"test el "} } }
+                            ,{"element":"tag","params":{"lang":"en","text":{"en":"Adult","el":"el Adult"}, "classes":"govcy-tag-gray"} }
+                        ]
+                    }
+                }
             ]
         }
     ]
