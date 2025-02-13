@@ -1,0 +1,40 @@
+{# panel 
+ @param {string} lang The language used. Can be 'en','el'. Optional. 
+ @param {object} header if defined, will rendered the `<h1>` inside the panel. Will escape text. Example `{en:"Content",el:"Περιεχομένο"}` 
+ @param {object} body if defined, will rendered the body in a `<p>` inside the panel. Will escape text. Example `{en:"Content",el:"Περιεχομένο"}` 
+ @param {object} referenceNumber if defined, will rendered the reference number in a `<p>` inside the panel. Will escape text. Example `{en:"Content",el:"Περιεχομένο"}` 
+ @param {array} elements if defined, govcy-elements to be rendered inside the panel. 
+    i.e. `[
+            {element:"button",params:{text:{en:"Button 1",el:"Κουμπί 1"},lang:"en",id:"govcy-test-23b"} },
+            {element:"button",params:{text:{en:"Button 2",el:"Κουμπί 2"},variant:'secondary',lang:"en",id:"govcy-test-23c"} },
+        ]`
+ @param {string} id The label id. Will escape text 
+ @param {string} background The background class of the panel. Default is `govcy-bg-success`. Will escape text 
+ @param {string} classes Additional classes to add to the outer div. Optional 
+ @returns govcy panel html 
+#}
+{% macro panel(params) -%}
+{#- Import localizer from utilities -#}
+{%- from "../utilities/govcyUtilities.njk" import govcyLocalizeContent, govcyLangAttribute -%}
+{# set default values #}
+{%- set background = params.background | default("govcy-bg-success") -%}
+<div {% if params.id %}id="{{ params.id }}" {% endif %}class="govcy-alert-completed-notification{% if params.classes %} {{ params.classes }}{% endif %}"{{ govcyLangAttribute(params.lang) }}>
+    <div class="govcy-alert-completed-notification-body {{ background }}">
+        {%- if params.header -%}<h1>{{ govcyLocalizeContent(params.header, params.lang) }}</h1>{%- endif -%}
+        {%- if params.body -%}<p>{{ govcyLocalizeContent(params.body, params.lang) }}</p>{%- endif -%}
+        {%- if params.referenceNumber -%}<p class="govcy-fw-bold">{{ govcyLocalizeContent(params.referenceNumber, params.lang) }}</p>{%- endif -%}
+        {#- Import localizer from utilities -#}
+        {%- from "../govcyElement.njk" import govcyElement -%}
+        {#- handle elements if defined -#}
+        {%- for element in params.elements -%}
+            {#- if lang is defined in the element, merge it with the lang of the panel -#}
+            {%- if params.lang and not element.params.lang -%}
+                {%- set paramsIn = element.params | merge({lang: params.lang}) -%}
+            {%- else -%}
+                {%- set paramsIn = element.params -%}
+            {%- endif -%}
+            {%- call govcyElement(element.element, paramsIn) %}{% endcall -%}
+        {%- endfor -%}
+    </div>   
+</div>
+{%- endmacro %}

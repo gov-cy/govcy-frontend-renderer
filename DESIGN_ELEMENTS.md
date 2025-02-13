@@ -975,6 +975,69 @@ Ths element will also allow you to add scripts and other potentially dangerous e
 </details>
 
 <details>
+  <summary>panel</summary>
+  
+## panel
+
+This element is used to add a html using [UDS - panel](https://gov-cy.github.io/govcy-design-system-docs/components/panel/). 
+
+**Element name** : `panel`
+
+**Parameters** :
+```js
+/**
+ @param {string} lang The language used. Can be 'en','el'. Optional. 
+ @param {object} header if defined, will rendered the `<h1>` inside the panel. Will escape text. Example `{en:"Content",el:"Περιεχομένο"}` 
+ @param {object} body if defined, will rendered the body in a `<p>` inside the panel. Will escape text. Example `{en:"Content",el:"Περιεχομένο"}` 
+ @param {object} referenceNumber if defined, will rendered the reference number in a `<p>` inside the panel. Will escape text. Example `{en:"Content",el:"Περιεχομένο"}` 
+ @param {array} elements if defined, govcy-elements to be rendered inside the panel. 
+    i.e. `[
+            {element:"button",params:{text:{en:"Button 1",el:"Κουμπί 1"},lang:"en",id:"govcy-test-23b"} },
+            {element:"button",params:{text:{en:"Button 2",el:"Κουμπί 2"},variant:'secondary',lang:"en",id:"govcy-test-23c"} },
+        ]`
+ @param {string} id The label id. Will escape text 
+ @param {string} background The background class of the panel. Default is `govcy-bg-success`. Will escape text 
+ @param {string} classes Additional classes to add to the outer div. Optional 
+**/ 
+```
+
+**JSON Example** 
+```json
+{
+    "element": "panel",
+    "params" : {
+        "id":"govcy-test-82",
+        "lang":"el",
+        "header": {"en":"Your application has been sent","el":"Η αίτησή σας έχει σταλεί"},
+        "body": {"en":"Your Reference Number","el":"Ο αριθμός αναφοράς σας"},
+        "referenceNumber": {"en":"C123456","el":"Π123456"},
+        "elements": [
+            {"element":"htmlElement","params":{"text":{"en":"test ","el":"test el "} } }
+            ,{"element":"tag","params":{"lang":"en","text":{"en":"Adult","el":"el Adult"}, "classes":"govcy-tag-gray"} }
+        ]
+    }
+}
+```
+
+**Nunjucks Example** 
+
+```Nunjucks
+{{ govcyElement("panel",{
+    "id":"govcy-test-82",
+    "lang":"el",
+    "header": {"en":"Your application has been sent","el":"Η αίτησή σας έχει σταλεί"},
+    "body": {"en":"Your Reference Number","el":"Ο αριθμός αναφοράς σας"},
+    "referenceNumber": {"en":"C123456","el":"Π123456"},
+    "elements": [
+        {"element":"htmlElement","params":{"text":{"en":"test ","el":"test el "} } }
+        ,{"element":"tag","params":{"lang":"en", "text":{"en":"Adult","el":"el Adult"}, "classes":"govcy-tag-gray"} }
+    ]
+})}}
+```
+
+</details>
+
+<details>
   <summary>radios</summary>
   
 ## radios

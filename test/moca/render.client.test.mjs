@@ -10,7 +10,9 @@ describe('4. Testing Browser `govcyCompiledTemplates.browser.js` and `govcyFront
     let page;
 
     beforeEach(async function () {
-        browser = await puppeteer.launch();
+        browser = await puppeteer.launch({
+            args: ['--no-sandbox', '--disable-setuid-sandbox']
+        });
         page = await browser.newPage();
         await page.goto(`${SERVER_URL}/client/testclientjson.html`, { waitUntil: 'networkidle0' });
 

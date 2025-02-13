@@ -1335,6 +1335,60 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
+    it(checksNum+'79 `Panel` default', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([
+            `<div\\s*id="govcy-test-79"\\s*class="govcy-alert-completed-notification">`, //external div
+            `\\s*<div\\s*class="govcy-alert-completed-notification-body\\s*govcy-bg-success">\\s*<\\/div>`, //notification body div
+            `\\s*<\\/div>`, //closing tag
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+    it(checksNum+'81 `Panel` background danger', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([
+            `<div\\s*id="govcy-test-80"\\s*class="govcy-alert-completed-notification">`, //external div
+            `\\s*<div\\s*class="govcy-alert-completed-notification-body\\s*govcy-bg-danger">`, //notification body div
+            `\\s*<h1>\\s*Your application has been sent\\s*<\\/h1>`, //header
+            `\\s*<p>\\s*Your Reference Number\\s*<\\/p>`, //body
+            `\\s*<p\\s*class="govcy-fw-bold">\\s*C123456\\s*<\\/p>`, //reference number
+            `\\s*<\\/div>`, //closing tag
+            `\\s*<\\/div>`, //closing tag
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+    it(checksNum+'81 `Panel` with all options', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([
+            `<div\\s*id="govcy-test-81"\\s*class="govcy-alert-completed-notification">`, //external div
+            `\\s*<div\\s*class="govcy-alert-completed-notification-body\\s*govcy-bg-success">`, //notification body div
+            `\\s*<h1>\\s*Your application has been sent\\s*<\\/h1>`, //header
+            `\\s*<p>\\s*Your Reference Number\\s*<\\/p>`, //body
+            `\\s*<p\\s*class="govcy-fw-bold">\\s*C123456\\s*<\\/p>`, //reference number
+            `\\s*test\\s*<span\\s*class="govcy-tag govcy-tag-gray"\\s*lang="el">\\s*el Adult\\s*<\\/span>`, //elements
+            `\\s*<\\/div>`, //closing tag
+            `\\s*<\\/div>`, //closing tag
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+    it(checksNum+'81 `Panel` with all options lang="el"', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([
+            `<div\\s*id="govcy-test-82"\\s*class="govcy-alert-completed-notification"\\s*lang="el">`, //external div
+            `\\s*<div\\s*class="govcy-alert-completed-notification-body\\s*govcy-bg-success">`, //notification body div
+            `\\s*<h1>\\s*Η αίτησή σας έχει σταλεί\\s*<\\/h1>`, //header
+            `\\s*<p>\\s*Ο αριθμός αναφοράς σας\\s*<\\/p>`, //body
+            `\\s*<p\\s*class="govcy-fw-bold">\\s*Π123456\\s*<\\/p>`, //reference number
+            `\\s*test el\\s*<span\\s*class="govcy-tag\\s*govcy-tag-gray"\\s*lang="en">\\s*Adult<\\/span>`, //elements
+            `\\s*<\\/div>`, //closing tag
+            `\\s*<\\/div>`, //closing tag
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
 }
 
 // Export the renderTest function
