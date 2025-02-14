@@ -93,12 +93,6 @@
         }) -%}
         {%- set updatedConditionalElements = updatedConditionalElements.concat([updatedElement]) -%}
     {%- endfor -%}
-        <style>
-            .govcy-radio__conditional label,
-            .govcy-radio__conditional legend {
-                font-size: 1rem !important;
-            }
-        </style>
         <div class="govcy-form-control{% if item.conditionalHasErrors %} govcy-form-control-error{% else %} govcy-form-control-hint{% endif %} govcy-pl-4 govcy-ml-5 govcy-radio__conditional govcy-radio__conditional--hidden" id="{{conditionalElementsId}}">
             {{ govcyElementsFromArray(updatedConditionalElements, params.lang) }}
         </div>

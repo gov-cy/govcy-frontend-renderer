@@ -1146,7 +1146,7 @@ async function renderChecks(renderedHTML, checksNum){
             `\\s*<input\\s*class="govcy-radio-input"\\s*name="govcy-test-71"\\s*value="no"\\s*type="radio"\\s*id="govcy-test-71-option-2"\\s*aria-describedby="govcy-test-71-option-2-hint"\\s*data-aria-controls="govcy-test-71-option-2-conditional"\\s*>`,//input for radio
             `\\s*<label\\s*class="govcy-label"\\s*for="govcy-test-71-option-2"\\s*>\\s*<span class="govcy-visually-hidden">\\s*Αυτή η επιλογή επεκτείνεται και έχει περισσότερες ερωτήσεις,\\s*<\\/span>\\s*Όχι\\s*<\\/label>`,//label for radio
             `([\\s\\S]*?)`, // not interested in radio specifics here, tested before
-            // `\\s*<\\/div>`, //closing tags for radio (uncomment when styles are removed)
+            `\\s*<\\/div>`, //closing tags for radio (uncomment when styles are removed)
             `\\s*<div\\s*class="govcy-form-control\\s*govcy-form-control-error\\s*govcy-pl-4\\s*govcy-ml-5\\s*govcy-radio__conditional\\s*govcy-radio__conditional--hidden"\\s*id="govcy-test-71-option-2-conditional"\\s*>`, // conditional div
             `\\s*<div\\s*class="govcy-form-control"\\s*lang="el"\\s*>`, //form control 1 for conditional text input (withour error, controlled via hideFormControlError)
             `\\s*<label\\s*id="govcy-test-71a-label"\\s*class="govcy-label\\s*govcy-label-primary"\\s*for="govcy-test-71a"\\s*lang="el"\\s*>\\s*Όνομα\\s*<\\/label>`, //label for conditional text input
