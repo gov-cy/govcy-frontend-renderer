@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
      
         <!-- CSS -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/gov-cy/govcy-design-system@v3.0.0/dist/css/govcy.uds.min.css" integrity="sha384-1zLHWOtnS0hOIz5mVEPZp0UH5gUE6eo0CQcCGA3sF2TyYhHyKOd3Ni8Iy/NjEASU" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/gov-cy/govcy-design-system@v3.1.0/dist/css/govcy.uds.min.css" integrity="sha384-Py9pPShU3OUzcQ3dAfZLkJI0Fgyv9fWKmAdK8f7dS9caBKuKs5z/ZpyERuh0ujm0" crossorigin="anonymous">
         
         <title>Page title - Service Name - gov.cy</title>
         <meta name="description" content="Description of what the service does">
@@ -26,8 +26,7 @@
             </article>
         </div>
     </main>
-  <script src="https://cdn.jsdelivr.net/gh/gov-cy/govcy-design-system@v3.0.0/dist/js/govcy.uds.min.js" integrity="sha384-zOuDuogVaaTveh/Ou2iYwCk14zFiSmMk7Ax8yRnXDtOJMyKZH5+ZNibNVwZSKtw+" crossorigin="anonymous"></script>
-  </body>
+  <script src="https://cdn.jsdelivr.net/gh/gov-cy/govcy-design-system@v3.1.0/dist/js/govcy.uds.min.js" integrity="sha384-g1c/YT97MWPoo9pbyFgQcxvB2MYLdsOgI2+ldxkEXAbhTzKfyYXCEjk9EVkOP5hp" crossorigin="anonymous"></script>
   <script src="/dist/govcyCompiledTemplates.browser.js"></script>
   <script src="/dist/govcyFrontendRenderer.browser.js"></script>
   <script>
@@ -69,8 +68,44 @@
         // console.log('Constructed JSONTemplate:', JSONTemplate);
         let renderedHtml = renderer.renderFromJSON(JSONTemplate,inputData);
         document.getElementById('output').innerHTML += renderedHtml;
+
+         // Re-initialize components manually
+        document.querySelectorAll('.govcy-accordion-button').forEach((element) => {
+          new GOVCY.Accordion(element);
+        });
+
+        document.querySelectorAll('.govcy-character-count').forEach((element) => {
+          new GOVCY.CharacterCount(element);
+        });
+
+        document.querySelectorAll('.govcy-collapsable').forEach((element) => {
+          new GOVCY.Collapsable(element);
+        });
+
+        document.querySelectorAll('.govcy-date-picker').forEach((element) => {
+          new GOVCY.DatePicker(element);
+        });
+
+        document.querySelectorAll('.govcy-header').forEach((element) => {
+          new GOVCY.HeaderMenu(element);
+        });
+
+        if ('OTPCredential' in window) {
+          document.querySelectorAll('input[autocomplete="one-time-code"]').forEach((element) => {
+            new GOVCY.MobileOTP(element);
+          });
+        }
+
+        document.querySelectorAll('.govcy-tab-link').forEach((element) => {
+          new GOVCY.Tab(element);
+        });
+
+        document.querySelectorAll('.govcy-radio-input').forEach((element) => {
+          new GOVCY.ConditionalContactToggler(element);
+        });
     }
 });
   </script>
+  </body>
 </body>
 </html>
