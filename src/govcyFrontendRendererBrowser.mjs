@@ -77,7 +77,7 @@ class GovcyFrontendRendererBrowser {
     /**
      * Returns the rendered html as string, based on the json templates
      * 
-     * @param {onject} input The JSON input
+     * @param {Object} input The JSON input
      * @param {Object} data The data
      * @returns {string} Rendered  html as string
      * 

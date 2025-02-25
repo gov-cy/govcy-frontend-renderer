@@ -1,0 +1,58 @@
+
+{# datePicker 
+ @param {object} label The label text. Will escape text. Example `{en:"Content",el:"Περιεχομένο"}`  
+ @param {string} id The id of the datePicker. Will escape text. 
+ @param {string} name The name of the datePicker. Will escape text. 
+ @param {object} hint The hint text. Optional. Will escape text. Example `{en:"Content",el:"Περιεχομένο"}`  
+ @param {boolean} isPageHeading Is the label also the page heading? Optional, default is false. Can be true,false 
+ @param {string} classes Additional classes to add to the outer `govcy-form-control` container. Optional 
+ @param {object} error If not empty there is an error message and displays the error variant. Optional, default is ''. Will escape text. Example `{en:"Content",el:"Περιεχομένο"}`
+ @param {boolean} hideFormControlError If true, hides the form control error (red line on the left). Mostly used in conditional radio elements. Optional    
+ @param {string} dataMinDate The min date allowed in `YYYY-MM-DD` format. Optional.
+ @param {string} dataMaxDate The max date allowed in `YYYY-MM-DD` format. Optional.
+ @param {string} lang The language used. Can be 'en','el'. Optional.
+ @returns govcy datePicker html 
+#}
+{% macro datePicker(params) -%}
+{#- set default values -#}
+{%- set isPageHeading = params.isPageHeading | default(false) -%}
+{#- legend, id and name are mandatory -#}
+{%- if params.label and params.id and params.name -%}
+    {#- Import localizer from utilities -#}
+    {%- from "../utilities/govcyUtilities.njk" import govcyLocalizeContent, govcyLangAttribute -%}
+    {%- from "./hint.njk" import hint -%}
+    {%- from "./label.njk" import label -%}
+    {%- from "./errorMessage.njk" import errorMessage -%}
+    {%- from "./formControl.njk" import formControl -%}
+    {#- set hint id -#}
+    {%- if params.hint -%}
+        {%- set hintId = [params.id, "-hint"] | join -%}
+    {%- else -%}
+        {%- set hintId = '' -%}
+    {%- endif -%}
+    {#- set error id -#}
+    {%- if params.error -%}
+        {%- set errorId = [params.id, "-error"] | join -%}
+    {%- else -%}
+        {%- set errorId = '' -%}
+    {%- endif -%}
+    {# set aria described by #}
+    {%- if params.error or params.hint -%}
+        {% set ariaDescribedBy = hintId ~ ' ' ~ errorId %}
+    {%- else -%}
+        {% set ariaDescribedBy = '' %}
+    {%- endif -%}
+    {% call formControl({isError: false if params.hideFormControlError else params.error,classes:params.classes}) %}
+        {% call label({label:params.label, id:labelId, for:params.id, isPageHeading:isPageHeading, lang:params.lang}) %}{% endcall %}
+        {% call hint({hint:params.hint, id:hintId, lang:params.lang}) %}{% endcall %}
+        {#- render error message -#}
+        {% call errorMessage({message:params.error,id:errorId,lang:params.lang}) %}{% endcall %}
+        <div class="govcy-date-picker"{% if params.dataMinDate %} data-min-date="{{ params.dataMinDate }}"{% endif %}{% if params.dataMaxDate %} data-max-date="{{ params.dataMaxDate }}"{% endif %}>
+            <input type="text" class="govcy-text-input {% if params.error %} govcy-text-input-error{% endif %}" 
+                    id="{{ params.id }}"
+                    name="{{ params.name }}"
+                    {%if ariaDescribedBy %} aria-describedby="{{ ariaDescribedBy }}"{% endif%}{{ govcyLangAttribute(params.lang) }}/>
+        </div>
+    {% endcall %}
+{%- endif -%}
+{%- endmacro %}
