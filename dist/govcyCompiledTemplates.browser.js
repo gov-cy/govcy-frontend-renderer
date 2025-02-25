@@ -892,6 +892,277 @@ root: root
 })();
 })();
 
+(function() {(window.nunjucksPrecompiled = window.nunjucksPrecompiled || {})["elements/datePicker.njk"] = (function() {
+function root(env, context, frame, runtime, cb) {
+var lineno = 0;
+var colno = 0;
+var output = "";
+try {
+var parentTemplate = null;
+output += "\n";
+output += "\n";
+var macro_t_1 = runtime.makeMacro(
+["params"], 
+[], 
+function (l_params, kwargs) {
+var callerFrame = frame;
+frame = new runtime.Frame();
+kwargs = kwargs || {};
+if (Object.prototype.hasOwnProperty.call(kwargs, "caller")) {
+frame.set("caller", kwargs.caller); }
+frame.set("params", l_params);
+var t_2 = "";var t_3;
+t_3 = env.getFilter("default").call(context, runtime.memberLookup((l_params),"isPageHeading"),false);
+frame.set("isPageHeading", t_3, true);
+if(frame.topLevel) {
+context.setVariable("isPageHeading", t_3);
+}
+if(frame.topLevel) {
+context.addExport("isPageHeading", t_3);
+}
+if(runtime.memberLookup((l_params),"label") && runtime.memberLookup((l_params),"id") && runtime.memberLookup((l_params),"name")) {
+env.getTemplate("utilities/govcyUtilities.njk", false, "elements/datePicker.njk", false, function(t_5,t_4) {
+if(t_5) { cb(t_5); return; }
+t_4.getExported(function(t_6,t_4) {
+if(t_6) { cb(t_6); return; }
+if(Object.prototype.hasOwnProperty.call(t_4, "govcyLocalizeContent")) {
+var t_7 = t_4.govcyLocalizeContent;
+} else {
+cb(new Error("cannot import 'govcyLocalizeContent'")); return;
+}
+context.setVariable("govcyLocalizeContent", t_7);
+if(Object.prototype.hasOwnProperty.call(t_4, "govcyLangAttribute")) {
+var t_8 = t_4.govcyLangAttribute;
+} else {
+cb(new Error("cannot import 'govcyLangAttribute'")); return;
+}
+context.setVariable("govcyLangAttribute", t_8);
+env.getTemplate("elements/hint.njk", false, "elements/datePicker.njk", false, function(t_10,t_9) {
+if(t_10) { cb(t_10); return; }
+t_9.getExported(function(t_11,t_9) {
+if(t_11) { cb(t_11); return; }
+if(Object.prototype.hasOwnProperty.call(t_9, "hint")) {
+var t_12 = t_9.hint;
+} else {
+cb(new Error("cannot import 'hint'")); return;
+}
+context.setVariable("hint", t_12);
+env.getTemplate("elements/label.njk", false, "elements/datePicker.njk", false, function(t_14,t_13) {
+if(t_14) { cb(t_14); return; }
+t_13.getExported(function(t_15,t_13) {
+if(t_15) { cb(t_15); return; }
+if(Object.prototype.hasOwnProperty.call(t_13, "label")) {
+var t_16 = t_13.label;
+} else {
+cb(new Error("cannot import 'label'")); return;
+}
+context.setVariable("label", t_16);
+env.getTemplate("elements/errorMessage.njk", false, "elements/datePicker.njk", false, function(t_18,t_17) {
+if(t_18) { cb(t_18); return; }
+t_17.getExported(function(t_19,t_17) {
+if(t_19) { cb(t_19); return; }
+if(Object.prototype.hasOwnProperty.call(t_17, "errorMessage")) {
+var t_20 = t_17.errorMessage;
+} else {
+cb(new Error("cannot import 'errorMessage'")); return;
+}
+context.setVariable("errorMessage", t_20);
+env.getTemplate("elements/formControl.njk", false, "elements/datePicker.njk", false, function(t_22,t_21) {
+if(t_22) { cb(t_22); return; }
+t_21.getExported(function(t_23,t_21) {
+if(t_23) { cb(t_23); return; }
+if(Object.prototype.hasOwnProperty.call(t_21, "formControl")) {
+var t_24 = t_21.formControl;
+} else {
+cb(new Error("cannot import 'formControl'")); return;
+}
+context.setVariable("formControl", t_24);
+if(runtime.memberLookup((l_params),"hint")) {
+var t_25;
+t_25 = env.getFilter("join").call(context, [runtime.memberLookup((l_params),"id"),"-hint"]);
+frame.set("hintId", t_25, true);
+if(frame.topLevel) {
+context.setVariable("hintId", t_25);
+}
+if(frame.topLevel) {
+context.addExport("hintId", t_25);
+}
+;
+}
+else {
+var t_26;
+t_26 = "";
+frame.set("hintId", t_26, true);
+if(frame.topLevel) {
+context.setVariable("hintId", t_26);
+}
+if(frame.topLevel) {
+context.addExport("hintId", t_26);
+}
+;
+}
+if(runtime.memberLookup((l_params),"error")) {
+var t_27;
+t_27 = env.getFilter("join").call(context, [runtime.memberLookup((l_params),"id"),"-error"]);
+frame.set("errorId", t_27, true);
+if(frame.topLevel) {
+context.setVariable("errorId", t_27);
+}
+if(frame.topLevel) {
+context.addExport("errorId", t_27);
+}
+;
+}
+else {
+var t_28;
+t_28 = "";
+frame.set("errorId", t_28, true);
+if(frame.topLevel) {
+context.setVariable("errorId", t_28);
+}
+if(frame.topLevel) {
+context.addExport("errorId", t_28);
+}
+;
+}
+if(runtime.memberLookup((l_params),"error") || runtime.memberLookup((l_params),"hint")) {
+var t_29;
+t_29 = runtime.contextOrFrameLookup(context, frame, "hintId") + "" + " " + "" + runtime.contextOrFrameLookup(context, frame, "errorId");
+frame.set("ariaDescribedBy", t_29, true);
+if(frame.topLevel) {
+context.setVariable("ariaDescribedBy", t_29);
+}
+if(frame.topLevel) {
+context.addExport("ariaDescribedBy", t_29);
+}
+;
+}
+else {
+var t_30;
+t_30 = "";
+frame.set("ariaDescribedBy", t_30, true);
+if(frame.topLevel) {
+context.setVariable("ariaDescribedBy", t_30);
+}
+if(frame.topLevel) {
+context.addExport("ariaDescribedBy", t_30);
+}
+;
+}
+t_2 += runtime.suppressValue((lineno = 44, colno = 23, runtime.callWrap(t_24, "formControl", context, [{"isError": (runtime.memberLookup((l_params),"hideFormControlError")?false:runtime.memberLookup((l_params),"error")),"classes": runtime.memberLookup((l_params),"classes")},runtime.makeKeywordArgs({"caller": (function (){var macro_t_31 = runtime.makeMacro(
+[], 
+[], 
+function (kwargs) {
+var callerFrame = frame;
+frame = frame.push(true);
+kwargs = kwargs || {};
+if (Object.prototype.hasOwnProperty.call(kwargs, "caller")) {
+frame.set("caller", kwargs.caller); }
+var t_32 = "";t_32 += "\n        ";
+t_32 += runtime.suppressValue((lineno = 45, colno = 21, runtime.callWrap(t_16, "label", context, [{"label": runtime.memberLookup((l_params),"label"),"id": runtime.contextOrFrameLookup(context, frame, "labelId"),"for": runtime.memberLookup((l_params),"id"),"isPageHeading": runtime.contextOrFrameLookup(context, frame, "isPageHeading"),"lang": runtime.memberLookup((l_params),"lang")},runtime.makeKeywordArgs({"caller": (function (){var macro_t_33 = runtime.makeMacro(
+[], 
+[], 
+function (kwargs) {
+var callerFrame = frame;
+frame = frame.push(true);
+kwargs = kwargs || {};
+if (Object.prototype.hasOwnProperty.call(kwargs, "caller")) {
+frame.set("caller", kwargs.caller); }
+var t_34 = "";;
+frame = frame.pop();
+return new runtime.SafeString(t_34);
+});
+return macro_t_33;})()})])), env.opts.autoescape);
+t_32 += "\n        ";
+t_32 += runtime.suppressValue((lineno = 46, colno = 20, runtime.callWrap(t_12, "hint", context, [{"hint": runtime.memberLookup((l_params),"hint"),"id": runtime.contextOrFrameLookup(context, frame, "hintId"),"lang": runtime.memberLookup((l_params),"lang")},runtime.makeKeywordArgs({"caller": (function (){var macro_t_35 = runtime.makeMacro(
+[], 
+[], 
+function (kwargs) {
+var callerFrame = frame;
+frame = frame.push(true);
+kwargs = kwargs || {};
+if (Object.prototype.hasOwnProperty.call(kwargs, "caller")) {
+frame.set("caller", kwargs.caller); }
+var t_36 = "";;
+frame = frame.pop();
+return new runtime.SafeString(t_36);
+});
+return macro_t_35;})()})])), env.opts.autoescape);
+t_32 += runtime.suppressValue((lineno = 48, colno = 28, runtime.callWrap(t_20, "errorMessage", context, [{"message": runtime.memberLookup((l_params),"error"),"id": runtime.contextOrFrameLookup(context, frame, "errorId"),"lang": runtime.memberLookup((l_params),"lang")},runtime.makeKeywordArgs({"caller": (function (){var macro_t_37 = runtime.makeMacro(
+[], 
+[], 
+function (kwargs) {
+var callerFrame = frame;
+frame = frame.push(true);
+kwargs = kwargs || {};
+if (Object.prototype.hasOwnProperty.call(kwargs, "caller")) {
+frame.set("caller", kwargs.caller); }
+var t_38 = "";;
+frame = frame.pop();
+return new runtime.SafeString(t_38);
+});
+return macro_t_37;})()})])), env.opts.autoescape);
+t_32 += "\n        <div class=\"govcy-date-picker\"";
+if(runtime.memberLookup((l_params),"dataMinDate")) {
+t_32 += " data-min-date=\"";
+t_32 += runtime.suppressValue(runtime.memberLookup((l_params),"dataMinDate"), env.opts.autoescape);
+t_32 += "\"";
+;
+}
+if(runtime.memberLookup((l_params),"dataMaxDate")) {
+t_32 += " data-max-date=\"";
+t_32 += runtime.suppressValue(runtime.memberLookup((l_params),"dataMaxDate"), env.opts.autoescape);
+t_32 += "\"";
+;
+}
+t_32 += ">\n            <input type=\"text\" class=\"govcy-text-input ";
+if(runtime.memberLookup((l_params),"error")) {
+t_32 += " govcy-text-input-error";
+;
+}
+t_32 += "\" \n                    id=\"";
+t_32 += runtime.suppressValue(runtime.memberLookup((l_params),"id"), env.opts.autoescape);
+t_32 += "\"\n                    name=\"";
+t_32 += runtime.suppressValue(runtime.memberLookup((l_params),"name"), env.opts.autoescape);
+t_32 += "\"\n                    ";
+if(runtime.contextOrFrameLookup(context, frame, "ariaDescribedBy")) {
+t_32 += " aria-describedby=\"";
+t_32 += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "ariaDescribedBy"), env.opts.autoescape);
+t_32 += "\"";
+;
+}
+t_32 += runtime.suppressValue((lineno = 53, colno = 115, runtime.callWrap(t_8, "govcyLangAttribute", context, [runtime.memberLookup((l_params),"lang")])), env.opts.autoescape);
+t_32 += "/>\n        </div>\n    ";
+;
+frame = frame.pop();
+return new runtime.SafeString(t_32);
+});
+return macro_t_31;})()})])), env.opts.autoescape);
+})})})})})})})})})});
+}
+;
+frame = callerFrame;
+return new runtime.SafeString(t_2);
+});
+context.addExport("datePicker");
+context.setVariable("datePicker", macro_t_1);
+if(parentTemplate) {
+parentTemplate.rootRenderFunc(env, context, frame, runtime, cb);
+} else {
+cb(null, output);
+}
+;
+} catch (e) {
+  cb(runtime.handleError(e, lineno, colno));
+}
+}
+return {
+root: root
+};
+
+})();
+})();
+
 (function() {(window.nunjucksPrecompiled = window.nunjucksPrecompiled || {})["elements/errorMessage.njk"] = (function() {
 function root(env, context, frame, runtime, cb) {
 var lineno = 0;
@@ -5087,7 +5358,7 @@ var output = "";
 try {
 var parentTemplate = null;
 var t_1;
-t_1 = ["label","legend","hint","button","errorMessage","select","textElement","htmlElement","textInput","radios","checkboxes","fileInput","fileView","backLink","tag","table","summaryList","textArea","markdown","panel"];
+t_1 = ["label","legend","hint","button","errorMessage","select","textElement","htmlElement","textInput","radios","checkboxes","fileInput","fileView","backLink","tag","table","summaryList","textArea","markdown","panel","datePicker"];
 frame.set("macroSimpleBlocks", t_1, true);
 if(frame.topLevel) {
 context.setVariable("macroSimpleBlocks", t_1);

@@ -205,6 +205,74 @@ In order to get the gov.cy styles, you need to add it inside a `form` element.
 </details>
 
 <details>
+  <summary>datePicker</summary>
+  
+## datePicker
+
+This element is used to add date picker as defined in the [UDS - date picker](https://gov-cy.github.io/govcy-design-system-docs/components/date_picker/).
+
+**Element name** : `datePicker`
+
+**Parameters** :
+```js
+/**
+ @param {object} label The label text. Will escape text. Example `{en:"Content",el:"Περιεχομένο"}`  
+ @param {string} id The id of the datePicker. Will escape text. 
+ @param {string} name The name of the datePicker. Will escape text. 
+ @param {object} hint The hint text. Optional. Will escape text. Example `{en:"Content",el:"Περιεχομένο"}`  
+ @param {boolean} isPageHeading Is the label also the page heading? Optional, default is false. Can be true,false 
+ @param {string} classes Additional classes to add to the outer `govcy-form-control` container. Optional 
+ @param {object} error If not empty there is an error message and displays the error variant. Optional, default is ''. Will escape text. Example `{en:"Content",el:"Περιεχομένο"}`
+ @param {boolean} hideFormControlError If true, hides the form control error (red line on the left). Mostly used in conditional radio elements. Optional    
+ @param {string} dataMinDate The min date allowed in `YYYY-MM-DD` format. Optional.
+ @param {string} dataMaxDate The max date allowed in `YYYY-MM-DD` format. Optional.
+ @param {string} lang The language used. Can be 'en','el'. Optional.
+**/ 
+```
+
+**JSON Example** 
+```json
+{
+    "element": "datePicker",
+    "params":{
+        "id":"govcy-test-84",
+        "name":"govcy-test-84",
+        "isPageHeading": true,
+        "classes": "test-class",
+        "dataMinDate": "2025-03-01",
+        "dataMaxDate": "2025-03-10",
+        "label": {"en":"Default values","el":"Default values el"},
+        "hint": {"en":"This is a hint","el":"This is a hint el"},
+        "error": {"en":"This is an error","el":"This is an error el"}
+    }
+}
+```
+
+**Nunjucks Example** 
+
+```Nunjucks
+{{ 
+    govcyElement(
+        "datePicker",
+        {
+            "id":"govcy-test-84",
+            "name":"govcy-test-84",
+            "isPageHeading": true,
+            "classes": "test-class",
+            "dataMinDate": "2025-03-01",
+            "dataMaxDate": "2025-03-10",
+            "label": {"en":"Default values","el":"Default values el"},
+            "hint": {"en":"This is a hint","el":"This is a hint el"},
+            "error": {"en":"This is an error","el":"This is an error el"}
+        }
+    ) 
+}}
+```
+**Notes** :
+In order to get the gov.cy styles, you need to add it inside a `form` element. 
+</details>
+
+<details>
   <summary>errorMessage</summary>
   
 ## errorMessage

@@ -137,7 +137,8 @@ To use this template you need to pass the following data:
     <!--bodyEnd-->
     <section  class="govcy-container-fluid" id="bodyEndContainer">
         {% block bodyEnd %}{% endblock %}
-    </section>    
+    </section>
+    {%- if site.lang == 'en' -%}<script src="{{ site.cdn.dist }}/js/locales/govcy.datepicker.en.min.js"></script>{%- elseif site.lang == 'el' -%}<script src="{{ site.cdn.dist }}/js/locales/govcy.datepicker.el.min.js"></script>{%- endif -%}
     <script src="{{ site.cdn.dist }}/js/govcy.uds.min.js" integrity="{{ site.cdn.jsIntegrity }}" crossorigin="anonymous"></script>
   </body>
 </html>

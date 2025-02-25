@@ -1374,7 +1374,7 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'81 `Panel` with all options lang="el"', async () => {
+    it(checksNum+'82 `Panel` with all options lang="el"', async () => {
         // check for structure   
         let expectedRegex =  new RegExp ([
             `<div\\s*id="govcy-test-82"\\s*class="govcy-alert-completed-notification"\\s*lang="el">`, //external div
@@ -1384,6 +1384,46 @@ async function renderChecks(renderedHTML, checksNum){
             `\\s*<p\\s*class="govcy-fw-bold">\\s*Π123456\\s*<\\/p>`, //reference number
             `\\s*test el\\s*<span\\s*class="govcy-tag\\s*govcy-tag-gray"\\s*lang="en">\\s*Adult<\\/span>`, //elements
             `\\s*<\\/div>`, //closing tag
+            `\\s*<\\/div>`, //closing tag
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+    it(checksNum+'83 `Date Picker` with default options', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([
+            `<div\\s*class="govcy-form-control">`, //div form control
+            `\\s*<label\\s*class="govcy-label\\s*govcy-label-primary"\\s*for="govcy-test-83"\\s*>\\s*Default\\s*values\\s*<\\/label>`, //label
+            `\\s*<div\\s*class="govcy-date-picker">`, //date picker div
+            `\\s*<input\\s*type="text"\\s*class="govcy-text-input\\s*"\\s*id="govcy-test-83"\\s*name="govcy-test-83"\\s*\\/>`, //date picker div
+            `\\s*<\\/div>`, //closing tag
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+    it(checksNum+'84 `Date Picker` with all options', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([
+            `<div\\s*class="govcy-form-control\\s*govcy-form-control-error\\s*test-class">`, //div form control
+            `\\s*<h1>\\s*<label\\s*class="govcy-label\\s*govcy-label-primary"\\s*for="govcy-test-84"\\s*>\\s*Default values\\s*<\\/label>\\s*<\\/h1>`, //label
+            `\\s*<span\\s*id="govcy-test-84-hint"\\s*class="govcy-hint">\\s*This is a hint\\s*<\\/span>`, //hint
+            `\\s*<p\\s*id="govcy-test-84-error"\\s*class="govcy-input-error-msg">\\s*<span\\s*class="govcy-visually-hidden-error">\\s*Error:\\s*<\\/span>\\s*This is an error\\s*<\\/p>`, //error
+            `\\s*<div\\s*class="govcy-date-picker"\\s*data-min-date="2025-03-01"\\s*data-max-date="2025-03-10">`, //date picker div
+            `\\s*<input\\s*type="text"\\s*class="govcy-text-input\\s*govcy-text-input-error\\s*"\\s*id="govcy-test-84"\\s*name="govcy-test-84"\\s*aria-describedby="\\s*govcy-test-84-hint\\s*govcy-test-84-error\\s*"\\s*\\/>`, //date picker div
+            `\\s*<\\/div>`, //closing tag
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+    it(checksNum+'85 `Date Picker` with all options lang="el"', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([
+            `<div\\s*class="govcy-form-control\\s*govcy-form-control-error\\s*test-class">`, //div form control
+            `\\s*<h1>\\s*<label\\s*class="govcy-label\\s*govcy-label-primary"\\s*for="govcy-test-85"\\s*lang="el">\\s*Default values el\\s*<\\/label>\\s*<\\/h1>`, //label
+            `\\s*<span\\s*id="govcy-test-85-hint"\\s*class="govcy-hint"\\s*lang="el">\\s*This is a hint el\\s*<\\/span>`, //hint
+            `\\s*<p\\s*id="govcy-test-85-error"\\s*class="govcy-input-error-msg"\\s*lang="el">\\s*<span\\s*class="govcy-visually-hidden-error">\\s*Σφάλμα:\\s*<\\/span>\\s*This is an error el\\s*<\\/p>`, //error
+            `\\s*<div\\s*class="govcy-date-picker"\\s*data-min-date="2025-03-01"\\s*data-max-date="2025-03-10">`, //date picker div
+            `\\s*<input\\s*type="text"\\s*class="govcy-text-input\\s*govcy-text-input-error\\s*"\\s*id="govcy-test-85"\\s*name="govcy-test-85"\\s*aria-describedby="\\s*govcy-test-85-hint\\s*govcy-test-85-error\\s*"\\s*lang="el"\\s*\\/>`, //date picker div
             `\\s*<\\/div>`, //closing tag
         ].join(''));
         // console.log(expectedRegex);

@@ -1192,6 +1192,19 @@
                                     ,"id":"govcy-test-71a10"
                                     ,"name":"govcy-test-71a10"
                                 }
+                            },
+                            {
+                                "element": "datePicker",
+                                "params":{
+                                    "id":"govcy-test-71a5",
+                                    "name":"govcy-test-71a5",
+                                    "classes": "test-class",
+                                    "dataMinDate": "2025-03-01",
+                                    "dataMaxDate": "2025-03-10",
+                                    "label": {"en":"This is a date","el":"This is a date el"},
+                                    "hint": {"en":"This is a hint","el":"This is a hint el"},
+                                    "error": {"en":"This is an error","el":"This is an error el"}
+                                }
                             }
                         ]
                     },
@@ -1568,6 +1581,50 @@
             ,{"element":"tag","params":{"lang":"en", "text":{"en":"Adult","el":"el Adult"}, "classes":"govcy-tag-gray"} }
         ]
     })}}
+    <h2>Date Picker</h2>
+    {% call govcyElement("form",{
+        "elements":[
+            {
+                "element": "datePicker",
+                "params":{
+                    "id":"govcy-test-83",
+                    "name":"govcy-test-83",
+                    "label": {"en":"Default values","el":"Default values el"}
+                }
+            },
+            {
+                "element": "datePicker",
+                "params":{
+                    "id":"govcy-test-84",
+                    "name":"govcy-test-84",
+                    "isPageHeading": true,
+                    "classes": "test-class",
+                    "dataMinDate": "2025-03-01",
+                    "dataMaxDate": "2025-03-10",
+                    "label": {"en":"Default values","el":"Default values el"},
+                    "hint": {"en":"This is a hint","el":"This is a hint el"},
+                    "error": {"en":"This is an error","el":"This is an error el"}
+                }
+            },
+            {
+                "element": "datePicker",
+                "params":{
+                    "id":"govcy-test-85",
+                    "name":"govcy-test-85",
+                    "lang":"el",
+                    "isPageHeading": true,
+                    "classes": "test-class",
+                    "dataMinDate": "2025-03-01",
+                    "dataMaxDate": "2025-03-10",
+                    "label": {"en":"Default values","el":"Default values el"},
+                    "hint": {"en":"This is a hint","el":"This is a hint el"},
+                    "error": {"en":"This is an error","el":"This is an error el"}
+                }
+            }
+        ]
+    })
+    %}
+    {% endcall %}
 {% endblock %}
 {% block beforeMain %}
     {{ govcyElement("textElement",{text:{en:"Back ",el:"Πίσω"}, type:"p", id:"govcy-test-25"}) }}
