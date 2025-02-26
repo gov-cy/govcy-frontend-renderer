@@ -205,6 +205,83 @@ In order to get the gov.cy styles, you need to add it inside a `form` element.
 </details>
 
 <details>
+  <summary>dateInput</summary>
+  
+## dateInput
+
+This element is used to add date input as defined in the [UDS - date input](https://gov-cy.github.io/govcy-design-system-docs/components/date_input/).
+
+**Element name** : `dateInput`
+
+**Parameters** :
+```js
+/**
+ @param {object} legend The label text. Will escape text. Example `{en:"Content",el:"Περιεχομένο"}`  
+ @param {string} id The id of the dateInput parts. For example `id_day`, `id_month` and `id_year`. Will escape text. 
+ @param {string} name The name of the dateInput parts. For example `name_day`, `name_month` and `name_year` . Will escape text. 
+ @param {object} hint The hint text. Optional. Will escape text. Example `{en:"Content",el:"Περιεχομένο"}`  
+ @param {boolean} isPageHeading Is the label also the page heading? Optional, default is false. Can be true,false 
+ @param {string} classes Additional classes to add to the outer `govcy-form-control` container. Optional 
+ @param {object} error If not empty there is an error message and displays the error variant. Optional, default is ''. Will escape text. Example `{en:"Content",el:"Περιεχομένο"}`
+ @param {boolean} hideFormControlError If true, hides the form control error (red line on the left). Mostly used in conditional radio elements. Optional    
+ @param {string} variant The variant. Can be 'desktop','mobile', default is mobile. Optional.
+ @param {boolean} isBirthday Is it a birthday?. Optional.
+ @param {boolean} hasDayError Does the day have an error?. Optional.
+ @param {boolean} hasMonthError Does the month have an error?. Optional.
+ @param {boolean} hasYearError Does the year have an error?. Optional.
+ @param {string} lang The language used. Can be 'en','el'. Optional.
+**/ 
+```
+
+**JSON Example** 
+```json
+{
+    "element": "dateInput",
+    "params":{
+        "id":"govcy-test-87",
+        "name":"govcy-test-87",
+        "isPageHeading":true,
+        "variant":"desktop",
+        "hasDayError":false,
+        "hasMonthError":true,
+        "hasYearError":true,
+        "isBirthday":true,
+        "classes":"govcy-test-class",
+        "hint": {"en":"This is a hint","el":"This is a hint el"},
+        "error": {"en":"This is an error","el":"This is an error el"},
+        "legend": {"en":"This is a date input","el":"This is a date input"}
+    }
+}
+```
+
+**Nunjucks Example** 
+
+```Nunjucks
+{{ 
+    govcyElement(
+        "dateInput",
+        {
+            "id":"govcy-test-87",
+            "name":"govcy-test-87",
+            "isPageHeading":true,
+            "variant":"desktop",
+            "hasDayError":false,
+            "hasMonthError":true,
+            "hasYearError":true,
+            "isBirthday":true,
+            "classes":"govcy-test-class",
+            "hint": {"en":"This is a hint","el":"This is a hint el"},
+            "error": {"en":"This is an error","el":"This is an error el"},
+            "legend": {"en":"This is a date input","el":"This is a date input"}
+        }
+    ) 
+}}
+```
+**Notes** :
+In order to get the gov.cy styles, you need to add it inside a `form` element. 
+</details>
+
+<details>
   <summary>datePicker</summary>
   
 ## datePicker
@@ -338,6 +415,7 @@ This element is used to add a fieldset as defined in the [UDS - fieldset](https:
  @param {string} id The hint id. Will escape text. Optional
  @param {string} classes Additional classes to add to the outer div. Optional 
  @param {string} ariaDescribedby Ids of aria-describedby. To be used for hints and errors. Optional 
+ @param {string} ariaRole The ARIA role attribute. Optional.
  @param {string} lang The language used. Can be 'en','el'. Optional.
  @param {array} elements If defined will be rendered elements inside the form. 
     i.e. `[

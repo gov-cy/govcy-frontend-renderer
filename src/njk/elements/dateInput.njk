@@ -1,0 +1,104 @@
+
+{# dateInput 
+ @param {object} legend The label text. Will escape text. Example `{en:"Content",el:"Περιεχομένο"}`  
+ @param {string} id The id of the dateInput parts. For example `id_day`, `id_month` and `id_year`. Will escape text. 
+ @param {string} name The name of the dateInput parts. For example `name_day`, `name_month` and `name_year` . Will escape text. 
+ @param {object} hint The hint text. Optional. Will escape text. Example `{en:"Content",el:"Περιεχομένο"}`  
+ @param {boolean} isPageHeading Is the label also the page heading? Optional, default is false. Can be true,false 
+ @param {string} classes Additional classes to add to the outer `govcy-form-control` container. Optional 
+ @param {object} error If not empty there is an error message and displays the error variant. Optional, default is ''. Will escape text. Example `{en:"Content",el:"Περιεχομένο"}`
+ @param {boolean} hideFormControlError If true, hides the form control error (red line on the left). Mostly used in conditional radio elements. Optional    
+ @param {string} variant The variant. Can be 'desktop','mobile', default is mobile. Optional.
+ @param {boolean} isBirthday Is it a birthday?. Optional.
+ @param {boolean} hasDayError Does the day have an error?. Optional.
+ @param {boolean} hasMonthError Does the month have an error?. Optional.
+ @param {boolean} hasYearError Does the year have an error?. Optional.
+ @param {string} lang The language used. Can be 'en','el'. Optional.
+ @returns govcy dateInput html 
+#}
+{% macro dateInput(params) -%}
+{#- set default values -#}
+{%- set isPageHeading = params.isPageHeading | default(false) -%}
+{%- set variant = params.variant | default("mobile") -%}
+{#- legend, id and name are mandatory -#}
+{%- if params.legend and params.id and params.name -%}
+    {#- Import localizer from utilities -#}
+    {%- from "../utilities/govcyUtilities.njk" import govcyLocalizeContent, govcyLangAttribute -%}
+    {%- from "./fieldset.njk" import fieldset -%}
+    {%- from "./hint.njk" import hint -%}
+    {%- from "./legend.njk" import legend -%}
+    {%- from "./errorMessage.njk" import errorMessage -%}
+    {%- from "./formControl.njk" import formControl -%}
+    {#- set localizations -#}
+    {%- set dayLabel = govcyLocalizeContent({en:'Day',el:'Μέρα'} , params.lang) -%}
+    {%- set monthLabel = govcyLocalizeContent({en:'Month',el:'Μήνας'} , params.lang) -%}
+    {%- set yearLabel = govcyLocalizeContent({en:'Year',el:'Χρόνος'} , params.lang) -%}
+    {%- set monthValue1 = govcyLocalizeContent({en:'January',el:'Ιανουάριος'} , params.lang) -%}
+    {%- set monthValue2 = govcyLocalizeContent({en:'February',el:'Φεβρουάριος'} , params.lang) -%}
+    {%- set monthValue3 = govcyLocalizeContent({en:'March',el:'Μάρτιος'} , params.lang) -%}
+    {%- set monthValue4 = govcyLocalizeContent({en:'April',el:'Απρίλιος'} , params.lang) -%}
+    {%- set monthValue5 = govcyLocalizeContent({en:'May',el:'Μάϊος'} , params.lang) -%}
+    {%- set monthValue6 = govcyLocalizeContent({en:'June',el:'Ιούνιος'} , params.lang) -%}
+    {%- set monthValue7 = govcyLocalizeContent({en:'July',el:'Ιούλιος'} , params.lang) -%}
+    {%- set monthValue8 = govcyLocalizeContent({en:'August',el:'Αύγουστος'} , params.lang) -%}
+    {%- set monthValue9 = govcyLocalizeContent({en:'September',el:'Σεπτέμβριος'} , params.lang) -%}
+    {%- set monthValue10 = govcyLocalizeContent({en:'October',el:'Οκτώβριος'} , params.lang) -%}
+    {%- set monthValue11 = govcyLocalizeContent({en:'November',el:'Νοέμβριος'} , params.lang) -%}
+    {%- set monthValue12 = govcyLocalizeContent({en:'December',el:'Δεκέμβριος'} , params.lang) -%}
+    {#- set hint id -#}
+    {%- if params.hint -%}
+        {%- set hintId = [params.id, "-hint"] | join -%}
+    {%- else -%}
+        {%- set hintId = '' -%}
+    {%- endif -%}
+    {#- set error id -#}
+    {%- if params.error -%}
+        {%- set errorId = [params.id, "-error"] | join -%}
+    {%- else -%}
+        {%- set errorId = '' -%}
+    {%- endif -%}
+    {# set aria described by #}
+    {%- if params.error or params.hint -%}
+        {% set ariaDescribedBy = hintId ~ ' ' ~ errorId %}
+    {%- else -%}
+        {% set ariaDescribedBy = '' %}
+    {%- endif -%}
+    {% call fieldset({ariaDescribedby:ariaDescribedBy,classes:params.classes, ariaRole:"group",lang:params.lang}) %}
+        {% call legend({legend:params.legend, isPageHeading:isPageHeading,lang:params.lang}) %}{% endcall %}
+        {% call formControl({isError: false if params.hideFormControlError else params.error}) %}
+            {% call hint({hint:params.hint, id:hintId,lang:params.lang}) %}{% endcall %}
+            {#- render error message -#}
+            {% call errorMessage({message:params.error,id:errorId,lang:params.lang}) %}{% endcall %}
+            {#- render date inputs -#}
+            <div class="govcy-d-flex govcy-flex-wrap"{{ govcyLangAttribute(params.lang) }}>    
+                <div class="govcy-d-block govcy-mr-3">
+                    <label class="govcy-label govcy-mb-1 govcy-fw-normal govcy-mb-2" for="{{ params.id }}_day">{{ dayLabel }}</label>
+                    <input id="{{ params.id }}_day" name="{{ params.name }}_day" class="govcy-text-input govcy-text-input-char_3{% if params.hasDayError %} govcy-text-input-error{% endif %}" maxlength="2" type="text" pattern="[0-9]*" inputmode="numeric"{% if params.isBirthday %} autocomplete="bday-day"{% endif %}>
+                </div>
+                <div class="govcy-d-block govcy-mr-3">
+                    <label class="govcy-label govcy-mb-1 govcy-fw-normal govcy-mb-2" for="{{ params.id }}_month">{{ monthLabel }}</label>
+                    <select id="{{ params.id }}_month" name="{{ params.name }}_month" class="govcy-select{% if params.hasMonthError %} govcy-select-error{% endif %}"{% if params.isBirthday %} autocomplete="bday-month"{% endif %}>
+                        <option value="" selected=""></option>
+                        <option value="1">{% if variant=="mobile" %}1{% else %}{{ monthValue1 }}{% endif %}</option>
+                        <option value="2">{% if variant=="mobile" %}2{% else %}{{ monthValue2 }}{% endif %}</option>
+                        <option value="3">{% if variant=="mobile" %}3{% else %}{{ monthValue3 }}{% endif %}</option>
+                        <option value="4">{% if variant=="mobile" %}4{% else %}{{ monthValue4 }}{% endif %}</option>
+                        <option value="5">{% if variant=="mobile" %}5{% else %}{{ monthValue5 }}{% endif %}</option>
+                        <option value="6">{% if variant=="mobile" %}6{% else %}{{ monthValue6 }}{% endif %}</option>
+                        <option value="7">{% if variant=="mobile" %}7{% else %}{{ monthValue7 }}{% endif %}</option>
+                        <option value="8">{% if variant=="mobile" %}8{% else %}{{ monthValue8 }}{% endif %}</option>
+                        <option value="9">{% if variant=="mobile" %}9{% else %}{{ monthValue9 }}{% endif %}</option>
+                        <option value="10">{% if variant=="mobile" %}10{% else %}{{ monthValue10 }}{% endif %}</option>
+                        <option value="11">{% if variant=="mobile" %}11{% else %}{{ monthValue11 }}{% endif %}</option>
+                        <option value="12">{% if variant=="mobile" %}12{% else %}{{ monthValue12 }}{% endif %}</option>
+                    </select>
+                </div>
+                <div class="govcy-d-block govcy-mr-3">
+                    <label class="govcy-label govcy-mb-1 govcy-fw-normal govcy-mb-2" for="{{ params.id }}_year">{{ yearLabel }}</label>
+                    <input id="{{ params.id }}_year" name="{{ params.name }}_year" class="govcy-text-input govcy-text-input-char_6{% if params.hasYearError %} govcy-text-input-error{% endif %}" maxlength="4" type="text" pattern="[0-9]*" inputmode="numeric"{% if params.isBirthday %} autocomplete="bday-year"{% endif %}>
+                </div>
+            </div>
+        {% endcall %}
+    {% endcall %}
+{%- endif -%}
+{%- endmacro %}
