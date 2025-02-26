@@ -892,6 +892,581 @@ root: root
 })();
 })();
 
+(function() {(window.nunjucksPrecompiled = window.nunjucksPrecompiled || {})["elements/dateInput.njk"] = (function() {
+function root(env, context, frame, runtime, cb) {
+var lineno = 0;
+var colno = 0;
+var output = "";
+try {
+var parentTemplate = null;
+output += "\n";
+output += "\n";
+var macro_t_1 = runtime.makeMacro(
+["params"], 
+[], 
+function (l_params, kwargs) {
+var callerFrame = frame;
+frame = new runtime.Frame();
+kwargs = kwargs || {};
+if (Object.prototype.hasOwnProperty.call(kwargs, "caller")) {
+frame.set("caller", kwargs.caller); }
+frame.set("params", l_params);
+var t_2 = "";var t_3;
+t_3 = env.getFilter("default").call(context, runtime.memberLookup((l_params),"isPageHeading"),false);
+frame.set("isPageHeading", t_3, true);
+if(frame.topLevel) {
+context.setVariable("isPageHeading", t_3);
+}
+if(frame.topLevel) {
+context.addExport("isPageHeading", t_3);
+}
+var t_4;
+t_4 = env.getFilter("default").call(context, runtime.memberLookup((l_params),"variant"),"mobile");
+frame.set("variant", t_4, true);
+if(frame.topLevel) {
+context.setVariable("variant", t_4);
+}
+if(frame.topLevel) {
+context.addExport("variant", t_4);
+}
+if(runtime.memberLookup((l_params),"legend") && runtime.memberLookup((l_params),"id") && runtime.memberLookup((l_params),"name")) {
+env.getTemplate("utilities/govcyUtilities.njk", false, "elements/dateInput.njk", false, function(t_6,t_5) {
+if(t_6) { cb(t_6); return; }
+t_5.getExported(function(t_7,t_5) {
+if(t_7) { cb(t_7); return; }
+if(Object.prototype.hasOwnProperty.call(t_5, "govcyLocalizeContent")) {
+var t_8 = t_5.govcyLocalizeContent;
+} else {
+cb(new Error("cannot import 'govcyLocalizeContent'")); return;
+}
+context.setVariable("govcyLocalizeContent", t_8);
+if(Object.prototype.hasOwnProperty.call(t_5, "govcyLangAttribute")) {
+var t_9 = t_5.govcyLangAttribute;
+} else {
+cb(new Error("cannot import 'govcyLangAttribute'")); return;
+}
+context.setVariable("govcyLangAttribute", t_9);
+env.getTemplate("elements/fieldset.njk", false, "elements/dateInput.njk", false, function(t_11,t_10) {
+if(t_11) { cb(t_11); return; }
+t_10.getExported(function(t_12,t_10) {
+if(t_12) { cb(t_12); return; }
+if(Object.prototype.hasOwnProperty.call(t_10, "fieldset")) {
+var t_13 = t_10.fieldset;
+} else {
+cb(new Error("cannot import 'fieldset'")); return;
+}
+context.setVariable("fieldset", t_13);
+env.getTemplate("elements/hint.njk", false, "elements/dateInput.njk", false, function(t_15,t_14) {
+if(t_15) { cb(t_15); return; }
+t_14.getExported(function(t_16,t_14) {
+if(t_16) { cb(t_16); return; }
+if(Object.prototype.hasOwnProperty.call(t_14, "hint")) {
+var t_17 = t_14.hint;
+} else {
+cb(new Error("cannot import 'hint'")); return;
+}
+context.setVariable("hint", t_17);
+env.getTemplate("elements/legend.njk", false, "elements/dateInput.njk", false, function(t_19,t_18) {
+if(t_19) { cb(t_19); return; }
+t_18.getExported(function(t_20,t_18) {
+if(t_20) { cb(t_20); return; }
+if(Object.prototype.hasOwnProperty.call(t_18, "legend")) {
+var t_21 = t_18.legend;
+} else {
+cb(new Error("cannot import 'legend'")); return;
+}
+context.setVariable("legend", t_21);
+env.getTemplate("elements/errorMessage.njk", false, "elements/dateInput.njk", false, function(t_23,t_22) {
+if(t_23) { cb(t_23); return; }
+t_22.getExported(function(t_24,t_22) {
+if(t_24) { cb(t_24); return; }
+if(Object.prototype.hasOwnProperty.call(t_22, "errorMessage")) {
+var t_25 = t_22.errorMessage;
+} else {
+cb(new Error("cannot import 'errorMessage'")); return;
+}
+context.setVariable("errorMessage", t_25);
+env.getTemplate("elements/formControl.njk", false, "elements/dateInput.njk", false, function(t_27,t_26) {
+if(t_27) { cb(t_27); return; }
+t_26.getExported(function(t_28,t_26) {
+if(t_28) { cb(t_28); return; }
+if(Object.prototype.hasOwnProperty.call(t_26, "formControl")) {
+var t_29 = t_26.formControl;
+} else {
+cb(new Error("cannot import 'formControl'")); return;
+}
+context.setVariable("formControl", t_29);
+var t_30;
+t_30 = (lineno = 32, colno = 43, runtime.callWrap(t_8, "govcyLocalizeContent", context, [{"en": "Day","el": "Μέρα"},runtime.memberLookup((l_params),"lang")]));
+frame.set("dayLabel", t_30, true);
+if(frame.topLevel) {
+context.setVariable("dayLabel", t_30);
+}
+if(frame.topLevel) {
+context.addExport("dayLabel", t_30);
+}
+var t_31;
+t_31 = (lineno = 33, colno = 45, runtime.callWrap(t_8, "govcyLocalizeContent", context, [{"en": "Month","el": "Μήνας"},runtime.memberLookup((l_params),"lang")]));
+frame.set("monthLabel", t_31, true);
+if(frame.topLevel) {
+context.setVariable("monthLabel", t_31);
+}
+if(frame.topLevel) {
+context.addExport("monthLabel", t_31);
+}
+var t_32;
+t_32 = (lineno = 34, colno = 44, runtime.callWrap(t_8, "govcyLocalizeContent", context, [{"en": "Year","el": "Χρόνος"},runtime.memberLookup((l_params),"lang")]));
+frame.set("yearLabel", t_32, true);
+if(frame.topLevel) {
+context.setVariable("yearLabel", t_32);
+}
+if(frame.topLevel) {
+context.addExport("yearLabel", t_32);
+}
+var t_33;
+t_33 = (lineno = 35, colno = 46, runtime.callWrap(t_8, "govcyLocalizeContent", context, [{"en": "January","el": "Ιανουάριος"},runtime.memberLookup((l_params),"lang")]));
+frame.set("monthValue1", t_33, true);
+if(frame.topLevel) {
+context.setVariable("monthValue1", t_33);
+}
+if(frame.topLevel) {
+context.addExport("monthValue1", t_33);
+}
+var t_34;
+t_34 = (lineno = 36, colno = 46, runtime.callWrap(t_8, "govcyLocalizeContent", context, [{"en": "February","el": "Φεβρουάριος"},runtime.memberLookup((l_params),"lang")]));
+frame.set("monthValue2", t_34, true);
+if(frame.topLevel) {
+context.setVariable("monthValue2", t_34);
+}
+if(frame.topLevel) {
+context.addExport("monthValue2", t_34);
+}
+var t_35;
+t_35 = (lineno = 37, colno = 46, runtime.callWrap(t_8, "govcyLocalizeContent", context, [{"en": "March","el": "Μάρτιος"},runtime.memberLookup((l_params),"lang")]));
+frame.set("monthValue3", t_35, true);
+if(frame.topLevel) {
+context.setVariable("monthValue3", t_35);
+}
+if(frame.topLevel) {
+context.addExport("monthValue3", t_35);
+}
+var t_36;
+t_36 = (lineno = 38, colno = 46, runtime.callWrap(t_8, "govcyLocalizeContent", context, [{"en": "April","el": "Απρίλιος"},runtime.memberLookup((l_params),"lang")]));
+frame.set("monthValue4", t_36, true);
+if(frame.topLevel) {
+context.setVariable("monthValue4", t_36);
+}
+if(frame.topLevel) {
+context.addExport("monthValue4", t_36);
+}
+var t_37;
+t_37 = (lineno = 39, colno = 46, runtime.callWrap(t_8, "govcyLocalizeContent", context, [{"en": "May","el": "Μάϊος"},runtime.memberLookup((l_params),"lang")]));
+frame.set("monthValue5", t_37, true);
+if(frame.topLevel) {
+context.setVariable("monthValue5", t_37);
+}
+if(frame.topLevel) {
+context.addExport("monthValue5", t_37);
+}
+var t_38;
+t_38 = (lineno = 40, colno = 46, runtime.callWrap(t_8, "govcyLocalizeContent", context, [{"en": "June","el": "Ιούνιος"},runtime.memberLookup((l_params),"lang")]));
+frame.set("monthValue6", t_38, true);
+if(frame.topLevel) {
+context.setVariable("monthValue6", t_38);
+}
+if(frame.topLevel) {
+context.addExport("monthValue6", t_38);
+}
+var t_39;
+t_39 = (lineno = 41, colno = 46, runtime.callWrap(t_8, "govcyLocalizeContent", context, [{"en": "July","el": "Ιούλιος"},runtime.memberLookup((l_params),"lang")]));
+frame.set("monthValue7", t_39, true);
+if(frame.topLevel) {
+context.setVariable("monthValue7", t_39);
+}
+if(frame.topLevel) {
+context.addExport("monthValue7", t_39);
+}
+var t_40;
+t_40 = (lineno = 42, colno = 46, runtime.callWrap(t_8, "govcyLocalizeContent", context, [{"en": "August","el": "Αύγουστος"},runtime.memberLookup((l_params),"lang")]));
+frame.set("monthValue8", t_40, true);
+if(frame.topLevel) {
+context.setVariable("monthValue8", t_40);
+}
+if(frame.topLevel) {
+context.addExport("monthValue8", t_40);
+}
+var t_41;
+t_41 = (lineno = 43, colno = 46, runtime.callWrap(t_8, "govcyLocalizeContent", context, [{"en": "September","el": "Σεπτέμβριος"},runtime.memberLookup((l_params),"lang")]));
+frame.set("monthValue9", t_41, true);
+if(frame.topLevel) {
+context.setVariable("monthValue9", t_41);
+}
+if(frame.topLevel) {
+context.addExport("monthValue9", t_41);
+}
+var t_42;
+t_42 = (lineno = 44, colno = 47, runtime.callWrap(t_8, "govcyLocalizeContent", context, [{"en": "October","el": "Οκτώβριος"},runtime.memberLookup((l_params),"lang")]));
+frame.set("monthValue10", t_42, true);
+if(frame.topLevel) {
+context.setVariable("monthValue10", t_42);
+}
+if(frame.topLevel) {
+context.addExport("monthValue10", t_42);
+}
+var t_43;
+t_43 = (lineno = 45, colno = 47, runtime.callWrap(t_8, "govcyLocalizeContent", context, [{"en": "November","el": "Νοέμβριος"},runtime.memberLookup((l_params),"lang")]));
+frame.set("monthValue11", t_43, true);
+if(frame.topLevel) {
+context.setVariable("monthValue11", t_43);
+}
+if(frame.topLevel) {
+context.addExport("monthValue11", t_43);
+}
+var t_44;
+t_44 = (lineno = 46, colno = 47, runtime.callWrap(t_8, "govcyLocalizeContent", context, [{"en": "December","el": "Δεκέμβριος"},runtime.memberLookup((l_params),"lang")]));
+frame.set("monthValue12", t_44, true);
+if(frame.topLevel) {
+context.setVariable("monthValue12", t_44);
+}
+if(frame.topLevel) {
+context.addExport("monthValue12", t_44);
+}
+if(runtime.memberLookup((l_params),"hint")) {
+var t_45;
+t_45 = env.getFilter("join").call(context, [runtime.memberLookup((l_params),"id"),"-hint"]);
+frame.set("hintId", t_45, true);
+if(frame.topLevel) {
+context.setVariable("hintId", t_45);
+}
+if(frame.topLevel) {
+context.addExport("hintId", t_45);
+}
+;
+}
+else {
+var t_46;
+t_46 = "";
+frame.set("hintId", t_46, true);
+if(frame.topLevel) {
+context.setVariable("hintId", t_46);
+}
+if(frame.topLevel) {
+context.addExport("hintId", t_46);
+}
+;
+}
+if(runtime.memberLookup((l_params),"error")) {
+var t_47;
+t_47 = env.getFilter("join").call(context, [runtime.memberLookup((l_params),"id"),"-error"]);
+frame.set("errorId", t_47, true);
+if(frame.topLevel) {
+context.setVariable("errorId", t_47);
+}
+if(frame.topLevel) {
+context.addExport("errorId", t_47);
+}
+;
+}
+else {
+var t_48;
+t_48 = "";
+frame.set("errorId", t_48, true);
+if(frame.topLevel) {
+context.setVariable("errorId", t_48);
+}
+if(frame.topLevel) {
+context.addExport("errorId", t_48);
+}
+;
+}
+if(runtime.memberLookup((l_params),"error") || runtime.memberLookup((l_params),"hint")) {
+var t_49;
+t_49 = runtime.contextOrFrameLookup(context, frame, "hintId") + "" + " " + "" + runtime.contextOrFrameLookup(context, frame, "errorId");
+frame.set("ariaDescribedBy", t_49, true);
+if(frame.topLevel) {
+context.setVariable("ariaDescribedBy", t_49);
+}
+if(frame.topLevel) {
+context.addExport("ariaDescribedBy", t_49);
+}
+;
+}
+else {
+var t_50;
+t_50 = "";
+frame.set("ariaDescribedBy", t_50, true);
+if(frame.topLevel) {
+context.setVariable("ariaDescribedBy", t_50);
+}
+if(frame.topLevel) {
+context.addExport("ariaDescribedBy", t_50);
+}
+;
+}
+t_2 += runtime.suppressValue((lineno = 65, colno = 20, runtime.callWrap(t_13, "fieldset", context, [{"ariaDescribedby": runtime.contextOrFrameLookup(context, frame, "ariaDescribedBy"),"classes": runtime.memberLookup((l_params),"classes"),"lang": runtime.memberLookup((l_params),"lang")},runtime.makeKeywordArgs({"caller": (function (){var macro_t_51 = runtime.makeMacro(
+[], 
+[], 
+function (kwargs) {
+var callerFrame = frame;
+frame = frame.push(true);
+kwargs = kwargs || {};
+if (Object.prototype.hasOwnProperty.call(kwargs, "caller")) {
+frame.set("caller", kwargs.caller); }
+var t_52 = "";t_52 += "\n        ";
+t_52 += runtime.suppressValue((lineno = 66, colno = 22, runtime.callWrap(t_21, "legend", context, [{"legend": runtime.memberLookup((l_params),"legend"),"isPageHeading": runtime.contextOrFrameLookup(context, frame, "isPageHeading"),"lang": runtime.memberLookup((l_params),"lang")},runtime.makeKeywordArgs({"caller": (function (){var macro_t_53 = runtime.makeMacro(
+[], 
+[], 
+function (kwargs) {
+var callerFrame = frame;
+frame = frame.push(true);
+kwargs = kwargs || {};
+if (Object.prototype.hasOwnProperty.call(kwargs, "caller")) {
+frame.set("caller", kwargs.caller); }
+var t_54 = "";;
+frame = frame.pop();
+return new runtime.SafeString(t_54);
+});
+return macro_t_53;})()})])), env.opts.autoescape);
+t_52 += "\n        ";
+t_52 += runtime.suppressValue((lineno = 67, colno = 27, runtime.callWrap(t_29, "formControl", context, [{"isError": (runtime.memberLookup((l_params),"hideFormControlError")?false:runtime.memberLookup((l_params),"error"))},runtime.makeKeywordArgs({"caller": (function (){var macro_t_55 = runtime.makeMacro(
+[], 
+[], 
+function (kwargs) {
+var callerFrame = frame;
+frame = frame.push(true);
+kwargs = kwargs || {};
+if (Object.prototype.hasOwnProperty.call(kwargs, "caller")) {
+frame.set("caller", kwargs.caller); }
+var t_56 = "";t_56 += "\n            ";
+t_56 += runtime.suppressValue((lineno = 68, colno = 24, runtime.callWrap(t_17, "hint", context, [{"hint": runtime.memberLookup((l_params),"hint"),"id": runtime.contextOrFrameLookup(context, frame, "hintId"),"lang": runtime.memberLookup((l_params),"lang")},runtime.makeKeywordArgs({"caller": (function (){var macro_t_57 = runtime.makeMacro(
+[], 
+[], 
+function (kwargs) {
+var callerFrame = frame;
+frame = frame.push(true);
+kwargs = kwargs || {};
+if (Object.prototype.hasOwnProperty.call(kwargs, "caller")) {
+frame.set("caller", kwargs.caller); }
+var t_58 = "";;
+frame = frame.pop();
+return new runtime.SafeString(t_58);
+});
+return macro_t_57;})()})])), env.opts.autoescape);
+t_56 += runtime.suppressValue((lineno = 70, colno = 32, runtime.callWrap(t_25, "errorMessage", context, [{"message": runtime.memberLookup((l_params),"error"),"id": runtime.contextOrFrameLookup(context, frame, "errorId"),"lang": runtime.memberLookup((l_params),"lang")},runtime.makeKeywordArgs({"caller": (function (){var macro_t_59 = runtime.makeMacro(
+[], 
+[], 
+function (kwargs) {
+var callerFrame = frame;
+frame = frame.push(true);
+kwargs = kwargs || {};
+if (Object.prototype.hasOwnProperty.call(kwargs, "caller")) {
+frame.set("caller", kwargs.caller); }
+var t_60 = "";;
+frame = frame.pop();
+return new runtime.SafeString(t_60);
+});
+return macro_t_59;})()})])), env.opts.autoescape);
+t_56 += "<div class=\"govcy-d-flex govcy-flex-wrap\"";
+t_56 += runtime.suppressValue((lineno = 72, colno = 74, runtime.callWrap(t_9, "govcyLangAttribute", context, [runtime.memberLookup((l_params),"lang")])), env.opts.autoescape);
+t_56 += ">    \n                <div class=\"govcy-d-block govcy-mr-3\">\n                    <label class=\"govcy-label govcy-mb-1 govcy-fw-normal govcy-mb-2\" for=\"";
+t_56 += runtime.suppressValue(runtime.memberLookup((l_params),"id"), env.opts.autoescape);
+t_56 += "_day\">";
+t_56 += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "dayLabel"), env.opts.autoescape);
+t_56 += "</label>\n                    <input id=\"";
+t_56 += runtime.suppressValue(runtime.memberLookup((l_params),"id"), env.opts.autoescape);
+t_56 += "_day\" name=\"";
+t_56 += runtime.suppressValue(runtime.memberLookup((l_params),"name"), env.opts.autoescape);
+t_56 += "_day\" class=\"govcy-text-input govcy-text-input-char_3";
+if(runtime.memberLookup((l_params),"hasDayError")) {
+t_56 += " govcy-text-input-error";
+;
+}
+t_56 += "\" maxlength=\"2\" type=\"text\" pattern=\"[0-9]*\" inputmode=\"numeric\"";
+if(runtime.memberLookup((l_params),"isBirthday")) {
+t_56 += " autocomplete=\"bday-day\"";
+;
+}
+t_56 += ">\n                </div>\n                <div class=\"govcy-d-block govcy-mr-3\">\n                    <label class=\"govcy-label govcy-mb-1 govcy-fw-normal govcy-mb-2\" for=\"";
+t_56 += runtime.suppressValue(runtime.memberLookup((l_params),"id"), env.opts.autoescape);
+t_56 += "_month\">";
+t_56 += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "monthLabel"), env.opts.autoescape);
+t_56 += "</label>\n                    <select id=\"";
+t_56 += runtime.suppressValue(runtime.memberLookup((l_params),"id"), env.opts.autoescape);
+t_56 += "_month\" name=\"";
+t_56 += runtime.suppressValue(runtime.memberLookup((l_params),"name"), env.opts.autoescape);
+t_56 += "_month\" class=\"govcy-select";
+if(runtime.memberLookup((l_params),"hasMonthError")) {
+t_56 += " govcy-select-error";
+;
+}
+t_56 += "\"";
+if(runtime.memberLookup((l_params),"isBirthday")) {
+t_56 += " autocomplete=\"bday-month\"";
+;
+}
+t_56 += ">\n                        <option value=\"\" selected=\"\"></option>\n                        <option value=\"1\">";
+if(runtime.contextOrFrameLookup(context, frame, "variant") == "mobile") {
+t_56 += "1";
+;
+}
+else {
+t_56 += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "monthValue1"), env.opts.autoescape);
+;
+}
+t_56 += "</option>\n                        <option value=\"2\">";
+if(runtime.contextOrFrameLookup(context, frame, "variant") == "mobile") {
+t_56 += "2";
+;
+}
+else {
+t_56 += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "monthValue2"), env.opts.autoescape);
+;
+}
+t_56 += "</option>\n                        <option value=\"3\">";
+if(runtime.contextOrFrameLookup(context, frame, "variant") == "mobile") {
+t_56 += "3";
+;
+}
+else {
+t_56 += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "monthValue3"), env.opts.autoescape);
+;
+}
+t_56 += "</option>\n                        <option value=\"4\">";
+if(runtime.contextOrFrameLookup(context, frame, "variant") == "mobile") {
+t_56 += "4";
+;
+}
+else {
+t_56 += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "monthValue4"), env.opts.autoescape);
+;
+}
+t_56 += "</option>\n                        <option value=\"5\">";
+if(runtime.contextOrFrameLookup(context, frame, "variant") == "mobile") {
+t_56 += "5";
+;
+}
+else {
+t_56 += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "monthValue5"), env.opts.autoescape);
+;
+}
+t_56 += "</option>\n                        <option value=\"6\">";
+if(runtime.contextOrFrameLookup(context, frame, "variant") == "mobile") {
+t_56 += "6";
+;
+}
+else {
+t_56 += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "monthValue6"), env.opts.autoescape);
+;
+}
+t_56 += "</option>\n                        <option value=\"7\">";
+if(runtime.contextOrFrameLookup(context, frame, "variant") == "mobile") {
+t_56 += "7";
+;
+}
+else {
+t_56 += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "monthValue7"), env.opts.autoescape);
+;
+}
+t_56 += "</option>\n                        <option value=\"8\">";
+if(runtime.contextOrFrameLookup(context, frame, "variant") == "mobile") {
+t_56 += "8";
+;
+}
+else {
+t_56 += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "monthValue8"), env.opts.autoescape);
+;
+}
+t_56 += "</option>\n                        <option value=\"9\">";
+if(runtime.contextOrFrameLookup(context, frame, "variant") == "mobile") {
+t_56 += "9";
+;
+}
+else {
+t_56 += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "monthValue9"), env.opts.autoescape);
+;
+}
+t_56 += "</option>\n                        <option value=\"10\">";
+if(runtime.contextOrFrameLookup(context, frame, "variant") == "mobile") {
+t_56 += "10";
+;
+}
+else {
+t_56 += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "monthValue10"), env.opts.autoescape);
+;
+}
+t_56 += "</option>\n                        <option value=\"11\">";
+if(runtime.contextOrFrameLookup(context, frame, "variant") == "mobile") {
+t_56 += "11";
+;
+}
+else {
+t_56 += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "monthValue11"), env.opts.autoescape);
+;
+}
+t_56 += "</option>\n                        <option value=\"12\">";
+if(runtime.contextOrFrameLookup(context, frame, "variant") == "mobile") {
+t_56 += "12";
+;
+}
+else {
+t_56 += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "monthValue12"), env.opts.autoescape);
+;
+}
+t_56 += "</option>\n                    </select>\n                </div>\n                <div class=\"govcy-d-block govcy-mr-3\">\n                    <label class=\"govcy-label govcy-mb-1 govcy-fw-normal govcy-mb-2\" for=\"";
+t_56 += runtime.suppressValue(runtime.memberLookup((l_params),"id"), env.opts.autoescape);
+t_56 += "_year\">";
+t_56 += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "yearLabel"), env.opts.autoescape);
+t_56 += "</label>\n                    <input id=\"";
+t_56 += runtime.suppressValue(runtime.memberLookup((l_params),"id"), env.opts.autoescape);
+t_56 += "_year\" name=\"";
+t_56 += runtime.suppressValue(runtime.memberLookup((l_params),"name"), env.opts.autoescape);
+t_56 += "_year\" class=\"govcy-text-input govcy-text-input-char_6";
+if(runtime.memberLookup((l_params),"hasYearError")) {
+t_56 += " govcy-text-input-error";
+;
+}
+t_56 += "\" maxlength=\"4\" type=\"text\" pattern=\"[0-9]*\" inputmode=\"numeric\"";
+if(runtime.memberLookup((l_params),"isBirthday")) {
+t_56 += " autocomplete=\"bday-year\"";
+;
+}
+t_56 += ">\n                </div>\n            </div>\n        ";
+;
+frame = frame.pop();
+return new runtime.SafeString(t_56);
+});
+return macro_t_55;})()})])), env.opts.autoescape);
+t_52 += "\n    ";
+;
+frame = frame.pop();
+return new runtime.SafeString(t_52);
+});
+return macro_t_51;})()})])), env.opts.autoescape);
+})})})})})})})})})})})});
+}
+;
+frame = callerFrame;
+return new runtime.SafeString(t_2);
+});
+context.addExport("dateInput");
+context.setVariable("dateInput", macro_t_1);
+if(parentTemplate) {
+parentTemplate.rootRenderFunc(env, context, frame, runtime, cb);
+} else {
+cb(null, output);
+}
+;
+} catch (e) {
+  cb(runtime.handleError(e, lineno, colno));
+}
+}
+return {
+root: root
+};
+
+})();
+})();
+
 (function() {(window.nunjucksPrecompiled = window.nunjucksPrecompiled || {})["elements/datePicker.njk"] = (function() {
 function root(env, context, frame, runtime, cb) {
 var lineno = 0;
@@ -5358,7 +5933,7 @@ var output = "";
 try {
 var parentTemplate = null;
 var t_1;
-t_1 = ["label","legend","hint","button","errorMessage","select","textElement","htmlElement","textInput","radios","checkboxes","fileInput","fileView","backLink","tag","table","summaryList","textArea","markdown","panel","datePicker"];
+t_1 = ["label","legend","hint","button","errorMessage","select","textElement","htmlElement","textInput","radios","checkboxes","fileInput","fileView","backLink","tag","table","summaryList","textArea","markdown","panel","datePicker","dateInput"];
 frame.set("macroSimpleBlocks", t_1, true);
 if(frame.topLevel) {
 context.setVariable("macroSimpleBlocks", t_1);

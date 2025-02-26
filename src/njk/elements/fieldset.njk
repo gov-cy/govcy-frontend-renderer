@@ -2,6 +2,7 @@
  @param {string} id The hint id. Will escape text. Optional
  @param {string} classes Additional classes to add to the outer div. Optional 
  @param {string} ariaDescribedby Ids of aria-describedby. To be used for hints and errors. Optional 
+ @param {string} ariaRole The ARIA role attribute. Optional.
  @param {string} lang The language used. Can be 'en','el'. Optional.
  @param {array} elements If defined will be rendered elements inside the form. 
     i.e. `[
@@ -13,7 +14,7 @@
 {% macro fieldset(params) -%}
 {#- Import localizer from utilities -#}
 {%- from "../utilities/govcyUtilities.njk" import govcyLocalizeContent, govcyLangAttribute -%}
-<fieldset {% if params.id %}id="{{ params.id }}" {% endif %}class="govcy-fieldset{% if params.classes %} {{ params.classes }}{% endif %}"{% if params.ariaDescribedby %} aria-describedby="{{ params.ariaDescribedby }}"{% endif %}{{ govcyLangAttribute(params.lang) }}>
+<fieldset {% if params.id %}id="{{ params.id }}" {% endif %}class="govcy-fieldset{% if params.classes %} {{ params.classes }}{% endif %}"{% if params.ariaRole %} role="{{ params.ariaRole }}"{% endif %}{% if params.ariaDescribedby %} aria-describedby="{{ params.ariaDescribedby }}"{% endif %}{{ govcyLangAttribute(params.lang) }}>
 {{ caller() }}
     {#- if it has elements to be called -#}
     {%- if params.elements -%}

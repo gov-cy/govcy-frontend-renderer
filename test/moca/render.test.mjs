@@ -1429,6 +1429,142 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
+    it(checksNum+'86 `Date Input` with default options', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([
+            `<fieldset\\s*class="govcy-fieldset"\\s*role="group"\\s*>`, //fieldset
+            `\\s*<legend\\s*class="govcy-legend">\\s*Default values\\s*<\\/legend>`, //legend
+            `\\s*<div\\s*class="govcy-form-control">`, //form control
+            `\\s*<div\\s*class="govcy-d-flex govcy-flex-wrap">`, //flex wrap
+            //-- Day --
+            `\\s*<div\\s*class="govcy-d-block govcy-mr-3">`, //block day
+            `\\s*<label\\s*class="govcy-label govcy-mb-1 govcy-fw-normal govcy-mb-2"\\s*for="govcy-test-86_day">\\s*Day\\s*<\\/label>`, //day label
+            `\\s*<input\\s*id="govcy-test-86_day"\\s*name="govcy-test-86_day"\\s*class="govcy-text-input govcy-text-input-char_3"\\s*maxlength="2"\\s*type="text"\\s*pattern="\\[0-9\\]\\*"\\s*inputmode="numeric">`, //day input
+            `\\s*</div>`, //closing div day
+            //-- Month --
+            `\\s*<div\\s*class="govcy-d-block govcy-mr-3">`, //block month
+            `\\s*<label\\s*class="govcy-label govcy-mb-1 govcy-fw-normal govcy-mb-2"\\s*for="govcy-test-86_month">\\s*Month\\s*<\\/label>`, //month label
+            `\\s*<select\\s*id="govcy-test-86_month"\\s*name="govcy-test-86_month"\\s*class="govcy-select">`, //month select
+            `\\s*<option\\s*value=""\\s*selected="">\\s*<\\/option>`, //month empty
+            `\\s*<option\\s*value="1"\\s*>\\s*1\\s*<\\/option>`, //month 1
+            `\\s*<option\\s*value="2"\\s*>\\s*2\\s*<\\/option>`, //month 2
+            `\\s*<option\\s*value="3"\\s*>\\s*3\\s*<\\/option>`, //month 3
+            `\\s*<option\\s*value="4"\\s*>\\s*4\\s*<\\/option>`, //month 4
+            `\\s*<option\\s*value="5"\\s*>\\s*5\\s*<\\/option>`, //month 5
+            `\\s*<option\\s*value="6"\\s*>\\s*6\\s*<\\/option>`, //month 6
+            `\\s*<option\\s*value="7"\\s*>\\s*7\\s*<\\/option>`, //month 7
+            `\\s*<option\\s*value="8"\\s*>\\s*8\\s*<\\/option>`, //month 8
+            `\\s*<option\\s*value="9"\\s*>\\s*9\\s*<\\/option>`, //month 9
+            `\\s*<option\\s*value="10"\\s*>\\s*10\\s*<\\/option>`, //month 10
+            `\\s*<option\\s*value="11"\\s*>\\s*11\\s*<\\/option>`, //month 11
+            `\\s*<option\\s*value="12"\\s*>\\s*12\\s*<\\/option>`, //month 12
+            `\\s*<\\/select>`, //closing select
+            `\\s*<\\/div>`, //closing div month
+            //-- Year --
+            `\\s*<div\\s*class="govcy-d-block govcy-mr-3">`, //block year
+            `\\s*<label\\s*class="govcy-label govcy-mb-1 govcy-fw-normal govcy-mb-2"\\s*for="govcy-test-86_year">\\s*Year\\s*<\\/label>`, //day label
+            `\\s*<input\\s*id="govcy-test-86_year"\\s*name="govcy-test-86_year"\\s*class="govcy-text-input govcy-text-input-char_6"\\s*maxlength="4"\\s*type="text"\\s*pattern="\\[0-9\\]\\*"\\s*inputmode="numeric">`, //year input
+            `\\s*</div>`, //closing div year
+            `\\s*<\\/div>`, //closing flex wrap
+            `\\s*<\\/div>`, //closing form control
+            `\\s*<\\/fieldset>`, //closing fieldset
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+    it(checksNum+'87 `Date Input` with all options', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([
+            `<fieldset\\s*class="govcy-fieldset\\s*govcy-test-class"\\s*role="group"\\s*aria-describedby="govcy-test-87-hint\\s*govcy-test-87-error"\\s*>`, //fieldset
+            `\\s*<legend\\s*class="govcy-legend"\\s*>\\s*<h1>\\s*All options\\s*<\\/h1>\\s*<\\/legend>`, //legend
+            `\\s*<div\\s*class="govcy-form-control\\s*govcy-form-control-error">`, //form control
+            `\\s*<span\\s*id="govcy-test-87-hint"\\s*class="govcy-hint">\\s*This is a hint\\s*<\\/span>`, //hint
+            `\\s*<p\\s*id="govcy-test-87-error"\\s*class="govcy-input-error-msg">\\s*<span\\s*class="govcy-visually-hidden-error"\\s*>\\s*Error:\\s*<\\/span>\\s*This is an error\\s*<\\/p>`, //error
+            `\\s*<div\\s*class="govcy-d-flex govcy-flex-wrap">`, //flex wrap
+            // //-- Day --
+            `\\s*<div\\s*class="govcy-d-block govcy-mr-3">`, //block day
+            `\\s*<label\\s*class="govcy-label govcy-mb-1 govcy-fw-normal govcy-mb-2"\\s*for="govcy-test-87_day">\\s*Day\\s*<\\/label>`, //day label
+            `\\s*<input\\s*id="govcy-test-87_day"\\s*name="govcy-test-87_day"\\s*class="govcy-text-input govcy-text-input-char_3"\\s*maxlength="2"\\s*type="text"\\s*pattern="\\[0-9\\]\\*"\\s*inputmode="numeric"\\s*autocomplete="bday-day">`, //day input
+            `\\s*</div>`, //closing div day
+            // //-- Month --
+            `\\s*<div\\s*class="govcy-d-block govcy-mr-3">`, //block month
+            `\\s*<label\\s*class="govcy-label govcy-mb-1 govcy-fw-normal govcy-mb-2"\\s*for="govcy-test-87_month">\\s*Month\\s*<\\/label>`, //month label
+            `\\s*<select\\s*id="govcy-test-87_month"\\s*name="govcy-test-87_month"\\s*class="govcy-select\\s*govcy-select-error"\\s*autocomplete="bday-month">`, //month select
+            `\\s*<option\\s*value=""\\s*selected="">\\s*<\\/option>`, //month empty
+            `\\s*<option\\s*value="1"\\s*>\\s*January\\s*<\\/option>`, //month 1
+            `\\s*<option\\s*value="2"\\s*>\\s*February\\s*<\\/option>`, //month 2
+            `\\s*<option\\s*value="3"\\s*>\\s*March\\s*<\\/option>`, //month 3
+            `\\s*<option\\s*value="4"\\s*>\\s*April\\s*<\\/option>`, //month 4
+            `\\s*<option\\s*value="5"\\s*>\\s*May\\s*<\\/option>`, //month 5
+            `\\s*<option\\s*value="6"\\s*>\\s*June\\s*<\\/option>`, //month 6
+            `\\s*<option\\s*value="7"\\s*>\\s*July\\s*<\\/option>`, //month 7
+            `\\s*<option\\s*value="8"\\s*>\\s*August\\s*<\\/option>`, //month 8
+            `\\s*<option\\s*value="9"\\s*>\\s*September\\s*<\\/option>`, //month 9
+            `\\s*<option\\s*value="10"\\s*>\\s*October\\s*<\\/option>`, //month 10
+            `\\s*<option\\s*value="11"\\s*>\\s*November\\s*<\\/option>`, //month 11
+            `\\s*<option\\s*value="12"\\s*>\\s*December\\s*<\\/option>`, //month 12
+            `\\s*<\\/select>`, //closing select
+            `\\s*<\\/div>`, //closing div month
+            // //-- Year --
+            `\\s*<div\\s*class="govcy-d-block govcy-mr-3">`, //block year
+            `\\s*<label\\s*class="govcy-label govcy-mb-1 govcy-fw-normal govcy-mb-2"\\s*for="govcy-test-87_year">\\s*Year\\s*<\\/label>`, //day label
+            `\\s*<input\\s*id="govcy-test-87_year"\\s*name="govcy-test-87_year"\\s*class="govcy-text-input govcy-text-input-char_6\\s*govcy-text-input-error"\\s*maxlength="4"\\s*type="text"\\s*pattern="\\[0-9\\]\\*"\\s*inputmode="numeric"\\s*autocomplete="bday-year">`, //year input
+            `\\s*</div>`, //closing div year
+            `\\s*<\\/div>`, //closing flex wrap
+            `\\s*<\\/div>`, //closing form control
+            `\\s*<\\/fieldset>`, //closing fieldset
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+    it(checksNum+'88 `Date Input` with all options', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([            
+            `\\s*<fieldset\\s*class="govcy-fieldset\\s*govcy-test-class"\\s*role="group"\\s*aria-describedby="govcy-test-88-hint\\s*govcy-test-88-error"\\s*lang="el">`,//external dl 
+            `([\\s\\S]*?)`,
+            `All options el`,
+            `([\\s\\S]*?)`,
+            `This is a hint el`,
+            `([\\s\\S]*?)`,
+            `Σφάλμα:`,
+            `([\\s\\S]*?)`,
+            `This is an error el`,
+            `([\\s\\S]*?)`,
+            `Μέρα`,
+            `([\\s\\S]*?)`,
+            `Μήνας`,
+            `([\\s\\S]*?)`,
+            `Ιανουάριος`,
+            `([\\s\\S]*?)`,
+            `Φεβρουάριος`,
+            `([\\s\\S]*?)`,
+            `Μάρτιος`,
+            `([\\s\\S]*?)`,
+            `Απρίλιος`,
+            `([\\s\\S]*?)`,
+            `Μάϊος`,
+            `([\\s\\S]*?)`,
+            `Ιούνιος`,
+            `([\\s\\S]*?)`,
+            `Ιούλιος`,
+            `([\\s\\S]*?)`,
+            `Αύγουστος`,
+            `([\\s\\S]*?)`,
+            `Σεπτέμβριος`,
+            `([\\s\\S]*?)`,
+            `Οκτώβριος`,
+            `([\\s\\S]*?)`,
+            `Νοέμβριος`,
+            `([\\s\\S]*?)`,
+            `Δεκέμβριος`,
+            `([\\s\\S]*?)`,
+            `Χρόνος`,
+            `([\\s\\S]*?)`,
+            `\\s*<\\/fieldset>` //closing fieldset
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
 }
 
 // Export the renderTest function
