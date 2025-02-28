@@ -1517,7 +1517,7 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'88 `Date Input` with all options', async () => {
+    it(checksNum+'88 `Date Input` with all options lang="el"', async () => {
         // check for structure   
         let expectedRegex =  new RegExp ([            
             `\\s*<fieldset\\s*class="govcy-fieldset\\s*govcy-test-class"\\s*role="group"\\s*aria-describedby="govcy-test-88-hint\\s*govcy-test-88-error"\\s*lang="el">`,//external dl 
@@ -1561,6 +1561,87 @@ async function renderChecks(renderedHTML, checksNum){
             `Χρόνος`,
             `([\\s\\S]*?)`,
             `\\s*<\\/fieldset>` //closing fieldset
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+    it(checksNum+'89 `Task List` with default options', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([
+            `<table\\s*class="govcy-table"\\s*id="govcy-test-89">\\s*<tbody>`, //table
+            //row 1
+            `\\s*<tr\\s*id="govcy-test-89-row-1">`, //table row
+            `\\s*<td\\s*classes="govcy-valign-top">`, //table cell
+            `\\s*<a\\s*href="#task1"\\s*>\\s*Task one\\s*<span\\s*class="govcy-visually-hidden">\\s*with status\\s*COMPLETED\\s*<\\/span>\\s*<\\/a>`, //task link with visual hidden
+            `\\s*<\\/td>`, //close cell
+            `\\s*<td\\s*class="govcy-valign-top\\s*govcy-text-end">`, //table cell
+            `\\s*<span\\s*class="govcy-tag\\s*">\\s*COMPLETED\\s*<\\/span>`, //status tag
+            `\\s*<\\/td>`, //close cell
+            `\\s*<\\/tr>`, //close row
+            // row 2
+            `\\s*<tr\\s*id="govcy-test-89-row-2">`, //table row
+            `\\s*<td\\s*classes="govcy-valign-top">`, //table cell
+            `\\s*<a\\s*href="#task2"\\s*>\\s*Task two\\s*<span\\s*class="govcy-visually-hidden">\\s*with status\\s*IN PROGESS\\s*<\\/span>\\s*<\\/a>`, //task link with visual hidden
+            `\\s*<\\/td>`, //close cell
+            `\\s*<td\\s*class="govcy-valign-top\\s*govcy-text-end">`, //table cell
+            `\\s*<span\\s*class="govcy-tag\\s*govcy-tag-cyan\\s*">\\s*IN PROGESS\\s*<\\/span>`, //status tag
+            `\\s*<\\/td>`, //close cell
+            `\\s*<\\/tr>`, //close row
+            // row 3
+            `\\s*<tr\\s*id="govcy-test-89-row-3">`, //table row
+            `\\s*<td\\s*classes="govcy-valign-top">`, //table cell
+            `\\s*<a\\s*href="#task3"\\s*>\\s*Task three\\s*<span\\s*class="govcy-visually-hidden">\\s*with status\\s*NOT STARTED\\s*<\\/span>\\s*<\\/a>`, //task link with visual hidden
+            `\\s*<\\/td>`, //close cell
+            `\\s*<td\\s*class="govcy-valign-top\\s*govcy-text-end">`, //table cell
+            `\\s*<span\\s*class="govcy-tag\\s*govcy-tag-gray\\s*">\\s*NOT STARTED\\s*<\\/span>`, //status tag
+            `\\s*<\\/td>`, //close cell
+            `\\s*<\\/tr>`, //close row
+            // row 4
+            `\\s*<tr\\s*id="govcy-test-89-row-4">`, //table row
+            `\\s*<td\\s*classes="govcy-valign-top">`, //table cell
+            `\\s*Task four\\s*<span\\s*class="govcy-visually-hidden">\\s*with status\\s*CANNOT START YET\\s*<\\/span>`, //task link with visual hidden
+            `\\s*<\\/td>`, //close cell
+            `\\s*<td\\s*class="govcy-valign-top\\s*govcy-text-end">`, //table cell
+            `\\s*<span\\s*class="govcy-tag\\s*govcy-tag-gray\\s*">\\s*CANNOT START YET\\s*<\\/span>`, //status tag
+            `\\s*<\\/td>`, //close cell
+            `\\s*<\\/tr>`, //close row
+            `\\s*<\\/tbody>\\s*<\\/table>`, //closing tags
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+    it(checksNum+'90 `Task List` with all options', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([
+            `<table\\s*class="govcy-table\\s*govcy-test-class\\s*"\\s*id="govcy-test-90">\\s*<tbody>`, //table
+            //row 1
+            `\\s*<tr\\s*id="govcy-test-90-row-1">`, //table row
+            `\\s*<td\\s*classes="govcy-valign-top">`, //table cell
+            `\\s*<a\\s*href="#task1"\\s*>\\s*Task one\\s*<span\\s*class="govcy-visually-hidden">\\s*with status alt\\s*COMPLETED\\s*<\\/span>\\s*<\\/a>\\s*<p>\\s*Some explanation text\\s*<\\/p>`, //task link with visual hidden and description
+            `\\s*<\\/td>`, //close cell
+            `\\s*<td\\s*class="govcy-valign-top\\s*govcy-text-end">`, //table cell
+            `\\s*<span\\s*class="govcy-tag\\s*">\\s*COMPLETED\\s*<\\/span>`, //status tag
+            `\\s*<\\/td>`, //close cell
+            `\\s*<\\/tr>`, //close row
+            `\\s*<\\/tbody>\\s*<\\/table>`, //closing tags
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+    it(checksNum+'91 `Task List` with all options lang="el"', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([
+            `<table\\s*class="govcy-table\\s*govcy-test-class\\s*"\\s*id="govcy-test-91"\\s*lang="el">\\s*<tbody>`, //table
+            //row 1
+            `\\s*<tr\\s*id="govcy-test-91-row-1">`, //table row
+            `\\s*<td\\s*classes="govcy-valign-top">`, //table cell
+            `\\s*<a\\s*href="#task1"\\s*>\\s*Εργασία ένα\\s*<span\\s*class="govcy-visually-hidden">\\s*με κατάσταση alt\\s*ΟΛΟΚΛΗΡΩΘΗΚΕ\\s*<\\/span>\\s*<\\/a>\\s*<p>\\s*Επεξήγηση\\s*<\\/p>`, //task link with visual hidden and description
+            `\\s*<\\/td>`, //close cell
+            `\\s*<td\\s*class="govcy-valign-top\\s*govcy-text-end">`, //table cell
+            `\\s*<span\\s*class="govcy-tag\\s*">\\s*ΟΛΟΚΛΗΡΩΘΗΚΕ\\s*<\\/span>`, //status tag
+            `\\s*<\\/td>`, //close cell
+            `\\s*<\\/tr>`, //close row
+            `\\s*<\\/tbody>\\s*<\\/table>`, //closing tags
         ].join(''));
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
