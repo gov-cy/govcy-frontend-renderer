@@ -2288,6 +2288,159 @@ This element is used to add tag as defined in the [UDS - tag](https://gov-cy.git
 </details>
 
 <details>
+  <summary>taskList</summary>
+  
+## taskList
+
+This element is used to add a tast list as defined in the [UDS - task list](https://gov-cy.github.io/govcy-design-system-docs/patterns/task-list-page/).
+
+**Element name** : `taskList`
+
+**Parameters** :
+```js
+/**
+ @param {string} id The id on the task list table. Will escape text. 
+ @param {string} classes Additional classes to add to the table. Optional 
+ @param {object} visuallyHiddenStatus The visuallyHiddenText text indicating status . Optional. Will escape text.  Default value is `{en:"with status ",el:"με κατάσταση "}`  
+ @param {string} lang The language used. Can be 'en','el'. Optional.
+ @param {array} items The array of items to turn onto taskList 
+    i.e. `[
+            {
+                "id": "task1",
+                "task": {
+                    "text": {
+                        "el": "Εργασία ένα",
+                        "en": "Task one"
+                    },
+                    "link": "#task1"
+                }, 
+                "description": {
+                    "el": "Επεξήγηση",
+                    "en": "Some explanation text"
+                }
+                ,
+                "status": {
+                    "text": {
+                        "el": "ΟΛΟΚΛΗΡΩΘΗΚΕ",
+                        "en": "COMPLETED"
+                    },
+                    "classes": ""
+                }
+            }
+        ]`
+**/
+```
+
+**JSON Example** 
+```json
+{
+    "element": "taskList",
+    "params": {
+        "id":"govcy-test-90",
+        "classes" : "govcy-test-class",
+        "visuallyHiddenStatus": {"en":"with status alt","el":"με κατάσταση alt"},
+        "items":[
+            {
+                "id": "task1",
+                "task": {
+                    "text": {
+                        "el": "Εργασία ένα",
+                        "en": "Task one"
+                    },
+                    "link": "#task1"
+                }, 
+                "description": {
+                    "el": "Επεξήγηση",
+                    "en": "Some explanation text"
+                }
+                ,
+                "status": {
+                    "text": {
+                        "el": "ΟΛΟΚΛΗΡΩΘΗΚΕ",
+                        "en": "COMPLETED"
+                    },
+                    "classes": ""
+                }
+            },
+            {
+                "task": {
+                    "text": {
+                        "el": "Εργασία δύο",
+                        "en": "Task two"
+                    },
+                    "link": "#task2"
+                }, 
+                "status": {
+                    "text": {
+                        "el": "ΣΕ ΕΞΕΛΙΞΗ",
+                        "en": "IN PROGESS"
+                    },
+                    "classes": "govcy-tag-cyan"
+                }
+            }
+        ]
+    }
+}
+```
+
+**Nunjucks Example** 
+
+```Nunjucks
+{{ 
+    govcyElement(
+        "taskList",
+        {
+            "id":"govcy-test-90",
+            "classes" : "govcy-test-class",
+            "visuallyHiddenStatus": {"en":"with status alt","el":"με κατάσταση alt"},
+            "items":[
+                {
+                    "id": "task1",
+                    "task": {
+                        "text": {
+                            "el": "Εργασία ένα",
+                            "en": "Task one"
+                        },
+                        "link": "#task1"
+                    }, 
+                    "description": {
+                        "el": "Επεξήγηση",
+                        "en": "Some explanation text"
+                    }
+                    ,
+                    "status": {
+                        "text": {
+                            "el": "ΟΛΟΚΛΗΡΩΘΗΚΕ",
+                            "en": "COMPLETED"
+                        },
+                        "classes": ""
+                    }
+                },
+                {
+                    "task": {
+                        "text": {
+                            "el": "Εργασία δύο",
+                            "en": "Task two"
+                        },
+                        "link": "#task2"
+                    }, 
+                    "status": {
+                        "text": {
+                            "el": "ΣΕ ΕΞΕΛΙΞΗ",
+                            "en": "IN PROGESS"
+                        },
+                        "classes": "govcy-tag-cyan"
+                    }
+                }
+            ]
+        }
+    ) 
+}}
+```
+
+</details>
+
+<details>
   <summary>textElement</summary>
   
 ## textElement

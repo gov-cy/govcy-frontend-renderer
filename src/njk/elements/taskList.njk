@@ -1,0 +1,66 @@
+{# taskList 
+ @param {string} id The id on the task list table. Will escape text. 
+ @param {string} classes Additional classes to add to the table. Optional 
+ @param {object} visuallyHiddenStatus The visuallyHiddenText text indicating status . Optional. Will escape text.  Default value is `{en:"with status ",el:"με κατάσταση "}`  
+ @param {string} lang The language used. Can be 'en','el'. Optional.
+ @param {array} items The array of items to turn onto taskList 
+    i.e. `[
+            {
+                "id": "task1",
+                "task": {
+                    "text": {
+                        "el": "Εργασία ένα",
+                        "en": "Task one"
+                    },
+                    "link": "#task1"
+                }, 
+                "description": {
+                    "el": "Επεξήγηση",
+                    "en": "Some explanation text"
+                }
+                ,
+                "status": {
+                    "text": {
+                        "el": "ΟΛΟΚΛΗΡΩΘΗΚΕ",
+                        "en": "COMPLETED"
+                    },
+                    "classes": ""
+                }
+            }
+        ]`
+ @returns govcy taskList html 
+#}
+{% macro taskList(params) -%}
+{#- legend, id and name are mandatory -#}
+{%- if params.items -%}
+    {#- Import localizer from utilities -#}
+    {%- from "../utilities/govcyUtilities.njk" import govcyLocalizeContent, govcyLangAttribute -%}
+    {#- set localizations -#}
+    {%- if params.visuallyHiddenStatus -%}
+        {%- set visuallyHiddenStatus -%} {{- govcyLocalizeContent(params.visuallyHiddenStatus, params.lang) -}}{%- endset -%}
+    {%- else -%}
+        {%- set visuallyHiddenStatus -%} {{- govcyLocalizeContent({en:"with status ",el:"με κατάσταση "} , params.lang) -}}{%- endset -%}
+    {%- endif %}
+    <table class="govcy-table{% if params.classes %} {{ params.classes }}{% endif %}"{% if params.id %} id="{{ params.id }}"{% endif %}{{ govcyLangAttribute(params.lang) }}>
+        <tbody>
+            {%- for item in params.items -%}
+                {%- if item -%}
+                    {%- if item.task and item.status %}
+                        <tr{% if params.id %} id="{{ params.id }}-row-{{ loop.index }}"{% endif %}>
+                            <td classes="govcy-valign-top">
+                                {%if item.task.link %}<a href="{{ item.task.link }}">{% endif %}{{ govcyLocalizeContent(item.task.text, params.lang) }}<span class="govcy-visually-hidden"> {{ visuallyHiddenStatus }} {{ govcyLocalizeContent(item.status.text, params.lang) }}</span>{%if item.task.link %}</a>{% endif %}
+                                {%- if item.description -%}<p>{{ govcyLocalizeContent(item.description, params.lang) }}</p>{%- endif %}
+                            </td>
+                            {%- if item.status %}
+                            <td class="govcy-valign-top govcy-text-end">
+                                <span class="govcy-tag {{ item.status.classes }}">{{ govcyLocalizeContent(item.status.text, params.lang) }}</span>
+                            </td>
+                            {%- endif %}
+                        </tr>
+                    {%- endif -%}
+                {%- endif -%}
+            {%- endfor %}
+        </tbody>
+    </table>
+{% endif -%}
+{%- endmacro %}
