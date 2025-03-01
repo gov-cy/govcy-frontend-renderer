@@ -109,6 +109,11 @@
  @param {object} error If not empty there is an error message and displays the error variant. Optional, default is ''. Will escape text. Example `{en:"Content",el:"Περιεχομένο"}`
  @param {boolean} hideFormControlError If true, hides the form control error (red line on the left). Mostly used in conditional radio elements. Optional    
  @param {string} lang The language used. Can be 'en','el'. Optional.
+ @param {array} elements if defined, govcy-elements to be rendered after the legend. 
+    i.e. `[
+            {element:"button",params:{text:{en:"Button 1",el:"Κουμπί 1"},lang:"en",id:"govcy-test-23b"} },
+            {element:"button",params:{text:{en:"Button 2",el:"Κουμπί 2"},variant:'secondary',lang:"en",id:"govcy-test-23c"} },
+        ]`
  @param {array} items The array of items to turn onto radio 
     i.e. `[
             {
@@ -160,7 +165,12 @@
     {%- endif -%}
     {% call fieldset({ariaDescribedby:ariaDescribedBy,classes:params.classes, lang:params.lang}) %}
         {% call legend({legend:params.legend, isPageHeading:isPageHeading,lang:params.lang}) %}{% endcall %}
+        {#- Import localizer from utilities -#}
+        {%- from "../utilities/govcyUtilities.njk" import govcyElementsFromArray -%}
+        {#- render elements -#}
+        {{ govcyElementsFromArray(params.elements, params.lang) }}
         {% call formControl({isError: false if params.hideFormControlError else params.error}) %}
+            {#- render hint -#}
             {% call hint({hint:params.hint, id:hintId,lang:params.lang}) %}{% endcall %}
             {#- render error message -#}
             {% call errorMessage({message:params.error,id:errorId,lang:params.lang}) %}{% endcall %}

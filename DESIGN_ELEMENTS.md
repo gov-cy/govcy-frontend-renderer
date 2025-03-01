@@ -118,6 +118,11 @@ This element is used to add checkboxes as defined in the [UDS - checkbox](https:
  @param {object} error If not empty there is an error message and displays the error variant. Optional, default is ''. Will escape text. Example `{en:"Content",el:"Περιεχομένο"}`
  @param {boolean} hideFormControlError If true, hides the form control error (red line on the left). Mostly used in conditional radio elements. Optional    
  @param {string} lang The language used. Can be 'en','el'. Optional.
+ @param {array} elements if defined, govcy-elements to be rendered after the legend. 
+    i.e. `[
+            {element:"button",params:{text:{en:"Button 1",el:"Κουμπί 1"},lang:"en",id:"govcy-test-23b"} },
+            {element:"button",params:{text:{en:"Button 2",el:"Κουμπί 2"},variant:'secondary',lang:"en",id:"govcy-test-23c"} },
+        ]`
  @param {array} items The array of items to turn onto checkbox 
     i.e. `[
             {
@@ -692,7 +697,7 @@ It can be called as a `call`, with text inside the tag as follows:
 {% endcall %}
 ```
 
-OR it can be called using the `param.elements` array as follows: 
+OR it can be called using the `params.elements` array as follows: 
 
 ```Nunjucks
 {{ govcyElement(
@@ -792,7 +797,7 @@ It can be called as a `call`, with text inside the tag as follows:
 {% endcall %}
 ```
 
-OR it can be called using the `param.elements` array as follows: 
+OR it can be called using the `params.elements` array as follows: 
 
 ```Nunjucks
 {{ govcyElement(
@@ -1205,6 +1210,11 @@ This element is used to add radios as defined in the [UDS - radios](https://gov-
  @param {object} error If not empty there is an error message and displays the error variant. Optional, default is ''. Will escape text. Example `{en:"Content",el:"Περιεχομένο"}`
  @param {boolean} hideFormControlError If true, hides the form control error (red line on the left). Mostly used in conditional radio elements. Optional    
  @param {string} lang The language used. Can be 'en','el'. Optional.
+ @param {array} elements if defined, govcy-elements to be rendered after the legend. 
+    i.e. `[
+            {element:"button",params:{text:{en:"Button 1",el:"Κουμπί 1"},lang:"en",id:"govcy-test-23b"} },
+            {element:"button",params:{text:{en:"Button 2",el:"Κουμπί 2"},variant:'secondary',lang:"en",id:"govcy-test-23c"} },
+        ]`
  @param {array} items The array of items to turn onto radio 
     i.e. `[
             {
