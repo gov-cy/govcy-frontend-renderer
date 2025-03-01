@@ -1646,6 +1646,58 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
+    it(checksNum+'92 `Radios` with `elements`', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([
+            `<fieldset\\s*class="govcy-fieldset"\\s*aria-describedby="govcy-test-92-hint\\s*govcy-test-92-error">`, //fieldset
+            `\\s*<legend\\s*class="govcy-legend"\\s*>\\s*<h1>\\s*Radios: with elements\\s*<\\/h1>\\s*<\\/legend>`, //legend
+            `\\s*<p>\\s*A paragraph\\s*<\\/p>\\s*<p>\\s*Another paragraph\\s*<\\/p>\\s*<span\\s*class="govcy-tag\\s*govcy-tag-gray"\\s*lang="el"\\s*>\\s*el Adult\\s*<\\/span>\\s*<p>\\s*Another paragraph\\s*<\\/p>`, //elements
+            `\\s*<div\\s*class="govcy-form-control\\s*govcy-form-control-error">`, //form control 
+            `([\\s\\S]*?)`,
+            `\\s*<\\/fieldset>`, //closing fieldset
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+    it(checksNum+'93 `Radios` with `elements` lang="el"', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([
+            `<fieldset\\s*class="govcy-fieldset"\\s*aria-describedby="govcy-test-93-hint\\s*govcy-test-93-error"\\s*lang="el">`, //fieldset
+            `\\s*<legend\\s*class="govcy-legend"\\s*lang="el"\\s*>\\s*<h1>\\s*Ελληνικά radios legend\\s*<\\/h1>\\s*<\\/legend>`, //legend
+            `\\s*<p\\s*lang="el"\\s*>\\s*A paragraph el\\s*<\\/p>\\s*<p\\s*lang="el"\\s*>\\s*Another paragraph el\\s*<\\/p>\\s*<span\\s*class="govcy-tag\\s*govcy-tag-gray"\\s*lang="el"\\s*>\\s*el Adult\\s*<\\/span>\\s*<p\\s*lang="el"\\s*>\\s*Another paragraph el\\s*<\\/p>`, //elements
+            `\\s*<div\\s*class="govcy-form-control\\s*govcy-form-control-error">`, //form control 
+            `([\\s\\S]*?)`,
+            `\\s*<\\/fieldset>`, //closing fieldset
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+    it(checksNum+'94 `Checkboxes` with `elements`', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([
+            `<fieldset\\s*class="govcy-fieldset"\\s*aria-describedby="govcy-test-94-hint\\s*govcy-test-94-error">`, //fieldset
+            `\\s*<legend\\s*class="govcy-legend"\\s*>\\s*<h1>\\s*Checkboxes: with elements\\s*<\\/h1>\\s*<\\/legend>`, //legend
+            `\\s*<p>\\s*A paragraph\\s*<\\/p>\\s*<p>\\s*Another paragraph\\s*<\\/p>\\s*<span\\s*class="govcy-tag\\s*govcy-tag-gray"\\s*lang="el"\\s*>\\s*el Adult\\s*<\\/span>\\s*<p>\\s*Another paragraph\\s*<\\/p>`, //elements
+            `\\s*<div\\s*class="govcy-form-control\\s*govcy-form-control-error">`, //form control 
+            `([\\s\\S]*?)`,
+            `\\s*<\\/fieldset>`, //closing fieldset
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+    it(checksNum+'95 `Checkboxes` with `elements` lang="el"', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([
+            `<fieldset\\s*class="govcy-fieldset"\\s*aria-describedby="govcy-test-95-hint\\s*govcy-test-95-error"\\s*lang="el">`, //fieldset
+            `\\s*<legend\\s*class="govcy-legend"\\s*lang="el"\\s*>\\s*<h1>\\s*Ελληνικά checkboxes legend\\s*<\\/h1>\\s*<\\/legend>`, //legend
+            `\\s*<p\\s*lang="el"\\s*>\\s*A paragraph el\\s*<\\/p>\\s*<p\\s*lang="el"\\s*>\\s*Another paragraph el\\s*<\\/p>\\s*<span\\s*class="govcy-tag\\s*govcy-tag-gray"\\s*lang="el"\\s*>\\s*el Adult\\s*<\\/span>\\s*<p\\s*lang="el"\\s*>\\s*Another paragraph el\\s*<\\/p>`, //elements
+            `\\s*<div\\s*class="govcy-form-control\\s*govcy-form-control-error">`, //form control 
+            `([\\s\\S]*?)`,
+            `\\s*<\\/fieldset>`, //closing fieldset
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
 }
 
 // Export the renderTest function
