@@ -120,6 +120,64 @@ class GovcyFrontendRendererBrowser {
         this.env.addGlobal('globalData', data);
         return this.env.renderString(jsonTemplate, data);
     }
+
+    /**
+     * Updates the dom element with the rendered html and initializes the components
+     * @param {*} elementId The id of the element to update it's inner html
+     * @param {*} renderedHtml The HTML to render
+     */
+    updateDOMAndInitialize(elementId, renderedHtml) {
+        const parent = document.getElementById(elementId);
+        // if the parent exists
+        if (parent) {
+            // Update the inner html
+            parent.innerHTML = renderedHtml;
+            // If the GOVCY object exists, initialize the components
+            if (typeof GOVCY !== 'undefined') {
+                // Initialize Accordion
+                parent.querySelectorAll('.govcy-accordion-button').forEach((element) => {
+                    new GOVCY.Accordion(element);
+                });
+
+                // Initialize CharacterCount
+                parent.querySelectorAll('.govcy-character-count').forEach((element) => {
+                    new GOVCY.CharacterCount(element);
+                });
+
+                // Initialize Collapsable
+                parent.querySelectorAll('.govcy-collapsable').forEach((element) => {
+                    new GOVCY.Collapsable(element);
+                });
+
+                // Initialize DatePicker
+                parent.querySelectorAll('.govcy-date-picker').forEach((element) => {
+                    new GOVCY.DatePicker(element);
+                });
+
+                // Initialize HeaderMenu
+                parent.querySelectorAll('.govcy-header').forEach((element) => {
+                    new GOVCY.HeaderMenu(element);
+                });
+
+                // Initialize MobileOTP
+                if ('OTPCredential' in window) {
+                    parent.querySelectorAll('input[autocomplete="one-time-code"]').forEach((element) => {
+                        new GOVCY.MobileOTP(element);
+                    });
+                }
+
+                // Initialize Tab
+                parent.querySelectorAll('.govcy-tab-link').forEach((element) => {
+                    new GOVCY.Tab(element);
+                });
+
+                // Initialize ConditionalContactToggler
+                parent.querySelectorAll('.govcy-radio-input').forEach((element) => {
+                    new GOVCY.ConditionalContactToggler(element);
+                });
+            }
+        }
+    }
 }
 
 export default GovcyFrontendRendererBrowser;

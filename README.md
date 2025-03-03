@@ -434,6 +434,100 @@ All content in design elements are defined with an object defining the available
 
 If the `params.lang` is defined in the design element, the package will also render element with a `lang` attribute. 
 
+## Browser usage (client-side)  
+> [!WARNING]  
+> Browser classes are not thoroughly tested, so use with care.  
+
+The package offers compiled templates in `govcyCompiledTemplates.browser.js` and a helper class `govcyFrontendRenderer.browser.js` to render the same components on the browser. Unlike the note.js methods, you will need to provide the HTML shell. 
+
+The easiest way to use these is to include the libraries via CDN in your HTML and use the `renderFromJSON` and `updateDOMAndInitialize` functions.
+
+Here's an example:
+
+```html
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/gov-cy/govcy-design-system@v3/dist/css/govcy.uds.min.css">
+  <title>Page title - Service Name - gov.cy</title>
+  <meta name="description" content="Description of what the service does">
+
+</head>
+
+<body>
+  <!--bodyStart-->
+  <section class="govcy-container-fluid" id="bodyStartContainer">
+    <a href="#mainContainer" class="govcy-skip-link">Skip to main content</a>
+  </section>
+  <!--main-->
+  <main class="govcy-container" id="mainContainer">
+    <div class="govcy-row">
+      <article class="govcy-col-8">
+        <div id="output" class="govcy-form"></div>
+      </article>
+    </div>
+  </main>
+<script src="https://cdn.jsdelivr.net/gh/gov-cy/govcy-design-system@v3/dist/js/govcy.uds.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/gov-cy/govcy-frontend-renderer@v1/dist/govcyCompiledTemplates.browser.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/gov-cy/govcy-frontend-renderer@v1/dist/govcyFrontendRenderer.browser.js"></script>
+<script>
+
+    document.addEventListener("DOMContentLoaded", async function () {
+      
+        // Create an instance of GovcyFrontendRendererBrowser
+        const renderer = new GovcyFrontendRendererBrowser();
+
+        // Define the input data
+        const inputData =
+        {
+          "site": {
+            "lang": "en"
+          }
+        };
+
+        // Construct the JSONTemplate
+        const JSONTemplate = {
+          "elements": [
+                {
+                    "element": "backLink",
+                    "params": {}
+                },
+                {
+                    "element": "tag",
+                    "params": {
+                        "text": {
+                            "en": "SIMPLE TAG",
+                            "el": "ΑΠΛΟ TAG"
+                        }
+                    }
+                }
+            ]
+        };
+        
+        //render HTML into string
+        let renderedHtml = renderer.renderFromJSON(JSONTemplate,inputData);
+        //update DOM and initialize the JS components
+        renderer.updateDOMAndInitialize('output', renderedHtml);
+    });
+  </script>
+</body>
+
+</html>
+```
+
+### Things you should know about browser usage
+Using the example above as reference: 
+1. `renderer.renderFromJSON(JSONTemplate,inputData);` generates the HTML based on the JSON input template.
+2. `renderer.updateDOMAndInitialize('output', renderedHtml);` updates the DOM and initializes the JS components. It finds the element with id `output` and :
+    - used the `innerHTML` to update it's contents
+    - initializes all GOVCY design system's JS components within that elements (so it will not re-initialize other elements such as `header` in different sections of the page)
+
 ## Change the package
 
 Details on how to build, test and update the project can be found in the [project notes](NOTES.md) document.
