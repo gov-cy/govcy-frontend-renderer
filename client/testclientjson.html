@@ -1,36 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <!-- Required meta tags -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-     
-        <!-- CSS -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/gov-cy/govcy-design-system@v3.1.0/dist/css/govcy.uds.min.css" integrity="sha384-Py9pPShU3OUzcQ3dAfZLkJI0Fgyv9fWKmAdK8f7dS9caBKuKs5z/ZpyERuh0ujm0" crossorigin="anonymous">
-        
-        <title>Page title - Service Name - gov.cy</title>
-        <meta name="description" content="Description of what the service does">
-     
-     
-      </head>
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/gov-cy/govcy-design-system@v3.1.0/dist/css/govcy.uds.min.css"
+    integrity="sha384-Py9pPShU3OUzcQ3dAfZLkJI0Fgyv9fWKmAdK8f7dS9caBKuKs5z/ZpyERuh0ujm0" crossorigin="anonymous">
+
+  <title>Page title - Service Name - gov.cy</title>
+  <meta name="description" content="Description of what the service does">
+
+
+</head>
+
 <body>
-    <!--bodyStart-->
-    <section class="govcy-container-fluid" id="bodyStartContainer">
-        <a href="#mainContainer" class="govcy-skip-link">Skip to main content</a>
-   </section>
-     <!--main-->
-     <main class="govcy-container" id="mainContainer">
-        <div class="govcy-row">
-            <article class="govcy-col-8">
-                <div id="output" class="govcy-form"></div>
-            </article>
+  <!--bodyStart-->
+  <section class="govcy-container-fluid" id="bodyStartContainer">
+    <a href="#mainContainer" class="govcy-skip-link">Skip to main content</a>
+  </section>
+  <!--header-->
+  <header class="govcy-header govcy-d-print-none">
+    <div class="govcy-header-main-area">
+      <div class="govcy-container govcy-main-area-items">
+        <div class="govcy-navigation-container">
+          <div class="govcy-service-container">
+            <a href="https://www.gov.cy/en/" class="govcy-logo" title="Go to the gov.cy homepage"><img
+                alt="gov.cy Logo"></a>
+            <span class="govcy-service-name">Service Name</span>
+          </div>
+          <ul class="govcy-menu-items">
+            <li class="govcy-desktop-menu-only"><span><a href="#" class="govcy-menu-item" aria-label="Ελληνική γλώσσα"
+                  lang="el">EL</a></span>
+            </li>
+            <li class="govcy-desktop-menu-only"><span class="govcy-menu-language-last-item"><a href="#"
+                  aria-current="true" class="govcy-menu-item active" aria-label="English language"
+                  lang="en">EN</a></span>
+            </li>
+            <li class="govcy-desktop-menu-only"><span class="govcy-menu-language-last-item"><a href="#"
+                  class="govcy-menu-item" aria-label="Türkçe" lang="tr">TR</a></span>
+            </li>
+            <li class="govcy-mobile-menu govcy-mobile-menu-only govcy-dropdown govcy-ms-auto"><span><a href="#"
+                  class="govcy-menu-item govcy-expand-btn">Menu</a></span></li>
+          </ul>
         </div>
-    </main>
-  <script src="https://cdn.jsdelivr.net/gh/gov-cy/govcy-design-system@v3.1.0/dist/js/govcy.uds.min.js" integrity="sha384-g1c/YT97MWPoo9pbyFgQcxvB2MYLdsOgI2+ldxkEXAbhTzKfyYXCEjk9EVkOP5hp" crossorigin="anonymous"></script>
+      </div>
+    </div>
+    <div class="govcy-header-menu-area">
+      <nav class="govcy-mainmenu" aria-label="Main Menu">
+        <div class="govcy-container">
+          <ul class="govcy-menu-items govcy-header-language-area govcy-mobile-menu-only">
+            <li><a href="#" class="govcy-menu-item" aria-label="Ελληνική γλώσσα" lang="el">EN</a></li>
+            <li><a href="#" aria-current="true" class="govcy-menu-item active" aria-label="English language"
+                lang="en">EL</a></li>
+            <li><a href="#" class="govcy-menu-item" aria-label="Türkçe" lang="tr">TR</a></li>
+          </ul>
+        </div>
+        <div class="govcy-container">
+          <ul class="govcy-menu-items" aria-label="Main Menu">
+            <li><a href="#" class="govcy-menu-item">Home</a></li>
+            <li><a href="#" class="govcy-menu-item">Page 1</a></li>
+            <li><a href="#" class="govcy-menu-item">Page 2</a></li>
+            <li><a href="#" class="govcy-menu-item">Page 3</a></li>
+            <li><a href="#" class="govcy-menu-item">Page 4</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </header>
+  <!--main-->
+  <main class="govcy-container" id="mainContainer">
+    <div class="govcy-row">
+      <article class="govcy-col-8">
+        <div id="output" class="govcy-form"></div>
+      </article>
+    </div>
+  </main>
+  <script src="https://cdn.jsdelivr.net/gh/gov-cy/govcy-design-system@v3.1.0/dist/js/govcy.uds.min.js"
+    integrity="sha384-g1c/YT97MWPoo9pbyFgQcxvB2MYLdsOgI2+ldxkEXAbhTzKfyYXCEjk9EVkOP5hp"
+    crossorigin="anonymous"></script>
   <script src="/dist/govcyCompiledTemplates.browser.js"></script>
   <script src="/dist/govcyFrontendRenderer.browser.js"></script>
   <script>
-    document.addEventListener("DOMContentLoaded", async function() {
+
+
+
+    /**
+     * Function to remove events from components
+     * @param {string} componentClass - The class of the component
+     * @param {string} elementId - The ID of the element
+     * @example removeComponentEvents('govcy-date-picker', 'output');
+     */
+    function removeComponentEvents(componentClass, elementId) {
+      const element = document.getElementById(elementId);
+      if (!element) return;
+
+      // Get all elements with the specified component class under the given element ID
+      const elements = element.querySelectorAll(`.${componentClass}`);
+
+      elements.forEach((el) => {
+        const clone = el.cloneNode(true);
+        el.parentNode.replaceChild(clone, el);
+      });
+    }
+
+
+    document.addEventListener("DOMContentLoaded", async function () {
       // Ensure GovcyFrontendRendererBrowser is loaded before using it
       if (typeof GovcyFrontendRendererBrowser === 'undefined') {
         console.error('GovcyFrontendRendererBrowser is not defined');
@@ -42,14 +119,14 @@
         const renderer = new GovcyFrontendRendererBrowser();
 
         // Define the input data
-        const inputData = 
-        {    
-            "site" : {
-                "lang" : "en"
-            }
+        const inputData =
+        {
+          "site": {
+            "lang": "en"
+          }
         };
 
-        
+
         // Fetch the test.json file
         const response = await fetch('/test/test.json');
         const testJson = await response.json();
@@ -66,46 +143,13 @@
         });
 
         // console.log('Constructed JSONTemplate:', JSONTemplate);
-        let renderedHtml = renderer.renderFromJSON(JSONTemplate,inputData);
-        document.getElementById('output').innerHTML += renderedHtml;
+        renderer.updateDOMAndInitialize('output', renderer.renderFromJSON(JSONTemplate, inputData));
+        // let renderedHtml = renderer.renderFromJSON(JSONTemplate,inputData);
+        // document.getElementById('output').innerHTML += renderedHtml;
 
-         // Re-initialize components manually
-        document.querySelectorAll('.govcy-accordion-button').forEach((element) => {
-          new GOVCY.Accordion(element);
-        });
-
-        document.querySelectorAll('.govcy-character-count').forEach((element) => {
-          new GOVCY.CharacterCount(element);
-        });
-
-        document.querySelectorAll('.govcy-collapsable').forEach((element) => {
-          new GOVCY.Collapsable(element);
-        });
-
-        document.querySelectorAll('.govcy-date-picker').forEach((element) => {
-          new GOVCY.DatePicker(element);
-        });
-
-        document.querySelectorAll('.govcy-header').forEach((element) => {
-          new GOVCY.HeaderMenu(element);
-        });
-
-        if ('OTPCredential' in window) {
-          document.querySelectorAll('input[autocomplete="one-time-code"]').forEach((element) => {
-            new GOVCY.MobileOTP(element);
-          });
-        }
-
-        document.querySelectorAll('.govcy-tab-link').forEach((element) => {
-          new GOVCY.Tab(element);
-        });
-
-        document.querySelectorAll('.govcy-radio-input').forEach((element) => {
-          new GOVCY.ConditionalContactToggler(element);
-        });
-    }
-});
+      }
+    });
   </script>
-  </body>
 </body>
+
 </html>

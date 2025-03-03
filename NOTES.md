@@ -52,3 +52,29 @@ Here's a checklist to follow when releasing a new version of the project.
 ### Document
 
 - [ ] **11. update design elements documentation**. Update the `DESIGN_ELEMENTS.md` documenting the change.
+
+-------
+
+# Useful scripts
+
+## Get event listeners
+
+Get all the event listeners of the page. Must be run on *chrome console*, by running `getAllEventListeners(document)`. 
+
+```js
+function getAllEventListeners(element) {
+  const allElements = element.getElementsByTagName("*");
+  const allEvents = ["click", "input", "keyup", "change", "mouseover", "keydown", "focusout", "submit"];
+
+  const events = [];
+  for (let el of allElements) {
+    for (let event of allEvents) {
+      const listeners = getEventListeners(el)[event];
+      if (listeners && listeners.length) {
+        events.push({ element: el, event: event, listeners: listeners });
+      }
+    }
+  }
+  return events;
+}
+```
