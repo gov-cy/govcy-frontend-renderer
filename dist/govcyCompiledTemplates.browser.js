@@ -1917,8 +1917,14 @@ context.addExport("header", t_9);
 if(runtime.memberLookup((l_params),"id") && runtime.memberLookup((l_params),"errors")) {
 t_2 += "\r\n<div id=\"";
 t_2 += runtime.suppressValue(runtime.memberLookup((l_params),"id"), env.opts.autoescape);
-t_2 += "\" class=\"govcy-alert-error govcy-br-5 govcy-br-danger govcy-p-3\"";
-t_2 += runtime.suppressValue((lineno = 35, colno = 109, runtime.callWrap(t_7, "govcyLangAttribute", context, [runtime.memberLookup((l_params),"lang")])), env.opts.autoescape);
+t_2 += "\" class=\"govcy-alert-error govcy-br-5 govcy-br-danger govcy-p-3";
+if(runtime.memberLookup((l_params),"classes")) {
+t_2 += " ";
+t_2 += runtime.suppressValue(runtime.memberLookup((l_params),"classes"), env.opts.autoescape);
+;
+}
+t_2 += "\"";
+t_2 += runtime.suppressValue((lineno = 35, colno = 164, runtime.callWrap(t_7, "govcyLangAttribute", context, [runtime.memberLookup((l_params),"lang")])), env.opts.autoescape);
 t_2 += ">\r\n    <h2 role=\"alert\" id=\"";
 t_2 += runtime.suppressValue(runtime.memberLookup((l_params),"id"), env.opts.autoescape);
 t_2 += "-title\">";

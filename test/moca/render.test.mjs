@@ -260,15 +260,18 @@ async function renderChecks(renderedHTML, checksNum){
         ].join(''));
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'25 check that something is rendered in a different section, in this case `beforeMain`', async () => {
-        // check for structure   
-        let expectedRegex =  new RegExp ([ 
-            `<section\\s*class="govcy-container"\\s*id="beforeMainContainer">`,//section 
-            `\\s*<p\\s*id="govcy-test-25">`,//p
-            `([\\s\\S]*?)<\\/p>([\\s\\S]*?)<\\/section>` //closing tags
-        ].join(''));
-        expect(renderedHTML).to.match(expectedRegex);
-    });
+    // Do not test this on client side
+    if (checksNum!=4) {
+        it(checksNum+'25 check that something is rendered in a different section, in this case `beforeMain`', async () => {
+            // check for structure   
+            let expectedRegex =  new RegExp ([ 
+                `<section\\s*class="govcy-container"\\s*id="beforeMainContainer">`,//section 
+                `\\s*<p\\s*id="govcy-test-25">`,//p
+                `([\\s\\S]*?)<\\/p>([\\s\\S]*?)<\\/section>` //closing tags
+            ].join(''));
+            expect(renderedHTML).to.match(expectedRegex);
+        });
+    }
     it(checksNum+'26 Lang attribute with `govcyLocalizeContent` macro renders as expected for `button`,`hint`, `legend`, `textElement`.', async () => {
         // check for structure  
         // error message is checked in 10. 
