@@ -1844,6 +1844,150 @@ root: root
 })();
 })();
 
+(function() {(window.nunjucksPrecompiled = window.nunjucksPrecompiled || {})["elements/errorSummary.njk"] = (function() {
+function root(env, context, frame, runtime, cb) {
+var lineno = 0;
+var colno = 0;
+var output = "";
+try {
+var parentTemplate = null;
+output += "\r\n";
+var macro_t_1 = runtime.makeMacro(
+["params"], 
+[], 
+function (l_params, kwargs) {
+var callerFrame = frame;
+frame = new runtime.Frame();
+kwargs = kwargs || {};
+if (Object.prototype.hasOwnProperty.call(kwargs, "caller")) {
+frame.set("caller", kwargs.caller); }
+frame.set("params", l_params);
+var t_2 = "";env.getTemplate("utilities/govcyUtilities.njk", false, "elements/errorSummary.njk", false, function(t_4,t_3) {
+if(t_4) { cb(t_4); return; }
+t_3.getExported(function(t_5,t_3) {
+if(t_5) { cb(t_5); return; }
+if(Object.prototype.hasOwnProperty.call(t_3, "govcyLocalizeContent")) {
+var t_6 = t_3.govcyLocalizeContent;
+} else {
+cb(new Error("cannot import 'govcyLocalizeContent'")); return;
+}
+context.setVariable("govcyLocalizeContent", t_6);
+if(Object.prototype.hasOwnProperty.call(t_3, "govcyLangAttribute")) {
+var t_7 = t_3.govcyLangAttribute;
+} else {
+cb(new Error("cannot import 'govcyLangAttribute'")); return;
+}
+context.setVariable("govcyLangAttribute", t_7);
+if(runtime.memberLookup((l_params),"header")) {
+var t_8;
+t_8 = (function() {
+var output = "";
+output += runtime.suppressValue((lineno = 29, colno = 47, runtime.callWrap(t_6, "govcyLocalizeContent", context, [runtime.memberLookup((l_params),"header"),runtime.memberLookup((l_params),"lang")])), env.opts.autoescape);
+;
+return output;
+})()
+;
+frame.set("header", t_8, true);
+if(frame.topLevel) {
+context.setVariable("header", t_8);
+}
+if(frame.topLevel) {
+context.addExport("header", t_8);
+}
+;
+}
+else {
+var t_9;
+t_9 = (function() {
+var output = "";
+output += runtime.suppressValue((lineno = 31, colno = 47, runtime.callWrap(t_6, "govcyLocalizeContent", context, [{"en": "There is a problem","el": "Υπάρχει πρόβλημα"},runtime.memberLookup((l_params),"lang")])), env.opts.autoescape);
+;
+return output;
+})()
+;
+frame.set("header", t_9, true);
+if(frame.topLevel) {
+context.setVariable("header", t_9);
+}
+if(frame.topLevel) {
+context.addExport("header", t_9);
+}
+;
+}
+if(runtime.memberLookup((l_params),"id") && runtime.memberLookup((l_params),"errors")) {
+t_2 += "\r\n<div id=\"";
+t_2 += runtime.suppressValue(runtime.memberLookup((l_params),"id"), env.opts.autoescape);
+t_2 += "\" class=\"govcy-alert-error govcy-br-5 govcy-br-danger govcy-p-3\"";
+t_2 += runtime.suppressValue((lineno = 35, colno = 109, runtime.callWrap(t_7, "govcyLangAttribute", context, [runtime.memberLookup((l_params),"lang")])), env.opts.autoescape);
+t_2 += ">\r\n    <h2 role=\"alert\" id=\"";
+t_2 += runtime.suppressValue(runtime.memberLookup((l_params),"id"), env.opts.autoescape);
+t_2 += "-title\">";
+t_2 += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "header"), env.opts.autoescape);
+t_2 += "</h2>\r\n    <p>";
+frame = frame.push();
+var t_12 = runtime.memberLookup((l_params),"errors");
+if(t_12) {t_12 = runtime.fromIterator(t_12);
+var t_11 = t_12.length;
+for(var t_10=0; t_10 < t_12.length; t_10++) {
+var t_13 = t_12[t_10];
+frame.set("error", t_13);
+frame.set("loop.index", t_10 + 1);
+frame.set("loop.index0", t_10);
+frame.set("loop.revindex", t_11 - t_10);
+frame.set("loop.revindex0", t_11 - t_10 - 1);
+frame.set("loop.first", t_10 === 0);
+frame.set("loop.last", t_10 === t_11 - 1);
+frame.set("loop.length", t_11);
+t_2 += "\r\n            <a href=\"";
+t_2 += runtime.suppressValue(runtime.memberLookup((t_13),"link"), env.opts.autoescape);
+t_2 += "\">";
+t_2 += runtime.suppressValue((lineno = 39, colno = 62, runtime.callWrap(t_6, "govcyLocalizeContent", context, [runtime.memberLookup((t_13),"text"),runtime.memberLookup((l_params),"lang")])), env.opts.autoescape);
+t_2 += "</a>";
+;
+}
+}
+frame = frame.pop();
+t_2 += "\r\n    </p>";
+if(runtime.memberLookup((l_params),"body")) {
+t_2 += "\r\n    <p>";
+t_2 += runtime.suppressValue((lineno = 43, colno = 30, runtime.callWrap(t_6, "govcyLocalizeContent", context, [runtime.memberLookup((l_params),"body"),runtime.memberLookup((l_params),"lang")])), env.opts.autoescape);
+t_2 += "</p>";
+;
+}
+if(runtime.memberLookup((l_params),"linkToContinue")) {
+t_2 += "\r\n    <a href=\"";
+t_2 += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((l_params),"linkToContinue")),"link"), env.opts.autoescape);
+t_2 += "\">";
+t_2 += runtime.suppressValue((lineno = 46, colno = 70, runtime.callWrap(t_6, "govcyLocalizeContent", context, [runtime.memberLookup((runtime.memberLookup((l_params),"linkToContinue")),"text"),runtime.memberLookup((l_params),"lang")])), env.opts.autoescape);
+t_2 += "</a>";
+;
+}
+t_2 += "\r\n</div>";
+;
+}
+})});
+frame = callerFrame;
+return new runtime.SafeString(t_2);
+});
+context.addExport("errorSummary");
+context.setVariable("errorSummary", macro_t_1);
+if(parentTemplate) {
+parentTemplate.rootRenderFunc(env, context, frame, runtime, cb);
+} else {
+cb(null, output);
+}
+;
+} catch (e) {
+  cb(runtime.handleError(e, lineno, colno));
+}
+}
+return {
+root: root
+};
+
+})();
+})();
+
 (function() {(window.nunjucksPrecompiled = window.nunjucksPrecompiled || {})["elements/fieldset.njk"] = (function() {
 function root(env, context, frame, runtime, cb) {
 var lineno = 0;
@@ -6138,7 +6282,7 @@ var output = "";
 try {
 var parentTemplate = null;
 var t_1;
-t_1 = ["label","legend","hint","button","errorMessage","select","textElement","htmlElement","textInput","radios","checkboxes","fileInput","fileView","backLink","tag","table","summaryList","textArea","markdown","panel","datePicker","dateInput","taskList"];
+t_1 = ["label","legend","hint","button","errorMessage","select","textElement","htmlElement","textInput","radios","checkboxes","fileInput","fileView","backLink","tag","table","summaryList","textArea","markdown","panel","datePicker","dateInput","taskList","errorSummary"];
 frame.set("macroSimpleBlocks", t_1, true);
 if(frame.topLevel) {
 context.setVariable("macroSimpleBlocks", t_1);

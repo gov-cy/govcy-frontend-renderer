@@ -1,0 +1,51 @@
+{# errorSummary 
+ @param {string} lang The language used. Can be 'en','el'. Optional. 
+ @param {object} header if defined, will rendered the `<h2>` inside the Error Summary. Will escape text. Default value `{"en":"There is a problem","el":"Υπάρχει πρόβλημα"}`. Optional
+ @param {object} body if defined, will rendered the body in a `<p>` after the errors. Will escape text. Example `{"en":"Content","el":"Περιεχομένο"}`. Optional
+ @param {object} linkToContinue if defined, will rendered it after the errors and the body in a. Will escape text. Optional
+    i.e.  ` {
+                "link":"#",
+                "text":{"en":"Back to home page","el":"Επιστροφή στην αρχική σελίδα"} 
+            }`
+ @param {string} id The of the error summary. Will also be used in the as {{id}}-title in the header. Will escape text 
+ @param {array} errors The errors array. 
+    i.e. `[
+            {
+                "link":"#input1",
+                "text":{"en":"Enter your full name","el":"Εισαγάγετε το πλήρες όνομά σας"} 
+            },
+            {
+                "link":"#input2",
+                "text":{"en":"Enter your mobile number","el":"Εισαγάγετε τον αριθμο κινητού τηλεφωνου σας"} 
+            }  
+        ]`
+ @param {string} classes Additional classes to add to the outer div. Optional 
+ @returns govcy error Summary html 
+#}
+{% macro errorSummary(params) -%}
+{#- Import localizer from utilities -#}
+{%- from "../utilities/govcyUtilities.njk" import govcyLocalizeContent, govcyLangAttribute -%}
+{#- set 'or' labels -#}
+{%- if params.header -%}
+    {%- set header -%} {{- govcyLocalizeContent(params.header, params.lang) -}}{%- endset -%}
+{%- else -%}
+    {%- set header -%} {{- govcyLocalizeContent({en:"There is a problem",el:"Υπάρχει πρόβλημα"}, params.lang) -}}{%- endset -%}
+{%- endif -%}
+{#- id and errors are mandatory -#}
+{%- if params.id and params.errors %}
+<div id="{{ params.id }}" class="govcy-alert-error govcy-br-5 govcy-br-danger govcy-p-3{% if params.classes %} {{ params.classes }}{% endif %}"{{ govcyLangAttribute(params.lang) }}>
+    <h2 role="alert" id="{{ params.id }}-title">{{ header }}</h2>
+    <p>
+        {%- for error in params.errors %}
+            <a href="{{ error.link }}">{{ govcyLocalizeContent(error.text, params.lang) }}</a>
+        {%- endfor %}
+    </p>
+    {%- if params.body %}
+    <p>{{ govcyLocalizeContent(params.body, params.lang) }}</p>
+    {%- endif %}
+    {%- if params.linkToContinue %}
+    <a href="{{ params.linkToContinue.link }}">{{ govcyLocalizeContent(params.linkToContinue.text, params.lang) }}</a>
+    {%- endif %}
+</div>
+{%- endif %}
+{%- endmacro %}

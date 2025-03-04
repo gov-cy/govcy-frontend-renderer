@@ -406,6 +406,98 @@ This element is used to add an error message as defined in the [UDS - error mess
 </details>
 
 <details>
+  <summary>errorSummary</summary>
+  
+## errorSummary
+
+This element is used to add an error summary as defined in the [UDS - error summary](https://gov-cy.github.io/govcy-design-system-docs/components/error_summary).
+
+**Element name** : `errorSummary`
+
+**Parameters** :
+```js
+/**
+@param {string} lang The language used. Can be 'en','el'. Optional. 
+@param {object} header if defined, will rendered the `<h2>` inside the Error Summary. Will escape text. Default value `{"en":"There is a problem","el":"Υπάρχει πρόβλημα"}`. Optional
+@param {object} body if defined, will rendered the body in a `<p>` after the errors. Will escape text. Example `{"en":"Content","el":"Περιεχομένο"}`. Optional
+@param {object} linkToContinue if defined, will rendered it after the errors and the body in a. Will escape text. Optional
+i.e.  ` {
+            "link":"#",
+            "text":{"en":"Back to home page","el":"Επιστροφή στην αρχική σελίδα"} 
+        }`
+@param {string} id The of the error summary. Will also be used in the as {{id}}-title in the header. Will escape text 
+@param {array} errors The errors array. 
+i.e. `[
+        {
+            "link":"#input1",
+            "text":{"en":"Enter your full name","el":"Εισαγάγετε το πλήρες όνομά σας"} 
+        },
+        {
+            "link":"#input2",
+            "text":{"en":"Enter your mobile number","el":"Εισαγάγετε τον αριθμο κινητού τηλεφωνου σας"} 
+        }  
+    ]`
+@param {string} classes Additional classes to add to the outer div. Optional 
+**/ 
+```
+
+**JSON Example** 
+```json
+{
+    "element": "errorSummary",
+    "params": {
+        "id":"govcy-test-97"
+        ,"header":{"en":"Error","el":"Σφάλμα"}
+        ,"body":{"en":"You can continue with other sections of your application.","el":"Μπορείτε να συνεχίσετε με άλλες ενότητες της αίτησής σας."}
+        , "linkToContinue":{
+            "text":{"en":"Back to home page","el":"Επιστροφή στην αρχική σελίδα"} ,
+            "link":"#home"
+        }
+        ,"errors":[
+            {
+                "link":"#input1",
+                "text":{"en":"Enter your full name","el":"Εισαγάγετε το πλήρες όνομά σας"} 
+            },
+            {
+                "link":"#input2",
+                "text":{"en":"Enter your mobile number","el":"Εισαγάγετε τον αριθμο κινητού τηλεφωνου σας"} 
+            }  
+        ]
+    }
+}
+```
+
+**Nunjucks Example** 
+
+```Nunjucks
+{{ govcyElement(
+    "errorSummary",
+        {
+            "id":"govcy-test-97"
+            ,"header":{"en":"Error","el":"Σφάλμα"}
+            ,"body":{"en":"You can continue with other sections of your application.","el":"Μπορείτε να συνεχίσετε με άλλες ενότητες της αίτησής σας."}
+            , "linkToContinue":{
+                "text":{"en":"Back to home page","el":"Επιστροφή στην αρχική σελίδα"} ,
+                "link":"#home"
+            }
+            ,"errors":[
+                {
+                    "link":"#input1",
+                    "text":{"en":"Enter your full name","el":"Εισαγάγετε το πλήρες όνομά σας"} 
+                },
+                {
+                    "link":"#input2",
+                    "text":{"en":"Enter your mobile number","el":"Εισαγάγετε τον αριθμο κινητού τηλεφωνου σας"} 
+                }  
+            ]
+        }
+    ) 
+}}
+```
+
+</details>
+
+<details>
   <summary>fieldset</summary>
   
 ## fieldset
