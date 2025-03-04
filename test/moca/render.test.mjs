@@ -1698,6 +1698,55 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
+    it(checksNum+'96 `Error Summary` with default options', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([
+            `<div\\s*id="govcy-test-96"\\s*class="govcy-alert-error govcy-br-5 govcy-br-danger govcy-p-3">`, //error summary div
+            `\\s*<h2\\s*role="alert"\\s*id="govcy-test-96-title">\\s*There is a problem\\s*<\\/h2>`, //h2 title 
+            `\\s*<p>`, //p opening tag 
+            `\\s*<a\\s*href="#input1"\\s*>\\s*Enter your full name\\s*<\\/a>`, //error link 
+            `\\s*<a\\s*href="#input2"\\s*>\\s*Enter your mobile number\\s*<\\/a>`, //error link 
+            `\\s*<\\/p>`, //p closing tag 
+            `\\s*<\\/div>`, //div closing tag 
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+    it(checksNum+'97 `Error Summary` with all options', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([
+            `<div\\s*id="govcy-test-97"\\s*class="govcy-alert-error govcy-br-5 govcy-br-danger govcy-p-3">`, //error summary div
+            `\\s*<h2\\s*role="alert"\\s*id="govcy-test-97-title">\\s*Error\\s*<\\/h2>`, //h2 title 
+            `\\s*<p>`, //p opening tag 
+            `\\s*<a\\s*href="#input1"\\s*>\\s*Enter your full name\\s*<\\/a>`, //error link 
+            `\\s*<a\\s*href="#input2"\\s*>\\s*Enter your mobile number\\s*<\\/a>`, //error link 
+            `\\s*<\\/p>`, //p closing tag 
+            `\\s*<p>\\s*You can continue with other sections of your application.\\s*<\\/p>`, //body text 
+            `\\s*<a\\s*href="#home"\\s*>\\s*Back to home page\\s*<\\/a>`, //link to continue 
+            `\\s*<\\/div>`, //div closing tag 
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+    it(checksNum+'98 `Error Summary` with all options lang="el"', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([
+            `<div\\s*id="govcy-test-98"\\s*class="govcy-alert-error govcy-br-5 govcy-br-danger govcy-p-3"\\s*lang="el">`, //error summary div
+            `\\s*<h2\\s*role="alert"\\s*id="govcy-test-98-title">\\s*Σφάλμα\\s*<\\/h2>`, //h2 title 
+            `([\\s\\S]*?)`,
+            `Εισαγάγετε το πλήρες όνομά σας`, //error link 
+            `([\\s\\S]*?)`,
+            `Εισαγάγετε τον αριθμο κινητού τηλεφωνου σας`, //error link 
+            `([\\s\\S]*?)`,
+            `Μπορείτε να συνεχίσετε με άλλες ενότητες της αίτησής σας.`, //body text 
+            `([\\s\\S]*?)`,
+            `Επιστροφή στην αρχική σελίδα`, //link to continue 
+            `([\\s\\S]*?)`,
+            `\\s*<\\/div>`, //div closing tag  
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
 }
 
 // Export the renderTest function

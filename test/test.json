@@ -3247,6 +3247,73 @@
                                         }
                                     ]
                                 }
+                            },
+                            {
+                                "element": "htmlElement",
+                                "params": {
+                                    "text":{"en":"<h2>Error Summary</h2>","el":"Error Summary el"}
+                                }
+                            },
+                            {
+                                "element": "errorSummary",
+                                "params": {
+                                    "id":"govcy-test-96"
+                                    ,"errors":[
+                                        {
+                                            "link":"#input1",
+                                            "text":{"en":"Enter your full name","el":"Εισαγάγετε το πλήρες όνομά σας"} 
+                                        },
+                                        {
+                                            "link":"#input2",
+                                            "text":{"en":"Enter your mobile number","el":"Εισαγάγετε τον αριθμο κινητού τηλεφωνου σας"} 
+                                        }  
+                                    ]
+                                }
+                            },
+                            {
+                                "element": "errorSummary",
+                                "params": {
+                                    "id":"govcy-test-97"
+                                    ,"header":{"en":"Error","el":"Σφάλμα"}
+                                    ,"body":{"en":"You can continue with other sections of your application.","el":"Μπορείτε να συνεχίσετε με άλλες ενότητες της αίτησής σας."}
+                                    , "linkToContinue":{
+                                        "text":{"en":"Back to home page","el":"Επιστροφή στην αρχική σελίδα"} ,
+                                        "link":"#home"
+                                    }
+                                    ,"errors":[
+                                        {
+                                            "link":"#input1",
+                                            "text":{"en":"Enter your full name","el":"Εισαγάγετε το πλήρες όνομά σας"} 
+                                        },
+                                        {
+                                            "link":"#input2",
+                                            "text":{"en":"Enter your mobile number","el":"Εισαγάγετε τον αριθμο κινητού τηλεφωνου σας"} 
+                                        }  
+                                    ]
+                                }
+                            },
+                            {
+                                "element": "errorSummary",
+                                "params": {
+                                    "id":"govcy-test-98"
+                                    ,"lang":"el"
+                                    ,"header":{"en":"Error","el":"Σφάλμα"}
+                                    ,"body":{"en":"You can continue with other sections of your application.","el":"Μπορείτε να συνεχίσετε με άλλες ενότητες της αίτησής σας."}
+                                    , "linkToContinue":{
+                                        "text":{"en":"Back to home page","el":"Επιστροφή στην αρχική σελίδα"} ,
+                                        "link":"#home"
+                                    }
+                                    ,"errors":[
+                                        {
+                                            "link":"#input1",
+                                            "text":{"en":"Enter your full name","el":"Εισαγάγετε το πλήρες όνομά σας"} 
+                                        },
+                                        {
+                                            "link":"#input2",
+                                            "text":{"en":"Enter your mobile number","el":"Εισαγάγετε τον αριθμο κινητού τηλεφωνου σας"} 
+                                        }  
+                                    ]
+                                }
                             }
                         ]
                     }
