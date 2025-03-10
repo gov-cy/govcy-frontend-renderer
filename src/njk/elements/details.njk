@@ -1,0 +1,27 @@
+{# details 
+ @param {string} lang The language used. Can be 'en','el'. Optional. 
+ @param {string} id The id of the summary. Will escape text. Optional 
+ @param {object} summary The text displayed inside the `<summary>`. Will escape text. Example `{"en":"Content","el":"Περιεχομένο"}`.
+ @param {array} elements if defined, govcy-elements to be rendered inside the panel. 
+    i.e. `[
+            {element:"textElement",params:{text:{en:"Content",el:"Περιεχομένο"}},
+            {element:"button",params:{text:{en:"Button 1",el:"Κουμπί 1"},lang:"en",id:"govcy-test-23b"} }
+        ]`
+ @param {string} classes Additional classes to add to the outer `<details>`. Optional 
+ @returns govcy details html 
+#}
+{% macro details(params) -%}
+{#- Import localizer from utilities -#}
+{%- from "../utilities/govcyUtilities.njk" import govcyLocalizeContent, govcyLangAttribute, govcyElementsFromArray -%}
+{#- summary and elements are mandatory -#}
+{%- if params.summary and params.elements %}
+<details {% if params.id %}id="{{ params.id }}" {% endif %}class="govcy-details{% if params.classes %} {{ params.classes }}{% endif %}"{{ govcyLangAttribute(params.lang) }}>
+    <summary class="govcy-details__summary">
+        <span class="govcy-details__summary-text">{{ govcyLocalizeContent(params.summary, params.lang) }}</span>
+    </summary>
+    <div class="govcy-details__text">
+        {{ govcyElementsFromArray(params.elements, params.lang) }}
+    </div>
+</details>
+{%- endif %}
+{%- endmacro %}

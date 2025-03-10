@@ -1750,6 +1750,38 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
+    it(checksNum+'99 `Details` with all options', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([
+            `<details\\s*id="govcy-test-99"\\s*class="govcy-details\\s*govcy-test-class">`, //details
+            `\\s*<summary\\s*class="govcy-details__summary">`, //summary 
+            `\\s*<span\\s*class="govcy-details__summary-text"\\s*>\\s*How to control cookies\\s*<\\/span>`, //summary 
+            `\\s*<\\/summary>`, //summary close 
+            `\\s*<div\\s*class="govcy-details__text">`, //details 
+            `\\s*<p>\\s*We use cookies to store information ...\\s*<\\/p>`, //paragraph in details 
+            `\\s*<ul>\\s*<li>\\s*item1\\s*<\\/li>\\s*<li>\\s*item2\\s*<\\/li>\\s*<\\/ul>`, //markdown with list in details 
+            `\\s*<\\/div>`, //details close 
+            `\\s*<\\/details>`, //details close 
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+    it(checksNum+'100 `Details` with all options lang="el"', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([
+            `<details\\s*id="govcy-test-100"\\s*class="govcy-details\\s*govcy-test-class"\\s*lang="el">`, //details
+            `\\s*<summary\\s*class="govcy-details__summary">`, //summary 
+            `\\s*<span\\s*class="govcy-details__summary-text"\\s*>\\s*Πως να ελέγξετε τα cookies\\s*<\\/span>`, //summary 
+            `\\s*<\\/summary>`, //summary close 
+            `\\s*<div\\s*class="govcy-details__text">`, //details 
+            `\\s*<p\\s*lang="el">\\s*Χρησιμοποιούμε cookies για να αποθηκεύουμε πληροφορίες ...\\s*<\\/p>`, //paragraph in details 
+            `\\s*<ul>\\s*<li>\\s*item1 el\\s*<\\/li>\\s*<li>\\s*item2 el\\s*<\\/li>\\s*<\\/ul>`, //markdown with list in details 
+            `\\s*<\\/div>`, //details close 
+            `\\s*<\\/details>`, //details close 
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
 }
 
 // Export the renderTest function
