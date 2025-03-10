@@ -355,6 +355,85 @@ In order to get the gov.cy styles, you need to add it inside a `form` element.
 </details>
 
 <details>
+  <summary>details</summary>
+  
+## details
+
+This element is used to add a details as defined in the [UDS - details](https://gov-cy.github.io/govcy-design-system-docs/components/details/).
+
+**Element name** : `details`
+
+**Parameters** :
+```js
+/**
+ @param {string} lang The language used. Can be 'en','el'. Optional. 
+ @param {string} id The id of the summary. Will escape text. Optional 
+ @param {object} summary The text displayed inside the `<summary>`. Will escape text. Example `{"en":"Content","el":"Περιεχομένο"}`.
+ @param {array} elements if defined, govcy-elements to be rendered inside the panel. 
+    i.e. `[
+            {element:"textElement",params:{text:{en:"Content",el:"Περιεχομένο"}},
+            {element:"button",params:{text:{en:"Button 1",el:"Κουμπί 1"},lang:"en",id:"govcy-test-23b"} }
+        ]`
+ @param {string} classes Additional classes to add to the outer `<details>`. Optional 
+**/ 
+```
+
+**JSON Example** 
+```json
+{
+    "element": "details",
+    "params": {
+        "id":"govcy-test-99"
+        ,"classes":"govcy-test-class"
+        ,"summary":{"en":"How to control cookies","el":"Πως να ελέγξετε τα cookies"}
+        ,"elements":[
+            {
+                "element":"textElement",
+                "params":{
+                    "text":{"en":"We use cookies to store information ...","el":"Χρησιμοποιούμε cookies για να αποθηκεύουμε πληροφορίες ..."}
+                }
+            }
+            ,{
+                "element":"markdown",
+                "params":{
+                    "text":{"en":"- item1\n- item2","el":"- item1 el\n- item2 el"}
+                }
+            }
+        ]
+    }
+}
+```
+
+**Nunjucks Example** 
+
+```Nunjucks
+{{ govcyElement(
+    "details",
+        {
+            "id":"govcy-test-99"
+            ,"classes":"govcy-test-class"
+            ,"summary":{"en":"How to control cookies","el":"Πως να ελέγξετε τα cookies"}
+            ,"elements":[
+                {
+                    "element":"textElement",
+                    "params":{
+                        "text":{"en":"We use cookies to store information ...","el":"Χρησιμοποιούμε cookies για να αποθηκεύουμε πληροφορίες ..."}
+                    }
+                }
+                ,{
+                    "element":"markdown",
+                    "params":{
+                        "text":{"en":"- item1\n- item2","el":"- item1 el\n- item2 el"}
+                    }
+                }
+            ]
+        }
+    ) 
+}}
+```
+</details>
+
+<details>
   <summary>errorMessage</summary>
   
 ## errorMessage

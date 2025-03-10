@@ -3314,6 +3314,51 @@
                                         }  
                                     ]
                                 }
+                            },
+                            {
+                                "element": "details",
+                                "params": {
+                                    "id":"govcy-test-99"
+                                    ,"classes":"govcy-test-class"
+                                    ,"summary":{"en":"How to control cookies","el":"Πως να ελέγξετε τα cookies"}
+                                    ,"elements":[
+                                        {
+                                            "element":"textElement",
+                                            "params":{
+                                                "text":{"en":"We use cookies to store information ...","el":"Χρησιμοποιούμε cookies για να αποθηκεύουμε πληροφορίες ..."}
+                                            }
+                                        }
+                                        ,{
+                                            "element":"markdown",
+                                            "params":{
+                                                "text":{"en":"- item1\n- item2","el":"- item1 el\n- item2 el"}
+                                            }
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "element": "details",
+                                "params": {
+                                    "id":"govcy-test-100"
+                                    ,"classes":"govcy-test-class"
+                                    ,"lang":"el"
+                                    ,"summary":{"en":"How to control cookies","el":"Πως να ελέγξετε τα cookies"}
+                                    ,"elements":[
+                                        {
+                                            "element":"textElement",
+                                            "params":{
+                                                "text":{"en":"We use cookies to store information ...","el":"Χρησιμοποιούμε cookies για να αποθηκεύουμε πληροφορίες ..."}
+                                            }
+                                        }
+                                        ,{
+                                            "element":"markdown",
+                                            "params":{
+                                                "text":{"en":"- item1\n- item2","el":"- item1 el\n- item2 el"}
+                                            }
+                                        }
+                                    ]
+                                }
                             }
                         ]
                     }

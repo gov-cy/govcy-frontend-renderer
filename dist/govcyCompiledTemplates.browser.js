@@ -1749,6 +1749,92 @@ root: root
 })();
 })();
 
+(function() {(window.nunjucksPrecompiled = window.nunjucksPrecompiled || {})["elements/details.njk"] = (function() {
+function root(env, context, frame, runtime, cb) {
+var lineno = 0;
+var colno = 0;
+var output = "";
+try {
+var parentTemplate = null;
+output += "\r\n";
+var macro_t_1 = runtime.makeMacro(
+["params"], 
+[], 
+function (l_params, kwargs) {
+var callerFrame = frame;
+frame = new runtime.Frame();
+kwargs = kwargs || {};
+if (Object.prototype.hasOwnProperty.call(kwargs, "caller")) {
+frame.set("caller", kwargs.caller); }
+frame.set("params", l_params);
+var t_2 = "";env.getTemplate("utilities/govcyUtilities.njk", false, "elements/details.njk", false, function(t_4,t_3) {
+if(t_4) { cb(t_4); return; }
+t_3.getExported(function(t_5,t_3) {
+if(t_5) { cb(t_5); return; }
+if(Object.prototype.hasOwnProperty.call(t_3, "govcyLocalizeContent")) {
+var t_6 = t_3.govcyLocalizeContent;
+} else {
+cb(new Error("cannot import 'govcyLocalizeContent'")); return;
+}
+context.setVariable("govcyLocalizeContent", t_6);
+if(Object.prototype.hasOwnProperty.call(t_3, "govcyLangAttribute")) {
+var t_7 = t_3.govcyLangAttribute;
+} else {
+cb(new Error("cannot import 'govcyLangAttribute'")); return;
+}
+context.setVariable("govcyLangAttribute", t_7);
+if(Object.prototype.hasOwnProperty.call(t_3, "govcyElementsFromArray")) {
+var t_8 = t_3.govcyElementsFromArray;
+} else {
+cb(new Error("cannot import 'govcyElementsFromArray'")); return;
+}
+context.setVariable("govcyElementsFromArray", t_8);
+if(runtime.memberLookup((l_params),"summary") && runtime.memberLookup((l_params),"elements")) {
+t_2 += "\r\n<details ";
+if(runtime.memberLookup((l_params),"id")) {
+t_2 += "id=\"";
+t_2 += runtime.suppressValue(runtime.memberLookup((l_params),"id"), env.opts.autoescape);
+t_2 += "\" ";
+;
+}
+t_2 += "class=\"govcy-details";
+if(runtime.memberLookup((l_params),"classes")) {
+t_2 += " ";
+t_2 += runtime.suppressValue(runtime.memberLookup((l_params),"classes"), env.opts.autoescape);
+;
+}
+t_2 += "\"";
+t_2 += runtime.suppressValue((lineno = 17, colno = 156, runtime.callWrap(t_7, "govcyLangAttribute", context, [runtime.memberLookup((l_params),"lang")])), env.opts.autoescape);
+t_2 += ">\r\n    <summary class=\"govcy-details__summary\">\r\n        <span class=\"govcy-details__summary-text\">";
+t_2 += runtime.suppressValue((lineno = 19, colno = 73, runtime.callWrap(t_6, "govcyLocalizeContent", context, [runtime.memberLookup((l_params),"summary"),runtime.memberLookup((l_params),"lang")])), env.opts.autoescape);
+t_2 += "</span>\r\n    </summary>\r\n    <div class=\"govcy-details__text\">\r\n        ";
+t_2 += runtime.suppressValue((lineno = 22, colno = 33, runtime.callWrap(t_8, "govcyElementsFromArray", context, [runtime.memberLookup((l_params),"elements"),runtime.memberLookup((l_params),"lang")])), env.opts.autoescape);
+t_2 += "\r\n    </div>\r\n</details>";
+;
+}
+})});
+frame = callerFrame;
+return new runtime.SafeString(t_2);
+});
+context.addExport("details");
+context.setVariable("details", macro_t_1);
+if(parentTemplate) {
+parentTemplate.rootRenderFunc(env, context, frame, runtime, cb);
+} else {
+cb(null, output);
+}
+;
+} catch (e) {
+  cb(runtime.handleError(e, lineno, colno));
+}
+}
+return {
+root: root
+};
+
+})();
+})();
+
 (function() {(window.nunjucksPrecompiled = window.nunjucksPrecompiled || {})["elements/errorMessage.njk"] = (function() {
 function root(env, context, frame, runtime, cb) {
 var lineno = 0;
@@ -6288,7 +6374,7 @@ var output = "";
 try {
 var parentTemplate = null;
 var t_1;
-t_1 = ["label","legend","hint","button","errorMessage","select","textElement","htmlElement","textInput","radios","checkboxes","fileInput","fileView","backLink","tag","table","summaryList","textArea","markdown","panel","datePicker","dateInput","taskList","errorSummary"];
+t_1 = ["label","legend","hint","button","errorMessage","select","textElement","htmlElement","textInput","radios","checkboxes","fileInput","fileView","backLink","tag","table","summaryList","textArea","markdown","panel","datePicker","dateInput","taskList","errorSummary","details"];
 frame.set("macroSimpleBlocks", t_1, true);
 if(frame.topLevel) {
 context.setVariable("macroSimpleBlocks", t_1);
