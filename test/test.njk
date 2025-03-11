@@ -2064,6 +2064,105 @@
                         }
                     ]
                 }
+            },
+            {
+                "element": "htmlElement",
+                "params": {
+                    "text":{"en":"<h2>Step by step static</h2>","el":"Step by step static el"}
+                }
+            },
+            {
+                "element": "stepByStepStatic",
+                "params": {
+                    "id":"govcy-test-101"
+                    ,"classes":"govcy-test-class"
+                    ,"items":[
+                        {
+                            "heading":{"en":"Step 1","el":"Βήμα 1"},
+                            "elements":[
+                                {"element":"textElement",
+                                    "params":{
+                                        "text":{"en":"Content","el":"Περιεχομένο"} 
+                                    } 
+                                },
+                                {"element":"markdown",
+                                    "params":{
+                                        "text":{"en":"- item1\n- item2","el":"- item1 el\n- item2 el"}
+                                    } 
+                                }
+                            ]
+                        },
+                        {
+                            "heading":{"en":"Step 2","el":"Βήμα 2"},
+                            "elements":[
+                                {"element":"textElement","params":{"text":{"en":"Content 2","el":"Περιεχομένο 2"} } }
+                            ],
+                            "type":"step"
+                        },
+                        {
+                            "heading":{"en":"Step 3","el":"Βήμα 3"},
+                            "elements":[
+                                {"element":"textElement","params":{"text":{"en":"Content 3","el":"Περιεχομένο 3"} } }
+                            ],
+                            "type":"or"
+                        },
+                        {
+                            "heading":{"en":"Step 4","el":"Βήμα 4"},
+                            "elements":[
+                                {"element":"textElement","params":{"text":{"en":"Content 4","el":"Περιεχομένο 4"} } }
+                            ],
+                            "type":"and",
+                            "classes":"govcy-test-class"
+                        }
+                    ]
+                }
+            },
+            {
+                "element": "stepByStepStatic",
+                "params": {
+                    "id":"govcy-test-102"
+                    ,"lang":"el"
+                    ,"classes":"govcy-test-class"
+                    ,"items":[
+                        {
+                            "heading":{"en":"Step 1","el":"Βήμα 1"},
+                            "elements":[
+                                {"element":"textElement",
+                                    "params":{
+                                        "text":{"en":"Content","el":"Περιεχομένο"} 
+                                    } 
+                                },
+                                {"element":"markdown",
+                                    "params":{
+                                        "text":{"en":"- item1\n- item2","el":"- item1 el\n- item2 el"}
+                                    } 
+                                }
+                            ]
+                        },
+                        {
+                            "heading":{"en":"Step 2","el":"Βήμα 2"},
+                            "elements":[
+                                {"element":"textElement","params":{"text":{"en":"Content 2","el":"Περιεχομένο 2"} } }
+                            ],
+                            "type":"step"
+                        },
+                        {
+                            "heading":{"en":"Step 3","el":"Βήμα 3"},
+                            "elements":[
+                                {"element":"textElement","params":{"text":{"en":"Content 3","el":"Περιεχομένο 3"} } }
+                            ],
+                            "type":"or"
+                        },
+                        {
+                            "heading":{"en":"Step 4","el":"Βήμα 4"},
+                            "elements":[
+                                {"element":"textElement","params":{"text":{"en":"Content 4","el":"Περιεχομένο 4"} } }
+                            ],
+                            "type":"and",
+                            "classes":"govcy-test-class"
+                        }
+                    ]
+                }
             }
         ]
     })
