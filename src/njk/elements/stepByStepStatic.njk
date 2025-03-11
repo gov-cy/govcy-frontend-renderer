@@ -1,0 +1,71 @@
+{# stepByStepStatic
+ @param {string} lang The language used. Can be 'en','el'. Optional. 
+ @param {string} id The id of the step by step. Will escape text. Optional 
+ @param {array} items The array of items to turn into steps 
+    @param {string} item.heading The heading of the item.  Will escape text. Example `{"en":"Content","el":"Περιεχομένο"}`.
+    @param {array} item.elements, govcy-elements to be rendered inside the item's body. 
+    @param {string} item.type The item type. Can be ''(which is incremental steps) ,'or','and'. Optional, default is ''  
+    @param {string} item.classes Additional classes to add to the item. Optional 
+    i.e. ` [
+            {
+                "heading":{"en":"Step 1","el":"Βήμα 1"},
+                "elements":[
+                    {"element":"textElement",
+                        "params":{
+                            "text":{"en":"Content","el":"Περιεχομένο"} 
+                        } 
+                    },
+                    {"element":"markdown",
+                        "params":{
+                            "text":{"en":"- item1\n- item2","el":"- item1 el\n- item2 el"}
+                        } 
+                    }
+                ]
+            },
+            {
+                "heading":{"en":"Step 2","el":"Βήμα 2"},
+                "elements":[
+                    {"element":"textElement","params":{"text":{"en":"Content 2","el":"Περιεχομένο 2"} } }
+                ],
+                "type":"or",
+                "classes":"govcy-test-class"
+            }
+        ]`
+ @param {string} classes Additional classes to add to the outer `<details>`. Optional 
+ @returns govcy stepByStepStatic html 
+#}
+{% macro stepByStepStatic(params) -%}
+{#- Import localizer from utilities -#}
+{%- from "../utilities/govcyUtilities.njk" import govcyLocalizeContent, govcyLangAttribute, govcyElementsFromArray -%}
+{#- set default values -#}
+{%- set orText -%} {{- govcyLocalizeContent({en:'Or',el:'Ή'}, params.lang) -}}{%- endset -%}
+{%- set andText -%} {{- govcyLocalizeContent({en:'And',el:'Και'}, params.lang) -}}{%- endset -%}
+{%- set stepText  -%} {{- govcyLocalizeContent({en:'Step',el:'Βήμα'}, params.lang) -}}{%- endset -%}
+{#- items are mandatory -#}
+{%- if params.items %}
+<div class="govcy-accordion govcy-accordion-steps govcy-mb-0{% if params.classes %} {{ params.classes }}{% endif %}"{% if params.id %} id="{{ params.id }}"{% endif %}{{ govcyLangAttribute(params.lang) }}>
+{#- for each item render checkbox item -#}
+    {%- for item in params.items %}
+        {%- if item.type == 'or' -%}
+            {%- set itemStep -%}<div class="govcy-accordion-step govcy-accordion-step-conditional">{{ orText }}</div>{%- endset -%}
+            {%- set itemStepVisallyHidden -%}<span class="govcy-visually-hidden">{{ orText }}, </span>{%- endset -%}
+        {%- elif item.type == 'and' -%}
+            {%- set itemStep -%}<div class="govcy-accordion-step govcy-accordion-step-conditional">{{ andText }}</div>{%- endset -%}
+            {%- set itemStepVisallyHidden -%}<span class="govcy-visually-hidden">{{ andText }}, </span>{%- endset -%}
+        {%- else -%}
+            {%- set itemStep -%}<div class="govcy-accordion-step">{{ loop.index }}</div>{%- endset -%}
+            {%- set itemStepVisallyHidden -%}<span class="govcy-visually-hidden">{{ stepText }} {{ loop.index}}, </span>{%- endset -%}
+        {%- endif %}
+        <div class="govcy-accordion-item{% if item.classes %} {{ item.classes }}{% endif %}"{% if params.id %} id="{{ params.id }}-item-{{ loop.index }}"{% endif %}>
+            {{ itemStep | safe }}
+            <h3 class="govcy-pt-4">
+                {{ itemStepVisallyHidden | safe }} {{- govcyLocalizeContent(item.heading, params.lang) -}}
+            </h3> 
+            <div>
+                {{ govcyElementsFromArray(item.elements, params.lang) }}
+            </div>
+        </div>
+    {%- endfor %}
+</div>
+{%- endif %}
+{%- endmacro %}

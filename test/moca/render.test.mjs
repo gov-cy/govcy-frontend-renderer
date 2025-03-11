@@ -1782,6 +1782,72 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
+    it(checksNum+'101 `Step by step static` with all options', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([
+            `<div\\s*class="govcy-accordion\\s*govcy-accordion-steps\\s*govcy-mb-0\\s*govcy-test-class"\\s*id="govcy-test-101">`, //opening div
+            //item 1
+            `\\s*<div\\s*class="govcy-accordion-item"\\s*id="govcy-test-101-item-1">`, //item open
+            `\\s*<div\\s*class="govcy-accordion-step">\\s*1\\s*<\\/div>`, //item number 
+            `\\s*<h3\\s*class="govcy-pt-4">\\s*<span\\s*class="govcy-visually-hidden">\\s*Step 1,\\s*<\\/span>\\s*Step 1\\s*<\\/h3>`, //visually hidden and header
+            `\\s*<div>\\s*<p>\\s*Content\\s*<\\/p>\\s*<ul>\\s*<li>\\s*item1\\s*<\\/li>\\s*<li>\\s*item2\\s*<\\/li>\\s*<\\/ul>\\s*<\\/div>`, //item body
+            `\\s*<\\/div>`, //item close 
+            //item 2
+            `\\s*<div\\s*class="govcy-accordion-item"\\s*id="govcy-test-101-item-2">`, //item open
+            `\\s*<div\\s*class="govcy-accordion-step">\\s*2\\s*<\\/div>`, //item number 
+            `\\s*<h3\\s*class="govcy-pt-4">\\s*<span\\s*class="govcy-visually-hidden">\\s*Step 2,\\s*<\\/span>\\s*Step 2\\s*<\\/h3>`, //visually hidden and header
+            `\\s*<div>\\s*<p>\\s*Content 2\\s*<\\/p>\\s*<\\/div>`, //item body
+            `\\s*<\\/div>`, //item close 
+            //item 3
+            `\\s*<div\\s*class="govcy-accordion-item"\\s*id="govcy-test-101-item-3">`, //item open
+            `\\s*<div\\s*class="govcy-accordion-step\\s*govcy-accordion-step-conditional">\\s*Or\\s*<\\/div>`, //item number 
+            `\\s*<h3\\s*class="govcy-pt-4">\\s*<span\\s*class="govcy-visually-hidden">\\s*Or,\\s*<\\/span>\\s*Step 3\\s*<\\/h3>`, //visually hidden and header
+            `\\s*<div>\\s*<p>\\s*Content 3\\s*<\\/p>\\s*<\\/div>`, //item body
+            `\\s*<\\/div>`, //item close 
+            //item 4
+            `\\s*<div\\s*class="govcy-accordion-item\\s*govcy-test-class"\\s*id="govcy-test-101-item-4">`, //item open
+            `\\s*<div\\s*class="govcy-accordion-step\\s*govcy-accordion-step-conditional">\\s*And\\s*<\\/div>`, //item number 
+            `\\s*<h3\\s*class="govcy-pt-4">\\s*<span\\s*class="govcy-visually-hidden">\\s*And,\\s*<\\/span>\\s*Step 4\\s*<\\/h3>`, //visually hidden and header
+            `\\s*<div>\\s*<p>\\s*Content 4\\s*<\\/p>\\s*<\\/div>`, //item body
+            `\\s*<\\/div>`, //item close 
+            `\\s*<\\/div>`, //close 
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+    it(checksNum+'102 `Step by step static` with all options lang="el"', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([
+            `<div\\s*class="govcy-accordion\\s*govcy-accordion-steps\\s*govcy-mb-0\\s*govcy-test-class"\\s*id="govcy-test-102"\\s*lang="el">`, //opening div
+            //item 1
+            `\\s*<div\\s*class="govcy-accordion-item"\\s*id="govcy-test-102-item-1">`, //item open
+            `\\s*<div\\s*class="govcy-accordion-step">\\s*1\\s*<\\/div>`, //item number 
+            `\\s*<h3\\s*class="govcy-pt-4">\\s*<span\\s*class="govcy-visually-hidden">\\s*Βήμα 1,\\s*<\\/span>\\s*Βήμα 1\\s*<\\/h3>`, //visually hidden and header
+            `\\s*<div>\\s*<p\\s*lang="el">\\s*Περιεχομένο\\s*<\\/p>\\s*<ul>\\s*<li>\\s*item1 el\\s*<\\/li>\\s*<li>\\s*item2 el\\s*<\\/li>\\s*<\\/ul>\\s*<\\/div>`, //item body
+            `\\s*<\\/div>`, //item close 
+            //item 2
+            `\\s*<div\\s*class="govcy-accordion-item"\\s*id="govcy-test-102-item-2">`, //item open
+            `\\s*<div\\s*class="govcy-accordion-step">\\s*2\\s*<\\/div>`, //item number 
+            `\\s*<h3\\s*class="govcy-pt-4">\\s*<span\\s*class="govcy-visually-hidden">\\s*Βήμα 2,\\s*<\\/span>\\s*Βήμα 2\\s*<\\/h3>`, //visually hidden and header
+            `\\s*<div>\\s*<p\\s*lang="el">\\s*Περιεχομένο 2\\s*<\\/p>\\s*<\\/div>`, //item body
+            `\\s*<\\/div>`, //item close 
+            //item 3
+            `\\s*<div\\s*class="govcy-accordion-item"\\s*id="govcy-test-102-item-3">`, //item open
+            `\\s*<div\\s*class="govcy-accordion-step\\s*govcy-accordion-step-conditional">\\s*Ή\\s*<\\/div>`, //item number 
+            `\\s*<h3\\s*class="govcy-pt-4">\\s*<span\\s*class="govcy-visually-hidden">\\s*Ή,\\s*<\\/span>\\s*Βήμα 3\\s*<\\/h3>`, //visually hidden and header
+            `\\s*<div>\\s*<p\\s*lang="el">\\s*Περιεχομένο 3\\s*<\\/p>\\s*<\\/div>`, //item body
+            `\\s*<\\/div>`, //item close 
+            //item 4
+            `\\s*<div\\s*class="govcy-accordion-item\\s*govcy-test-class"\\s*id="govcy-test-102-item-4">`, //item open
+            `\\s*<div\\s*class="govcy-accordion-step\\s*govcy-accordion-step-conditional">\\s*Και\\s*<\\/div>`, //item number 
+            `\\s*<h3\\s*class="govcy-pt-4">\\s*<span\\s*class="govcy-visually-hidden">\\s*Και,\\s*<\\/span>\\s*Βήμα 4\\s*<\\/h3>`, //visually hidden and header
+            `\\s*<div>\\s*<p\\s*lang="el">\\s*Περιεχομένο 4\\s*<\\/p>\\s*<\\/div>`, //item body
+            `\\s*<\\/div>`, //item close 
+            `\\s*<\\/div>`, //close 
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
 }
 
 // Export the renderTest function

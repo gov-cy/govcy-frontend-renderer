@@ -1685,6 +1685,158 @@ In order to get the gov.cy styles, you need to add it inside a `form` element.
 </details>
 
 <details>
+  <summary>stepByStepStatic</summary>
+  
+## stepByStepStatic
+
+This element is used to add step by step (static) as defined in the [UDS - confirmation next steps](https://gov-cy.github.io/govcy-design-system-docs/patterns/confirmation-pages/#next-steps).
+
+**Element name** : `stepByStepStatic`
+
+**Parameters** :
+```js
+/**
+ @param {string} lang The language used. Can be 'en','el'. Optional. 
+ @param {string} id The id of the step by step. Will escape text. Optional 
+ @param {array} items The array of items to turn into steps 
+    @param {string} item.heading The heading of the item.  Will escape text. Example `{"en":"Content","el":"Περιεχομένο"}`.
+    @param {array} item.elements, govcy-elements to be rendered inside the item's body. 
+    @param {string} item.type The item type. Can be ''(which is incremental steps) ,'or','and'. Optional, default is ''  
+    @param {string} item.classes Additional classes to add to the item. Optional 
+    i.e. ` [
+            {
+                "heading":{"en":"Step 1","el":"Βήμα 1"},
+                "elements":[
+                    {"element":"textElement",
+                        "params":{
+                            "text":{"en":"Content","el":"Περιεχομένο"} 
+                        } 
+                    },
+                    {"element":"markdown",
+                        "params":{
+                            "text":{"en":"- item1\n- item2","el":"- item1 el\n- item2 el"}
+                        } 
+                    }
+                ]
+            },
+            {
+                "heading":{"en":"Step 2","el":"Βήμα 2"},
+                "elements":[
+                    {"element":"textElement","params":{"text":{"en":"Content 2","el":"Περιεχομένο 2"} } }
+                ],
+                "type":"or",
+                "classes":"govcy-test-class"
+            }
+        ]`
+ @param {string} classes Additional classes to add to the outer `<details>`. Optional 
+**/ 
+```
+
+**JSON Example** 
+```json
+{
+    "element": "stepByStepStatic",
+    "params": {
+        "id":"govcy-test-101"
+        ,"classes":"govcy-test-class"
+        ,"items":[
+            {
+                "heading":{"en":"Step 1","el":"Βήμα 1"},
+                "elements":[
+                    {"element":"textElement",
+                        "params":{
+                            "text":{"en":"Content","el":"Περιεχομένο"} 
+                        } 
+                    },
+                    {"element":"markdown",
+                        "params":{
+                            "text":{"en":"- item1\n- item2","el":"- item1 el\n- item2 el"}
+                        } 
+                    }
+                ]
+            },
+            {
+                "heading":{"en":"Step 2","el":"Βήμα 2"},
+                "elements":[
+                    {"element":"textElement","params":{"text":{"en":"Content 2","el":"Περιεχομένο 2"} } }
+                ],
+                "type":"step"
+            },
+            {
+                "heading":{"en":"Step 3","el":"Βήμα 3"},
+                "elements":[
+                    {"element":"textElement","params":{"text":{"en":"Content 3","el":"Περιεχομένο 3"} } }
+                ],
+                "type":"or"
+            },
+            {
+                "heading":{"en":"Step 4","el":"Βήμα 4"},
+                "elements":[
+                    {"element":"textElement","params":{"text":{"en":"Content 4","el":"Περιεχομένο 4"} } }
+                ],
+                "type":"and",
+                "classes":"govcy-test-class"
+            }
+        ]
+    }
+}
+```
+
+**Nunjucks Example** 
+
+```Nunjucks
+{{ 
+    govcyElement(
+        "stepByStepStatic",
+        {
+            "id":"govcy-test-101"
+            ,"classes":"govcy-test-class"
+            ,"items":[
+                {
+                    "heading":{"en":"Step 1","el":"Βήμα 1"},
+                    "elements":[
+                        {"element":"textElement",
+                            "params":{
+                                "text":{"en":"Content","el":"Περιεχομένο"} 
+                            } 
+                        },
+                        {"element":"markdown",
+                            "params":{
+                                "text":{"en":"- item1\n- item2","el":"- item1 el\n- item2 el"}
+                            } 
+                        }
+                    ]
+                },
+                {
+                    "heading":{"en":"Step 2","el":"Βήμα 2"},
+                    "elements":[
+                        {"element":"textElement","params":{"text":{"en":"Content 2","el":"Περιεχομένο 2"} } }
+                    ],
+                    "type":"step"
+                },
+                {
+                    "heading":{"en":"Step 3","el":"Βήμα 3"},
+                    "elements":[
+                        {"element":"textElement","params":{"text":{"en":"Content 3","el":"Περιεχομένο 3"} } }
+                    ],
+                    "type":"or"
+                },
+                {
+                    "heading":{"en":"Step 4","el":"Βήμα 4"},
+                    "elements":[
+                        {"element":"textElement","params":{"text":{"en":"Content 4","el":"Περιεχομένο 4"} } }
+                    ],
+                    "type":"and",
+                    "classes":"govcy-test-class"
+                }
+            ]
+        }
+    ) 
+}}
+```
+</details>
+
+<details>
   <summary>summaryList</summary>
   
 ## summaryList
