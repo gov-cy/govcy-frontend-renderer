@@ -67,6 +67,17 @@ const inputData =
 {    
     "site" : {
         "lang" : "en",
+        "languages": [
+            {"code": "el", "label": "EL", "alt": "Ελληνική γλώσσα", "href": "?lang=el"},
+            {"code": "en", "label": "EN", "alt": "English language", "href": "?lang=en"}
+        ],
+        "footerLinks": [
+            {"label": {"en":"Privacy statement", "el":"Δήλωση απορρήτου"}, "href": "#"},
+            {"label": {"en":"Cookies", "el":"Cookies"}, "href": "#"},
+            {"label": {"en":"Accessibility", "el":"Προσβασιμότητα"}, "href": "#"},
+            {"label": {"en":"Help us improve this service", "el":"Βοηθήστε μας να βελτιώσουμε αυτή την υπηρεσία"}, "href": "#"}
+        ],
+        "menu" : {"en":"Menu", "el":"Μενου"},
         "title" : {"en":"Service title", "el":"Τιτλός υπηρεσίας"}, 
         "headerTitle" : {"en":"Header title", "el":"Τιτλός επικεφαλιδας"},
         "description" : {"en":"Service description", "el":"Περιγραφή υπηρεσίας"},
@@ -145,6 +156,17 @@ const inputData =
 {    
     "site" : {
         "lang" : "en",
+        "languages": [
+            {"code": "el", "label": "EL", "alt": "Ελληνική γλώσσα", "href": "?lang=el"},
+            {"code": "en", "label": "EN", "alt": "English language", "href": "?lang=en"}
+        ],
+        "footerLinks": [
+            {"label": {"en":"Privacy statement", "el":"Δήλωση απορρήτου"}, "href": "#"},
+            {"label": {"en":"Cookies", "el":"Cookies"}, "href": "#"},
+            {"label": {"en":"Accessibility", "el":"Προσβασιμότητα"}, "href": "#"},
+            {"label": {"en":"Help us improve this service", "el":"Βοηθήστε μας να βελτιώσουμε αυτή την υπηρεσία"}, "href": "#"}
+        ],
+        "menu" : {"en":"Menu", "el":"Μενου"},
         "title" : {"en":"Service title", "el":"Τιτλός υπηρεσίας"}, 
         "headerTitle" : {"en":"Header title", "el":"Τιτλός επικεφαλιδας"},
         "description" : {"en":"Service description", "el":"Περιγραφή υπηρεσίας"},
@@ -279,6 +301,9 @@ In the examples above an `inputData` object is defined and it is used to pass th
 The `inputData` object has the following structure: 
 
 - **site.lang**: the language of the site. It is used both in the `<html lang` attribute and to define the default language to be used by the individual design elements defined in the template. 
+- **site.languages**: the languages in the language menu.
+- **site.footerLinks**: the links of the footer.
+- **site.menu**: the menu label.
 - **site.title**: the title of the site. It is used in the `<title>`, `<meta property="og:title"` and `<meta property="twitter:title"` tags of the head.
 - **site.description**: the description of the site. It is used in the `<meta name="description"`, `<meta property="og:description"` and `<meta property="twitter:description"` tags of the head.
 - **site.url**: the URL of the site. It is used in the `<meta property="og:url"` and `<meta property="twitter:url"` tags of the head.

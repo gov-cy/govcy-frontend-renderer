@@ -1,6 +1,17 @@
 {
     "site" : {
         "lang" : "en",
+        "languages": [
+            {"code": "el", "label": "EL", "alt": "Ελληνική γλώσσα", "href": "?lang=el"},
+            {"code": "en", "label": "EN", "alt": "English language", "href": "?lang=en"}
+        ],
+        "footerLinks": [
+            {"label": {"en":"Privacy statement", "el":"Δήλωση απορρήτου"}, "href": "#"},
+            {"label": {"en":"Cookies", "el":"Cookies"}, "href": "#"},
+            {"label": {"en":"Accessibility", "el":"Προσβασιμότητα"}, "href": "#"},
+            {"label": {"en":"Help us improve this service", "el":"Βοηθήστε μας να βελτιώσουμε αυτή την υπηρεσία"}, "href": "#"}
+        ],
+        "menu" : {"en":"Menu", "el":"Μενου"},
         "title" : {"en":"Service title", "el":"Τιτλός υπηρεσίας"}, 
         "headerTitle" : {"en":"Header title", "el":"Τιτλός επικεφαλιδας"},
         "description" : {"en":"Service description", "el":"Περιγραφή υπηρεσίας"},
