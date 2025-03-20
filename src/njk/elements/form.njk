@@ -2,6 +2,7 @@
  @param {string} action. Will escape text 
  @param {string} id The hint id. Will escape text 
  @param {string} classes Additional classes to add to the outer div. Optional 
+ @param {string} method The form method. Will escape text. Optional 
  @param {array} elements If defined will be rendered elements inside the form. 
     i.e. `[
             {element:"button",params:{text:{en:"Button 1",el:"Κουμπί 1"},lang:"en",id:"govcy-test-23b"} },
@@ -10,7 +11,7 @@
  @returns govcy form html 
 #}
 {% macro form(params) -%}
-<form {% if params.id %}id="{{ params.id }}" {% endif %}action="{{ params.action }}" class="govcy-form{% if params.classes %} {{ params.classes }}{% endif %}" novalidate="">
+<form {% if params.id %}id="{{ params.id }}" {% endif %}{% if params.method %} method="{{ params.method }}" {% endif %}action="{{ params.action }}" class="govcy-form{% if params.classes %} {{ params.classes }}{% endif %}" novalidate="">
     {{ caller() }}
     {#- if it has elements to be called -#}
     {%- if params.elements -%}
