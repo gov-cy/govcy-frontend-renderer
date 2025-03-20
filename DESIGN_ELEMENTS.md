@@ -2787,7 +2787,7 @@ This element is used to add textElement as defined in the [UDS - textElement](ht
 /**
  @param {string} lang The language used. Can be 'en','el'. Optional. 
  @param {object} text The text. Will escape text, Example `{en:"Content",el:"Περιεχομένο"}` 
- @param {string} type The type of the element. Can be `p`,`h1`,`h2`,`h3`,`h4`. Default is `p`
+ @param {string} type The type of the element. Can be `p`,`h1`,`h2`,`h3`,`h4`,`span`. Default is `p`
  @param {string} id The elemen't id. Will escape text. Optional  
  @param {string} classes Additional classes to add to the outer div. Optional 
 **/
