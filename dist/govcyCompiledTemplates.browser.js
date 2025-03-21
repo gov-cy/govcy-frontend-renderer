@@ -2634,6 +2634,12 @@ t_2 += runtime.suppressValue(runtime.memberLookup((l_params),"id"), env.opts.aut
 t_2 += "\" ";
 ;
 }
+if(runtime.memberLookup((l_params),"method")) {
+t_2 += " method=\"";
+t_2 += runtime.suppressValue(runtime.memberLookup((l_params),"method"), env.opts.autoescape);
+t_2 += "\" ";
+;
+}
 t_2 += "action=\"";
 t_2 += runtime.suppressValue(runtime.memberLookup((l_params),"action"), env.opts.autoescape);
 t_2 += "\" class=\"govcy-form";
@@ -2643,7 +2649,7 @@ t_2 += runtime.suppressValue(runtime.memberLookup((l_params),"classes"), env.opt
 ;
 }
 t_2 += "\" novalidate=\"\">\n    ";
-t_2 += runtime.suppressValue((lineno = 13, colno = 13, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "caller"), "caller", context, [])), env.opts.autoescape);
+t_2 += runtime.suppressValue((lineno = 14, colno = 13, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "caller"), "caller", context, [])), env.opts.autoescape);
 if(runtime.memberLookup((l_params),"elements")) {
 env.getTemplate("govcyElement.njk", false, "elements/form.njk", false, function(t_4,t_3) {
 if(t_4) { cb(t_4); return; }
@@ -2669,7 +2675,7 @@ frame.set("loop.revindex0", t_8 - t_7 - 1);
 frame.set("loop.first", t_7 === 0);
 frame.set("loop.last", t_7 === t_8 - 1);
 frame.set("loop.length", t_8);
-t_2 += runtime.suppressValue((lineno = 19, colno = 33, runtime.callWrap(t_6, "govcyElement", context, [runtime.memberLookup((t_10),"element"),runtime.memberLookup((t_10),"params"),runtime.makeKeywordArgs({"caller": (function (){var macro_t_11 = runtime.makeMacro(
+t_2 += runtime.suppressValue((lineno = 20, colno = 33, runtime.callWrap(t_6, "govcyElement", context, [runtime.memberLookup((t_10),"element"),runtime.memberLookup((t_10),"params"),runtime.makeKeywordArgs({"caller": (function (){var macro_t_11 = runtime.makeMacro(
 [], 
 [], 
 function (kwargs) {
@@ -3408,6 +3414,331 @@ return new runtime.SafeString(t_2);
 });
 context.addExport("panel");
 context.setVariable("panel", macro_t_1);
+if(parentTemplate) {
+parentTemplate.rootRenderFunc(env, context, frame, runtime, cb);
+} else {
+cb(null, output);
+}
+;
+} catch (e) {
+  cb(runtime.handleError(e, lineno, colno));
+}
+}
+return {
+root: root
+};
+
+})();
+})();
+
+(function() {(window.nunjucksPrecompiled = window.nunjucksPrecompiled || {})["elements/progressList.njk"] = (function() {
+function root(env, context, frame, runtime, cb) {
+var lineno = 0;
+var colno = 0;
+var output = "";
+try {
+var parentTemplate = null;
+output += "\r\n";
+var macro_t_1 = runtime.makeMacro(
+["params"], 
+[], 
+function (l_params, kwargs) {
+var callerFrame = frame;
+frame = new runtime.Frame();
+kwargs = kwargs || {};
+if (Object.prototype.hasOwnProperty.call(kwargs, "caller")) {
+frame.set("caller", kwargs.caller); }
+frame.set("params", l_params);
+var t_2 = "";env.getTemplate("utilities/govcyUtilities.njk", false, "elements/progressList.njk", false, function(t_4,t_3) {
+if(t_4) { cb(t_4); return; }
+t_3.getExported(function(t_5,t_3) {
+if(t_5) { cb(t_5); return; }
+if(Object.prototype.hasOwnProperty.call(t_3, "govcyLocalizeContent")) {
+var t_6 = t_3.govcyLocalizeContent;
+} else {
+cb(new Error("cannot import 'govcyLocalizeContent'")); return;
+}
+context.setVariable("govcyLocalizeContent", t_6);
+if(Object.prototype.hasOwnProperty.call(t_3, "govcyLangAttribute")) {
+var t_7 = t_3.govcyLangAttribute;
+} else {
+cb(new Error("cannot import 'govcyLangAttribute'")); return;
+}
+context.setVariable("govcyLangAttribute", t_7);
+var t_8;
+t_8 = env.getFilter("default").call(context, runtime.memberLookup((l_params),"showSteps"),false);
+frame.set("showSteps", t_8, true);
+if(frame.topLevel) {
+context.setVariable("showSteps", t_8);
+}
+if(frame.topLevel) {
+context.addExport("showSteps", t_8);
+}
+var t_9;
+t_9 = env.getFilter("int").call(context, runtime.memberLookup((l_params),"current"));
+frame.set("current", t_9, true);
+if(frame.topLevel) {
+context.setVariable("current", t_9);
+}
+if(frame.topLevel) {
+context.addExport("current", t_9);
+}
+var t_10;
+t_10 = env.getFilter("int").call(context, runtime.memberLookup((l_params),"total"));
+frame.set("total", t_10, true);
+if(frame.topLevel) {
+context.setVariable("total", t_10);
+}
+if(frame.topLevel) {
+context.addExport("total", t_10);
+}
+if(runtime.memberLookup((l_params),"completedLabel")) {
+var t_11;
+t_11 = (function() {
+var output = "";
+output += runtime.suppressValue((lineno = 30, colno = 55, runtime.callWrap(t_6, "govcyLocalizeContent", context, [runtime.memberLookup((l_params),"completedLabel"),runtime.memberLookup((l_params),"lang")])), env.opts.autoescape);
+;
+return output;
+})()
+;
+frame.set("completedLabel", t_11, true);
+if(frame.topLevel) {
+context.setVariable("completedLabel", t_11);
+}
+if(frame.topLevel) {
+context.addExport("completedLabel", t_11);
+}
+;
+}
+else {
+var t_12;
+t_12 = (function() {
+var output = "";
+output += runtime.suppressValue((lineno = 32, colno = 55, runtime.callWrap(t_6, "govcyLocalizeContent", context, [{"en": "Completed","el": "Ολοκληρώθηκε"},runtime.memberLookup((l_params),"lang")])), env.opts.autoescape);
+;
+return output;
+})()
+;
+frame.set("completedLabel", t_12, true);
+if(frame.topLevel) {
+context.setVariable("completedLabel", t_12);
+}
+if(frame.topLevel) {
+context.addExport("completedLabel", t_12);
+}
+;
+}
+if(runtime.memberLookup((l_params),"notCompletedLabel")) {
+var t_13;
+t_13 = (function() {
+var output = "";
+output += runtime.suppressValue((lineno = 36, colno = 58, runtime.callWrap(t_6, "govcyLocalizeContent", context, [runtime.memberLookup((l_params),"notCompletedLabel"),runtime.memberLookup((l_params),"lang")])), env.opts.autoescape);
+;
+return output;
+})()
+;
+frame.set("notCompletedLabel", t_13, true);
+if(frame.topLevel) {
+context.setVariable("notCompletedLabel", t_13);
+}
+if(frame.topLevel) {
+context.addExport("notCompletedLabel", t_13);
+}
+;
+}
+else {
+var t_14;
+t_14 = (function() {
+var output = "";
+output += runtime.suppressValue((lineno = 38, colno = 58, runtime.callWrap(t_6, "govcyLocalizeContent", context, [{"en": "Not completed","el": "Δεν ολοκληρώθηκε"},runtime.memberLookup((l_params),"lang")])), env.opts.autoescape);
+;
+return output;
+})()
+;
+frame.set("notCompletedLabel", t_14, true);
+if(frame.topLevel) {
+context.setVariable("notCompletedLabel", t_14);
+}
+if(frame.topLevel) {
+context.addExport("notCompletedLabel", t_14);
+}
+;
+}
+if(runtime.memberLookup((l_params),"stepLabel")) {
+var t_15;
+t_15 = (function() {
+var output = "";
+output += runtime.suppressValue((lineno = 42, colno = 50, runtime.callWrap(t_6, "govcyLocalizeContent", context, [runtime.memberLookup((l_params),"stepLabel"),runtime.memberLookup((l_params),"lang")])), env.opts.autoescape);
+;
+return output;
+})()
+;
+frame.set("stepLabel", t_15, true);
+if(frame.topLevel) {
+context.setVariable("stepLabel", t_15);
+}
+if(frame.topLevel) {
+context.addExport("stepLabel", t_15);
+}
+;
+}
+else {
+var t_16;
+t_16 = (function() {
+var output = "";
+output += runtime.suppressValue((lineno = 44, colno = 50, runtime.callWrap(t_6, "govcyLocalizeContent", context, [{"en": "Step","el": "Βήμα"},runtime.memberLookup((l_params),"lang")])), env.opts.autoescape);
+;
+return output;
+})()
+;
+frame.set("stepLabel", t_16, true);
+if(frame.topLevel) {
+context.setVariable("stepLabel", t_16);
+}
+if(frame.topLevel) {
+context.addExport("stepLabel", t_16);
+}
+;
+}
+if(runtime.memberLookup((l_params),"ofLabel")) {
+var t_17;
+t_17 = (function() {
+var output = "";
+output += runtime.suppressValue((lineno = 48, colno = 48, runtime.callWrap(t_6, "govcyLocalizeContent", context, [runtime.memberLookup((l_params),"ofLabel"),runtime.memberLookup((l_params),"lang")])), env.opts.autoescape);
+;
+return output;
+})()
+;
+frame.set("ofLabel", t_17, true);
+if(frame.topLevel) {
+context.setVariable("ofLabel", t_17);
+}
+if(frame.topLevel) {
+context.addExport("ofLabel", t_17);
+}
+;
+}
+else {
+var t_18;
+t_18 = (function() {
+var output = "";
+output += runtime.suppressValue((lineno = 50, colno = 48, runtime.callWrap(t_6, "govcyLocalizeContent", context, [{"en": "of","el": "από"},runtime.memberLookup((l_params),"lang")])), env.opts.autoescape);
+;
+return output;
+})()
+;
+frame.set("ofLabel", t_18, true);
+if(frame.topLevel) {
+context.setVariable("ofLabel", t_18);
+}
+if(frame.topLevel) {
+context.addExport("ofLabel", t_18);
+}
+;
+}
+if(runtime.contextOrFrameLookup(context, frame, "current") && runtime.contextOrFrameLookup(context, frame, "total")) {
+t_2 += "<style>\r\n.govcy-step-indicator {\r\n    margin-left: 0px;\r\n    margin-right: 0px;\r\n    margin-bottom: .5rem !important;\r\n}\r\n.govcy-step-indicator__segments {\r\n    display: flex;\r\n    list-style: none;\r\n    margin: 0px;\r\n    padding: 0px;\r\n}\r\n\r\n.govcy-step-indicator__segment {\r\n    flex: 1 1 0%;\r\n    margin-left: 1px;\r\n    margin-right: 1px;\r\n    max-width: 15rem;\r\n    min-height: 0.5rem;\r\n    position: relative;\r\n}\r\n\r\n.govcy-step-indicator__segment::after {\r\n    background-color: #A6A8AA;\r\n    content: \"\";\r\n    display: block;\r\n    height: 0.5rem;\r\n    left: 0px;\r\n    position: absolute;\r\n    right: 0px;\r\n    top: 0px;\r\n}\r\n.govcy-step-indicator__segment--complete::after {\r\n    background-color: #254355;\r\n}\r\n.govcy-step-indicator__segment--current::after {\r\n    background-color: #1D70B8;\r\n}\r\n\r\n/* Label */\r\n.govcy-step-indicator__label {\r\n    padding-left: 0.5rem;\r\n    padding-right: 0.5rem;\r\n    text-align: center;\r\n    color: #6d6e70;\r\n    line-height:1.1rem;\r\n    margin-top: calc(0.75rem);\r\n}\r\n\r\n.govcy-step-indicator__segment--complete .govcy-step-indicator__label {\r\n    color: #254355;\r\n}\r\n\r\n.govcy-step-indicator__segment--current .govcy-step-indicator__label {\r\n    color: #1D70B8;\r\n    font-weight: 700;\r\n}\r\n\r\n@media (min-width: 0px) {\r\n    .govcy-step-indicator__counter {\r\n        margin-bottom: .5rem !important;\r\n    }\r\n    .govcy-step-indicator__current-counter {\r\n        width: 24px;\r\n        height: 24px;\r\n        border:1px solid #1D70B8;\r\n        background: #1D70B8;\r\n        color:#fff;\r\n        border-radius: 9999px;\r\n        font-weight: 600;\r\n        display:inline-block;\r\n        text-align:center;\r\n    }\r\n    /* Hide label on small screens */\r\n    .govcy-step-indicator__label {\r\n        display:none;\r\n    }\r\n}\r\n@media (min-width: 768px) {\r\n    .govcy-step-indicator__counter {\r\n        font-size:20px;\r\n        line-height:19px;\r\n        margin-bottom: .5rem !important;\r\n    }\r\n    .govcy-step-indicator__current-counter {\r\n        border-radius:9999px;\r\n        border:1px solid #1D70B8;\r\n        background: #1D70B8;\r\n        color:#fff;\r\n        padding:10px;\r\n        line-height:19px;\r\n        font-weight:600;\r\n        font-size:20px;\r\n        display:inline-block;\r\n        width:40px;\r\n        height:40px;\r\n        text-align:center;\r\n    }\r\n    /* Show label on big screens */\r\n    .govcy-step-indicator__label {\r\n        display:block;\r\n    }\r\n}\r\n</style>";
+if(runtime.contextOrFrameLookup(context, frame, "showSteps")) {
+t_2 += "\r\n        <div ";
+if(runtime.memberLookup((l_params),"id")) {
+t_2 += "id=\"";
+t_2 += runtime.suppressValue(runtime.memberLookup((l_params),"id"), env.opts.autoescape);
+t_2 += "\" ";
+;
+}
+t_2 += "class=\"govcy-step-indicator";
+if(runtime.memberLookup((l_params),"classes")) {
+t_2 += " ";
+t_2 += runtime.suppressValue(runtime.memberLookup((l_params),"classes"), env.opts.autoescape);
+;
+}
+t_2 += "\"";
+t_2 += runtime.suppressValue((lineno = 160, colno = 167, runtime.callWrap(t_7, "govcyLangAttribute", context, [runtime.memberLookup((l_params),"lang")])), env.opts.autoescape);
+t_2 += ">\r\n            <ol class=\"govcy-step-indicator__segments\">";
+frame = frame.push();
+var t_21 = (lineno = 162, colno = 26, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "range"), "range", context, [1,runtime.contextOrFrameLookup(context, frame, "total") + 1]));
+if(t_21) {t_21 = runtime.fromIterator(t_21);
+var t_20 = t_21.length;
+for(var t_19=0; t_19 < t_21.length; t_19++) {
+var t_22 = t_21[t_19];
+frame.set("i", t_22);
+frame.set("loop.index", t_19 + 1);
+frame.set("loop.index0", t_19);
+frame.set("loop.revindex", t_20 - t_19);
+frame.set("loop.revindex0", t_20 - t_19 - 1);
+frame.set("loop.first", t_19 === 0);
+frame.set("loop.last", t_19 === t_20 - 1);
+frame.set("loop.length", t_20);
+t_2 += "\r\n                <li class=\"govcy-step-indicator__segment";
+if(t_22 < runtime.contextOrFrameLookup(context, frame, "current")) {
+t_2 += " govcy-step-indicator__segment--complete";
+;
+}
+if(t_22 == runtime.contextOrFrameLookup(context, frame, "current")) {
+t_2 += " govcy-step-indicator__segment--current";
+;
+}
+t_2 += "\"";
+if(t_22 == runtime.contextOrFrameLookup(context, frame, "current")) {
+t_2 += " aria-current=\"step\"";
+;
+}
+t_2 += ">";
+if(runtime.memberLookup((l_params),"steps") && runtime.memberLookup((runtime.memberLookup((l_params),"steps")),t_22 - 1) && runtime.memberLookup((runtime.memberLookup((runtime.memberLookup((l_params),"steps")),t_22 - 1)),"text")) {
+t_2 += "<span class=\"govcy-step-indicator__label\">\r\n                        ";
+t_2 += runtime.suppressValue((lineno = 166, colno = 47, runtime.callWrap(t_6, "govcyLocalizeContent", context, [runtime.memberLookup((runtime.memberLookup((runtime.memberLookup((l_params),"steps")),t_22 - 1)),"text"),runtime.memberLookup((l_params),"lang")])), env.opts.autoescape);
+if(t_22 < runtime.contextOrFrameLookup(context, frame, "current")) {
+t_2 += "\r\n                                <span class=\"govcy-visually-hidden\">";
+t_2 += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "completedLabel"), env.opts.autoescape);
+t_2 += "</span>";
+;
+}
+else {
+if(t_22 > runtime.contextOrFrameLookup(context, frame, "current")) {
+t_2 += "\r\n                                <span class=\"govcy-visually-hidden\">";
+t_2 += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "notCompletedLabel"), env.opts.autoescape);
+t_2 += "</span>";
+;
+}
+;
+}
+t_2 += "\r\n                    </span>";
+;
+}
+t_2 += "\r\n                </li>";
+;
+}
+}
+frame = frame.pop();
+t_2 += "\r\n            </ol>\r\n        </div>";
+;
+}
+t_2 += "\r\n    <div ";
+if(runtime.memberLookup((l_params),"id")) {
+t_2 += "id=\"";
+t_2 += runtime.suppressValue(runtime.memberLookup((l_params),"id"), env.opts.autoescape);
+t_2 += "-counter\" ";
+;
+}
+t_2 += "class=\"govcy-step-indicator__counter\"";
+t_2 += runtime.suppressValue((lineno = 179, colno = 125, runtime.callWrap(t_7, "govcyLangAttribute", context, [runtime.memberLookup((l_params),"lang")])), env.opts.autoescape);
+t_2 += ">\r\n        <span class=\"govcy-visually-hidden\">";
+t_2 += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "stepLabel"), env.opts.autoescape);
+t_2 += " </span>\r\n        <span class=\"govcy-step-indicator__current-counter\">";
+t_2 += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "current"), env.opts.autoescape);
+t_2 += "</span> ";
+t_2 += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "ofLabel"), env.opts.autoescape);
+t_2 += " ";
+t_2 += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "total"), env.opts.autoescape);
+t_2 += "\r\n    </div>";
+;
+}
+})});
+frame = callerFrame;
+return new runtime.SafeString(t_2);
+});
+context.addExport("progressList");
+context.setVariable("progressList", macro_t_1);
 if(parentTemplate) {
 parentTemplate.rootRenderFunc(env, context, frame, runtime, cb);
 } else {
@@ -6132,7 +6463,7 @@ var t_8 = t_4.govcyLangAttribute;
 cb(new Error("cannot import 'govcyLangAttribute'")); return;
 }
 context.setVariable("govcyLangAttribute", t_8);
-if(runtime.contextOrFrameLookup(context, frame, "textType") == "p" || runtime.contextOrFrameLookup(context, frame, "textType") == "h1" || runtime.contextOrFrameLookup(context, frame, "textType") == "h2" || runtime.contextOrFrameLookup(context, frame, "textType") == "h3" || runtime.contextOrFrameLookup(context, frame, "textType") == "h4") {
+if(runtime.contextOrFrameLookup(context, frame, "textType") == "p" || runtime.contextOrFrameLookup(context, frame, "textType") == "h1" || runtime.contextOrFrameLookup(context, frame, "textType") == "h2" || runtime.contextOrFrameLookup(context, frame, "textType") == "h3" || runtime.contextOrFrameLookup(context, frame, "textType") == "h4" || runtime.contextOrFrameLookup(context, frame, "textType") == "span") {
 var t_9;
 t_9 = runtime.contextOrFrameLookup(context, frame, "textType");
 frame.set("textTag", t_9, true);
@@ -6658,7 +6989,7 @@ var output = "";
 try {
 var parentTemplate = null;
 var t_1;
-t_1 = ["label","legend","hint","button","errorMessage","select","textElement","htmlElement","textInput","radios","checkboxes","fileInput","fileView","backLink","tag","table","summaryList","textArea","markdown","panel","datePicker","dateInput","taskList","errorSummary","details","stepByStepStatic"];
+t_1 = ["label","legend","hint","button","errorMessage","select","textElement","htmlElement","textInput","radios","checkboxes","fileInput","fileView","backLink","tag","table","summaryList","textArea","markdown","panel","datePicker","dateInput","taskList","errorSummary","details","stepByStepStatic","progressList"];
 frame.set("macroSimpleBlocks", t_1, true);
 if(frame.topLevel) {
 context.setVariable("macroSimpleBlocks", t_1);
@@ -6706,7 +7037,7 @@ if(t_10) { cb(t_10); return; }
 t_9.getExported(function(t_11,t_9) {
 if(t_11) { cb(t_11); return; }
 frame.set("comp", t_9);
-t_4 += runtime.suppressValue((lineno = 34, colno = 22, runtime.callWrap(runtime.memberLookup((t_9),t_8), "comp[\"c\"]", context, [l_params])), env.opts.autoescape);
+t_4 += runtime.suppressValue((lineno = 35, colno = 22, runtime.callWrap(runtime.memberLookup((t_9),t_8), "comp[\"c\"]", context, [l_params])), env.opts.autoescape);
 })});
 }
 ;
@@ -6733,7 +7064,7 @@ if(t_17) { cb(t_17); return; }
 t_16.getExported(function(t_18,t_16) {
 if(t_18) { cb(t_18); return; }
 frame.set("compm", t_16);
-t_4 += runtime.suppressValue((lineno = 41, colno = 29, runtime.callWrap(runtime.memberLookup((t_16),t_15), "compm[\"c\"]", context, [l_params,runtime.makeKeywordArgs({"caller": (function (){var macro_t_19 = runtime.makeMacro(
+t_4 += runtime.suppressValue((lineno = 42, colno = 29, runtime.callWrap(runtime.memberLookup((t_16),t_15), "compm[\"c\"]", context, [l_params,runtime.makeKeywordArgs({"caller": (function (){var macro_t_19 = runtime.makeMacro(
 [], 
 [], 
 function (kwargs) {
@@ -6742,7 +7073,7 @@ frame = frame.push(true);
 kwargs = kwargs || {};
 if (Object.prototype.hasOwnProperty.call(kwargs, "caller")) {
 frame.set("caller", kwargs.caller); }
-var t_20 = "";t_20 += runtime.suppressValue((lineno = 42, colno = 25, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "caller"), "caller", context, [])), env.opts.autoescape);
+var t_20 = "";t_20 += runtime.suppressValue((lineno = 43, colno = 25, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "caller"), "caller", context, [])), env.opts.autoescape);
 ;
 frame = frame.pop();
 return new runtime.SafeString(t_20);
