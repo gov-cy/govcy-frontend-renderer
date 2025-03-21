@@ -1848,6 +1848,85 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
+    it(checksNum+'103 `Progress list` with counter only', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([
+            `<div\\s*id="govcy-test-103-counter"\\s*class="govcy-step-indicator__counter">`, //opening div
+            `\\s*<span\\s*class="govcy-visually-hidden">Step\\s*<\\/span>`, //step visually hidden
+            `\\s*<span\\s*class="govcy-step-indicator__current-counter">\\s*2\\s*<\\/span> of 3`, //from to 
+            `\\s*<\\/div>`, //close 
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+    it(checksNum+'104 `Progress list` with counter and steps', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([
+            `<div\\s*id="govcy-test-104"\\s*class="govcy-step-indicator">`, //div start
+            `\\s*<ol\\s*class="govcy-step-indicator__segments">`, //ol start
+            `\\s*<li\\s*class="govcy-step-indicator__segment\\s*govcy-step-indicator__segment--complete">\\s*<\\/li>`, //complete step
+            `\\s*<li\\s*class="govcy-step-indicator__segment\\s*govcy-step-indicator__segment--current"\\s*aria-current="step">\\s*<\\/li>`, //current step
+            `\\s*<li\\s*class="govcy-step-indicator__segment">\\s*<\\/li>`, //pending step
+            `\\s*<\\/ol>\\s*<\\/div>`, //div and ol close 
+            `\\s*<div\\s*id="govcy-test-104-counter"\\s*class="govcy-step-indicator__counter">`, //opening div
+            `\\s*<span\\s*class="govcy-visually-hidden">Step\\s*<\\/span>`, //step visually hidden
+            `\\s*<span\\s*class="govcy-step-indicator__current-counter">\\s*2\\s*<\\/span> of 3`, //from to 
+            `\\s*<\\/div>`, //close 
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+    it(checksNum+'105 `Progress list` with Counter, steps and labels', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([
+            `<div\\s*id="govcy-test-105"\\s*class="govcy-step-indicator">`, //div start
+            `\\s*<ol\\s*class="govcy-step-indicator__segments">`, //ol start
+            `\\s*<li\\s*class="govcy-step-indicator__segment\\s*govcy-step-indicator__segment--complete">\\s*<span\\s*class="govcy-step-indicator__label">\\s*Step 1\\s*<span\\s*class="govcy-visually-hidden">\\s*Completed\\s*<\\/span>\\s*<\\/span>\\s*<\\/li>`, //complete step
+            `\\s*<li\\s*class="govcy-step-indicator__segment\\s*govcy-step-indicator__segment--current"\\s*aria-current="step">\\s*<span\\s*class="govcy-step-indicator__label">\\s*Step 2\\s*<\\/span>\\s*<\\/li>`, //current step
+            `\\s*<li\\s*class="govcy-step-indicator__segment">\\s*\\s*<span\\s*class="govcy-step-indicator__label">\\s*Step 3\\s*<span\\s*class="govcy-visually-hidden">\\s*Not completed\\s*<\\/span>\\s*<\\/span>\\s*<\\/li>`, //pending step
+            `\\s*<\\/ol>\\s*<\\/div>`, //div and ol close 
+            `\\s*<div\\s*id="govcy-test-105-counter"\\s*class="govcy-step-indicator__counter">`, //opening div
+            `\\s*<span\\s*class="govcy-visually-hidden">Step\\s*<\\/span>`, //step visually hidden
+            `\\s*<span\\s*class="govcy-step-indicator__current-counter">\\s*2\\s*<\\/span> of 3`, //from to 
+            `\\s*<\\/div>`, //close 
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+    it(checksNum+'106 `Progress list` with All params', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([
+            `<div\\s*id="govcy-test-106"\\s*class="govcy-step-indicator\\s*govcy-test-class">`, //div start
+            `\\s*<ol\\s*class="govcy-step-indicator__segments">`, //ol start
+            `\\s*<li\\s*class="govcy-step-indicator__segment\\s*govcy-step-indicator__segment--complete">\\s*<span\\s*class="govcy-step-indicator__label">\\s*Step 1\\s*<span\\s*class="govcy-visually-hidden">\\s*Completed custom\\s*<\\/span>\\s*<\\/span>\\s*<\\/li>`, //complete step
+            `\\s*<li\\s*class="govcy-step-indicator__segment\\s*govcy-step-indicator__segment--current"\\s*aria-current="step">\\s*<span\\s*class="govcy-step-indicator__label">\\s*Step 2\\s*<\\/span>\\s*<\\/li>`, //current step
+            `\\s*<li\\s*class="govcy-step-indicator__segment">\\s*\\s*<span\\s*class="govcy-step-indicator__label">\\s*Step 3\\s*<span\\s*class="govcy-visually-hidden">\\s*Not completed custom\\s*<\\/span>\\s*<\\/span>\\s*<\\/li>`, //pending step
+            `\\s*<\\/ol>\\s*<\\/div>`, //div and ol close 
+            `\\s*<div\\s*id="govcy-test-106-counter"\\s*class="govcy-step-indicator__counter">`, //opening div
+            `\\s*<span\\s*class="govcy-visually-hidden">Step custom\\s*<\\/span>`, //step visually hidden
+            `\\s*<span\\s*class="govcy-step-indicator__current-counter">\\s*2\\s*<\\/span> of custom 3`, //from to 
+            `\\s*<\\/div>`, //close 
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+    it(checksNum+'107 `Progress list` with lang="el"', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([
+            `<div\\s*id="govcy-test-107"\\s*class="govcy-step-indicator\\s*govcy-test-class"\\s*lang="el"\\s*>`, //div start
+            `\\s*<ol\\s*class="govcy-step-indicator__segments">`, //ol start
+            `\\s*<li\\s*class="govcy-step-indicator__segment\\s*govcy-step-indicator__segment--complete">\\s*<span\\s*class="govcy-step-indicator__label">\\s*Βήμα 1\\s*<span\\s*class="govcy-visually-hidden">\\s*Ολοκληρώθηκε custom\\s*<\\/span>\\s*<\\/span>\\s*<\\/li>`, //complete step
+            `\\s*<li\\s*class="govcy-step-indicator__segment\\s*govcy-step-indicator__segment--current"\\s*aria-current="step">\\s*<span\\s*class="govcy-step-indicator__label">\\s*Βήμα 2\\s*<\\/span>\\s*<\\/li>`, //current step
+            `\\s*<li\\s*class="govcy-step-indicator__segment">\\s*\\s*<span\\s*class="govcy-step-indicator__label">\\s*Βήμα 3\\s*<span\\s*class="govcy-visually-hidden">\\s*Δεν ολοκληρώθηκε\\s*<\\/span>\\s*<\\/span>\\s*<\\/li>`, //pending step
+            `\\s*<\\/ol>\\s*<\\/div>`, //div and ol close 
+            `\\s*<div\\s*id="govcy-test-107-counter"\\s*class="govcy-step-indicator__counter"\\s*lang="el"\\s*>`, //opening div
+            `\\s*<span\\s*class="govcy-visually-hidden">Βήμα\\s*<\\/span>`, //step visually hidden
+            `\\s*<span\\s*class="govcy-step-indicator__current-counter">\\s*2\\s*<\\/span> από custom 3`, //from to 
+            `\\s*<\\/div>`, //close 
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
 }
 
 // Export the renderTest function

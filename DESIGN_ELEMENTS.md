@@ -1360,6 +1360,81 @@ This element is used to add a html using [UDS - panel](https://gov-cy.github.io/
 </details>
 
 <details>
+  <summary>progressList (experimental)</summary>
+  
+## progressList
+
+This element is used to generate html for a progress list component. This element is experimental and is not part of the UDS . 
+
+**Element name** : `progressList`
+
+**Parameters** :
+```js
+/**
+ @param {string} lang The language used. Can be 'en','el'. Optional. 
+ @param {int} current The current step number. 
+ @param {int} total The total number of steps. 
+ @param {array} labels if defined, will render the labels inside the progress list. Optional.
+    i.e. `[
+            {"text":{"en":"Step 1","el":"Βήμα 1"} },
+            {"text":{"en":"Step 2","el":"Βήμα 2"} },
+            {"text":{"en":"Step 3","el":"Βήμα 3"} },
+            {"text":{"en":"Step 4","el":"Βήμα 4"} },
+            {"text":{"en":"Step 5","el":"Βήμα 5"} }
+        ]`
+ @param {boolean} showSteps. Whether to show the steps or not. Optional, default is false. Can be true,false
+ @param {string} completedLabel The completed label text. Optional. Will escape text. Example `{en:"Completed",el:"Ολοκληρώθηκε"}`
+ @param {string} notCompletedLabel The not completed label text. Optional. Will escape text. Example `{en:"Not completed",el:"Δεν ολοκληρώθηκε"}`
+ @param {string} stepLabel The step label text. Optional. Will escape text. Example `{en:"Step",el:"Βήμα"}`
+ @param {string} ofLabel The of label text. Optional. Will escape text. Example `{en:"of",el:"από"}`
+ @param {string} id The label id. Will escape text  
+ @param {string} classes Additional classes to add to the outer div. Optional 
+**/ 
+```
+
+**JSON Example** 
+```json
+{
+    "element": "progressList",
+    "params": {
+        "id":"govcy-test-105"
+        ,"current":2
+        ,"total":5
+        ,"showSteps":true
+        ,"steps": 
+            [
+                {"text":{"en":"Step 1","el":"Βήμα 1"} },
+                {"text":{"en":"Step 2","el":"Βήμα 2"} },
+                {"text":{"en":"Step 3","el":"Βήμα 3"} },
+                {"text":{"en":"Step 4","el":"Βήμα 4"} },
+                {"text":{"en":"Step 5","el":"Βήμα 5"} }
+            ]
+    }
+}
+```
+
+**Nunjucks Example** 
+
+```Nunjucks
+{{ govcyElement("progressList",{
+    "id":"govcy-test-105"
+        ,"current":2
+        ,"total":5
+        ,"showSteps":true
+        ,"steps": 
+            [
+                {"text":{"en":"Step 1","el":"Βήμα 1"} },
+                {"text":{"en":"Step 2","el":"Βήμα 2"} },
+                {"text":{"en":"Step 3","el":"Βήμα 3"} },
+                {"text":{"en":"Step 4","el":"Βήμα 4"} },
+                {"text":{"en":"Step 5","el":"Βήμα 5"} }
+            ]
+}) }}
+```
+
+</details>
+
+<details>
   <summary>radios</summary>
   
 ## radios

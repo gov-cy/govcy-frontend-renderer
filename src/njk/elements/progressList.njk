@@ -1,0 +1,185 @@
+{# progressList 
+ @param {string} lang The language used. Can be 'en','el'. Optional. 
+ @param {int} current The current step number. 
+ @param {int} total The total number of steps. 
+ @param {array} labels if defined, will render the labels inside the progress list. Optional.
+    i.e. `[
+            {"text":{"en":"Step 1","el":"Βήμα 1"} },
+            {"text":{"en":"Step 2","el":"Βήμα 2"} },
+            {"text":{"en":"Step 3","el":"Βήμα 3"} },
+            {"text":{"en":"Step 4","el":"Βήμα 4"} },
+            {"text":{"en":"Step 5","el":"Βήμα 5"} }
+        ]`
+ @param {boolean} showSteps. Whether to show the steps or not. Optional, default is false. Can be true,false
+ @param {string} completedLabel The completed label text. Optional. Will escape text. Example `{en:"Completed",el:"Ολοκληρώθηκε"}`
+ @param {string} notCompletedLabel The not completed label text. Optional. Will escape text. Example `{en:"Not completed",el:"Δεν ολοκληρώθηκε"}`
+ @param {string} stepLabel The step label text. Optional. Will escape text. Example `{en:"Step",el:"Βήμα"}`
+ @param {string} ofLabel The of label text. Optional. Will escape text. Example `{en:"of",el:"από"}`
+ @param {string} id The label id. Will escape text  
+ @param {string} classes Additional classes to add to the outer div. Optional 
+ @returns govcy progressList html 
+#}
+{% macro progressList(params) -%}
+{#- Import localizer from utilities -#}
+{%- from "../utilities/govcyUtilities.njk" import govcyLocalizeContent, govcyLangAttribute -%}
+{#- set default values -#}
+{%- set showSteps = params.showSteps | default(false) -%}
+{%- set current = params.current | int -%}
+{%- set total = params.total | int -%}
+{#- set completed label -#}
+{%- if params.completedLabel -%}
+    {%- set completedLabel -%} {{- govcyLocalizeContent(params.completedLabel, params.lang) -}}{%- endset -%}
+{%- else -%}
+    {%- set completedLabel -%} {{- govcyLocalizeContent({en:"Completed",el:"Ολοκληρώθηκε"}, params.lang) -}}{%- endset -%}
+{%- endif -%}
+{#- set not completed label -#}
+{%- if params.notCompletedLabel -%}
+    {%- set notCompletedLabel -%} {{- govcyLocalizeContent(params.notCompletedLabel, params.lang) -}}{%- endset -%}
+{%- else -%}
+    {%- set notCompletedLabel -%} {{- govcyLocalizeContent({en:"Not completed",el:"Δεν ολοκληρώθηκε"}, params.lang) -}}{%- endset -%}
+{%- endif -%}
+{#- set step label -#}
+{%- if params.stepLabel -%}
+    {%- set stepLabel -%} {{- govcyLocalizeContent(params.stepLabel, params.lang) -}}{%- endset -%}
+{%- else -%}
+    {%- set stepLabel -%} {{- govcyLocalizeContent({en:"Step",el:"Βήμα"}, params.lang) -}}{%- endset -%}
+{%- endif -%}
+{#- set of label -#}
+{%- if params.ofLabel -%}
+    {%- set ofLabel -%} {{- govcyLocalizeContent(params.ofLabel, params.lang) -}}{%- endset -%}
+{%- else -%}
+    {%- set ofLabel -%} {{- govcyLocalizeContent({en:"of",el:"από"}, params.lang) -}}{%- endset -%}
+{%- endif -%}
+{#- current and total are mandatory -#}
+{%- if current and total %}
+{#- style to be removed after included in the UDS -#}
+<style>
+.govcy-step-indicator {
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-bottom: .5rem !important;
+}
+.govcy-step-indicator__segments {
+    display: flex;
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+.govcy-step-indicator__segment {
+    flex: 1 1 0%;
+    margin-left: 1px;
+    margin-right: 1px;
+    max-width: 15rem;
+    min-height: 0.5rem;
+    position: relative;
+}
+
+.govcy-step-indicator__segment::after {
+    background-color: #A6A8AA;
+    content: "";
+    display: block;
+    height: 0.5rem;
+    left: 0px;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+}
+.govcy-step-indicator__segment--complete::after {
+    background-color: #254355;
+}
+.govcy-step-indicator__segment--current::after {
+    background-color: #1D70B8;
+}
+
+/* Label */
+.govcy-step-indicator__label {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    text-align: center;
+    color: #6d6e70;
+    line-height:1.1rem;
+    margin-top: calc(0.75rem);
+}
+
+.govcy-step-indicator__segment--complete .govcy-step-indicator__label {
+    color: #254355;
+}
+
+.govcy-step-indicator__segment--current .govcy-step-indicator__label {
+    color: #1D70B8;
+    font-weight: 700;
+}
+
+@media (min-width: 0px) {
+    .govcy-step-indicator__counter {
+        margin-bottom: .5rem !important;
+    }
+    .govcy-step-indicator__current-counter {
+        width: 24px;
+        height: 24px;
+        border:1px solid #1D70B8;
+        background: #1D70B8;
+        color:#fff;
+        border-radius: 9999px;
+        font-weight: 600;
+        display:inline-block;
+        text-align:center;
+    }
+    /* Hide label on small screens */
+    .govcy-step-indicator__label {
+        display:none;
+    }
+}
+@media (min-width: 768px) {
+    .govcy-step-indicator__counter {
+        font-size:20px;
+        line-height:19px;
+        margin-bottom: .5rem !important;
+    }
+    .govcy-step-indicator__current-counter {
+        border-radius:9999px;
+        border:1px solid #1D70B8;
+        background: #1D70B8;
+        color:#fff;
+        padding:10px;
+        line-height:19px;
+        font-weight:600;
+        font-size:20px;
+        display:inline-block;
+        width:40px;
+        height:40px;
+        text-align:center;
+    }
+    /* Show label on big screens */
+    .govcy-step-indicator__label {
+        display:block;
+    }
+}
+</style>
+    {%- if showSteps %}
+        <div {% if params.id %}id="{{ params.id }}" {% endif %}class="govcy-step-indicator{% if params.classes %} {{ params.classes }}{% endif %}"{{ govcyLangAttribute(params.lang) }}>
+            <ol class="govcy-step-indicator__segments">
+        {%- for i in range(1, total + 1) %}
+                <li class="govcy-step-indicator__segment{% if i < current %} govcy-step-indicator__segment--complete{% endif %}{% if i == current %} govcy-step-indicator__segment--current{% endif %}"{% if i == current %} aria-current="step"{% endif %}>
+                    {%- if params.steps and params.steps[i - 1] and params.steps[i - 1].text -%}
+                    <span class="govcy-step-indicator__label">
+                        {{ govcyLocalizeContent(params.steps[i - 1].text, params.lang) }} 
+                            {%- if i < current %}
+                                <span class="govcy-visually-hidden">{{ completedLabel }}</span>
+                            {%- elif i > current %}
+                                <span class="govcy-visually-hidden">{{ notCompletedLabel }}</span>
+                            {%- endif %}
+                    </span>
+                    {%- endif %}
+                </li>
+        {%- endfor %}
+            </ol>
+        </div>
+    {%- endif %}
+    <div {% if params.id %}id="{{ params.id }}-counter" {% endif %}class="govcy-step-indicator__counter"{{ govcyLangAttribute(params.lang) }}>
+        <span class="govcy-visually-hidden">{{ stepLabel }} </span>
+        <span class="govcy-step-indicator__current-counter">{{ current }}</span> {{ ofLabel }} {{ total }}
+    </div>
+{%- endif %}
+{%- endmacro %}
