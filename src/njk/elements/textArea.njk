@@ -2,6 +2,8 @@
  @param {object} label The label text. Will escape text. Example `{en:"Content",el:"Περιεχομένο"}`  
  @param {string} id The input id. Will escape text 
  @param {string} name The input name. Will escape text. Optional
+ @param {string} value The value of the input. Whether to escape the value depends on `params.isValueEscaped`. Optional
+ @param {string} isValueEscaped Whether the value will be escaped. Optional, default is true.
  @param {object} hint The hint text. Optional. Will escape text. Example `{en:"Content",el:"Περιεχομένο"}`  
  @param {boolean} isPageHeading Is the label also the page heading? Optional, default is false. Can be true,false 
  @param {boolean} isSpellcheck true renders nothing, false renders spellcheck="false"? Optional, default is true. Can be true,false 
@@ -24,6 +26,7 @@
 {%- from "./label.njk" import label -%}
 {%- from "./errorMessage.njk" import errorMessage -%}
 {#- set default values -#}
+{%- set isValueEscaped = params.isValueEscaped | default(true) -%}
 {%- set isPageHeading = params.isPageHeading | default(false) -%}
 {%- set isSpellcheck = params.isSpellcheck | default(false) -%}
 {%- set autocomplete = params.autocomplete | default(false) -%}
@@ -55,7 +58,7 @@
         {#- render error message -#}
         {% call errorMessage({message:params.error,id:errorId, lang:params.lang}) %}{% endcall %}
         {#- render input -#}
-        <textarea id="{{params.id}}"{% if params.name %} name="{{ params.name }}"{% endif %} rows="{{rows}}" {{ inputSpellcheck | safe }} {{ inputAutocomplete | safe }} class="govcy-text-area{% if params.error %} govcy-text-area-error{% endif %}"{% if params.hint or params.error or params.characterCount%} aria-describedby="{%- if params.characterCount -%}{{charactercountId}}{% endif %}{% if params.hint %} {{hintId}}{% endif %}{% if params.error %} {{errorId}}{% endif %}"{% endif %}></textarea>
+        <textarea id="{{params.id}}"{% if params.name %} name="{{ params.name }}"{% endif %} rows="{{rows}}" {{ inputSpellcheck | safe }} {{ inputAutocomplete | safe }} class="govcy-text-area{% if params.error %} govcy-text-area-error{% endif %}"{% if params.hint or params.error or params.characterCount%} aria-describedby="{%- if params.characterCount -%}{{charactercountId}}{% endif %}{% if params.hint %} {{hintId}}{% endif %}{% if params.error %} {{errorId}}{% endif %}"{% endif %}>{% if params.value is defined %}{{ params.value | default('') if isValueEscaped else params.value | safe }}{% endif %}</textarea>
         {# character count #}
         {%- if params.characterCount -%}
             {%- set charactercountType = params.characterCount.type | default('char') -%}

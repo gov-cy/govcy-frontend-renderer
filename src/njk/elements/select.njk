@@ -3,6 +3,7 @@
  @param {object} label The label text. Will escape text. Example `{en:"Content",el:"Περιεχομένο"}`  
  @param {string} id The id of the select. Will escape text. 
  @param {string} name The name of the select. Will escape text. 
+ @param {string} value The value of the input. The matching value in the `items` array will be selected. Optional
  @param {array} items The array of items to turn onto select options. Array contains object with `text` and `value`. i.e. `{"text":{en:"Cyprus",el:"Κύπρος"},"value":"cy"}` 
  @param {object} hint The hint text. Optional. Will escape text. Example `{en:"Content",el:"Περιεχομένο"}`  
  @param {boolean} isPageHeading Is the label also the page heading? Optional, default is false. Can be true,false 
@@ -50,7 +51,7 @@
             {# for each item render checkbox item #}
             {%- for item in params.items -%}
                 {%- if item.text -%}
-                    <option value="{{ item.value }}">{{ govcyLocalizeContent(item.text, params.lang) }}</option>
+                    <option value="{{ item.value }}"{% if params.value == item.value %} selected{% endif %}>{{ govcyLocalizeContent(item.text, params.lang) }}</option>
                 {%- endif -%}
             {%- endfor -%}
         </select>

@@ -1448,7 +1448,7 @@ async function renderChecks(renderedHTML, checksNum){
             `\\s*<div\\s*class="govcy-d-block govcy-mr-3">`, //block month
             `\\s*<label\\s*class="govcy-label govcy-mb-1 govcy-fw-normal govcy-mb-2"\\s*for="govcy-test-86_month">\\s*Month\\s*<\\/label>`, //month label
             `\\s*<select\\s*id="govcy-test-86_month"\\s*name="govcy-test-86_month"\\s*class="govcy-select">`, //month select
-            `\\s*<option\\s*value=""\\s*selected="">\\s*<\\/option>`, //month empty
+            `\\s*<option\\s*value=""\\s*>\\s*<\\/option>`, //month empty
             `\\s*<option\\s*value="1"\\s*>\\s*1\\s*<\\/option>`, //month 1
             `\\s*<option\\s*value="2"\\s*>\\s*2\\s*<\\/option>`, //month 2
             `\\s*<option\\s*value="3"\\s*>\\s*3\\s*<\\/option>`, //month 3
@@ -1493,7 +1493,7 @@ async function renderChecks(renderedHTML, checksNum){
             `\\s*<div\\s*class="govcy-d-block govcy-mr-3">`, //block month
             `\\s*<label\\s*class="govcy-label govcy-mb-1 govcy-fw-normal govcy-mb-2"\\s*for="govcy-test-87_month">\\s*Month\\s*<\\/label>`, //month label
             `\\s*<select\\s*id="govcy-test-87_month"\\s*name="govcy-test-87_month"\\s*class="govcy-select\\s*govcy-select-error"\\s*autocomplete="bday-month">`, //month select
-            `\\s*<option\\s*value=""\\s*selected="">\\s*<\\/option>`, //month empty
+            `\\s*<option\\s*value=""\\s*>\\s*<\\/option>`, //month empty
             `\\s*<option\\s*value="1"\\s*>\\s*January\\s*<\\/option>`, //month 1
             `\\s*<option\\s*value="2"\\s*>\\s*February\\s*<\\/option>`, //month 2
             `\\s*<option\\s*value="3"\\s*>\\s*March\\s*<\\/option>`, //month 3
@@ -1923,6 +1923,105 @@ async function renderChecks(renderedHTML, checksNum){
             `\\s*<span\\s*class="govcy-visually-hidden">Βήμα\\s*<\\/span>`, //step visually hidden
             `\\s*<span\\s*class="govcy-step-indicator__current-counter">\\s*2\\s*<\\/span> από custom 3`, //from to 
             `\\s*<\\/div>`, //close 
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+    it(checksNum+'108 `Input values - Text input` escaped value', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([
+            `<input\\s*id="govcy-test-108"\\s*value="Text input value &#39;"\\s*name="govcy-test-108"\\s*type="text"\\s*spellcheck="false"\\s*class="govcy-text-input\\s*"\\s*>`, //input
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+    it(checksNum+'109 `Input values - Text input` unescaped value', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([
+            `<input\\s*id="govcy-test-109"\\s*value="Text input value \\'"\\s*name="govcy-test-109"\\s*type="text"\\s*spellcheck="false"\\s*class="govcy-text-input\\s*"\\s*>`, //input
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+    it(checksNum+'110 `Input values - Select`', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([
+            `<select id="govcy-test-110" name="govcy-test-110" class="govcy-select" >`, //select
+            `\\s*<option\\s*value="cy"\\s*>\\s*Cyprus\\s*<\\/option>\\s*<option\\s*value="el"\\s*selected\\s*>\\s*Greece\\s*<\\/option>`, //options 
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+    it(checksNum+'111 `Input values - Text area` escaped value', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([
+            `<textarea\\s*id="govcy-test-111"\\s*name="govcy-test-111"\\s*rows="5"\\s*spellcheck="false"\\s*class="govcy-text-area"\\s*>\\s*Text Area value &#39;\\s*<\\/textarea>`, //input
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+    it(checksNum+'112 `Input values - Text area` unescaped value', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([
+            `<textarea\\s*id="govcy-test-112"\\s*name="govcy-test-112"\\s*rows="5"\\s*spellcheck="false"\\s*class="govcy-text-area"\\s*>\\s*Text Area value '\\s*<\\/textarea>`, //input
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+    it(checksNum+'113 `Input values - Date picker`', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([
+            `<div class="govcy-date-picker"\\s*data-default-value="2020-01-01">\\s*<input\\s*type="text"\\s*class="govcy-text-input\\s*"\\s*id="govcy-test-113"`, //input
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+    it(checksNum+'114 `Input values - Date input`', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([
+            `<input\\s*id="govcy-test-114_day"\\s*name="govcy-test-114_day"\\s*value="31"`, //day value
+            `([\\s\\S]*?)`,
+            `\\s*<select\\s*id="govcy-test-114_month"\\s*name="govcy-test-114_month"`,
+            `([\\s\\S]*?)`,
+            `\\s*<option\\s*value="3"\\s*selected`, //month value
+            `([\\s\\S]*?)`,
+            `\\s*<input\\s*id="govcy-test-114_year"\\s*name="govcy-test-114_year"\\s*value="2012"` //year value
+        ].join(''));
+        //  console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+    it(checksNum+'115 `Input values - Checkboxes` value with string', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([
+            `<input\\s*class="govcy-checkbox-input"\\s*name="govcy-test-115"\\s*value="1"\\s*type="checkbox"\\s*id="govcy-test-115-option-1"\\s*>`, //not checked
+            `([\\s\\S]*?)`,
+            `<input\\s*class="govcy-checkbox-input"\\s*name="govcy-test-115"\\s*checked\\s*value="2"\\s*type="checkbox"\\s*id="govcy-test-115-option-2"\\s*>`, //checked
+            `([\\s\\S]*?)`,
+            `<input\\s*class="govcy-checkbox-input"\\s*name="govcy-test-115"\\s*value="3"\\s*type="checkbox"\\s*id="govcy-test-115-option-3"\\s*>`, //not checked
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+    it(checksNum+'116 `Input values - Checkboxes` value with array', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([
+            `<input\\s*class="govcy-checkbox-input"\\s*name="govcy-test-116"\\s*value="1"\\s*type="checkbox"\\s*id="govcy-test-116-option-1"\\s*>`, //not checked
+            `([\\s\\S]*?)`,
+            `<input\\s*class="govcy-checkbox-input"\\s*name="govcy-test-116"\\s*checked\\s*value="2"\\s*type="checkbox"\\s*id="govcy-test-116-option-2"\\s*>`, //checked
+            `([\\s\\S]*?)`,
+            `<input\\s*class="govcy-checkbox-input"\\s*name="govcy-test-116"\\s*checked\\s*value="3"\\s*type="checkbox"\\s*id="govcy-test-116-option-3"\\s*>`, //checked
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+    it(checksNum+'117 `Input values - Radios`', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([
+            `<input\\s*class="govcy-radio-input"\\s*name="govcy-test-117"\\s*value="1"\\s*type="radio"\\s*id="govcy-test-117-option-1"\\s*>`, //not checked
+            `([\\s\\S]*?)`,
+            `<input\\s*class="govcy-radio-input"\\s*name="govcy-test-117"\\s*checked\\s*value="2"\\s*type="radio"\\s*id="govcy-test-117-option-2"\\s*>`, //checked
+            `([\\s\\S]*?)`,
+            `<input\\s*class="govcy-radio-input"\\s*name="govcy-test-117"\\s*value="3"\\s*type="radio"\\s*id="govcy-test-117-option-3"\\s*>` //not checked
         ].join(''));
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);

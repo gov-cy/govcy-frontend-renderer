@@ -3571,6 +3571,172 @@
                                             {"text":{"en":"Step 5","el":"Βήμα 5"} }
                                         ]
                                 }
+                            },
+                            {
+                                "element": "htmlElement",
+                                "params": {
+                                    "text":{"en":"<h2>Input values</h2>","el":"Input values"}
+                                }
+                            },
+                            {
+                                "element": "htmlElement",
+                                "params": {
+                                    "text":{"en":"<h3>Text input</h3>","el":"Text input el"}
+                                }
+                            },
+                            {
+                                "element": "textInput",
+                                "params": {
+                                    "id":"govcy-test-108"
+                                    ,"label":{"en":"Text input label","el":"Text input label el"}
+                                    ,"name":"govcy-test-108"
+                                    ,"value":"Text input value '"
+                                }
+                            },
+                            {
+                                "element": "textInput",
+                                "params": {
+                                    "id":"govcy-test-109"
+                                    ,"label":{"en":"Text input label","el":"Text input label el"}
+                                    ,"name":"govcy-test-109"
+                                    ,"isValueEscaped":false
+                                    ,"value":"Text input value '"
+                                }
+                            },
+                            {
+                                "element": "htmlElement",
+                                "params": {
+                                    "text":{"en":"<h3>Select</h3>","el":"Select el"}
+                                }
+                            },            
+                            {
+                                "element": "select",
+                                "params": {
+                                    "id":"govcy-test-110"
+                                    ,"label":{"en":"Select label","el":"Select label el"}
+                                    ,"name":"govcy-test-110"
+                                    ,"value":"el"
+                                    ,"items":
+                                        [
+                                            {"text":{"en":"Cyprus","el":"Κύπρος"},"value":"cy" },
+                                            {"text":{"en":"Greece","el":"Ελλαδα"},"value":"el" },
+                                            {"text":{"en":"United Kingdom","el":"Βρετανια"},"value":"uk" }
+                                        ]
+                                }
+                            },
+                            {
+                                "element": "htmlElement",
+                                "params": {
+                                    "text":{"en":"<h3>Text Area</h3>","el":"Text Area el"}
+                                }
+                            },
+                            {
+                                "element": "textArea",
+                                "params": {
+                                    "id":"govcy-test-111"
+                                    ,"label":{"en":"Text Area label","el":"Text Area label el"}
+                                    ,"name":"govcy-test-111"
+                                    ,"value":"Text Area value '"
+                                }
+                            },
+                            {
+                                "element": "textArea",
+                                "params": {
+                                    "id":"govcy-test-112"
+                                    ,"label":{"en":"Text Area label","el":"Text Area label el"}
+                                    ,"name":"govcy-test-112"
+                                    ,"isValueEscaped":false
+                                    ,"value":"Text Area value '"
+                                }
+                            },
+                            {
+                                "element": "htmlElement",
+                                "params": {
+                                    "text":{"en":"<h3>Date picker</h3>","el":"Date picker el"}
+                                }
+                            },
+                            {
+                                "element": "datePicker",
+                                "params": {
+                                    "id":"govcy-test-113"
+                                    ,"label":{"en":"Date picker label","el":"Date picker label el"}
+                                    ,"name":"govcy-test-113"
+                                    ,"value":"2020-01-01"
+                                }
+                            },
+                            {
+                                "element": "htmlElement",
+                                "params": {
+                                    "text":{"en":"<h3>Date input</h3>","el":"Date input el"}
+                                }
+                            },
+                            {
+                                "element": "dateInput",
+                                "params": {
+                                    "id":"govcy-test-114"
+                                    ,"legend":{"en":"Date input label","el":"Date input label el"}
+                                    ,"name":"govcy-test-114"
+                                    ,"dayValue":"31"
+                                    ,"monthValue":"3"
+                                    ,"yearValue":"2012"
+                                }
+                            },
+                            {
+                                "element": "htmlElement",
+                                "params": {
+                                    "text":{"en":"<h3>Checkboxes</h3>","el":"Checkboxes el"}
+                                }
+                            },
+                            {
+                                "element": "checkboxes",
+                                "params": {
+                                    "id":"govcy-test-115"
+                                    ,"legend":{"en":"Checkboxes label","el":"Checkboxes el"}
+                                    ,"name":"govcy-test-115"
+                                    ,"value":"2"
+                                    ,"items":
+                                        [
+                                            {"text":{"en":"Checkbox 1","el":"Checkbox 1 el"},"value":"1" },
+                                            {"text":{"en":"Checkbox 2","el":"Checkbox 2 el"},"value":"2" },
+                                            {"text":{"en":"Checkbox 3","el":"Checkbox 3 el"},"value":"3" }
+                                        ]
+                                }
+                            },
+                            {
+                                "element": "checkboxes",
+                                "params": {
+                                    "id":"govcy-test-116"
+                                    ,"legend":{"en":"Checkboxes label","el":"Checkboxes el"}
+                                    ,"name":"govcy-test-116"
+                                    ,"value":["2","3"]
+                                    ,"items":
+                                        [
+                                            {"text":{"en":"Checkbox 1","el":"Checkbox 1 el"},"value":"1" },
+                                            {"text":{"en":"Checkbox 2","el":"Checkbox 2 el"},"value":"2" },
+                                            {"text":{"en":"Checkbox 3","el":"Checkbox 3 el"},"value":"3" }
+                                        ]
+                                }
+                            },
+                            {
+                                "element": "htmlElement",
+                                "params": {
+                                    "text":{"en":"<h3>Radios</h3>","el":"Radios el"}
+                                }
+                            },
+                            {
+                                "element": "radios",
+                                "params": {
+                                    "id":"govcy-test-117"
+                                    ,"legend":{"en":"Radios label","el":"Radios el"}
+                                    ,"name":"govcy-test-117"
+                                    ,"value":"2"
+                                    ,"items":
+                                        [
+                                            {"text":{"en":"Radio 1","el":"Radio 1 el"},"value":"1" },
+                                            {"text":{"en":"Radio 2","el":"Radio 2 el"},"value":"2" },
+                                            {"text":{"en":"Radio 3","el":"Radio 3 el"},"value":"3" }
+                                        ]
+                                }
                             }
                         ]
                     }
