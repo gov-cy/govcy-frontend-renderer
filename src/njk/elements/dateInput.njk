@@ -3,6 +3,9 @@
  @param {object} legend The label text. Will escape text. Example `{en:"Content",el:"Περιεχομένο"}`  
  @param {string} id The id of the dateInput parts. For example `id_day`, `id_month` and `id_year`. Will escape text. 
  @param {string} name The name of the dateInput parts. For example `name_day`, `name_month` and `name_year` . Will escape text. 
+ @param {string} dayValue The pre-filled day value. Will escape text. Optional.
+ @param {string} monthValue The pre-filled month value. Must be one of 1,2,3,4,5,6,7,8,9,10,11,12. Optional.
+ @param {string} yearValue The pre-filled year value. Will escape text. Optional.
  @param {object} hint The hint text. Optional. Will escape text. Example `{en:"Content",el:"Περιεχομένο"}`  
  @param {boolean} isPageHeading Is the label also the page heading? Optional, default is false. Can be true,false 
  @param {string} classes Additional classes to add to the outer `govcy-form-control` container. Optional 
@@ -73,29 +76,29 @@
             <div class="govcy-d-flex govcy-flex-wrap"{{ govcyLangAttribute(params.lang) }}>    
                 <div class="govcy-d-block govcy-mr-3">
                     <label class="govcy-label govcy-mb-1 govcy-fw-normal govcy-mb-2" for="{{ params.id }}_day">{{ dayLabel }}</label>
-                    <input id="{{ params.id }}_day" name="{{ params.name }}_day" class="govcy-text-input govcy-text-input-char_3{% if params.hasDayError %} govcy-text-input-error{% endif %}" maxlength="2" type="text" pattern="[0-9]*" inputmode="numeric"{% if params.isBirthday %} autocomplete="bday-day"{% endif %}>
+                    <input id="{{ params.id }}_day" name="{{ params.name }}_day"{% if params.dayValue is defined %} value="{{ params.dayValue | default('') }}"{% endif %} class="govcy-text-input govcy-text-input-char_3{% if params.hasDayError %} govcy-text-input-error{% endif %}" maxlength="2" type="text" pattern="[0-9]*" inputmode="numeric"{% if params.isBirthday %} autocomplete="bday-day"{% endif %}>
                 </div>
                 <div class="govcy-d-block govcy-mr-3">
                     <label class="govcy-label govcy-mb-1 govcy-fw-normal govcy-mb-2" for="{{ params.id }}_month">{{ monthLabel }}</label>
                     <select id="{{ params.id }}_month" name="{{ params.name }}_month" class="govcy-select{% if params.hasMonthError %} govcy-select-error{% endif %}"{% if params.isBirthday %} autocomplete="bday-month"{% endif %}>
-                        <option value="" selected=""></option>
-                        <option value="1">{% if variant=="mobile" %}1{% else %}{{ monthValue1 }}{% endif %}</option>
-                        <option value="2">{% if variant=="mobile" %}2{% else %}{{ monthValue2 }}{% endif %}</option>
-                        <option value="3">{% if variant=="mobile" %}3{% else %}{{ monthValue3 }}{% endif %}</option>
-                        <option value="4">{% if variant=="mobile" %}4{% else %}{{ monthValue4 }}{% endif %}</option>
-                        <option value="5">{% if variant=="mobile" %}5{% else %}{{ monthValue5 }}{% endif %}</option>
-                        <option value="6">{% if variant=="mobile" %}6{% else %}{{ monthValue6 }}{% endif %}</option>
-                        <option value="7">{% if variant=="mobile" %}7{% else %}{{ monthValue7 }}{% endif %}</option>
-                        <option value="8">{% if variant=="mobile" %}8{% else %}{{ monthValue8 }}{% endif %}</option>
-                        <option value="9">{% if variant=="mobile" %}9{% else %}{{ monthValue9 }}{% endif %}</option>
-                        <option value="10">{% if variant=="mobile" %}10{% else %}{{ monthValue10 }}{% endif %}</option>
-                        <option value="11">{% if variant=="mobile" %}11{% else %}{{ monthValue11 }}{% endif %}</option>
-                        <option value="12">{% if variant=="mobile" %}12{% else %}{{ monthValue12 }}{% endif %}</option>
+                        <option value=""></option>
+                        <option value="1"{% if params.monthValue == "1" %} selected{% endif %}>{% if variant=="mobile" %}1{% else %}{{ monthValue1 }}{% endif %}</option>
+                        <option value="2"{% if params.monthValue == "2" %} selected{% endif %}>{% if variant=="mobile" %}2{% else %}{{ monthValue2 }}{% endif %}</option>
+                        <option value="3"{% if params.monthValue == "3" %} selected{% endif %}>{% if variant=="mobile" %}3{% else %}{{ monthValue3 }}{% endif %}</option>
+                        <option value="4"{% if params.monthValue == "4" %} selected{% endif %}>{% if variant=="mobile" %}4{% else %}{{ monthValue4 }}{% endif %}</option>
+                        <option value="5"{% if params.monthValue == "5" %} selected{% endif %}>{% if variant=="mobile" %}5{% else %}{{ monthValue5 }}{% endif %}</option>
+                        <option value="6"{% if params.monthValue == "6" %} selected{% endif %}>{% if variant=="mobile" %}6{% else %}{{ monthValue6 }}{% endif %}</option>
+                        <option value="7"{% if params.monthValue == "7" %} selected{% endif %}>{% if variant=="mobile" %}7{% else %}{{ monthValue7 }}{% endif %}</option>
+                        <option value="8"{% if params.monthValue == "8" %} selected{% endif %}>{% if variant=="mobile" %}8{% else %}{{ monthValue8 }}{% endif %}</option>
+                        <option value="9"{% if params.monthValue == "9" %} selected{% endif %}>{% if variant=="mobile" %}9{% else %}{{ monthValue9 }}{% endif %}</option>
+                        <option value="10"{% if params.monthValue == "10" %} selected{% endif %}>{% if variant=="mobile" %}10{% else %}{{ monthValue10 }}{% endif %}</option>
+                        <option value="11"{% if params.monthValue == "11" %} selected{% endif %}>{% if variant=="mobile" %}11{% else %}{{ monthValue11 }}{% endif %}</option>
+                        <option value="12"{% if params.monthValue == "12" %} selected{% endif %}>{% if variant=="mobile" %}12{% else %}{{ monthValue12 }}{% endif %}</option>
                     </select>
                 </div>
                 <div class="govcy-d-block govcy-mr-3">
                     <label class="govcy-label govcy-mb-1 govcy-fw-normal govcy-mb-2" for="{{ params.id }}_year">{{ yearLabel }}</label>
-                    <input id="{{ params.id }}_year" name="{{ params.name }}_year" class="govcy-text-input govcy-text-input-char_6{% if params.hasYearError %} govcy-text-input-error{% endif %}" maxlength="4" type="text" pattern="[0-9]*" inputmode="numeric"{% if params.isBirthday %} autocomplete="bday-year"{% endif %}>
+                    <input id="{{ params.id }}_year" name="{{ params.name }}_year"{% if params.yearValue is defined %} value="{{ params.yearValue | default('') }}"{% endif %} class="govcy-text-input govcy-text-input-char_6{% if params.hasYearError %} govcy-text-input-error{% endif %}" maxlength="4" type="text" pattern="[0-9]*" inputmode="numeric"{% if params.isBirthday %} autocomplete="bday-year"{% endif %}>
                 </div>
             </div>
         {% endcall %}

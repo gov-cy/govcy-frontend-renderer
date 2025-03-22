@@ -3,6 +3,7 @@
  @param {object} label The label text. Will escape text. Example `{en:"Content",el:"Περιεχομένο"}`  
  @param {string} id The id of the datePicker. Will escape text. 
  @param {string} name The name of the datePicker. Will escape text. 
+ @param {string} value The value of the input. Will set this value if it is a valid date. The date should be in the format `YYYY-MM-DD`. Optional
  @param {object} hint The hint text. Optional. Will escape text. Example `{en:"Content",el:"Περιεχομένο"}`  
  @param {boolean} isPageHeading Is the label also the page heading? Optional, default is false. Can be true,false 
  @param {string} classes Additional classes to add to the outer `govcy-form-control` container. Optional 
@@ -47,7 +48,7 @@
         {% call hint({hint:params.hint, id:hintId, lang:params.lang}) %}{% endcall %}
         {#- render error message -#}
         {% call errorMessage({message:params.error,id:errorId,lang:params.lang}) %}{% endcall %}
-        <div class="govcy-date-picker"{% if params.dataMinDate %} data-min-date="{{ params.dataMinDate }}"{% endif %}{% if params.dataMaxDate %} data-max-date="{{ params.dataMaxDate }}"{% endif %}>
+        <div class="govcy-date-picker"{% if params.dataMinDate %} data-min-date="{{ params.dataMinDate }}"{% endif %}{% if params.dataMaxDate %} data-max-date="{{ params.dataMaxDate }}"{% endif %}{% if params.value %} data-default-value="{{ params.value | default('') }}"{% endif %}>
             <input type="text" class="govcy-text-input {% if params.error %} govcy-text-input-error{% endif %}" 
                     id="{{ params.id }}"
                     name="{{ params.name }}"

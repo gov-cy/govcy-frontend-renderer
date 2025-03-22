@@ -112,6 +112,7 @@ This element is used to add checkboxes as defined in the [UDS - checkbox](https:
  @param {object} legend The legend text. Will escape text. Example `{en:"Content",el:"Περιεχομένο"}`
  @param {string} id The id prefix for the options. Will escape text. 
  @param {string} name The name used in checkbox. Will escape text. 
+ @param {array|string} value The pre-selected values for checkboxes. If a string is passed, it means only one checkbox is selected, otherwise it needs to be an array of strings. Optional
  @param {string} hint The hint text. Optional. Will escape text 
  @param {boolean} isPageHeading Is the label also the page heading? Optional, default is false. Can be true,false 
  @param {string} classes Additional classes to add to the outer fieldset. Optional 
@@ -224,6 +225,9 @@ This element is used to add date input as defined in the [UDS - date input](http
  @param {object} legend The label text. Will escape text. Example `{en:"Content",el:"Περιεχομένο"}`  
  @param {string} id The id of the dateInput parts. For example `id_day`, `id_month` and `id_year`. Will escape text. 
  @param {string} name The name of the dateInput parts. For example `name_day`, `name_month` and `name_year` . Will escape text. 
+ @param {string} dayValue The pre-filled day value. Will escape text. Optional.
+ @param {string} monthValue The pre-filled month value. Must be one of 1,2,3,4,5,6,7,8,9,10,11,12. Optional.
+ @param {string} yearValue The pre-filled year value. Will escape text. Optional.
  @param {object} hint The hint text. Optional. Will escape text. Example `{en:"Content",el:"Περιεχομένο"}`  
  @param {boolean} isPageHeading Is the label also the page heading? Optional, default is false. Can be true,false 
  @param {string} classes Additional classes to add to the outer `govcy-form-control` container. Optional 
@@ -301,6 +305,7 @@ This element is used to add date picker as defined in the [UDS - date picker](ht
  @param {object} label The label text. Will escape text. Example `{en:"Content",el:"Περιεχομένο"}`  
  @param {string} id The id of the datePicker. Will escape text. 
  @param {string} name The name of the datePicker. Will escape text. 
+ @param {string} value The value of the input. Will set this value if it is a valid date. The date should be in the format `YYYY-MM-DD`. Optional
  @param {object} hint The hint text. Optional. Will escape text. Example `{en:"Content",el:"Περιεχομένο"}`  
  @param {boolean} isPageHeading Is the label also the page heading? Optional, default is false. Can be true,false 
  @param {string} classes Additional classes to add to the outer `govcy-form-control` container. Optional 
@@ -1449,6 +1454,7 @@ This element is used to add radios as defined in the [UDS - radios](https://gov-
  @param {object} legend The legend text. Will escape text. Example `{en:"Content",el:"Περιεχομένο"}`
  @param {string} id The id prefix for the options. Will escape text. 
  @param {string} name The name used in radio. Will escape text. 
+ @param {string} value The selected radio option. Optional.
  @param {string} hint The hint text. Optional. Will escape text 
  @param {boolean} isPageHeading Is the label also the page heading? Optional, default is false. Can be true,false 
  @param {boolean} isInline Are the radios inline type? Optional, default is false. Can be true,false 
@@ -1663,6 +1669,7 @@ This element is used to add select as defined in the [UDS - select](https://gov-
  @param {object} label The label text. Will escape text. Example `{en:"Content",el:"Περιεχομένο"}`  
  @param {string} id The id of the select. Will escape text. 
  @param {string} name The name of the select. Will escape text. 
+ @param {string} value The value of the input. The matching value in the `items` array will be selected. Optional
  @param {array} items The array of items to turn onto select options. Array contains object with `text` and `value`. i.e. `{"text":{en:"Cyprus",el:"Κύπρος"},"value":"cy"}` 
  @param {object} hint The hint text. Optional. Will escape text. Example `{en:"Content",el:"Περιεχομένο"}`  
  @param {boolean} isPageHeading Is the label also the page heading? Optional, default is false. Can be true,false 
@@ -2927,6 +2934,8 @@ This element is used to add textInput as defined in the [UDS - textInput](https:
  @param {object} label The label text. Will escape text. Example `{en:"Content",el:"Περιεχομένο"}`  
  @param {string} id The input id. Will escape text 
  @param {string} name The input name. Will escape text. Optional
+ @param {string} value The value of the input. Whether to escape the value depends on `params.isValueEscaped`. Optional
+ @param {string} isValueEscaped Whether the value will be escaped. Optional, default is true.
  @param {object} hint The hint text. Optional. Will escape text. Example `{en:"Content",el:"Περιεχομένο"}`  
  @param {boolean} isPageHeading Is the label also the page heading? Optional, default is false. Can be true,false 
  @param {boolean} isSpellcheck true renders nothing, false renders spellcheck="false"? Optional, default is true. Can be true,false 
@@ -3020,6 +3029,8 @@ To use convert the element into a character count component, add the `params.cha
  @param {object} label The label text. Will escape text. Example `{en:"Content",el:"Περιεχομένο"}`  
  @param {string} id The input id. Will escape text 
  @param {string} name The input name. Will escape text. Optional
+ @param {string} value The value of the input. Whether to escape the value depends on `params.isValueEscaped`. Optional
+ @param {string} isValueEscaped Whether the value will be escaped. Optional, default is true.
  @param {object} hint The hint text. Optional. Will escape text. Example `{en:"Content",el:"Περιεχομένο"}`  
  @param {boolean} isPageHeading Is the label also the page heading? Optional, default is false. Can be true,false 
  @param {boolean} isSpellcheck true renders nothing, false renders spellcheck="false"? Optional, default is true. Can be true,false 

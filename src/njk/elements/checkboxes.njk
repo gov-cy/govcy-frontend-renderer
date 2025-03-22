@@ -20,6 +20,8 @@
  @returns govcy checkbox item html 
 #}
 {%- macro _checkboxItem(params, item, index, lang) %}
+{#- Normalize value as array -#}
+{%- set checkboxValues = [] if params.value is not defined else (params.value if params.value is iterable else [params.value]) -%}
 {#- Import localizer from utilities -#}
 {%- from "../utilities/govcyUtilities.njk" import govcyLocalizeContent, govcyLangAttribute -%}
 {%- from "./hint.njk" import hint -%}
@@ -61,7 +63,7 @@
 {%- endif -%}
 {#- render checkbox -#}
 <div class="govcy-checkbox">
-    <input class="govcy-checkbox-input" name="{{ params.name }}" value="{{item.value}}" type="checkbox" id="{{ optionId }}" {% if item.hint%} aria-describedby="{{hintId}}"{% endif %}>
+    <input class="govcy-checkbox-input" name="{{ params.name }}"{% if item.value in checkboxValues %} checked{% endif %} value="{{item.value}}" type="checkbox" id="{{ optionId }}" {% if item.hint%} aria-describedby="{{hintId}}"{% endif %}>
     <label class="govcy-label" for="{{ optionId }}">{{ label | safe }}</label>
     {#- {% call govcyLabel({label:label, for:optionId, isPrimary:false, isHTML:true, lang:lang}) %}{% endcall %} -#}
     {% call hint({hint:item.hint, id:hintId, lang:lang}) %}{% endcall %}
@@ -70,7 +72,8 @@
 {# checkbox 
  @param {object} legend The legend text. Will escape text. Example `{en:"Content",el:"Περιεχομένο"}`
  @param {string} id The id prefix for the options. Will escape text. 
- @param {string} name The name used in checkbox. Will escape text. 
+ @param {string} name The name used in checkbox. Will escape text.
+ @param {array|string} value The pre-selected values for checkboxes. If a string is passed, it means only one checkbox is selected, otherwise it needs to be an array of strings. Optional
  @param {string} hint The hint text. Optional. Will escape text 
  @param {boolean} isPageHeading Is the label also the page heading? Optional, default is false. Can be true,false 
  @param {string} classes Additional classes to add to the outer fieldset. Optional 
