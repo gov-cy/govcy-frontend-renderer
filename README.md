@@ -359,6 +359,7 @@ let inputString =
 
 If your using the `pageData.layout`, you can render html in each of the following [gov.cy page template](https://gov-cy.github.io/govcy-design-system-docs/getting-started/page-template/) blocks:
 - **bodyStart**: the start of the body
+- **userName**: the section where the username and logout links are rendered
 - **header**: the header section (where the gov.cy logo and service name are rendered)
 - **beforeMain**: the section before the main content
 - **main**: the main content
@@ -414,6 +415,7 @@ let inputJson =
 
 If your using the `pageData.layout`, you can render html in each of the following [gov.cy page template](https://gov-cy.github.io/govcy-design-system-docs/getting-started/page-template/) blocks, by using the `sections` array (in a similar way `blocks` is use ) :
 - **bodyStart**: the start of the body
+- **userName**: the section where the username and logout links are rendered
 - **header**: the header section (where the gov.cy logo and service name are rendered)
 - **beforeMain**: the section before the main content
 - **main**: the main content

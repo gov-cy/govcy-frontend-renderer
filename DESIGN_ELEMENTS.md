@@ -7,6 +7,8 @@ In this document you can find the elements that are supported by the package and
 
 This element is used to add a back link as defined in the [UDS - backLink](https://gov-cy.github.io/govcy-design-system-docs/components/back_link/).
 
+This element is intended to be used inside the `beforeMain` section.
+
 **Element name** : `backLink`
 
 **Parameters** :
@@ -3114,5 +3116,60 @@ To use convert the element into a character count component, add the `params.cha
 ```
 **Notes** :
 In order to get the gov.cy styles, you need to add it inside a `form` element. 
+
+</details>
+
+<details>
+  <summary>userName</summary>
+  
+## userName
+
+This element is used to add user name component as defined in the [UDS - User’s name and sign out](https://gov-cy.github.io/govcy-design-system-docs/components/user_name_and_sign_out/).
+
+This element is intended to be used inside the `userName` section.
+
+**Element name** : `userName`
+
+**Parameters** :
+```js
+/**
+ @param {object} name The name text. Will escape text. Example `{en:"George Smith",el:"Γιώργος Σμιθ"}` 
+ @param {string} signOutLink The sign out url. Will escape text.
+ @param {string} id The id attribute. Will escape text. Optional 
+ @param {string} lang The language used. Can be 'en','el'. Optional, default is 'el'.
+ @param {string} classes Additional classes to add to the outer div. Optional 
+**/
+```
+
+**JSON Example** 
+```json
+{
+    "element": "userName",
+    "params": {
+        "id":"govcy-test-118"
+        ,"name":{"en":"George Smith","el":"Γιώργος Σμιθ"}
+        ,"signOutLink":"#"
+        ,"classes":"govcy-test-class"
+    }
+}
+```
+
+**Nunjucks Example** 
+
+```Nunjucks
+{{ 
+    govcyElement(
+        "userName",
+        {
+            "id":"govcy-test-118"
+            ,"name":{"en":"George Smith","el":"Γιώργος Σμιθ"}
+            ,"signOutLink":"#"
+            ,"classes":"govcy-test-class"
+        }
+    ) 
+}}
+```
+**Notes** :
+In order to get the gov.cy styles, you need to add it inside a `.govcy-header` element. 
 
 </details>

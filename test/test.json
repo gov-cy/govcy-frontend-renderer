@@ -3737,6 +3737,37 @@
                                             {"text":{"en":"Radio 3","el":"Radio 3 el"},"value":"3" }
                                         ]
                                 }
+                            },
+                            {
+                                "element": "htmlElement",
+                                "params": {
+                                    "text":{"en":"<h2>User name</h2><header class='govcy-header govcy-d-print-none'>","el":"User name el<header class='govcy-header govcy-d-print-none'>"}
+                                }
+                            },
+                            {
+                                "element": "userName",
+                                "params": {
+                                    "id":"govcy-test-118"
+                                    ,"name":{"en":"George Smith","el":"Γιώργος Σμιθ"}
+                                    ,"signOutLink":"#"
+                                    ,"classes":"govcy-test-class"
+                                }
+                            },
+                            {
+                                "element": "userName",
+                                "params": {
+                                    "id":"govcy-test-119"
+                                    ,"name":{"en":"George Smith","el":"Γιώργος Σμιθ"}
+                                    ,"signOutLink":"#"
+                                    ,"classes":"govcy-test-class"
+                                    ,"lang":"el"
+                                }
+                            },
+                            {
+                                "element": "htmlElement",
+                                "params": {
+                                    "text":{"en":"</header>","el":"</header>"}
+                                }
                             }
                         ]
                     }
