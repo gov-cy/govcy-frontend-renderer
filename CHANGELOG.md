@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.14.0] - 2025-03-29
+### Added
+- Added userName sections in the page layout. This is the area that will host the username and logout links
+- Added User name component 
+
 ## [v1.13.0] - 2025-03-22
 ### Added
 - `params.value` support in `textInput`, `textarea`, `select`, `datePicker`, `dateInput`, `checkboxes`, `radios`. For details how it can be used for each element see the [design elements documentation page](DESIGN_ELEMENTS.md) 

@@ -2026,6 +2026,32 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
+    it(checksNum+'118 `User name component` with all values', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([
+            `<div\\s*id="govcy-test-118"\\s*class="govcy-header-top-area\\s*govcy-test-class\\s*">`, //div
+            `\\s*<div\\s*class="govcy-container">\\s*<div\\s*class="govcy-header-top-area-wrapper">\\s*<ul\\s*class="govcy-sign-in">`, //containers
+            `\\s*<li>\\s*George Smith\\s*<\\/li>`, //user name
+            `\\s*<li><span>|<\\/span><\\/li>`, //divider
+            `\\s*<li>\\s*<a\\s*href="#">\\s*Sign out\\s*<span\\s*class="govcy-visually-hidden-error">\\s*from user George Smith\\s*<\\/span>\\s*<\\/a>\\s*<\\/li>`, //logout
+            `\\s*<\\/ul>\\s*<\\/div>\\s*<\\/div>\\s*<\\/div>`, //closing tags
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+    it(checksNum+'119 `User name component` with all values lang=el', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([
+            `<div\\s*id="govcy-test-119"\\s*class="govcy-header-top-area\\s*govcy-test-class\\s*lang="el"\\s*">`, //div
+            `\\s*<div\\s*class="govcy-container">\\s*<div\\s*class="govcy-header-top-area-wrapper">\\s*<ul\\s*class="govcy-sign-in">`, //containers
+            `\\s*<li>\\s*Γιώργος Σμιθ\\s*<\\/li>`, //user name
+            `\\s*<li><span>|<\\/span><\\/li>`, //divider
+            `\\s*<li>\\s*<a\\s*href="#">\\s*Αποσύνδεση\\s*<span\\s*class="govcy-visually-hidden-error">\\s*από το χρήστη Γιώργος Σμιθ\\s*<\\/span>\\s*<\\/a>\\s*<\\/li>`, //logout
+            `\\s*<\\/ul>\\s*<\\/div>\\s*<\\/div>\\s*<\\/div>`, //closing tags
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
 }
 
 // Export the renderTest function
