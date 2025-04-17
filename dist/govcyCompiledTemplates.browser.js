@@ -3731,7 +3731,6 @@ context.addExport("ofLabel", t_18);
 ;
 }
 if(runtime.contextOrFrameLookup(context, frame, "current") && runtime.contextOrFrameLookup(context, frame, "total")) {
-t_2 += "<style>\r\n.govcy-step-indicator {\r\n    margin-left: 0px;\r\n    margin-right: 0px;\r\n    margin-bottom: .5rem !important;\r\n}\r\n.govcy-step-indicator__segments {\r\n    display: flex;\r\n    list-style: none;\r\n    margin: 0px;\r\n    padding: 0px;\r\n}\r\n\r\n.govcy-step-indicator__segment {\r\n    flex: 1 1 0%;\r\n    margin-left: 1px;\r\n    margin-right: 1px;\r\n    max-width: 15rem;\r\n    min-height: 0.5rem;\r\n    position: relative;\r\n}\r\n\r\n.govcy-step-indicator__segment::after {\r\n    background-color: #A6A8AA;\r\n    content: \"\";\r\n    display: block;\r\n    height: 0.5rem;\r\n    left: 0px;\r\n    position: absolute;\r\n    right: 0px;\r\n    top: 0px;\r\n}\r\n.govcy-step-indicator__segment--complete::after {\r\n    background-color: #254355;\r\n}\r\n.govcy-step-indicator__segment--current::after {\r\n    background-color: #1D70B8;\r\n}\r\n\r\n/* Label */\r\n.govcy-step-indicator__label {\r\n    padding-left: 0.5rem;\r\n    padding-right: 0.5rem;\r\n    text-align: center;\r\n    color: #6d6e70;\r\n    line-height:1.1rem;\r\n    margin-top: calc(0.75rem);\r\n}\r\n\r\n.govcy-step-indicator__segment--complete .govcy-step-indicator__label {\r\n    color: #254355;\r\n}\r\n\r\n.govcy-step-indicator__segment--current .govcy-step-indicator__label {\r\n    color: #1D70B8;\r\n    font-weight: 700;\r\n}\r\n\r\n@media (min-width: 0px) {\r\n    .govcy-step-indicator__counter {\r\n        margin-bottom: .5rem !important;\r\n    }\r\n    .govcy-step-indicator__current-counter {\r\n        width: 24px;\r\n        height: 24px;\r\n        border:1px solid #1D70B8;\r\n        background: #1D70B8;\r\n        color:#fff;\r\n        border-radius: 9999px;\r\n        font-weight: 600;\r\n        display:inline-block;\r\n        text-align:center;\r\n    }\r\n    /* Hide label on small screens */\r\n    .govcy-step-indicator__label {\r\n        display:none;\r\n    }\r\n}\r\n@media (min-width: 768px) {\r\n    .govcy-step-indicator__counter {\r\n        font-size:20px;\r\n        line-height:19px;\r\n        margin-bottom: .5rem !important;\r\n    }\r\n    .govcy-step-indicator__current-counter {\r\n        border-radius:9999px;\r\n        border:1px solid #1D70B8;\r\n        background: #1D70B8;\r\n        color:#fff;\r\n        padding:10px;\r\n        line-height:19px;\r\n        font-weight:600;\r\n        font-size:20px;\r\n        display:inline-block;\r\n        width:40px;\r\n        height:40px;\r\n        text-align:center;\r\n    }\r\n    /* Show label on big screens */\r\n    .govcy-step-indicator__label {\r\n        display:block;\r\n    }\r\n}\r\n</style>";
 if(runtime.contextOrFrameLookup(context, frame, "showSteps")) {
 t_2 += "\r\n        <div ";
 if(runtime.memberLookup((l_params),"id")) {
@@ -3747,10 +3746,10 @@ t_2 += runtime.suppressValue(runtime.memberLookup((l_params),"classes"), env.opt
 ;
 }
 t_2 += "\"";
-t_2 += runtime.suppressValue((lineno = 160, colno = 167, runtime.callWrap(t_7, "govcyLangAttribute", context, [runtime.memberLookup((l_params),"lang")])), env.opts.autoescape);
+t_2 += runtime.suppressValue((lineno = 55, colno = 167, runtime.callWrap(t_7, "govcyLangAttribute", context, [runtime.memberLookup((l_params),"lang")])), env.opts.autoescape);
 t_2 += ">\r\n            <ol class=\"govcy-step-indicator__segments\">";
 frame = frame.push();
-var t_21 = (lineno = 162, colno = 26, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "range"), "range", context, [1,runtime.contextOrFrameLookup(context, frame, "total") + 1]));
+var t_21 = (lineno = 57, colno = 26, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "range"), "range", context, [1,runtime.contextOrFrameLookup(context, frame, "total") + 1]));
 if(t_21) {t_21 = runtime.fromIterator(t_21);
 var t_20 = t_21.length;
 for(var t_19=0; t_19 < t_21.length; t_19++) {
@@ -3780,7 +3779,7 @@ t_2 += " aria-current=\"step\"";
 t_2 += ">";
 if(runtime.memberLookup((l_params),"steps") && runtime.memberLookup((runtime.memberLookup((l_params),"steps")),t_22 - 1) && runtime.memberLookup((runtime.memberLookup((runtime.memberLookup((l_params),"steps")),t_22 - 1)),"text")) {
 t_2 += "<span class=\"govcy-step-indicator__label\">\r\n                        ";
-t_2 += runtime.suppressValue((lineno = 166, colno = 47, runtime.callWrap(t_6, "govcyLocalizeContent", context, [runtime.memberLookup((runtime.memberLookup((runtime.memberLookup((l_params),"steps")),t_22 - 1)),"text"),runtime.memberLookup((l_params),"lang")])), env.opts.autoescape);
+t_2 += runtime.suppressValue((lineno = 61, colno = 47, runtime.callWrap(t_6, "govcyLocalizeContent", context, [runtime.memberLookup((runtime.memberLookup((runtime.memberLookup((l_params),"steps")),t_22 - 1)),"text"),runtime.memberLookup((l_params),"lang")])), env.opts.autoescape);
 if(t_22 < runtime.contextOrFrameLookup(context, frame, "current")) {
 t_2 += "\r\n                                <span class=\"govcy-visually-hidden\">";
 t_2 += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "completedLabel"), env.opts.autoescape);
@@ -3815,7 +3814,7 @@ t_2 += "-counter\" ";
 ;
 }
 t_2 += "class=\"govcy-step-indicator__counter\"";
-t_2 += runtime.suppressValue((lineno = 179, colno = 125, runtime.callWrap(t_7, "govcyLangAttribute", context, [runtime.memberLookup((l_params),"lang")])), env.opts.autoescape);
+t_2 += runtime.suppressValue((lineno = 74, colno = 125, runtime.callWrap(t_7, "govcyLangAttribute", context, [runtime.memberLookup((l_params),"lang")])), env.opts.autoescape);
 t_2 += ">\r\n        <span class=\"govcy-visually-hidden\">";
 t_2 += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "stepLabel"), env.opts.autoescape);
 t_2 += " </span>\r\n        <span class=\"govcy-step-indicator__current-counter\">";
