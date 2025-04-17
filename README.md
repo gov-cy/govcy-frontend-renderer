@@ -14,11 +14,11 @@ The rendered HTML should:
 - Allow multiple languages
 - Be tested
 
-The project is not intended to be used for production purposes, but your welcome to try.
+Though the project is not intended to be used for production purposes and does provide any guaranties, your welcome to try it.
 
 The project uses [nunjucks](https://mozilla.github.io/nunjucks/) templates to built the html.
 
-The package currently works with the **version 3.0.0** of the design system.
+The package currently works with the **version 3.2.0** of the design system.
 
 ## Features
 

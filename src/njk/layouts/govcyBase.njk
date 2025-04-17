@@ -72,7 +72,7 @@ To use this template you need to pass the following data:
     <link rel="apple-touch-icon-precomposed" href="{{ site.cdn.dist }}/img/apple-touch-icon-57x57-precomposed.png">
  
     <!-- CSS -->
-    <link rel="stylesheet" href="{{ site.cdn.dist }}/css/govcy.uds.min.css" integrity="{{ site.cdn.cssIntegrity }}" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ site.cdn.dist }}/css/govcy.uds.min.css"{% if site.cdn.cssIntegrity %} integrity="{{ site.cdn.cssIntegrity }}" crossorigin="anonymous"{% endif%}>
     
     <title>{% if pageData.title %}{{ govcyLocalizeContent(pageData.title, site.lang) }} - {% endif %}{% if site.title %}{{ govcyLocalizeContent(site.title, site.lang) }} - {% endif %}gov.cy</title>
     <meta name="description" content="{{ govcyLocalizeContent(site.description, site.lang) }}">
@@ -178,6 +178,6 @@ To use this template you need to pass the following data:
         {% block bodyEnd %}{% endblock %}
     </section>
     {%- if site.lang == 'en' -%}<script src="{{ site.cdn.dist }}/js/locales/govcy.datepicker.en.min.js"></script>{%- elseif site.lang == 'el' -%}<script src="{{ site.cdn.dist }}/js/locales/govcy.datepicker.el.min.js"></script>{%- endif -%}
-    <script src="{{ site.cdn.dist }}/js/govcy.uds.min.js" integrity="{{ site.cdn.jsIntegrity }}" crossorigin="anonymous"></script>
+    <script src="{{ site.cdn.dist }}/js/govcy.uds.min.js"{% if site.cdn.jsIntegrity %} integrity="{{ site.cdn.jsIntegrity }}" crossorigin="anonymous"{% endif %}></script>
   </body>
 </html>
