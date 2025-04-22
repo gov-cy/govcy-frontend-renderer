@@ -35,9 +35,11 @@ Here's a checklist to follow when releasing a new version of the project.
 ### When adding/updating components
 - [ ] **1. nunjucks file (adding only)**. Create an `njk` file for the macro in the directory `src\njk\elements`. Macro must have the same name as it's file. For example `backLink.njk` should have `{% macro backLink(params) -%}`
   - **Localized content**: 
-    - Import localizer from utilities `{%- from "../utilities/govcyUtilities.njk" import govcyLocalizeContent, govcyLangAttribute -%}` 
-    - Use `{{ govcyLocalizeContent(params.text, params.lang) }}` to get localized content 
-    - Use `{{ govcyLangAttribute(params.lang) }}` to get the lang attribute (use this on the top level tag).
+    - Import localizer from utilities `{%- from "../utilities/govcyUtilities.njk" import govcyLocalizeContent, govcyLangAttribute, govcyGetContent -%}` 
+    - For **standard localized content**, use `{{ govcyGetContent('componentName_key', params.lang) }}`. For example use in the component `backLink.njk` `{{ govcyGetContent('backLink_back', params.lang) }}`
+      - Make sure to add the new content in the `govcyGetContent` macro in `/utilities/govcyUtilities.njk`. For example add ` backLink_back: {el: "Πίσω", en: "Back"},` to the `govcyContent` object.
+    - For **dynamic localized content**, use `{{ govcyLocalizeContent(params.text, params.lang) }}` 
+    - For the **`lang` attribute**, use `{{ govcyLangAttribute(params.lang) }}` (use this on the top level tag).
   - **Elements from array**: 
     - Import elements from utilities `{%- from "../utilities/govcyUtilities.njk" import govcyElementsFromArray -%}` 
     - Use `{{ govcyElementsFromArray(params.elements, params.lang) }}` to add elements from an array.

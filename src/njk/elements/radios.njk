@@ -28,7 +28,7 @@
 #}
 {%- macro _radioItem(params, item, isInline, index, lang) %}
 {#- Import localizer from utilities -#}
-{%- from "../utilities/govcyUtilities.njk" import govcyLocalizeContent, govcyLangAttribute, govcyElementsFromArray -%}
+{%- from "../utilities/govcyUtilities.njk" import govcyLocalizeContent, govcyLangAttribute, govcyElementsFromArray, govcyGetContent -%}
 {%- from "./hint.njk" import hint -%}
 {%- from "./label.njk" import label -%}
 {#- set default values -#}
@@ -38,13 +38,13 @@
 {%- if item.altOrText -%}
     {%- set orText -%} {{- govcyLocalizeContent(item.altOrText, lang) -}}{%- endset -%}
 {%- else -%}
-    {%- set orText -%} {{- govcyLocalizeContent({en:'Or',el:'Ή'}, lang) -}}{%- endset -%}
+    {%- set orText -%} {{- govcyGetContent('common_or', lang) -}}{%- endset -%}
 {%- endif -%}
 {#- set 'and' labels -#}
 {%- if item.altAndText -%}
     {%- set andText -%} {{- govcyLocalizeContent(item.altAndText, lang) -}}{%- endset -%}
 {%- else -%}
-    {%- set andText -%} {{- govcyLocalizeContent({en:'And',el:'Και'}, lang) -}}{%- endset -%}
+    {%- set andText -%} {{- govcyGetContent('common_and', lang) -}}{%- endset -%}
 {%- endif -%}
 {#- set option id -#}
 {% set optionId = params.id ~ '-option-' ~ index %}
@@ -57,7 +57,7 @@
 {#- set conditional id -#}
 {%- if item.conditionalElements -%}
     {%- set conditionalElementsId = [optionId, "-conditional"] | join -%}
-    {%- set conditionalLabel = govcyLocalizeContent({en:"This option expands and has more questions,",el:"Αυτή η επιλογή επεκτείνεται και έχει περισσότερες ερωτήσεις,"}, lang) -%}
+    {%- set conditionalLabel = govcyGetContent('radios_conditionalLabel', lang) -%}
 {%- else -%}
     {%- set conditionalElementsId = '' -%}
     {%- set conditionalLabel = '' -%}

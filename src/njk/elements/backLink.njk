@@ -7,9 +7,9 @@
 #}
 {% macro backLink(params) -%}
 {#- Import localizer from utilities -#}
-{%- from "../utilities/govcyUtilities.njk" import govcyLocalizeContent, govcyLangAttribute -%}
+{%- from "../utilities/govcyUtilities.njk" import govcyLocalizeContent, govcyLangAttribute, govcyGetContent -%}
 {# set default values #}
-{%- set text = govcyLocalizeContent(params.text, params.lang) if params.text  else govcyLocalizeContent({en:'Back',el:'Πίσω'}, params.lang) -%}
+{%- set text = govcyLocalizeContent(params.text, params.lang) if params.text  else govcyGetContent('backLink_back', params.lang) -%}
 {%- set href = params.href | default('javascript:history.back()') -%}
 <a class="govcy-back-link{% if params.classes %} {{ params.classes }}{% endif %}" href="{{ href }}"{{ govcyLangAttribute(params.lang) }}>{{ text}}</a>
 {%- endmacro %}

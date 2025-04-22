@@ -11,12 +11,12 @@
 #}
 {% macro fileView(params) -%}
 {#- Import localizer from utilities -#}
-{%- from "../utilities/govcyUtilities.njk" import govcyLocalizeContent, govcyLangAttribute -%}
+{%- from "../utilities/govcyUtilities.njk" import govcyLocalizeContent, govcyLangAttribute, govcyGetContent -%}
 {%- from "./formControl.njk" import formControl -%}
 {%- from "./hint.njk" import hint -%}
 {#- set language labels -#}
-{%- set viewLabel -%} {{- govcyLocalizeContent({en:'View',el:'Προβολή'}, params.lang) -}}{%- endset -%}
-{%- set deleteLabel -%} {{- govcyLocalizeContent({en:'Delete',el:'Διαγραφή'}, params.lang) -}}{%- endset -%}
+{%- set viewLabel -%} {{- govcyGetContent('fileView_view', params.lang) -}}{%- endset -%}
+{%- set deleteLabel -%} {{- govcyGetContent('fileView_delete', params.lang) -}}{%- endset -%}
 {#- label, viewHref and deleteHref are mandatory -#}
 {%- if params.label and params.viewHref and params.deleteHref -%}
     <div class="govcy-form">

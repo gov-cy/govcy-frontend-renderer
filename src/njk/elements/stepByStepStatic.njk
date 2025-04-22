@@ -36,11 +36,11 @@
 #}
 {% macro stepByStepStatic(params) -%}
 {#- Import localizer from utilities -#}
-{%- from "../utilities/govcyUtilities.njk" import govcyLocalizeContent, govcyLangAttribute, govcyElementsFromArray -%}
+{%- from "../utilities/govcyUtilities.njk" import govcyLocalizeContent, govcyLangAttribute, govcyElementsFromArray, govcyGetContent -%}
 {#- set default values -#}
-{%- set orText -%} {{- govcyLocalizeContent({en:'Or',el:'Ή'}, params.lang) -}}{%- endset -%}
-{%- set andText -%} {{- govcyLocalizeContent({en:'And',el:'Και'}, params.lang) -}}{%- endset -%}
-{%- set stepText  -%} {{- govcyLocalizeContent({en:'Step',el:'Βήμα'}, params.lang) -}}{%- endset -%}
+{%- set orText -%} {{- govcyGetContent('common_or', params.lang) -}}{%- endset -%}
+{%- set andText -%} {{- govcyGetContent('common_and', params.lang) -}}{%- endset -%}
+{%- set stepText  -%} {{- govcyGetContent('stepByStepStatic_step', params.lang) -}}{%- endset -%}
 {#- items are mandatory -#}
 {%- if params.items %}
 <div class="govcy-accordion govcy-accordion-steps govcy-mb-0{% if params.classes %} {{ params.classes }}{% endif %}"{% if params.id %} id="{{ params.id }}"{% endif %}{{ govcyLangAttribute(params.lang) }}>

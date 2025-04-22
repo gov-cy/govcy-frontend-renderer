@@ -24,12 +24,12 @@
 #}
 {% macro errorSummary(params) -%}
 {#- Import localizer from utilities -#}
-{%- from "../utilities/govcyUtilities.njk" import govcyLocalizeContent, govcyLangAttribute -%}
+{%- from "../utilities/govcyUtilities.njk" import govcyLocalizeContent, govcyLangAttribute, govcyGetContent -%}
 {#- set 'or' labels -#}
 {%- if params.header -%}
     {%- set header -%} {{- govcyLocalizeContent(params.header, params.lang) -}}{%- endset -%}
 {%- else -%}
-    {%- set header -%} {{- govcyLocalizeContent({en:"There is a problem",el:"Υπάρχει πρόβλημα"}, params.lang) -}}{%- endset -%}
+    {%- set header -%} {{- govcyGetContent('errorSummary_header', params.lang) -}}{%- endset -%}
 {%- endif -%}
 {#- id and errors are mandatory -#}
 {%- if params.id and params.errors %}

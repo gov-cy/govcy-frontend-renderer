@@ -26,28 +26,28 @@
 {#- legend, id and name are mandatory -#}
 {%- if params.legend and params.id and params.name -%}
     {#- Import localizer from utilities -#}
-    {%- from "../utilities/govcyUtilities.njk" import govcyLocalizeContent, govcyLangAttribute -%}
+    {%- from "../utilities/govcyUtilities.njk" import govcyLocalizeContent, govcyLangAttribute, govcyGetContent -%}
     {%- from "./fieldset.njk" import fieldset -%}
     {%- from "./hint.njk" import hint -%}
     {%- from "./legend.njk" import legend -%}
     {%- from "./errorMessage.njk" import errorMessage -%}
     {%- from "./formControl.njk" import formControl -%}
     {#- set localizations -#}
-    {%- set dayLabel = govcyLocalizeContent({en:'Day',el:'Μέρα'} , params.lang) -%}
-    {%- set monthLabel = govcyLocalizeContent({en:'Month',el:'Μήνας'} , params.lang) -%}
-    {%- set yearLabel = govcyLocalizeContent({en:'Year',el:'Χρόνος'} , params.lang) -%}
-    {%- set monthValue1 = govcyLocalizeContent({en:'January',el:'Ιανουάριος'} , params.lang) -%}
-    {%- set monthValue2 = govcyLocalizeContent({en:'February',el:'Φεβρουάριος'} , params.lang) -%}
-    {%- set monthValue3 = govcyLocalizeContent({en:'March',el:'Μάρτιος'} , params.lang) -%}
-    {%- set monthValue4 = govcyLocalizeContent({en:'April',el:'Απρίλιος'} , params.lang) -%}
-    {%- set monthValue5 = govcyLocalizeContent({en:'May',el:'Μάϊος'} , params.lang) -%}
-    {%- set monthValue6 = govcyLocalizeContent({en:'June',el:'Ιούνιος'} , params.lang) -%}
-    {%- set monthValue7 = govcyLocalizeContent({en:'July',el:'Ιούλιος'} , params.lang) -%}
-    {%- set monthValue8 = govcyLocalizeContent({en:'August',el:'Αύγουστος'} , params.lang) -%}
-    {%- set monthValue9 = govcyLocalizeContent({en:'September',el:'Σεπτέμβριος'} , params.lang) -%}
-    {%- set monthValue10 = govcyLocalizeContent({en:'October',el:'Οκτώβριος'} , params.lang) -%}
-    {%- set monthValue11 = govcyLocalizeContent({en:'November',el:'Νοέμβριος'} , params.lang) -%}
-    {%- set monthValue12 = govcyLocalizeContent({en:'December',el:'Δεκέμβριος'} , params.lang) -%}
+    {%- set dayLabel = govcyGetContent('dateInput_dayLabel' , params.lang) -%}
+    {%- set monthLabel = govcyGetContent('dateInput_monthLabel' , params.lang) -%}
+    {%- set yearLabel = govcyGetContent('dateInput_yearLabel' , params.lang) -%}
+    {%- set monthValue1 = govcyGetContent('dateInput_monthValue1' , params.lang) -%}
+    {%- set monthValue2 = govcyGetContent('dateInput_monthValue2' , params.lang) -%}
+    {%- set monthValue3 = govcyGetContent('dateInput_monthValue3' , params.lang) -%}
+    {%- set monthValue4 = govcyGetContent('dateInput_monthValue4' , params.lang) -%}
+    {%- set monthValue5 = govcyGetContent('dateInput_monthValue5' , params.lang) -%}
+    {%- set monthValue6 = govcyGetContent('dateInput_monthValue6' , params.lang) -%}
+    {%- set monthValue7 = govcyGetContent('dateInput_monthValue7' , params.lang) -%}
+    {%- set monthValue8 = govcyGetContent('dateInput_monthValue8' , params.lang) -%}
+    {%- set monthValue9 = govcyGetContent('dateInput_monthValue9' , params.lang) -%}
+    {%- set monthValue10 = govcyGetContent('dateInput_monthValue10' , params.lang) -%}
+    {%- set monthValue11 = govcyGetContent('dateInput_monthValue11' , params.lang) -%}
+    {%- set monthValue12 = govcyGetContent('dateInput_monthValue12' , params.lang) -%}
     {#- set hint id -#}
     {%- if params.hint -%}
         {%- set hintId = [params.id, "-hint"] | join -%}
