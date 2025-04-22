@@ -23,7 +23,7 @@
 {#- Normalize value as array -#}
 {%- set checkboxValues = [] if params.value is not defined else (params.value if params.value is iterable else [params.value]) -%}
 {#- Import localizer from utilities -#}
-{%- from "../utilities/govcyUtilities.njk" import govcyLocalizeContent, govcyLangAttribute -%}
+{%- from "../utilities/govcyUtilities.njk" import govcyLocalizeContent, govcyLangAttribute, govcyGetContent -%}
 {%- from "./hint.njk" import hint -%}
 {%- from "./label.njk" import label -%}
 {#- set language labels -#}
@@ -31,13 +31,13 @@
 {%- if item.altOrText -%}
     {%- set orText -%} {{- govcyLocalizeContent(item.altOrText, lang) -}}{%- endset -%}
 {%- else -%}
-    {%- set orText -%} {{- govcyLocalizeContent({en:'Or',el:'Ή'}, lang) -}}{%- endset -%}
+    {%- set orText -%} {{- govcyGetContent('common_or', lang) -}}{%- endset -%}
 {%- endif -%}
 {#- set 'and' labels -#}
 {%- if item.altAndText -%}
     {%- set andText -%} {{- govcyLocalizeContent(item.altAndText, lang) -}}{%- endset -%}
 {%- else -%}
-    {%- set andText -%} {{- govcyLocalizeContent({en:'And',el:'Και'}, lang) -}}{%- endset -%}
+    {%- set andText -%} {{- govcyGetContent('common_and', lang) -}}{%- endset -%}
 {%- endif -%}
 {#- set option id -#}
 {% set optionId = params.id ~ '-option-' ~ index %}

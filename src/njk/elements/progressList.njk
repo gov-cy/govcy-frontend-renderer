@@ -21,7 +21,7 @@
 #}
 {% macro progressList(params) -%}
 {#- Import localizer from utilities -#}
-{%- from "../utilities/govcyUtilities.njk" import govcyLocalizeContent, govcyLangAttribute -%}
+{%- from "../utilities/govcyUtilities.njk" import govcyLocalizeContent, govcyLangAttribute, govcyGetContent -%}
 {#- set default values -#}
 {%- set showSteps = params.showSteps | default(false) -%}
 {%- set current = params.current | int -%}
@@ -30,25 +30,25 @@
 {%- if params.completedLabel -%}
     {%- set completedLabel -%} {{- govcyLocalizeContent(params.completedLabel, params.lang) -}}{%- endset -%}
 {%- else -%}
-    {%- set completedLabel -%} {{- govcyLocalizeContent({en:"Completed",el:"Ολοκληρώθηκε"}, params.lang) -}}{%- endset -%}
+    {%- set completedLabel -%} {{- govcyGetContent('progressList_completedLabel', params.lang) -}}{%- endset -%}
 {%- endif -%}
 {#- set not completed label -#}
 {%- if params.notCompletedLabel -%}
     {%- set notCompletedLabel -%} {{- govcyLocalizeContent(params.notCompletedLabel, params.lang) -}}{%- endset -%}
 {%- else -%}
-    {%- set notCompletedLabel -%} {{- govcyLocalizeContent({en:"Not completed",el:"Δεν ολοκληρώθηκε"}, params.lang) -}}{%- endset -%}
+    {%- set notCompletedLabel -%} {{- govcyGetContent('progressList_notCompletedLabel', params.lang) -}}{%- endset -%}
 {%- endif -%}
 {#- set step label -#}
 {%- if params.stepLabel -%}
     {%- set stepLabel -%} {{- govcyLocalizeContent(params.stepLabel, params.lang) -}}{%- endset -%}
 {%- else -%}
-    {%- set stepLabel -%} {{- govcyLocalizeContent({en:"Step",el:"Βήμα"}, params.lang) -}}{%- endset -%}
+    {%- set stepLabel -%} {{- govcyGetContent('progressList_stepLabel', params.lang) -}}{%- endset -%}
 {%- endif -%}
 {#- set of label -#}
 {%- if params.ofLabel -%}
     {%- set ofLabel -%} {{- govcyLocalizeContent(params.ofLabel, params.lang) -}}{%- endset -%}
 {%- else -%}
-    {%- set ofLabel -%} {{- govcyLocalizeContent({en:"of",el:"από"}, params.lang) -}}{%- endset -%}
+    {%- set ofLabel -%} {{- govcyGetContent('progressList_ofLabel', params.lang) -}}{%- endset -%}
 {%- endif -%}
 {#- current and total are mandatory -#}
 {%- if current and total %}

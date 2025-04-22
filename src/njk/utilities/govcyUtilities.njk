@@ -34,3 +34,59 @@
         {%- call govcyElement(element.element, params) %}{% endcall -%}
     {%- endfor -%}
 {%- endmacro %}
+{#- --------------------------------------- -#}
+{#- Get localized content directly -#}
+{% macro govcyGetContent(key, lang, isHTML) -%}
+    {# Centralized multilingual content storage #}
+    {%- set govcyContent = {
+        backLink_back: {el: "Πίσω", en: "Back"},
+        common_or: {el: "Ή", en: "Or"},
+        common_and: {el: "Και", en: "And"},
+        common_entry: {en:"Entry",el:"Καταχώρηση"},
+        common_entries: {en:"Entries",el:"Καταχωρήσεις"},
+        dateInput_dayLabel: {el: "Μέρα", en: "Day"},
+        dateInput_monthLabel: {el: "Μήνας", en: "Month"},
+        dateInput_yearLabel: {el: "Χρόνος", en: "Year"},
+        dateInput_monthValue1: {en:'January',el:'Ιανουάριος'},
+        dateInput_monthValue2: {en:'February',el:'Φεβρουάριος'},
+        dateInput_monthValue3: {en:'March',el:'Μάρτιος'},
+        dateInput_monthValue4: {en:'April',el:'Απρίλιος'},
+        dateInput_monthValue5: {en:'May',el:'Μάϊος'},
+        dateInput_monthValue6: {en:'June',el:'Ιούνιος'},
+        dateInput_monthValue7: {en:'July',el:'Ιούλιος'},
+        dateInput_monthValue8: {en:'August',el:'Αύγουστος'},
+        dateInput_monthValue9: {en:'September',el:'Σεπτέμβριος'},
+        dateInput_monthValue10: {en:'October',el:'Οκτώβριος'},
+        dateInput_monthValue11: {en:'November',el:'Νοέμβριος'},
+        dateInput_monthValue12: {en:'December',el:'Δεκέμβριος'},
+        errorMessage_hiddenError: {en:'Error',el:'Σφάλμα'},
+        errorSummary_header: {en:"There is a problem",el:"Υπάρχει πρόβλημα"},
+        fileView_view: {en:'View',el:'Προβολή'},
+        fileView_delete: {en:'Delete',el:'Διαγραφή'},
+        progressList_completedLabel: {en:"Completed",el:"Ολοκληρώθηκε"},
+        progressList_notCompletedLabel: {en:"Not completed",el:"Δεν ολοκληρώθηκε"},
+        progressList_stepLabel: {en:"Step",el:"Βήμα"},
+        progressList_ofLabel: {en:"of",el:"από"},
+        radios_conditionalLabel: {en:"This option expands and has more questions,",el:"Αυτή η επιλογή επεκτείνεται και έχει περισσότερες ερωτήσεις,"},
+        stepByStepStatic_step: {en:"Step",el:"Βήμα"},
+        taskList_withStatus: {en:"with status ",el:"με κατάσταση "},
+        textArea_charRemaining: {en:"You have <span></span> characters remaining",el:"Έχετε <span></span> χαρακτήρες που απομένουν"},
+        textArea_charExceeding: {en:"You have entered <span></span> characters more",el:"Έχετε περάσει <span></span> χαρακτήρες περισσότερους"},
+        textArea_wordRemaining: {en:"You have <span></span> words remaining",el:"Έχετε <span></span> λέξεις που απομένουν"},
+        textArea_wordsExceeding: {en:"You have entered <span></span> words more",el:"Έχετε περάσει <span></span> λέξεις περισσότερες"},
+        userName_signOut: {en:'Sign out',el:'Αποσύνδεση'},
+        userName_fromUser: {en:'from user',el:'από το χρήστη'}
+    } -%}
+    {# Set default values #}
+    {#- Set the language with priority: lang > globalData.site.lang > 'el' -#}
+    {%- set inLang = lang | default(globalData.site.lang) | default('el') -%}
+    {%- set inIsHTML = isHTML | default(false) -%}
+    {# Fetch the content for the given key and language #}
+    {%- if govcyContent[key] and govcyContent[key][inLang] -%}
+        {%- if inIsHTML -%}
+            {{ govcyContent[key][inLang] | safe }}
+        {%- else -%}
+            {{ govcyContent[key][inLang] }}
+        {%- endif -%}
+    {%- endif -%}
+{%- endmacro %}

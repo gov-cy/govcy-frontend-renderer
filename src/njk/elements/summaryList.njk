@@ -47,11 +47,11 @@
 #}
 {% macro summaryList(params) -%}
 {#- Import localizer from utilities -#}
-{%- from "../utilities/govcyUtilities.njk" import govcyLocalizeContent, govcyLangAttribute, govcyElementsFromArray -%}
+{%- from "../utilities/govcyUtilities.njk" import govcyLocalizeContent, govcyLangAttribute, govcyElementsFromArray, govcyGetContent -%}
 <dl {% if params.id %}id="{{ params.id }}" {% endif %}class="{% if not params.isInnerList %}govcy-summary-list{% else %}govcy-summary-list-row-internal{% endif %}{% if params.classes %} {{ params.classes }}{% endif %}"{{ govcyLangAttribute(params.lang) }}>
     {#- Render visually hidden text for screen readers the entry number -#}
     {%- if params.entryCount -%}
-        {%- set entryText = govcyLocalizeContent({en:"Entry",el:"Καταχώρηση"}, params.lang) -%}
+        {%- set entryText = govcyGetContent('common_entry', params.lang) -%}
         <dt><span class="govcy-visually-hidden">{{ entryText }} {{ params.entryCount}}</span></dt>
     {%- endif -%}
     {%- for item in params.items %}
@@ -143,7 +143,7 @@
                 {%- set totalCount = totalCount + 1 -%}
             {%- endif -%}
         {%- endfor -%}
-        {%- set entriesText = govcyLocalizeContent({en:"Entries",el:"Καταχωρήσεις"}, lang) -%}
+        {%- set entriesText = govcyGetContent('common_entries', lang) -%}
         {%- if totalCount > 0 %}<span class="govcy-visually-hidden">{{ totalCount }} {{ entriesText }}</span>{% endif -%}
 {%- endmacro %}
 

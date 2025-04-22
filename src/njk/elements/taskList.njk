@@ -34,12 +34,12 @@
 {#- legend, id and name are mandatory -#}
 {%- if params.items -%}
     {#- Import localizer from utilities -#}
-    {%- from "../utilities/govcyUtilities.njk" import govcyLocalizeContent, govcyLangAttribute -%}
+    {%- from "../utilities/govcyUtilities.njk" import govcyLocalizeContent, govcyLangAttribute, govcyGetContent -%}
     {#- set localizations -#}
     {%- if params.visuallyHiddenStatus -%}
         {%- set visuallyHiddenStatus -%} {{- govcyLocalizeContent(params.visuallyHiddenStatus, params.lang) -}}{%- endset -%}
     {%- else -%}
-        {%- set visuallyHiddenStatus -%} {{- govcyLocalizeContent({en:"with status ",el:"με κατάσταση "} , params.lang) -}}{%- endset -%}
+        {%- set visuallyHiddenStatus -%} {{- govcyGetContent('taskList_withStatus' , params.lang) -}}{%- endset -%}
     {%- endif %}
     <table class="govcy-table{% if params.classes %} {{ params.classes }}{% endif %}"{% if params.id %} id="{{ params.id }}"{% endif %}{{ govcyLangAttribute(params.lang) }}>
         <tbody>
