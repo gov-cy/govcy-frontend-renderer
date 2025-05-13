@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { renderTest,renderLangTest, renderChecks } from './render.test.mjs';
+import { renderTest,renderLangTest, renderChecks, renderMatomoTest } from './render.test.mjs';
 
 describe('1. Testing Note.js `govcyFrontendRenderer.renderFromString` `macros`', () => {
     let renderedHTML = renderTest("njk");
@@ -39,6 +39,95 @@ describe('3. Testing `govcyFrontendRenderer.renderFromString` global lang test',
         expectedRegex = /<p id="govcy-test-3-3-2"\s*lang="en">\s*English\s*<\/p>/;
         expect(renderedHTML).to.match(expectedRegex);
         expectedRegex = /<p id="govcy-test-3-3-3"\s*lang="el">\s*Greek\s*<\/p>/;
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+});
+
+describe('4. Testing `govcyFrontendRenderer.renderFromJSON` matomo rendering', () => {
+    let renderedHTML = "";
+    //perform render checks
+    it('4.1 `renderFromJSON` without matomo data ', async () => {
+        renderedHTML = renderMatomoTest(
+            {
+                site:
+                {
+                    lang:'en'
+                },
+                pageData: {
+                    title: {en: "Page title", el: "Τιτλός σελιδας"},
+                    layout: "layouts/govcyBase.njk",
+                    mainLayout: "max-width"
+                }
+            }
+        );
+        // console.log(renderedHTML);
+        let expectedRegex = /<!-- Matomo -->\s*<script>[\s\S]*?<\/script>/;
+        expect(renderedHTML).to.not.match(expectedRegex);
+    });
+    it('4.2 `renderFromJSON` without matomo.url data ', async () => {
+        renderedHTML = renderMatomoTest(
+            {
+                site:
+                {
+                    lang:'en',
+                    matomo: {
+                        url: "",
+                        siteId: "1"
+                    }
+                },
+                pageData: {
+                    title: {en: "Page title", el: "Τιτλός σελιδας"},
+                    layout: "layouts/govcyBase.njk",
+                    mainLayout: "max-width"
+                }
+            }
+        );
+        // console.log(renderedHTML);
+        let expectedRegex = /<!-- Matomo -->\s*<script>[\s\S]*?<\/script>/;
+        expect(renderedHTML).to.not.match(expectedRegex);
+    });
+    it('4.3 `renderFromJSON` without matomo.siteId data ', async () => {
+        renderedHTML = renderMatomoTest(
+            {
+                site:
+                {
+                    lang:'en',
+                    matomo: {
+                        url: "https://matomo.example.com",
+                        siteId: ""
+                    }
+                },
+                pageData: {
+                    title: {en: "Page title", el: "Τιτλός σελιδας"},
+                    layout: "layouts/govcyBase.njk",
+                    mainLayout: "max-width"
+                }
+            }
+        );
+        // console.log(renderedHTML);
+        let expectedRegex = /<!-- Matomo -->\s*<script>[\s\S]*?<\/script>/;
+        expect(renderedHTML).to.not.match(expectedRegex);
+    });
+    it('4.4 `renderFromJSON` with matomo data ', async () => {
+        renderedHTML = renderMatomoTest(
+            {
+                site:
+                {
+                    lang:'en',
+                    matomo: {
+                        url: "https://matomo.example.com",
+                        siteId: "12"
+                    }
+                },
+                pageData: {
+                    title: {en: "Page title", el: "Τιτλός σελιδας"},
+                    layout: "layouts/govcyBase.njk",
+                    mainLayout: "max-width"
+                }
+            }
+        );
+        // console.log(renderedHTML);
+        let expectedRegex = /<!-- Matomo -->\s*<script>[\s\S]*https\:\/\/matomo.example.com[\s\S]*12[\s\S]*<\/script>\s*<!-- End Matomo Code -->/;
         expect(renderedHTML).to.match(expectedRegex);
     });
 });

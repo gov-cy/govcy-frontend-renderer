@@ -49,6 +49,25 @@ function renderLangTest(){
 }
 
 
+function renderMatomoTest(siteData){
+    const renderer = new govcyFrontendRenderer();
+    let inputJSON = {
+        "sections": [
+            {
+                "name": "beforeMain",
+                "elements": [
+                    {
+                        "element": "backLink",
+                        "params": {}
+                    }
+                ]
+            }
+        ]
+    };
+    let rtn = renderer.renderFromJSON(inputJSON, siteData);
+    return rtn;
+}   
+
 /**
  * Perform tests on rendered HTML
  * 
@@ -2055,4 +2074,4 @@ async function renderChecks(renderedHTML, checksNum){
 }
 
 // Export the renderTest function
-export { renderTest,renderLangTest, renderChecks };
+export { renderTest,renderLangTest, renderChecks, renderMatomoTest };
