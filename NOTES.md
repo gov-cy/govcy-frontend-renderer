@@ -49,7 +49,7 @@ Here's a checklist to follow when releasing a new version of the project.
  
 ### Always, test changes
 - [ ] **5. update unit test script**. Update the `test\moca\unit.test.mjs` file with tests for all the created variants. 
-- [ ] **6. re-build (Optional)**. Re-build by running `npm run build`
+- [ ] **6. re-build**. Re-build by running `npm run build`
 - [ ] **7. manually test**. View the rendered HTML on local host by running `npm start`
 - [ ] **8. run unit tests**. Test by running `npm run test`
 
