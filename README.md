@@ -82,6 +82,7 @@ const inputData =
         "headerTitle" : {"en":"Header title", "el":"Τιτλός επικεφαλιδας"},
         "description" : {"en":"Service description", "el":"Περιγραφή υπηρεσίας"},
         "url" : "https://gov.cy",
+        "manifest": "/manifest.json",
         "matomo": {
             "url": "//wp.matomo.dits.dmrid.gov.cy/",
             "siteId": "1234"
@@ -175,6 +176,7 @@ const inputData =
         "headerTitle" : {"en":"Header title", "el":"Τιτλός επικεφαλιδας"},
         "description" : {"en":"Service description", "el":"Περιγραφή υπηρεσίας"},
         "url" : "https://gov.cy",
+        "manifest": "manifest.json",
         "matomo": {
             "url": "//wp.matomo.dits.dmrid.gov.cy/",
             "siteId": "1234"
@@ -315,6 +317,7 @@ The `inputData` object has the following structure:
 - **site.title**: the title of the site. It is used in the `<title>`, `<meta property="og:title"` and `<meta property="twitter:title"` tags of the head.
 - **site.description**: the description of the site. It is used in the `<meta name="description"`, `<meta property="og:description"` and `<meta property="twitter:description"` tags of the head.
 - **site.url**: the URL of the site. It is used in the `<meta property="og:url"` and `<meta property="twitter:url"` tags of the head.
+- **site.manifest**: the manifest of the site. It is used to add the manifest location to the page.
 - **site.matomo**: the matomo data. It is used to add the Matomo code to the page. If you don't want to use Matomo tracking, you can remove this value. Use `site.matomo.url` to define the URL of the Matomo server and `site.matomo.siteId` to define the site ID to be tracked.
 - **site.cdn.dist**: the CDN of the site. It is used to define the URL of the CDN used for the CSS and JS files. If you need to change the version of the CDN, you can do it by changing this value (in this case you will need to change the `site.cdn.cssIntegrity` and `site.cdn.jsIntegrity` values as well)
 - **site.cdn.cssIntegrity**: the integrity of the CSS file. It is used to define the integrity of the CSS file. If you need to change the version of the CDN, you will need to change this value. https://www.srihash.org/ can help you generate the integrity value.

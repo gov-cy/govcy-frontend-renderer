@@ -22,6 +22,7 @@ To use this template you need to pass the following data:
     "description" : {"en":"Service description", "el":"Περιγραφή υπηρεσίας"},
     "isTesting" : true,
     "url": "https://gov.cy",
+    "manifest": "manifest.json",
     "matomo": {
       "url": "//wp.matomo.dits.dmrid.gov.cy/",
       "siteId": 1234
@@ -63,7 +64,9 @@ To use this template you need to pass the following data:
     <meta property="twitter:image" content="{{ site.cdn.dist }}/img/icons-512.png">
  
     <!-- Theme --> 
-    {# <link rel="manifest" href="manifest.json"> #}
+    {% if site.manifest %}
+    <link rel="manifest" href="{{ site.manifest }}">
+    {% endif %}
     <meta name="theme-color" content="#31576F">
     <link rel="icon" type="image/png" sizes="48x48" href="{{ site.cdn.dist }}/img/favicon-48x48.png">
     <link rel="icon" type="image/png" sizes="32x32" href="{{ site.cdn.dist }}/img/favicon-32x32.png">

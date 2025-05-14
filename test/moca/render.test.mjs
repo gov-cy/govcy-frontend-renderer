@@ -49,7 +49,7 @@ function renderLangTest(){
 }
 
 
-function renderMatomoTest(siteData){
+function renderJsonTest(siteData){
     const renderer = new govcyFrontendRenderer();
     let inputJSON = {
         "sections": [
@@ -2074,4 +2074,4 @@ async function renderChecks(renderedHTML, checksNum){
 }
 
 // Export the renderTest function
-export { renderTest,renderLangTest, renderChecks, renderMatomoTest };
+export { renderTest,renderLangTest, renderChecks, renderJsonTest };

@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { renderTest,renderLangTest, renderChecks, renderMatomoTest } from './render.test.mjs';
+import { renderTest,renderLangTest, renderChecks, renderJsonTest } from './render.test.mjs';
 
 describe('1. Testing Note.js `govcyFrontendRenderer.renderFromString` `macros`', () => {
     let renderedHTML = renderTest("njk");
@@ -43,11 +43,11 @@ describe('3. Testing `govcyFrontendRenderer.renderFromString` global lang test',
     });
 });
 
-describe('4. Testing `govcyFrontendRenderer.renderFromJSON` matomo rendering', () => {
+describe('5. Testing `govcyFrontendRenderer.renderFromJSON` matomo rendering', () => {
     let renderedHTML = "";
     //perform render checks
-    it('4.1 `renderFromJSON` without matomo data ', async () => {
-        renderedHTML = renderMatomoTest(
+    it('5.1 `renderFromJSON` without matomo data ', async () => {
+        renderedHTML = renderJsonTest(
             {
                 site:
                 {
@@ -64,8 +64,8 @@ describe('4. Testing `govcyFrontendRenderer.renderFromJSON` matomo rendering', (
         let expectedRegex = /<!-- Matomo -->\s*<script>[\s\S]*?<\/script>/;
         expect(renderedHTML).to.not.match(expectedRegex);
     });
-    it('4.2 `renderFromJSON` without matomo.url data ', async () => {
-        renderedHTML = renderMatomoTest(
+    it('5.2 `renderFromJSON` without matomo.url data ', async () => {
+        renderedHTML = renderJsonTest(
             {
                 site:
                 {
@@ -86,8 +86,8 @@ describe('4. Testing `govcyFrontendRenderer.renderFromJSON` matomo rendering', (
         let expectedRegex = /<!-- Matomo -->\s*<script>[\s\S]*?<\/script>/;
         expect(renderedHTML).to.not.match(expectedRegex);
     });
-    it('4.3 `renderFromJSON` without matomo.siteId data ', async () => {
-        renderedHTML = renderMatomoTest(
+    it('5.3 `renderFromJSON` without matomo.siteId data ', async () => {
+        renderedHTML = renderJsonTest(
             {
                 site:
                 {
@@ -108,8 +108,8 @@ describe('4. Testing `govcyFrontendRenderer.renderFromJSON` matomo rendering', (
         let expectedRegex = /<!-- Matomo -->\s*<script>[\s\S]*?<\/script>/;
         expect(renderedHTML).to.not.match(expectedRegex);
     });
-    it('4.4 `renderFromJSON` with matomo data ', async () => {
-        renderedHTML = renderMatomoTest(
+    it('5.4 `renderFromJSON` with matomo data ', async () => {
+        renderedHTML = renderJsonTest(
             {
                 site:
                 {
@@ -128,6 +128,48 @@ describe('4. Testing `govcyFrontendRenderer.renderFromJSON` matomo rendering', (
         );
         // console.log(renderedHTML);
         let expectedRegex = /<!-- Matomo -->\s*<script>[\s\S]*https\:\/\/matomo.example.com[\s\S]*12[\s\S]*<\/script>\s*<!-- End Matomo Code -->/;
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+});
+
+describe('6. Testing `govcyFrontendRenderer.renderFromJSON` manifest rendering', () => {
+    let renderedHTML = "";
+    //perform render checks
+    it('6.1 `renderFromJSON` without manifest data ', async () => {
+        renderedHTML = renderJsonTest(
+            {
+                site:
+                {
+                    lang:'en'
+                },
+                pageData: {
+                    title: {en: "Page title", el: "Τιτλός σελιδας"},
+                    layout: "layouts/govcyBase.njk",
+                    mainLayout: "max-width"
+                }
+            }
+        );
+        // console.log(renderedHTML);
+        let expectedRegex = /<link rel="manifest" href="\/manifest\.json">/;
+        expect(renderedHTML).to.not.match(expectedRegex);
+    });
+    it('6.1 `renderFromJSON` with manifest data ', async () => {
+        renderedHTML = renderJsonTest(
+            {
+                site:
+                {
+                    lang:'en',
+                    manifest: "/manifest.json"
+                },
+                pageData: {
+                    title: {en: "Page title", el: "Τιτλός σελιδας"},
+                    layout: "layouts/govcyBase.njk",
+                    mainLayout: "max-width"
+                }
+            }
+        );
+        // console.log(renderedHTML);
+        let expectedRegex = /<link rel="manifest" href="\/manifest\.json">/;
         expect(renderedHTML).to.match(expectedRegex);
     });
 });
