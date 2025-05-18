@@ -5,14 +5,16 @@
 
 Use this package to render HTML for gov.cy elements, as they are defined in the [Unified Design System](https://gov-cy.github.io/govcy-design-system-docs/), using njk or json templates.
 
-The rendered HTML should:
-- Be as close of a representation as possible of the design elements as they are defined in the [Unified Design System](https://gov-cy.github.io/govcy-design-system-docs/)
-- Include the gov.cy branding
-- Use the [govcy design system](https://gov-cy.github.io/govcy-design-system-docs/) css classes and javascript functions
-- Use HTML best practices and be valid HTML
-- Use accessibility best practices
-- Allow multiple languages
-- Be tested
+![govcy-frontend-renderer](DSF-govcy-frontend-renderer.png)
+
+The project was developed to support the [gov.cy Unified Design System](https://gov-cy.github.io/govcy-design-system-docs/), so that the rendered HTML:
+- is as close of a representation as possible of the design elements as they are defined in the [Unified Design System](https://gov-cy.github.io/govcy-design-system-docs/)
+- includes the gov.cy branding
+- uses the [govcy design system](https://gov-cy.github.io/govcy-design-system-docs/) css classes and javascript functions
+- uses HTML best practices and be valid HTML
+- uses accessibility best practices
+- allows multiple languages
+- is tested
 
 Though the project is not intended to be used for production purposes and does provide any guaranties, your welcome to try it.
 
