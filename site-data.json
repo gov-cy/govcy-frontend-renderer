@@ -11,6 +11,7 @@
             {"label": {"en":"Accessibility", "el":"Προσβασιμότητα"}, "href": "#"},
             {"label": {"en":"Help us improve this service", "el":"Βοηθήστε μας να βελτιώσουμε αυτή την υπηρεσία"}, "href": "#"}
         ],
+        "copyrightText" : {"en":"Republic of Cyprus, 2025", "el":"Κυπριακή Δημοκρατία, 2025"},
         "menu" : {"en":"Menu", "el":"Μενου"},
         "title" : {"en":"Service title", "el":"Τιτλός υπηρεσίας"}, 
         "headerTitle" : {"en":"Header title", "el":"Τιτλός επικεφαλιδας"},
