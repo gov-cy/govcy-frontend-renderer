@@ -15,7 +15,8 @@ To use this template you need to pass the following data:
         {"label": {"en":"Cookies", "el":"Cookies"}, "href": "#"},
         {"label": {"en":"Accessibility", "el":"Προσβασιμότητα"}, "href": "#"},
         {"label": {"en":"Help us improve this service", "el":"Βοηθήστε μας να βελτιώσουμε αυτή την υπηρεσία"}, "href": "#"},
-    ],
+    ],    
+    "copyrightText" : {"en":"Republic of Cyprus, 2025", "el":"Κυπριακή Δημοκρατία, 2025"},
     "menu" : {"en":"Menu", "el":"Μενου"},
     "title" : {"en":"Service title", "el":"Τιτλός υπηρεσίας"}, 
     "headerTitle" : {"en":"Header title", "el":"Τιτλός επικεφαλιδας"},
@@ -184,7 +185,7 @@ To use this template you need to pass the following data:
                             {%- endif %}
                             <div class="govcy-d-flex govcy-align-items-center govcy-flex-wrap">
                                 <span class="govcy-fs-2 govcy-fw-bold govcy-mr-6">gov.cy</span>
-                                <span class="govcy-mr-6 govcy-mt-2 govcy-mb-2">&copy; Republic of Cyprus, 2023</span>
+                                <span class="govcy-mr-6 govcy-mt-2 govcy-mb-2">&copy; {{ govcyLocalizeContent(site.copyrightText, site.lang) }}</span>
                             </div>
                         </div>
                         <div class="govcy-my-4">
