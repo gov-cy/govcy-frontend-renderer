@@ -2,6 +2,7 @@
  @param {string} lang The language used. Can be 'en','el'. Optional. 
  @param {object} text The text. Will escape text, Example `{en:"Content",el:"Περιεχομένο"}` 
  @param {string} type The type of the element. Can be `p`,`h1`,`h2`,`h3`,`h4`,`span`. Default is `p`
+ @param {boolean} showNewLine Whether to show new line characters on HTML using `style="white-space: pre-line;"`. Default is `false`
  @param {string} id The elemen't id. Will escape text. Optional  
  @param {string} classes Additional classes to add to the outer div. Optional 
  @returns html Elements with sanitzed html 
@@ -9,15 +10,14 @@
 {% macro textElement(params) -%}
 {# set default values #}
 {%- set textType = params.type | default('p') -%}
+{%- set showNewLine = params.showNewLine | default(false) -%}
 {# text and type are mandatory #}
 {%- if params.text -%}
     {#- Import localizer from utilities -#}
     {%- from "../utilities/govcyUtilities.njk" import govcyLocalizeContent, govcyLangAttribute -%}
     {%- if textType == 'p' or textType == 'h1' or textType == 'h2' or textType == 'h3' or textType == 'h4' or textType == 'span' -%}
         {%- set textTag = textType -%}
-        <{{ textType }}{% if params.id %} id="{{ params.id }}"{% endif %}{% if params.classes %} class="{{ params.classes }}"{% endif %}{{ govcyLangAttribute(params.lang) }}>
-            {{ govcyLocalizeContent(params.text, params.lang) }}
-        </{{ textType }}>
+        <{{ textType }}{% if params.id %} id="{{ params.id }}"{% endif %}{% if params.classes %} class="{{ params.classes }}"{% endif %}{% if showNewLine %} style="white-space: pre-line;"{% endif %}{{ govcyLangAttribute(params.lang) }}>{{ govcyLocalizeContent(params.text, params.lang) }}</{{ textType }}>
     {%- endif -%}
 {%- endif -%}
 {%- endmacro %}

@@ -2872,6 +2872,7 @@ This element is used to add textElement as defined in the [UDS - textElement](ht
  @param {string} lang The language used. Can be 'en','el'. Optional. 
  @param {object} text The text. Will escape text, Example `{en:"Content",el:"Περιεχομένο"}` 
  @param {string} type The type of the element. Can be `p`,`h1`,`h2`,`h3`,`h4`,`span`. Default is `p`
+ @param {boolean} showNewLine Whether to show new line characters on HTML using `style="white-space: pre-line;"`. Default is `false`
  @param {string} id The elemen't id. Will escape text. Optional  
  @param {string} classes Additional classes to add to the outer div. Optional 
 **/
@@ -2887,6 +2888,7 @@ This element is used to add textElement as defined in the [UDS - textElement](ht
             "el": "Default Περιεχομένο"
         },
         "type": "h3",
+        "showNewLine": false,
         "lang": "el",
         "id": "govcy-test-24b"
     }
@@ -2905,6 +2907,7 @@ This element is used to add textElement as defined in the [UDS - textElement](ht
                 "el": "Default Περιεχομένο"
             },
             "type": "h3",
+            "showNewLine": false,
             "lang": "el",
             "id": "govcy-test-24b"
         }

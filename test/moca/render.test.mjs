@@ -2071,6 +2071,14 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
+    it(checksNum+'120 `textElement` with showNewLine', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([
+            `<span\\s*id="govcy-test-120"\\s*style="white-space: pre-line;"\\s*>`, //closing tags
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
 }
 
 // Export the renderTest function
