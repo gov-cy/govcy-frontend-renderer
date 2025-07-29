@@ -6691,32 +6691,41 @@ context.setVariable("textType", t_3);
 if(frame.topLevel) {
 context.addExport("textType", t_3);
 }
+var t_4;
+t_4 = env.getFilter("default").call(context, runtime.memberLookup((l_params),"showNewLine"),false);
+frame.set("showNewLine", t_4, true);
+if(frame.topLevel) {
+context.setVariable("showNewLine", t_4);
+}
+if(frame.topLevel) {
+context.addExport("showNewLine", t_4);
+}
 if(runtime.memberLookup((l_params),"text")) {
-env.getTemplate("utilities/govcyUtilities.njk", false, "elements/textElement.njk", false, function(t_5,t_4) {
-if(t_5) { cb(t_5); return; }
-t_4.getExported(function(t_6,t_4) {
+env.getTemplate("utilities/govcyUtilities.njk", false, "elements/textElement.njk", false, function(t_6,t_5) {
 if(t_6) { cb(t_6); return; }
-if(Object.prototype.hasOwnProperty.call(t_4, "govcyLocalizeContent")) {
-var t_7 = t_4.govcyLocalizeContent;
+t_5.getExported(function(t_7,t_5) {
+if(t_7) { cb(t_7); return; }
+if(Object.prototype.hasOwnProperty.call(t_5, "govcyLocalizeContent")) {
+var t_8 = t_5.govcyLocalizeContent;
 } else {
 cb(new Error("cannot import 'govcyLocalizeContent'")); return;
 }
-context.setVariable("govcyLocalizeContent", t_7);
-if(Object.prototype.hasOwnProperty.call(t_4, "govcyLangAttribute")) {
-var t_8 = t_4.govcyLangAttribute;
+context.setVariable("govcyLocalizeContent", t_8);
+if(Object.prototype.hasOwnProperty.call(t_5, "govcyLangAttribute")) {
+var t_9 = t_5.govcyLangAttribute;
 } else {
 cb(new Error("cannot import 'govcyLangAttribute'")); return;
 }
-context.setVariable("govcyLangAttribute", t_8);
+context.setVariable("govcyLangAttribute", t_9);
 if(runtime.contextOrFrameLookup(context, frame, "textType") == "p" || runtime.contextOrFrameLookup(context, frame, "textType") == "h1" || runtime.contextOrFrameLookup(context, frame, "textType") == "h2" || runtime.contextOrFrameLookup(context, frame, "textType") == "h3" || runtime.contextOrFrameLookup(context, frame, "textType") == "h4" || runtime.contextOrFrameLookup(context, frame, "textType") == "span") {
-var t_9;
-t_9 = runtime.contextOrFrameLookup(context, frame, "textType");
-frame.set("textTag", t_9, true);
+var t_10;
+t_10 = runtime.contextOrFrameLookup(context, frame, "textType");
+frame.set("textTag", t_10, true);
 if(frame.topLevel) {
-context.setVariable("textTag", t_9);
+context.setVariable("textTag", t_10);
 }
 if(frame.topLevel) {
-context.addExport("textTag", t_9);
+context.addExport("textTag", t_10);
 }
 t_2 += "<";
 t_2 += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "textType"), env.opts.autoescape);
@@ -6732,10 +6741,14 @@ t_2 += runtime.suppressValue(runtime.memberLookup((l_params),"classes"), env.opt
 t_2 += "\"";
 ;
 }
-t_2 += runtime.suppressValue((lineno = 17, colno = 157, runtime.callWrap(t_8, "govcyLangAttribute", context, [runtime.memberLookup((l_params),"lang")])), env.opts.autoescape);
-t_2 += ">\n            ";
-t_2 += runtime.suppressValue((lineno = 18, colno = 35, runtime.callWrap(t_7, "govcyLocalizeContent", context, [runtime.memberLookup((l_params),"text"),runtime.memberLookup((l_params),"lang")])), env.opts.autoescape);
-t_2 += "\n        </";
+if(runtime.contextOrFrameLookup(context, frame, "showNewLine")) {
+t_2 += " style=\"white-space: pre-line;\"";
+;
+}
+t_2 += runtime.suppressValue((lineno = 19, colno = 219, runtime.callWrap(t_9, "govcyLangAttribute", context, [runtime.memberLookup((l_params),"lang")])), env.opts.autoescape);
+t_2 += ">";
+t_2 += runtime.suppressValue((lineno = 19, colno = 259, runtime.callWrap(t_8, "govcyLocalizeContent", context, [runtime.memberLookup((l_params),"text"),runtime.memberLookup((l_params),"lang")])), env.opts.autoescape);
+t_2 += "</";
 t_2 += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "textType"), env.opts.autoescape);
 t_2 += ">";
 ;

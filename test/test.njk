@@ -2473,6 +2473,93 @@
                 "params": {
                     "text":{"en":"</header>","el":"</header>"}
                 }
+            },
+            {
+                "element": "htmlElement",
+                "params": {
+                    "text":{"en":"<h2>Text elements with new lines</h2>","el":"<h2>Text elements with new lines - EL</h2>"}
+                }
+            },
+            {
+                "element": "textElement",
+                "params": {
+                    "id":"govcy-test-120",
+                    "type":"span",
+                    "showNewLine":true,
+                    "text":{
+                        "en":"Line 1\r\nLine2\rLine3\n<br>",
+                        "el":"EL Line 1\r\nLine2\rLine3\n<br>"
+                    }
+                }
+            },
+            { 
+                "element":"summaryList",
+                "params":{
+                    "id":"govcy-test-121",
+                    "items":[
+                        {
+                            "key":{"en":"Name","el":"el Name"},
+                            "value":
+                            [
+                                {"element":"textElement","params":{"type":"span","showNewLine":true,"text":{"en":"Andreas \r\n Andreou ","el":" \n\r Andreou"} } }
+                            ],
+                            "actions":[
+                                {
+                                    "text":{"en":"Change","el":"Αλλαγή"},
+                                    "href": "#",
+                                    "visuallyHiddenText": {"en":"Date of birth","el":"Ημερομηνία γέννησης"}
+                                }
+                            ]
+                        },
+                        {
+                            "key":{"en":"Date of birth","el":"el Date of birth"},
+                            "value":
+                            [
+                                {"element":"textElement","params":{"type":"span","showNewLine":true,"text":{"en":"10 \rMarch \n1990","el":"EL 10 \rMarch \n1990"} } }
+                            ],
+                            "actions":[
+                                {
+                                    "text":{"en":"Change","el":"Αλλαγή"},
+                                    "href": "#",
+                                    "visuallyHiddenText": {"en":"Date of birth","el":"Ημερομηνία γέννησης"}
+                                }
+                            ]
+                        },
+                        {
+                            "key":{"en":"Address","el":"el Address"},
+                            "value":
+                            [
+                                {"element":"summaryList",
+                                "params":
+                                    {
+                                        "items":[
+                                            {
+                                                "key":{"en":"Address line 1","el":"el Address line 1 EL"},
+                                                "value":
+                                                [
+                                                    {"element":"textElement","params":{"type":"p","showNewLine":true,"text":{"en":"1 Some Steet\nNicosia\n2040","el":"EL"} } }
+                                                    ,{"element":"textElement","params":{"type":"p","text":{"en":"1 Some Steet\nNicosia\n2040","el":"EL"} } }
+                                                ]
+                                            }
+                                        ]
+                                    } 
+                                }
+                            ],
+                            "actions":[
+                                {
+                                    "text":{"en":"Change","el":"Αλλαγή"},
+                                    "href": "#",
+                                    "visuallyHiddenText": {"en":"Address","el":"el Address"}
+                                },
+                                {
+                                    "text":{"en":"Remove","el":"Διαγραφή"},
+                                    "href": "#2", 
+                                    "visuallyHiddenText": {"en":"Address","el":"el Address"}
+                                }
+                            ]
+                        }
+                    ]
+                }
             }
         ]
     })
