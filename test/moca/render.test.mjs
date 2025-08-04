@@ -700,7 +700,7 @@ async function renderChecks(renderedHTML, checksNum){
     it(checksNum+'44 `fileInput` macro render as expected. with default options', async () => {
         // check for structure   
         let expectedRegex =  new RegExp ([ 
-            `<div\\s*class="govcy-form-control">`, //form control
+            `<div\\s*id="govcy-test-44-input-control"\\s*class="govcy-form-control">`, //form control
             `\\s*<label\\s*id="govcy-test-44-label"\\s*class="govcy-label\\s*govcy-label-primary"\\s*for="govcy-test-44"\\s*>\\s*File input: English with default options\\s*<\\/label>`, //label
             `\\s*<input\\s*id="govcy-test-44"\\s*type="file"\\s*class="govcy-file-upload">`, //file input
             `\\s*<\\/div>` //closing tags
@@ -711,7 +711,7 @@ async function renderChecks(renderedHTML, checksNum){
     it(checksNum+'45 `fileInput` macro render as expected. with hint', async () => {
         // check for structure   
         let expectedRegex =  new RegExp ([ 
-            `<div\\s*class="govcy-form-control">`, //form control
+            `<div\\s*id="govcy-test-45-input-control"\\s*class="govcy-form-control">`, //form control
             `\\s*<label\\s*id="govcy-test-45-label"\\s*class="govcy-label\\s*govcy-label-primary"\\s*for="govcy-test-45"\\s*>\\s*File input: English with hint\\s*<\\/label>`, //label
             `\\s*<span\\s*id="govcy-test-45-hint"\\s*class="govcy-hint"\\s*>\\s*PDF, JPG, JPEG, PNG are the acceptable formats\\s*<\\/span>`, //hint
             `\\s*<input\\s*id="govcy-test-45"\\s*name="govcy-test-45"\\s*type="file"\\s*class="govcy-file-upload"\\s*aria-describedby="govcy-test-45-hint\\s*">`, //file input
@@ -723,7 +723,7 @@ async function renderChecks(renderedHTML, checksNum){
     it(checksNum+'46 `fileInput` macro render as expected. with all possible options. id, name, classes, hint, label, error, isPageHeading', async () => {
         // check for structure   
         let expectedRegex =  new RegExp ([ 
-            `<div\\s*class="govcy-form-control govcy-form-control-error">`, //form control
+            `<div\\s*id="govcy-test-46-input-control"\\s*class="govcy-form-control govcy-form-control-error">`, //form control
             `\\s*<h1>\\s*<label\\s*id="govcy-test-46-label"\\s*class="govcy-label\\s*govcy-label-primary"\\s*for="govcy-test-46"\\s*>\\s*File input: English with all possible options\\s*<\\/label>\\s*<\\/h1>`, //label
             `\\s*<span\\s*id="govcy-test-46-hint"\\s*class="govcy-hint">\\s*English hint\\s*<\\/span>`, //hint
             `\\s*<p\\s*id="govcy-test-46-error"\\s*class="govcy-input-error-msg">\\s*<span\\s*class="govcy-visually-hidden-error">\\s*Error:\\s*<\\/span>\\s*English error\\s*<\\/p>`, //error message
@@ -736,7 +736,7 @@ async function renderChecks(renderedHTML, checksNum){
     it(checksNum+'47 `fileInput` macro render as expected. lang:el', async () => {
         // check for structure   
         let expectedRegex =  new RegExp ([ 
-            `<div\\s*class="govcy-form-control govcy-form-control-error">`, //form control
+            `<div\\s*id="govcy-test-47-input-control"\\s*class="govcy-form-control govcy-form-control-error">`, //form control
             `\\s*<h1>\\s*<label\\s*id="govcy-test-47-label"\\s*class="govcy-label\\s*govcy-label-primary"\\s*for="govcy-test-47"\\s*lang="el"\\s*>\\s*Ελληνικά with all possible options\\s*<\\/label>\\s*<\\/h1>`, //label
             `([\\s\\S]*?)`,
             `Ελληνικά hint`,
@@ -751,7 +751,7 @@ async function renderChecks(renderedHTML, checksNum){
     it(checksNum+'48 `fileView` macro render as expected. with default options', async () => {
         // check for structure   
         let expectedRegex =  new RegExp ([ 
-            `<div\\s*class="govcy-form">`, //form div
+            `<div\\s*id="govcy-test-48-view-control"\\s*class="govcy-form">`, //form div
             `\\s*<div class="govcy-form-control">`, //form control
             `\\s*<p\\s*class="govcy-label\\s*govcy-label-primary">\\s*File view: English with default options\\s*<\\/p>`, //label
             `\\s*<a\\s*href="#view48">\\s*View\\s*<\\/a>\\s*<a\\s*class="govcy-ml-3"\\s*href="#delete48">\\s*Delete\\s*<\\/a>`, //links
@@ -763,7 +763,7 @@ async function renderChecks(renderedHTML, checksNum){
     it(checksNum+'49 `fileView` macro render as expected. with hint', async () => {
         // check for structure   
         let expectedRegex =  new RegExp ([ 
-            `<div\\s*class="govcy-form">`, //form div
+            `<div\\s*id="govcy-test-49-view-control"\\s*class="govcy-form">`, //form div
             `\\s*<div class="govcy-form-control">`, //form control
             `\\s*<p\\s*class="govcy-label\\s*govcy-label-primary">\\s*File view: English with hint\\s*<\\/p>`, //label
             `\\s*<span\\s*class="govcy-hint"\\s*>\\s*English hint\\s*<\\/span>`, //hint
@@ -776,7 +776,7 @@ async function renderChecks(renderedHTML, checksNum){
     it(checksNum+'50 `fileView` macro render as expected. with all possible options', async () => {
         // check for structure   
         let expectedRegex =  new RegExp ([ 
-            `<div\\s*class="govcy-form">`, //form div
+            `<div\\s*id="govcy-test-50-view-control"\\s*class="govcy-form">`, //form div
             `\\s*<div class="govcy-form-control\\s*govcy-test-class">`, //form control
             `\\s*<h1>\\s*File view: English with all possible options\\s*<\\/h1>`, //label
             `\\s*<span\\s*class="govcy-hint"\\s*>\\s*English hint\\s*<\\/span>`, //hint
@@ -790,7 +790,7 @@ async function renderChecks(renderedHTML, checksNum){
     it(checksNum+'51 `fileView` macro render as expected. with lang:el', async () => {
         // check for structure   
         let expectedRegex =  new RegExp ([ 
-            `<div\\s*class="govcy-form">`, //form div
+            `<div\\s*id="govcy-test-51-view-control"\\s*class="govcy-form">`, //form div
             `\\s*<div class="govcy-form-control\\s*govcy-test-class"\\s*lang="el"\\s*>`, //form control
             `\\s*<h1>\\s*Ελληνικά label with lang:el\\s*<\\/h1>`, //label
             `\\s*<span\\s*class="govcy-hint"\\s*lang="el">\\s*Ελληνικά hint\\s*<\\/span>`, //hint
@@ -1175,7 +1175,7 @@ async function renderChecks(renderedHTML, checksNum){
             `\\s*<p\\s*id="govcy-test-71a-error"\\s*class="govcy-input-error-msg"\\s*lang="el"\\s*>\\s*<span\\s*class="\\s*govcy-visually-hidden-error\\s*"\\s*>\\s*Σφάλμα:\\s*<\\/span>\\s*Ελληνικά error\\s*<\\/p>`, //error for conditional text input
             `\\s*<input\\s*id="govcy-test-71a"\\s*name="govcy-test-71a"\\s*type="text"\\s*spellcheck="false"\\s*class="govcy-text-input\\s*govcy-text-input-error\\s*"\\s*aria-describedby="\\s*govcy-test-71a-error\\s*">`, //input for conditional text input
             `\\s*<\\/div>`, //closing tags for conditional div 1
-            `\\s*<div\\s*class="govcy-form-control"\\s*>`, //form control 2 for conditional text input (withour error, controlled via hideFormControlError)
+            `\\s*<div\\s*id="govcy-test-71a1-input-control"\\s*class="govcy-form-control"\\s*>`, //form control 2 for conditional file input (withour error, controlled via hideFormControlError)
             `([\\s\\S]*?)govcy-test-71a1([\\s\\S]*?)`, // not interested in control specifics here, tested before 
             `\\s*<\\/div>`, //closing tags for conditional div 2
             `([\\s\\S]*?)`, 

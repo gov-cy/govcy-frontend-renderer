@@ -2503,7 +2503,16 @@ context.setVariable("errorId", t_27);
 if(frame.topLevel) {
 context.addExport("errorId", t_27);
 }
-t_2 += runtime.suppressValue((lineno = 27, colno = 23, runtime.callWrap(t_11, "formControl", context, [{"isError": (runtime.memberLookup((l_params),"hideFormControlError")?false:runtime.memberLookup((l_params),"error")),"classes": runtime.memberLookup((l_params),"classe"),"lang": runtime.memberLookup((l_params),"langs")},runtime.makeKeywordArgs({"caller": (function (){var macro_t_28 = runtime.makeMacro(
+var t_28;
+t_28 = env.getFilter("join").call(context, [runtime.memberLookup((l_params),"id"),"-input-control"]);
+frame.set("controlId", t_28, true);
+if(frame.topLevel) {
+context.setVariable("controlId", t_28);
+}
+if(frame.topLevel) {
+context.addExport("controlId", t_28);
+}
+t_2 += runtime.suppressValue((lineno = 28, colno = 23, runtime.callWrap(t_11, "formControl", context, [{"id": runtime.contextOrFrameLookup(context, frame, "controlId"),"isError": (runtime.memberLookup((l_params),"hideFormControlError")?false:runtime.memberLookup((l_params),"error")),"classes": runtime.memberLookup((l_params),"classe"),"lang": runtime.memberLookup((l_params),"langs")},runtime.makeKeywordArgs({"caller": (function (){var macro_t_29 = runtime.makeMacro(
 [], 
 [], 
 function (kwargs) {
@@ -2512,7 +2521,7 @@ frame = frame.push(true);
 kwargs = kwargs || {};
 if (Object.prototype.hasOwnProperty.call(kwargs, "caller")) {
 frame.set("caller", kwargs.caller); }
-var t_29 = "";t_29 += runtime.suppressValue((lineno = 29, colno = 21, runtime.callWrap(t_19, "label", context, [{"label": runtime.memberLookup((l_params),"label"),"id": runtime.contextOrFrameLookup(context, frame, "labelId"),"for": runtime.memberLookup((l_params),"id"),"isPageHeading": runtime.contextOrFrameLookup(context, frame, "isPageHeading"),"lang": runtime.memberLookup((l_params),"lang")},runtime.makeKeywordArgs({"caller": (function (){var macro_t_30 = runtime.makeMacro(
+var t_30 = "";t_30 += runtime.suppressValue((lineno = 30, colno = 21, runtime.callWrap(t_19, "label", context, [{"label": runtime.memberLookup((l_params),"label"),"id": runtime.contextOrFrameLookup(context, frame, "labelId"),"for": runtime.memberLookup((l_params),"id"),"isPageHeading": runtime.contextOrFrameLookup(context, frame, "isPageHeading"),"lang": runtime.memberLookup((l_params),"lang")},runtime.makeKeywordArgs({"caller": (function (){var macro_t_31 = runtime.makeMacro(
 [], 
 [], 
 function (kwargs) {
@@ -2521,12 +2530,12 @@ frame = frame.push(true);
 kwargs = kwargs || {};
 if (Object.prototype.hasOwnProperty.call(kwargs, "caller")) {
 frame.set("caller", kwargs.caller); }
-var t_31 = "";;
+var t_32 = "";;
 frame = frame.pop();
-return new runtime.SafeString(t_31);
+return new runtime.SafeString(t_32);
 });
-return macro_t_30;})()})])), env.opts.autoescape);
-t_29 += runtime.suppressValue((lineno = 31, colno = 20, runtime.callWrap(t_15, "hint", context, [{"hint": runtime.memberLookup((l_params),"hint"),"id": runtime.contextOrFrameLookup(context, frame, "hintId"),"lang": runtime.memberLookup((l_params),"lang")},runtime.makeKeywordArgs({"caller": (function (){var macro_t_32 = runtime.makeMacro(
+return macro_t_31;})()})])), env.opts.autoescape);
+t_30 += runtime.suppressValue((lineno = 32, colno = 20, runtime.callWrap(t_15, "hint", context, [{"hint": runtime.memberLookup((l_params),"hint"),"id": runtime.contextOrFrameLookup(context, frame, "hintId"),"lang": runtime.memberLookup((l_params),"lang")},runtime.makeKeywordArgs({"caller": (function (){var macro_t_33 = runtime.makeMacro(
 [], 
 [], 
 function (kwargs) {
@@ -2535,12 +2544,12 @@ frame = frame.push(true);
 kwargs = kwargs || {};
 if (Object.prototype.hasOwnProperty.call(kwargs, "caller")) {
 frame.set("caller", kwargs.caller); }
-var t_33 = "";;
+var t_34 = "";;
 frame = frame.pop();
-return new runtime.SafeString(t_33);
+return new runtime.SafeString(t_34);
 });
-return macro_t_32;})()})])), env.opts.autoescape);
-t_29 += runtime.suppressValue((lineno = 33, colno = 28, runtime.callWrap(t_23, "errorMessage", context, [{"message": runtime.memberLookup((l_params),"error"),"id": runtime.contextOrFrameLookup(context, frame, "errorId"),"lang": runtime.memberLookup((l_params),"lang")},runtime.makeKeywordArgs({"caller": (function (){var macro_t_34 = runtime.makeMacro(
+return macro_t_33;})()})])), env.opts.autoescape);
+t_30 += runtime.suppressValue((lineno = 34, colno = 28, runtime.callWrap(t_23, "errorMessage", context, [{"message": runtime.memberLookup((l_params),"error"),"id": runtime.contextOrFrameLookup(context, frame, "errorId"),"lang": runtime.memberLookup((l_params),"lang")},runtime.makeKeywordArgs({"caller": (function (){var macro_t_35 = runtime.makeMacro(
 [], 
 [], 
 function (kwargs) {
@@ -2549,42 +2558,42 @@ frame = frame.push(true);
 kwargs = kwargs || {};
 if (Object.prototype.hasOwnProperty.call(kwargs, "caller")) {
 frame.set("caller", kwargs.caller); }
-var t_35 = "";;
+var t_36 = "";;
 frame = frame.pop();
-return new runtime.SafeString(t_35);
+return new runtime.SafeString(t_36);
 });
-return macro_t_34;})()})])), env.opts.autoescape);
-t_29 += "<input id=\"";
-t_29 += runtime.suppressValue(runtime.memberLookup((l_params),"id"), env.opts.autoescape);
-t_29 += "\"";
+return macro_t_35;})()})])), env.opts.autoescape);
+t_30 += "<input id=\"";
+t_30 += runtime.suppressValue(runtime.memberLookup((l_params),"id"), env.opts.autoescape);
+t_30 += "\"";
 if(runtime.memberLookup((l_params),"name")) {
-t_29 += " name=\"";
-t_29 += runtime.suppressValue(runtime.memberLookup((l_params),"name"), env.opts.autoescape);
-t_29 += "\"";
+t_30 += " name=\"";
+t_30 += runtime.suppressValue(runtime.memberLookup((l_params),"name"), env.opts.autoescape);
+t_30 += "\"";
 ;
 }
-t_29 += " type=\"file\" class=\"govcy-file-upload\"";
+t_30 += " type=\"file\" class=\"govcy-file-upload\"";
 if(runtime.memberLookup((l_params),"hint") || runtime.memberLookup((l_params),"error")) {
-t_29 += " aria-describedby=\"";
+t_30 += " aria-describedby=\"";
 if(runtime.memberLookup((l_params),"hint")) {
-t_29 += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "hintId"), env.opts.autoescape);
-t_29 += " ";
+t_30 += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "hintId"), env.opts.autoescape);
+t_30 += " ";
 ;
 }
 if(runtime.memberLookup((l_params),"error")) {
-t_29 += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "errorId"), env.opts.autoescape);
-t_29 += " ";
+t_30 += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "errorId"), env.opts.autoescape);
+t_30 += " ";
 ;
 }
-t_29 += "\"";
+t_30 += "\"";
 ;
 }
-t_29 += ">\n    ";
+t_30 += ">\n    ";
 ;
 frame = frame.pop();
-return new runtime.SafeString(t_29);
+return new runtime.SafeString(t_30);
 });
-return macro_t_28;})()})])), env.opts.autoescape);
+return macro_t_29;})()})])), env.opts.autoescape);
 ;
 }
 })})})})})})})})})});
@@ -2673,7 +2682,7 @@ context.setVariable("hint", t_16);
 var t_17;
 t_17 = (function() {
 var output = "";
-output += runtime.suppressValue((lineno = 17, colno = 41, runtime.callWrap(t_8, "govcyGetContent", context, ["fileView_view",runtime.memberLookup((l_params),"lang")])), env.opts.autoescape);
+output += runtime.suppressValue((lineno = 18, colno = 41, runtime.callWrap(t_8, "govcyGetContent", context, ["fileView_view",runtime.memberLookup((l_params),"lang")])), env.opts.autoescape);
 ;
 return output;
 })()
@@ -2688,7 +2697,7 @@ context.addExport("viewLabel", t_17);
 var t_18;
 t_18 = (function() {
 var output = "";
-output += runtime.suppressValue((lineno = 18, colno = 43, runtime.callWrap(t_8, "govcyGetContent", context, ["fileView_delete",runtime.memberLookup((l_params),"lang")])), env.opts.autoescape);
+output += runtime.suppressValue((lineno = 19, colno = 43, runtime.callWrap(t_8, "govcyGetContent", context, ["fileView_delete",runtime.memberLookup((l_params),"lang")])), env.opts.autoescape);
 ;
 return output;
 })()
@@ -2701,8 +2710,15 @@ if(frame.topLevel) {
 context.addExport("deleteLabel", t_18);
 }
 if(runtime.memberLookup((l_params),"label") && runtime.memberLookup((l_params),"viewHref") && runtime.memberLookup((l_params),"deleteHref")) {
-t_2 += "<div class=\"govcy-form\">\n    ";
-t_2 += runtime.suppressValue((lineno = 22, colno = 23, runtime.callWrap(t_12, "formControl", context, [{"classes": runtime.memberLookup((l_params),"classes"),"lang": runtime.memberLookup((l_params),"lang")},runtime.makeKeywordArgs({"caller": (function (){var macro_t_19 = runtime.makeMacro(
+t_2 += "<div ";
+if(runtime.memberLookup((l_params),"id")) {
+t_2 += "id=\"";
+t_2 += runtime.suppressValue(runtime.memberLookup((l_params),"id"), env.opts.autoescape);
+t_2 += "-view-control\" ";
+;
+}
+t_2 += "class=\"govcy-form\">\n    ";
+t_2 += runtime.suppressValue((lineno = 23, colno = 23, runtime.callWrap(t_12, "formControl", context, [{"classes": runtime.memberLookup((l_params),"classes"),"lang": runtime.memberLookup((l_params),"lang")},runtime.makeKeywordArgs({"caller": (function (){var macro_t_19 = runtime.makeMacro(
 [], 
 [], 
 function (kwargs) {
@@ -2719,7 +2735,7 @@ else {
 t_20 += "<p class=\"govcy-label govcy-label-primary\">";
 ;
 }
-t_20 += runtime.suppressValue((lineno = 23, colno = 135, runtime.callWrap(t_6, "govcyLocalizeContent", context, [runtime.memberLookup((l_params),"label"),runtime.memberLookup((l_params),"lang")])), env.opts.autoescape);
+t_20 += runtime.suppressValue((lineno = 24, colno = 135, runtime.callWrap(t_6, "govcyLocalizeContent", context, [runtime.memberLookup((l_params),"label"),runtime.memberLookup((l_params),"lang")])), env.opts.autoescape);
 if(runtime.memberLookup((l_params),"isPageHeading")) {
 t_20 += "</h1>";
 ;
@@ -2728,7 +2744,7 @@ else {
 t_20 += "</p>";
 ;
 }
-t_20 += runtime.suppressValue((lineno = 25, colno = 20, runtime.callWrap(t_16, "hint", context, [{"hint": runtime.memberLookup((l_params),"hint"),"lang": runtime.memberLookup((l_params),"lang")},runtime.makeKeywordArgs({"caller": (function (){var macro_t_21 = runtime.makeMacro(
+t_20 += runtime.suppressValue((lineno = 26, colno = 20, runtime.callWrap(t_16, "hint", context, [{"hint": runtime.memberLookup((l_params),"hint"),"lang": runtime.memberLookup((l_params),"lang")},runtime.makeKeywordArgs({"caller": (function (){var macro_t_21 = runtime.makeMacro(
 [], 
 [], 
 function (kwargs) {
@@ -2748,7 +2764,7 @@ t_20 += "\">";
 t_20 += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "viewLabel"), env.opts.autoescape);
 if(runtime.memberLookup((l_params),"visuallyHiddenText")) {
 t_20 += "<span class=\"govcy-visually-hidden\">";
-t_20 += runtime.suppressValue((lineno = 27, colno = 146, runtime.callWrap(t_6, "govcyLocalizeContent", context, [runtime.memberLookup((l_params),"visuallyHiddenText"),runtime.memberLookup((l_params),"lang")])), env.opts.autoescape);
+t_20 += runtime.suppressValue((lineno = 28, colno = 146, runtime.callWrap(t_6, "govcyLocalizeContent", context, [runtime.memberLookup((l_params),"visuallyHiddenText"),runtime.memberLookup((l_params),"lang")])), env.opts.autoescape);
 t_20 += "</span>";
 ;
 }
@@ -2759,7 +2775,7 @@ t_20 += "\">";
 t_20 += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "deleteLabel"), env.opts.autoescape);
 if(runtime.memberLookup((l_params),"visuallyHiddenText")) {
 t_20 += "<span class=\"govcy-visually-hidden\">";
-t_20 += runtime.suppressValue((lineno = 29, colno = 169, runtime.callWrap(t_6, "govcyLocalizeContent", context, [runtime.memberLookup((l_params),"visuallyHiddenText"),runtime.memberLookup((l_params),"lang")])), env.opts.autoescape);
+t_20 += runtime.suppressValue((lineno = 30, colno = 169, runtime.callWrap(t_6, "govcyLocalizeContent", context, [runtime.memberLookup((l_params),"visuallyHiddenText"),runtime.memberLookup((l_params),"lang")])), env.opts.autoescape);
 t_20 += "</span>";
 ;
 }
