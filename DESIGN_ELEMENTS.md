@@ -753,6 +753,7 @@ This element is used to add a fileView as defined in the [UDS - file upload, pre
 ```js
 /**
  @param {object} label The label text. Will escape text. `{en:"Content",el:"Περιεχομένο"}`
+ @param {string} id The input id. Will append '-view-control', for example 'id-card-proof-view-control'. Optional
  @param {string} viewHref The view link's href. Will escape text 
  @param {string} deleteHref The delete link's href. Will escape text 
  @param {object} visuallyHiddenText The visuallyHiddenText text. Optional. Will escape text. `{en:"Content",el:"Περιεχομένο"}` 

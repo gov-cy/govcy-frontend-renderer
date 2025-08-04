@@ -25,7 +25,8 @@
     {%- set hintId = [params.id, "-hint"] | join -%}
     {%- set labelId = [params.id, "-label"] | join -%}
     {%- set errorId = [params.id, "-error"] | join -%}
-    {% call formControl({isError: false if params.hideFormControlError else params.error,classes:params.classe, lang:params.langs}) %}
+    {%- set controlId = [params.id, "-input-control"] | join -%}
+    {% call formControl({id:controlId,isError: false if params.hideFormControlError else params.error,classes:params.classe, lang:params.langs}) %}
         {#- render label -#}
         {% call label({label:params.label, id:labelId, for:params.id, isPageHeading:isPageHeading, lang:params.lang}) %}{% endcall %}
         {#- render hint -#}

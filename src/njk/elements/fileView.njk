@@ -1,5 +1,6 @@
 {# file view and delete 
  @param {object} label The label text. Will escape text. `{en:"Content",el:"Περιεχομένο"}`
+ @param {string} id The input id. Will append '-view-control', for example 'id-card-proof-view-control'. Optional
  @param {string} viewHref The view link's href. Will escape text 
  @param {string} deleteHref The delete link's href. Will escape text 
  @param {object} visuallyHiddenText The visuallyHiddenText text. Optional. Will escape text. `{en:"Content",el:"Περιεχομένο"}` 
@@ -19,7 +20,7 @@
 {%- set deleteLabel -%} {{- govcyGetContent('fileView_delete', params.lang) -}}{%- endset -%}
 {#- label, viewHref and deleteHref are mandatory -#}
 {%- if params.label and params.viewHref and params.deleteHref -%}
-    <div class="govcy-form">
+    <div {% if params.id %}id="{{ params.id }}-view-control" {% endif %}class="govcy-form">
     {% call formControl({classes:params.classes, lang:params.lang}) %}
         {%- if params.isPageHeading -%}<h1>{%- else -%}<p class="govcy-label govcy-label-primary">{%- endif -%}{{- govcyLocalizeContent(params.label, params.lang) -}}{%- if params.isPageHeading -%}</h1>{%- else -%}</p>{%- endif -%}
         {#- render hint -#}

@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.18.1] - 2025-08-04
+### Changed
+- `fileInput` now renders an id (`{{params.id}}-input-control`) in the element's top level form-control. 
+- `fileView` now renders an id (`{{params.id}}-view-control`) in the element's top level form-control. 
+
 ## [v1.18.0] - 2025-08-04
 ### Added 
 - Footer icons support with `site.footerIcons`
