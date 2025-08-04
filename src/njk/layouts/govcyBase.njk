@@ -15,7 +15,67 @@ To use this template you need to pass the following data:
         {"label": {"en":"Cookies", "el":"Cookies"}, "href": "#"},
         {"label": {"en":"Accessibility", "el":"Προσβασιμότητα"}, "href": "#"},
         {"label": {"en":"Help us improve this service", "el":"Βοηθήστε μας να βελτιώσουμε αυτή την υπηρεσία"}, "href": "#"},
-    ],    
+    ],
+    "footerIcons": [
+        {
+            "src": {
+                "en": "https://cdn.jsdelivr.net/gh/gov-cy/govdesign@main/seals/ssv-certificate-verification-info.svg",
+                "el": "https://cdn.jsdelivr.net/gh/gov-cy/govdesign@main/seals/ssv-certificate-verification-info.svg"
+            },
+            "alt": {
+                "en": "Service Standard Verified seal", 
+                "el": "Σφραγίδα Πιστοποίησης Υπηρεσίας"
+            },
+            "href": {
+                "en": "https://dsf.dmrid.gov.cy/2022/11/15/update-my-details/",
+                "el": "https://dsf.dmrid.gov.cy/2022/11/15/update-my-details/"
+            },
+            "style": {
+                "en": "content: url(https://cdn.jsdelivr.net/gh/gov-cy/govdesign@main/seals/ssv-certificate-verification-info.svg) !important;aspect-ratio: auto;height: 53px !important;",
+                "el": "content: url(https://cdn.jsdelivr.net/gh/gov-cy/govdesign@main/seals/ssv-certificate-verification-info.svg) !important;aspect-ratio: auto;height: 53px !important;"
+            },
+            "target": "_blank",
+            "classes": "govcy-mr-3"
+        },
+        {
+            "src": {
+                "en": "https://cdn.jsdelivr.net/gh/gov-cy/govdesign@main/FundedbyEU_NextGeneration_H53-EN.png",
+                "el": "https://cdn.jsdelivr.net/gh/gov-cy/govdesign@main/FundedbyEU_NextGeneration_H53-EL.png"
+            },
+            "alt": {
+                "en": "Funded by the EU Next Generation EU",
+                "el": "Χρηματοδοτείται από την ΕΕ Next Generation EU"
+            },
+            "href": {
+                "en": "https://europa.eu/",
+                "el": "https://europa.eu/"
+            },
+            "title": {
+                "en": "Go to EU website",
+                "el": "Μετάβαση στην ιστοσελίδα της ΕΕ"
+            },
+            "target": "_blank"
+        },
+        {
+            "src": {
+                "en": "https://cdn.jsdelivr.net/gh/gov-cy/govdesign@main/CYpros%20to%20aurio%20logo%20eng_H53_EN.png",
+                "el": "https://cdn.jsdelivr.net/gh/gov-cy/govdesign@main/CYpros%20to%20aurio%20logo%20eng_H53_EL.png"
+            },
+            "alt": {
+                "en": "Cyprus tomorrow, recovery and resilience plan",
+                "el": "Κύπρος το Αύριο, σχέδιο ανάκαμψης και ανθεντικότητας"
+            },
+            "href": {
+                "en": "http://www.cyprus-tomorrow.gov.cy/",
+                "el": "http://www.cyprus-tomorrow.gov.cy/"
+            },
+            "title": {
+                "en": "Go to Cyprus Tomorrow website",
+                "el": "Μετάβαση στην ιστοσελίδα Κύπρος το Αύριο"
+            },
+            "target": "_blank"
+        }
+    ],
     "copyrightText" : {"en":"Republic of Cyprus, 2025", "el":"Κυπριακή Δημοκρατία, 2025"},
     "menu" : {"en":"Menu", "el":"Μενου"},
     "title" : {"en":"Service title", "el":"Τιτλός υπηρεσίας"}, 
@@ -185,7 +245,17 @@ To use this template you need to pass the following data:
                             {%- endif %}
                             <div class="govcy-d-flex govcy-align-items-center govcy-flex-wrap">
                                 <span class="govcy-fs-2 govcy-fw-bold govcy-mr-6">gov.cy</span>
-                                <span class="govcy-mr-6 govcy-mt-2 govcy-mb-2">&copy; {{ govcyLocalizeContent(site.copyrightText, site.lang) }}</span>
+                                <span class="govcy-mr-6 govcy-mt-2">&copy; {{ govcyLocalizeContent(site.copyrightText, site.lang) }}</span>
+                                {%- if site.footerIcons %}
+                                {% for footerIcon in site.footerIcons %}
+                                {#- src, alt and href are mandatory -#}
+                                {%- if footerIcon.src and footerIcon.alt and footerIcon.href -%}
+                                <a href="{{ govcyLocalizeContent(footerIcon.href, site.lang, true) }}"{% if footerIcon.target %} target="{{ footerIcon.target }}"{% endif %}{% if footerIcon.title %} title="{{ govcyLocalizeContent(footerIcon.title, site.lang) }}"{% endif %}>
+                                    <img class="govcy-eu-logo govcy-mb-2{% if footerIcon.classes %} {{ footerIcon.classes }}{% endif %}" src="{{ govcyLocalizeContent(footerIcon.src, site.lang, true) }}" alt="{{ govcyLocalizeContent(footerIcon.alt, site.lang, true) }}"{% if footerIcon.style %} style="{{ govcyLocalizeContent(footerIcon.style, site.lang, true) }}"{% endif %}>
+                                </a>
+                                {%- endif %}
+                                {% endfor %}
+                                {%- endif %}
                             </div>
                         </div>
                         <div class="govcy-my-4">

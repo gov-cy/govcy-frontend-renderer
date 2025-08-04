@@ -79,6 +79,66 @@ const inputData =
             {"label": {"en":"Accessibility", "el":"Προσβασιμότητα"}, "href": "#"},
             {"label": {"en":"Help us improve this service", "el":"Βοηθήστε μας να βελτιώσουμε αυτή την υπηρεσία"}, "href": "#"}
         ],
+        "footerIcons": [
+            {
+                "src": {
+                    "en": "https://cdn.jsdelivr.net/gh/gov-cy/govdesign@main/seals/ssv-certificate-verification-info.svg",
+                    "el": "https://cdn.jsdelivr.net/gh/gov-cy/govdesign@main/seals/ssv-certificate-verification-info.svg"
+                },
+                "alt": {
+                    "en": "Service Standard Verified seal", 
+                    "el": "Σφραγίδα Πιστοποίησης Υπηρεσίας"
+                },
+                "href": {
+                    "en": "https://dsf.dmrid.gov.cy/2022/11/15/update-my-details/",
+                    "el": "https://dsf.dmrid.gov.cy/2022/11/15/update-my-details/"
+                },
+                "style": {
+                    "en": "content: url(https://cdn.jsdelivr.net/gh/gov-cy/govdesign@main/seals/ssv-certificate-verification-info.svg) !important;aspect-ratio: auto;height: 53px !important;",
+                    "el": "content: url(https://cdn.jsdelivr.net/gh/gov-cy/govdesign@main/seals/ssv-certificate-verification-info.svg) !important;aspect-ratio: auto;height: 53px !important;"
+                },
+                "target": "_blank",
+                "classes": "govcy-mr-3"
+            },
+            {
+                "src": {
+                    "en": "https://cdn.jsdelivr.net/gh/gov-cy/govdesign@main/FundedbyEU_NextGeneration_H53-EN.png",
+                    "el": "https://cdn.jsdelivr.net/gh/gov-cy/govdesign@main/FundedbyEU_NextGeneration_H53-EL.png"
+                },
+                "alt": {
+                    "en": "Funded by the EU Next Generation EU",
+                    "el": "Χρηματοδοτείται από την ΕΕ Next Generation EU"
+                },
+                "href": {
+                    "en": "https://europa.eu/",
+                    "el": "https://europa.eu/"
+                },
+                "title": {
+                    "en": "Go to EU website",
+                    "el": "Μετάβαση στην ιστοσελίδα της ΕΕ"
+                },
+                "target": "_blank"
+            },
+            {
+                "src": {
+                    "en": "https://cdn.jsdelivr.net/gh/gov-cy/govdesign@main/CYpros%20to%20aurio%20logo%20eng_H53_EN.png",
+                    "el": "https://cdn.jsdelivr.net/gh/gov-cy/govdesign@main/CYpros%20to%20aurio%20logo%20eng_H53_EL.png"
+                },
+                "alt": {
+                    "en": "Cyprus tomorrow, recovery and resilience plan",
+                    "el": "Κύπρος το Αύριο, σχέδιο ανάκαμψης και ανθεντικότητας"
+                },
+                "href": {
+                    "en": "http://www.cyprus-tomorrow.gov.cy/",
+                    "el": "http://www.cyprus-tomorrow.gov.cy/"
+                },
+                "title": {
+                    "en": "Go to Cyprus Tomorrow website",
+                    "el": "Μετάβαση στην ιστοσελίδα Κύπρος το Αύριο"
+                },
+                "target": "_blank"
+            }
+        ],
         "copyrightText" : {"en":"Republic of Cyprus, 2025", "el":"Κυπριακή Δημοκρατία, 2025"},
         "menu" : {"en":"Menu", "el":"Μενου"},
         "title" : {"en":"Service title", "el":"Τιτλός υπηρεσίας"}, 
@@ -173,6 +233,66 @@ const inputData =
             {"label": {"en":"Cookies", "el":"Cookies"}, "href": "#"},
             {"label": {"en":"Accessibility", "el":"Προσβασιμότητα"}, "href": "#"},
             {"label": {"en":"Help us improve this service", "el":"Βοηθήστε μας να βελτιώσουμε αυτή την υπηρεσία"}, "href": "#"}
+        ],
+        "footerIcons": [
+            {
+                "src": {
+                    "en": "https://cdn.jsdelivr.net/gh/gov-cy/govdesign@main/seals/ssv-certificate-verification-info.svg",
+                    "el": "https://cdn.jsdelivr.net/gh/gov-cy/govdesign@main/seals/ssv-certificate-verification-info.svg"
+                },
+                "alt": {
+                    "en": "Service Standard Verified seal", 
+                    "el": "Σφραγίδα Πιστοποίησης Υπηρεσίας"
+                },
+                "href": {
+                    "en": "https://dsf.dmrid.gov.cy/2022/11/15/update-my-details/",
+                    "el": "https://dsf.dmrid.gov.cy/2022/11/15/update-my-details/"
+                },
+                "style": {
+                    "en": "content: url(https://cdn.jsdelivr.net/gh/gov-cy/govdesign@main/seals/ssv-certificate-verification-info.svg) !important;aspect-ratio: auto;height: 53px !important;",
+                    "el": "content: url(https://cdn.jsdelivr.net/gh/gov-cy/govdesign@main/seals/ssv-certificate-verification-info.svg) !important;aspect-ratio: auto;height: 53px !important;"
+                },
+                "target": "_blank",
+                "classes": "govcy-mr-3"
+            },
+            {
+                "src": {
+                    "en": "https://cdn.jsdelivr.net/gh/gov-cy/govdesign@main/FundedbyEU_NextGeneration_H53-EN.png",
+                    "el": "https://cdn.jsdelivr.net/gh/gov-cy/govdesign@main/FundedbyEU_NextGeneration_H53-EL.png"
+                },
+                "alt": {
+                    "en": "Funded by the EU Next Generation EU",
+                    "el": "Χρηματοδοτείται από την ΕΕ Next Generation EU"
+                },
+                "href": {
+                    "en": "https://europa.eu/",
+                    "el": "https://europa.eu/"
+                },
+                "title": {
+                    "en": "Go to EU website",
+                    "el": "Μετάβαση στην ιστοσελίδα της ΕΕ"
+                },
+                "target": "_blank"
+            },
+            {
+                "src": {
+                    "en": "https://cdn.jsdelivr.net/gh/gov-cy/govdesign@main/CYpros%20to%20aurio%20logo%20eng_H53_EN.png",
+                    "el": "https://cdn.jsdelivr.net/gh/gov-cy/govdesign@main/CYpros%20to%20aurio%20logo%20eng_H53_EL.png"
+                },
+                "alt": {
+                    "en": "Cyprus tomorrow, recovery and resilience plan",
+                    "el": "Κύπρος το Αύριο, σχέδιο ανάκαμψης και ανθεντικότητας"
+                },
+                "href": {
+                    "en": "http://www.cyprus-tomorrow.gov.cy/",
+                    "el": "http://www.cyprus-tomorrow.gov.cy/"
+                },
+                "title": {
+                    "en": "Go to Cyprus Tomorrow website",
+                    "el": "Μετάβαση στην ιστοσελίδα Κύπρος το Αύριο"
+                },
+                "target": "_blank"
+            }
         ],
         "copyrightText" : {"en":"Republic of Cyprus, 2025", "el":"Κυπριακή Δημοκρατία, 2025"},
         "menu" : {"en":"Menu", "el":"Μενου"},
@@ -317,6 +437,7 @@ The `inputData` object has the following structure:
 - **site.lang**: the language of the site. It is used both in the `<html lang` attribute and to define the default language to be used by the individual design elements defined in the template. 
 - **site.languages**: the languages in the language menu.
 - **site.footerLinks**: the links of the footer.
+- **site.footerIcons**: the icons with links of the footer.
 - **site.copyrightText**: the text of the copyright in the footer, including the year.
 - **site.menu**: the menu label.
 - **site.title**: the title of the site. It is used in the `<title>`, `<meta property="og:title"` and `<meta property="twitter:title"` tags of the head.

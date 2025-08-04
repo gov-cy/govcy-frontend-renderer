@@ -174,3 +174,74 @@ describe('6. Testing `govcyFrontendRenderer.renderFromJSON` manifest rendering',
     });
 });
 
+describe('7. Testing `govcyFrontendRenderer.renderFromJSON` footerIcons rendering', () => {
+    let renderedHTML = "";
+    it('7.1 `renderFromJSON` with footerIcons data (EN)', async () => {
+        renderedHTML = renderJsonTest(
+            {
+                site: {
+                    lang: 'en',
+                    footerIcons: [
+                        {
+                            src: { en: "https://example.com/icon-en.svg", el: "https://example.com/icon-el.svg" },
+                            alt: { en: "English Icon", el: "Ελληνικό εικονίδιο" },
+                            href: { en: "https://example.com", el: "https://example.com/el" },
+                            target: "_blank"
+                        }
+                    ]
+                },
+                pageData: {
+                    title: { en: "Page title", el: "Τιτλός σελιδας" },
+                    layout: "layouts/govcyBase.njk",
+                    mainLayout: "max-width"
+                }
+            }
+        );
+        let expectedRegex = /<a href="https:\/\/example\.com" target="_blank">\s*<img[^>]+src="https:\/\/example\.com\/icon-en\.svg"[^>]+alt="English Icon"/;
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+
+    it('7.2 `renderFromJSON` with footerIcons data (EL)', async () => {
+        renderedHTML = renderJsonTest(
+            {
+                site: {
+                    lang: 'el',
+                    footerIcons: [
+                        {
+                            src: { en: "https://example.com/icon-en.svg", el: "https://example.com/icon-el.svg" },
+                            alt: { en: "English Icon", el: "Ελληνικό εικονίδιο" },
+                            href: { en: "https://example.com", el: "https://example.com/el" },
+                            target: "_blank"
+                        }
+                    ]
+                },
+                pageData: {
+                    title: { en: "Page title", el: "Τιτλός σελιδας" },
+                    layout: "layouts/govcyBase.njk",
+                    mainLayout: "max-width"
+                }
+            }
+        );
+        let expectedRegex = /<a href="https:\/\/example\.com\/el" target="_blank">\s*<img[^>]+src="https:\/\/example\.com\/icon-el\.svg"[^>]+alt="Ελληνικό εικονίδιο"/;
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+
+    it('7.3 `renderFromJSON` without footerIcons data', async () => {
+        renderedHTML = renderJsonTest(
+            {
+                site: {
+                    lang: 'en'
+                },
+                pageData: {
+                    title: { en: "Page title", el: "Τιτλός σελιδας" },
+                    layout: "layouts/govcyBase.njk",
+                    mainLayout: "max-width"
+                }
+            }
+        );
+        let expectedRegex = /govcy-eu-logo/;
+        expect(renderedHTML).to.not.match(expectedRegex);
+    });
+});
+
+
