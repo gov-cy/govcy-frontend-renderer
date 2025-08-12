@@ -2829,7 +2829,61 @@ kwargs = kwargs || {};
 if (Object.prototype.hasOwnProperty.call(kwargs, "caller")) {
 frame.set("caller", kwargs.caller); }
 frame.set("params", l_params);
-var t_2 = "";t_2 += "<form ";
+var t_2 = "";if(runtime.memberLookup((l_params),"enctype") == "application") {
+var t_3;
+t_3 = "application/x-www-form-urlencoded";
+frame.set("enctype", t_3, true);
+if(frame.topLevel) {
+context.setVariable("enctype", t_3);
+}
+if(frame.topLevel) {
+context.addExport("enctype", t_3);
+}
+;
+}
+else {
+if(runtime.memberLookup((l_params),"enctype") == "multipart") {
+var t_4;
+t_4 = "multipart/form-data";
+frame.set("enctype", t_4, true);
+if(frame.topLevel) {
+context.setVariable("enctype", t_4);
+}
+if(frame.topLevel) {
+context.addExport("enctype", t_4);
+}
+;
+}
+else {
+if(runtime.memberLookup((l_params),"enctype") == "text") {
+var t_5;
+t_5 = "text/plain";
+frame.set("enctype", t_5, true);
+if(frame.topLevel) {
+context.setVariable("enctype", t_5);
+}
+if(frame.topLevel) {
+context.addExport("enctype", t_5);
+}
+;
+}
+else {
+var t_6;
+t_6 = false;
+frame.set("enctype", t_6, true);
+if(frame.topLevel) {
+context.setVariable("enctype", t_6);
+}
+if(frame.topLevel) {
+context.addExport("enctype", t_6);
+}
+;
+}
+;
+}
+;
+}
+t_2 += "<form ";
 if(runtime.memberLookup((l_params),"id")) {
 t_2 += "id=\"";
 t_2 += runtime.suppressValue(runtime.memberLookup((l_params),"id"), env.opts.autoescape);
@@ -2842,6 +2896,12 @@ t_2 += runtime.suppressValue(runtime.memberLookup((l_params),"method"), env.opts
 t_2 += "\" ";
 ;
 }
+if(runtime.contextOrFrameLookup(context, frame, "enctype")) {
+t_2 += " enctype=\"";
+t_2 += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "enctype"), env.opts.autoescape);
+t_2 += "\" ";
+;
+}
 t_2 += "action=\"";
 t_2 += runtime.suppressValue(runtime.memberLookup((l_params),"action"), env.opts.autoescape);
 t_2 += "\" class=\"govcy-form";
@@ -2851,33 +2911,33 @@ t_2 += runtime.suppressValue(runtime.memberLookup((l_params),"classes"), env.opt
 ;
 }
 t_2 += "\" novalidate=\"\">\n    ";
-t_2 += runtime.suppressValue((lineno = 14, colno = 13, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "caller"), "caller", context, [])), env.opts.autoescape);
+t_2 += runtime.suppressValue((lineno = 28, colno = 13, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "caller"), "caller", context, [])), env.opts.autoescape);
 if(runtime.memberLookup((l_params),"elements")) {
-env.getTemplate("govcyElement.njk", false, "elements/form.njk", false, function(t_4,t_3) {
-if(t_4) { cb(t_4); return; }
-t_3.getExported(function(t_5,t_3) {
-if(t_5) { cb(t_5); return; }
-if(Object.prototype.hasOwnProperty.call(t_3, "govcyElement")) {
-var t_6 = t_3.govcyElement;
+env.getTemplate("govcyElement.njk", false, "elements/form.njk", false, function(t_8,t_7) {
+if(t_8) { cb(t_8); return; }
+t_7.getExported(function(t_9,t_7) {
+if(t_9) { cb(t_9); return; }
+if(Object.prototype.hasOwnProperty.call(t_7, "govcyElement")) {
+var t_10 = t_7.govcyElement;
 } else {
 cb(new Error("cannot import 'govcyElement'")); return;
 }
-context.setVariable("govcyElement", t_6);
+context.setVariable("govcyElement", t_10);
 frame = frame.push();
-var t_9 = runtime.memberLookup((l_params),"elements");
-if(t_9) {t_9 = runtime.fromIterator(t_9);
-var t_8 = t_9.length;
-for(var t_7=0; t_7 < t_9.length; t_7++) {
-var t_10 = t_9[t_7];
-frame.set("element", t_10);
-frame.set("loop.index", t_7 + 1);
-frame.set("loop.index0", t_7);
-frame.set("loop.revindex", t_8 - t_7);
-frame.set("loop.revindex0", t_8 - t_7 - 1);
-frame.set("loop.first", t_7 === 0);
-frame.set("loop.last", t_7 === t_8 - 1);
-frame.set("loop.length", t_8);
-t_2 += runtime.suppressValue((lineno = 20, colno = 33, runtime.callWrap(t_6, "govcyElement", context, [runtime.memberLookup((t_10),"element"),runtime.memberLookup((t_10),"params"),runtime.makeKeywordArgs({"caller": (function (){var macro_t_11 = runtime.makeMacro(
+var t_13 = runtime.memberLookup((l_params),"elements");
+if(t_13) {t_13 = runtime.fromIterator(t_13);
+var t_12 = t_13.length;
+for(var t_11=0; t_11 < t_13.length; t_11++) {
+var t_14 = t_13[t_11];
+frame.set("element", t_14);
+frame.set("loop.index", t_11 + 1);
+frame.set("loop.index0", t_11);
+frame.set("loop.revindex", t_12 - t_11);
+frame.set("loop.revindex0", t_12 - t_11 - 1);
+frame.set("loop.first", t_11 === 0);
+frame.set("loop.last", t_11 === t_12 - 1);
+frame.set("loop.length", t_12);
+t_2 += runtime.suppressValue((lineno = 34, colno = 33, runtime.callWrap(t_10, "govcyElement", context, [runtime.memberLookup((t_14),"element"),runtime.memberLookup((t_14),"params"),runtime.makeKeywordArgs({"caller": (function (){var macro_t_15 = runtime.makeMacro(
 [], 
 [], 
 function (kwargs) {
@@ -2886,11 +2946,11 @@ frame = frame.push(true);
 kwargs = kwargs || {};
 if (Object.prototype.hasOwnProperty.call(kwargs, "caller")) {
 frame.set("caller", kwargs.caller); }
-var t_12 = "";;
+var t_16 = "";;
 frame = frame.pop();
-return new runtime.SafeString(t_12);
+return new runtime.SafeString(t_16);
 });
-return macro_t_11;})()})])), env.opts.autoescape);
+return macro_t_15;})()})])), env.opts.autoescape);
 ;
 }
 }

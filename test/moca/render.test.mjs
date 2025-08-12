@@ -1411,6 +1411,14 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
+    it(checksNum+'83a `Form` with `enctype`', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([
+            `<form\\s*id="govcy-test-83a"\\s*enctype="multipart/form-data"\\s*action=""\\s*class="govcy-form"\\s*novalidate="">`, //form with enctype
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
     it(checksNum+'83 `Date Picker` with default options', async () => {
         // check for structure   
         let expectedRegex =  new RegExp ([
