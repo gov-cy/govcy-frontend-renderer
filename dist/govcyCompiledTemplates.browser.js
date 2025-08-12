@@ -2588,7 +2588,16 @@ t_30 += " ";
 t_30 += "\"";
 ;
 }
-t_30 += ">\n    ";
+t_30 += ">\n        ";
+if(runtime.memberLookup((l_params),"name")) {
+t_30 += "<input type=\"hidden\" name=\"";
+t_30 += runtime.suppressValue(runtime.memberLookup((l_params),"name"), env.opts.autoescape);
+t_30 += "Attachment[fileId]\" value=\"\">\n        <input type=\"hidden\" name=\"";
+t_30 += runtime.suppressValue(runtime.memberLookup((l_params),"name"), env.opts.autoescape);
+t_30 += "Attachment[sha256]\" value=\"\">";
+;
+}
+t_30 += "\n    ";
 ;
 frame = frame.pop();
 return new runtime.SafeString(t_30);
@@ -2682,7 +2691,7 @@ context.setVariable("hint", t_16);
 var t_17;
 t_17 = (function() {
 var output = "";
-output += runtime.suppressValue((lineno = 18, colno = 41, runtime.callWrap(t_8, "govcyGetContent", context, ["fileView_view",runtime.memberLookup((l_params),"lang")])), env.opts.autoescape);
+output += runtime.suppressValue((lineno = 21, colno = 41, runtime.callWrap(t_8, "govcyGetContent", context, ["fileView_view",runtime.memberLookup((l_params),"lang")])), env.opts.autoescape);
 ;
 return output;
 })()
@@ -2697,7 +2706,7 @@ context.addExport("viewLabel", t_17);
 var t_18;
 t_18 = (function() {
 var output = "";
-output += runtime.suppressValue((lineno = 19, colno = 43, runtime.callWrap(t_8, "govcyGetContent", context, ["fileView_delete",runtime.memberLookup((l_params),"lang")])), env.opts.autoescape);
+output += runtime.suppressValue((lineno = 22, colno = 43, runtime.callWrap(t_8, "govcyGetContent", context, ["fileView_delete",runtime.memberLookup((l_params),"lang")])), env.opts.autoescape);
 ;
 return output;
 })()
@@ -2718,7 +2727,7 @@ t_2 += "-view-control\" ";
 ;
 }
 t_2 += "class=\"govcy-form\">\n    ";
-t_2 += runtime.suppressValue((lineno = 23, colno = 23, runtime.callWrap(t_12, "formControl", context, [{"classes": runtime.memberLookup((l_params),"classes"),"lang": runtime.memberLookup((l_params),"lang")},runtime.makeKeywordArgs({"caller": (function (){var macro_t_19 = runtime.makeMacro(
+t_2 += runtime.suppressValue((lineno = 26, colno = 23, runtime.callWrap(t_12, "formControl", context, [{"classes": runtime.memberLookup((l_params),"classes"),"lang": runtime.memberLookup((l_params),"lang")},runtime.makeKeywordArgs({"caller": (function (){var macro_t_19 = runtime.makeMacro(
 [], 
 [], 
 function (kwargs) {
@@ -2735,7 +2744,7 @@ else {
 t_20 += "<p class=\"govcy-label govcy-label-primary\">";
 ;
 }
-t_20 += runtime.suppressValue((lineno = 24, colno = 135, runtime.callWrap(t_6, "govcyLocalizeContent", context, [runtime.memberLookup((l_params),"label"),runtime.memberLookup((l_params),"lang")])), env.opts.autoescape);
+t_20 += runtime.suppressValue((lineno = 27, colno = 135, runtime.callWrap(t_6, "govcyLocalizeContent", context, [runtime.memberLookup((l_params),"label"),runtime.memberLookup((l_params),"lang")])), env.opts.autoescape);
 if(runtime.memberLookup((l_params),"isPageHeading")) {
 t_20 += "</h1>";
 ;
@@ -2744,7 +2753,7 @@ else {
 t_20 += "</p>";
 ;
 }
-t_20 += runtime.suppressValue((lineno = 26, colno = 20, runtime.callWrap(t_16, "hint", context, [{"hint": runtime.memberLookup((l_params),"hint"),"lang": runtime.memberLookup((l_params),"lang")},runtime.makeKeywordArgs({"caller": (function (){var macro_t_21 = runtime.makeMacro(
+t_20 += runtime.suppressValue((lineno = 29, colno = 20, runtime.callWrap(t_16, "hint", context, [{"hint": runtime.memberLookup((l_params),"hint"),"lang": runtime.memberLookup((l_params),"lang")},runtime.makeKeywordArgs({"caller": (function (){var macro_t_21 = runtime.makeMacro(
 [], 
 [], 
 function (kwargs) {
@@ -2764,7 +2773,7 @@ t_20 += "\">";
 t_20 += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "viewLabel"), env.opts.autoescape);
 if(runtime.memberLookup((l_params),"visuallyHiddenText")) {
 t_20 += "<span class=\"govcy-visually-hidden\">";
-t_20 += runtime.suppressValue((lineno = 28, colno = 146, runtime.callWrap(t_6, "govcyLocalizeContent", context, [runtime.memberLookup((l_params),"visuallyHiddenText"),runtime.memberLookup((l_params),"lang")])), env.opts.autoescape);
+t_20 += runtime.suppressValue((lineno = 31, colno = 146, runtime.callWrap(t_6, "govcyLocalizeContent", context, [runtime.memberLookup((l_params),"visuallyHiddenText"),runtime.memberLookup((l_params),"lang")])), env.opts.autoescape);
 t_20 += "</span>";
 ;
 }
@@ -2775,11 +2784,24 @@ t_20 += "\">";
 t_20 += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "deleteLabel"), env.opts.autoescape);
 if(runtime.memberLookup((l_params),"visuallyHiddenText")) {
 t_20 += "<span class=\"govcy-visually-hidden\">";
-t_20 += runtime.suppressValue((lineno = 30, colno = 169, runtime.callWrap(t_6, "govcyLocalizeContent", context, [runtime.memberLookup((l_params),"visuallyHiddenText"),runtime.memberLookup((l_params),"lang")])), env.opts.autoescape);
+t_20 += runtime.suppressValue((lineno = 33, colno = 169, runtime.callWrap(t_6, "govcyLocalizeContent", context, [runtime.memberLookup((l_params),"visuallyHiddenText"),runtime.memberLookup((l_params),"lang")])), env.opts.autoescape);
 t_20 += "</span>";
 ;
 }
-t_20 += "</a>\n    ";
+t_20 += "</a>\n        ";
+if(runtime.memberLookup((l_params),"name") && runtime.memberLookup((l_params),"fileId") && runtime.memberLookup((l_params),"sha256")) {
+t_20 += "<input type=\"hidden\" name=\"";
+t_20 += runtime.suppressValue(runtime.memberLookup((l_params),"name"), env.opts.autoescape);
+t_20 += "Attachment[fileId]\" value=\"";
+t_20 += runtime.suppressValue(runtime.memberLookup((l_params),"fileId"), env.opts.autoescape);
+t_20 += "\">\n        <input type=\"hidden\" name=\"";
+t_20 += runtime.suppressValue(runtime.memberLookup((l_params),"name"), env.opts.autoescape);
+t_20 += "Attachment[sha256]\" value=\"";
+t_20 += runtime.suppressValue(runtime.memberLookup((l_params),"sha256"), env.opts.autoescape);
+t_20 += "\">";
+;
+}
+t_20 += "\n    ";
 ;
 frame = frame.pop();
 return new runtime.SafeString(t_20);

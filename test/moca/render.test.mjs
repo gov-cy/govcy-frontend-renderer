@@ -715,6 +715,8 @@ async function renderChecks(renderedHTML, checksNum){
             `\\s*<label\\s*id="govcy-test-45-label"\\s*class="govcy-label\\s*govcy-label-primary"\\s*for="govcy-test-45"\\s*>\\s*File input: English with hint\\s*<\\/label>`, //label
             `\\s*<span\\s*id="govcy-test-45-hint"\\s*class="govcy-hint"\\s*>\\s*PDF, JPG, JPEG, PNG are the acceptable formats\\s*<\\/span>`, //hint
             `\\s*<input\\s*id="govcy-test-45"\\s*name="govcy-test-45"\\s*type="file"\\s*class="govcy-file-upload"\\s*aria-describedby="govcy-test-45-hint\\s*">`, //file input
+            `\\s*<input\\s*type="hidden"\\s*name="govcy-test-45Attachment\\[fileId\\]"\\s*value="">`, //hidden input for fileId
+            `\\s*<input\\s*type="hidden"\\s*name="govcy-test-45Attachment\\[sha256\\]"\\s*value="">`, //hidden input for sha256
             `\\s*<\\/div>` //closing tags
         ].join(''));
         // console.log(expectedRegex);
@@ -728,6 +730,8 @@ async function renderChecks(renderedHTML, checksNum){
             `\\s*<span\\s*id="govcy-test-46-hint"\\s*class="govcy-hint">\\s*English hint\\s*<\\/span>`, //hint
             `\\s*<p\\s*id="govcy-test-46-error"\\s*class="govcy-input-error-msg">\\s*<span\\s*class="govcy-visually-hidden-error">\\s*Error:\\s*<\\/span>\\s*English error\\s*<\\/p>`, //error message
             `\\s*<input\\s*id="govcy-test-46"\\s*name="govcy-test-46"\\s*type="file"\\s*class="govcy-file-upload"\\s*aria-describedby="govcy-test-46-hint\\s*govcy-test-46-error\\s*"\\s*>`, //file input
+            `\\s*<input\\s*type="hidden"\\s*name="govcy-test-46Attachment\\[fileId\\]"\\s*value="">`, //hidden input for fileId
+            `\\s*<input\\s*type="hidden"\\s*name="govcy-test-46Attachment\\[sha256\\]"\\s*value="">`, //hidden input for sha256
             `\\s*<\\/div>` //closing tags
         ].join(''));
         // console.log(expectedRegex);
@@ -2083,6 +2087,21 @@ async function renderChecks(renderedHTML, checksNum){
         // check for structure   
         let expectedRegex =  new RegExp ([
             `<span\\s*id="govcy-test-120"\\s*style="white-space: pre-line;"\\s*>`, //closing tags
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+     it(checksNum+'122 `fileView` macro render as expected. with hidden valies', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([ 
+            `<div\\s*id="govcy-test-122-view-control"\\s*class="govcy-form">`, //form div
+            `\\s*<div class="govcy-form-control">`, //form control
+            `\\s*<p\\s*class="govcy-label\\s*govcy-label-primary">\\s*File view: English with hidden\\s*<\\/p>`, //label
+            `\\s*<a\\s*href="#view122"\\s*>\\s*View\\s*<span\\s*class="govcy-visually-hidden"\\s*>\\s*English visuallyHiddenText\\s*<\\/span><\\/a>`, //links
+            `\\s*<a\\s*class="govcy-ml-3"\\s*href="#delete122"\\s*>\\s*Delete\\s*<span\\s*class="govcy-visually-hidden"\\s*>\\s*English visuallyHiddenText\\s*<\\/span><\\/a>`, //links
+            `\\s*<input\\s*type="hidden"\\s*name="govcy-test-122Attachment\\[fileId\\]"\\s*value="govcy-test-122-fileId">`, //hidden 
+            `\\s*<input\\s*type="hidden"\\s*name="govcy-test-122Attachment\\[sha256\\]"\\s*value="govcy-test-122-sha256">`, //hidden 
+            `\\s*<\\/div>\\s*<\\/div>` //closing tags
         ].join(''));
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);

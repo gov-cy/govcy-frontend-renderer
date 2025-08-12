@@ -737,7 +737,8 @@ This element is used to add a fileInput as defined in the [UDS - file upload](ht
 }}
 ```
 **Notes** :
-In order to get the gov.cy styles, you need to add it inside a `form` element. 
+- In order to get the gov.cy styles, you need to add it inside a `form` element. 
+- If `name` is defined it will render 2 hidden inputs, one for the file id and one for the file sha256.
 </details>
 
 <details>
@@ -760,6 +761,9 @@ This element is used to add a fileView as defined in the [UDS - file upload, pre
  @param {object} hint The hint text. Optional. Will escape text. `{en:"Content",el:"Περιεχομένο"}`
  @param {string} classes Additional classes to add to the outer div. Optional
  @param {boolean} isPageHeading Is the label also the page heading? Optional, default is false. Can be true,false 
+ @param {string} name The input name. Will escape text. Optional
+ @param {string} fileId from upload response. Will escape text. Optional
+ @param {string} sha256  from upload response. Will escape text. Optional
  @param {string} lang The language used. Can be 'en','el'. Optional.
 **/ 
 ```
@@ -785,7 +789,10 @@ This element is used to add a fileView as defined in the [UDS - file upload, pre
         "visuallyHiddenText": {
             "en": "English visuallyHiddenText",
             "el": "Ελληνικά visuallyHiddenText"
-        }
+        },
+        "name": "govcy-test-50",
+        "fileId": "govcy-test-50-fileId",
+        "sha256": "govcy-test-50-sha256"
     }
 }
 ```
@@ -803,13 +810,18 @@ This element is used to add a fileView as defined in the [UDS - file upload, pre
             isPageHeading: true,
             label:{en:"File view: English with all possible options",el:"Ελληνικά label"},
             hint:{en:"English hint",el:"Ελληνικά hint"},
-            visuallyHiddenText:{en:"English visuallyHiddenText",el:"Ελληνικά visuallyHiddenText"}
+            visuallyHiddenText:{en:"English visuallyHiddenText",el:"Ελληνικά visuallyHiddenText"},
+            name: "govcy-test-50",
+            fileId: "govcy-test-50-fileId",
+            sha256: "govcy-test-50-sha256"
         }
     ) 
 }}
 ```
 **Notes** :
-In order to get the gov.cy styles, you need to add it inside a `form` element. 
+- In order to get the gov.cy styles, you need to add it inside a `form` element. 
+- If `name` is defined it will render 2 hidden inputs, one for the file id and one for the file sha256.
+    - If `fileId` and `sha256` are defined it will fill the 2 values in the hidden inputs
 </details>
 
 <details>

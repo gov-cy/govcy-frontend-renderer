@@ -35,6 +35,10 @@
         {% call errorMessage({message:params.error,id:errorId, lang:params.lang}) %}{% endcall %}
         {#- render input -#}
         <input id="{{params.id}}"{% if params.name %} name="{{ params.name }}"{% endif %} type="file" class="govcy-file-upload"{% if params.hint or params.error%} aria-describedby="{% if params.hint %}{{hintId}} {% endif %}{% if params.error %}{{errorId}} {% endif %}"{% endif %}>
+        {% if params.name -%}
+        <input type="hidden" name="{{ params.name }}Attachment[fileId]" value="">
+        <input type="hidden" name="{{ params.name }}Attachment[sha256]" value="">
+        {%- endif %}
     {% endcall %}
 {%- endif -%}
 {%- endmacro %}

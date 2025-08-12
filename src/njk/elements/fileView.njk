@@ -7,6 +7,9 @@
  @param {object} hint The hint text. Optional. Will escape text. `{en:"Content",el:"Περιεχομένο"}`
  @param {string} classes Additional classes to add to the outer div. Optional
  @param {boolean} isPageHeading Is the label also the page heading? Optional, default is false. Can be true,false 
+ @param {string} name The input name. Will escape text. Optional
+ @param {string} fileId from upload response. Will escape text. Optional
+ @param {string} sha256  from upload response. Will escape text. Optional
  @param {string} lang The language used. Can be 'en','el'. Optional.
  @returns govcy file view and delete html 
 #}
@@ -29,6 +32,10 @@
         <a href="{{ params.viewHref }}">{{viewLabel}}{%if params.visuallyHiddenText%}<span class="govcy-visually-hidden"> {{- govcyLocalizeContent(params.visuallyHiddenText, params.lang) -}}</span>{% endif %}</a>
         {#- render delete -#}
         <a class="govcy-ml-3" href="{{ params.deleteHref }}">{{deleteLabel}}{%if params.visuallyHiddenText%}<span class="govcy-visually-hidden"> {{- govcyLocalizeContent(params.visuallyHiddenText, params.lang) -}}</span>{% endif %}</a>
+        {% if params.name -%}
+        <input type="hidden" name="{{ params.name }}Attachment[fileId]" value="{{ params.fileId }}">
+        <input type="hidden" name="{{ params.name }}Attachment[sha256]" value="{{ params.sha256 }}">
+        {%- endif %}
     {% endcall %}
     </div>
 {%- endif -%}
