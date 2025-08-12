@@ -2901,6 +2901,8 @@
                 ,{
                     "element": "form",
                     "params": {
+                        "id":"govcy-test-83a",
+                        "enctype":"multipart",
                         "elements": [
                             {
                                 "element": "datePicker",

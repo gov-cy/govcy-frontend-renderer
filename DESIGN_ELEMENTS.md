@@ -827,6 +827,10 @@ This element is used to add a form as defined in the [UDS](https://gov-cy.github
  @param {string} action. Will escape text 
  @param {string} id The hint id. Will escape text 
  @param {string} classes Additional classes to add to the outer div. Optional 
+ @param {string} enctype The form enctype. Will escape text. Optional. Can be:
+  - `application`
+  - `multipart`
+  - `text`
  @param {array} elements If defined will be rendered elements inside the form. 
     i.e. `[
             {element:"button",params:{text:{en:"Button 1",el:"Κουμπί 1"},lang:"en",id:"govcy-test-23b"} },
@@ -842,6 +846,7 @@ This element is used to add a form as defined in the [UDS](https://gov-cy.github
     "params": {
         "action": "test-action",
         "id": "govcy-test-14",
+        "enctype": "application",
         "elements": [
             {
                 "element": "formControl",
@@ -869,7 +874,7 @@ This element is used to add a form as defined in the [UDS](https://gov-cy.github
 It can be called as a `call`, with text inside the tag as follows:
 
 ```Nunjucks
-{% call govcyElement("form",{ action:"test-action", id:"govcy-test-14"}) %}
+{% call govcyElement("form",{ action:"test-action", id:"govcy-test-14", "enctype": "application"}) %}
     {% call govcyElement("formControl",{ id:"govcy-test-15"}) %}
         Form with action
     {% endcall %}
@@ -884,6 +889,7 @@ OR it can be called using the `params.elements` array as follows:
         {
             action:"test-action", 
             id:"govcy-test-14",
+            "enctype": "application",
             "elements": [
                 {
                     "element": "formControl",

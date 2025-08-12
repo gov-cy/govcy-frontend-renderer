@@ -3,6 +3,10 @@
  @param {string} id The hint id. Will escape text 
  @param {string} classes Additional classes to add to the outer div. Optional 
  @param {string} method The form method. Will escape text. Optional 
+ @param {string} enctype The form enctype. Will escape text. Optional. Can be:
+  - `application`
+  - `multipart`
+  - `text` 
  @param {array} elements If defined will be rendered elements inside the form. 
     i.e. `[
             {element:"button",params:{text:{en:"Button 1",el:"Κουμπί 1"},lang:"en",id:"govcy-test-23b"} },
@@ -11,7 +15,17 @@
  @returns govcy form html 
 #}
 {% macro form(params) -%}
-<form {% if params.id %}id="{{ params.id }}" {% endif %}{% if params.method %} method="{{ params.method }}" {% endif %}action="{{ params.action }}" class="govcy-form{% if params.classes %} {{ params.classes }}{% endif %}" novalidate="">
+{#- set default values -#}
+{%- if params.enctype=='application' -%}
+        {%- set enctype = 'application/x-www-form-urlencoded' -%}
+{%- elif params.enctype=='multipart' -%}
+        {%- set enctype = 'multipart/form-data' -%}
+{%- elif params.enctype=='text' -%}
+        {%- set enctype = 'text/plain' -%}
+{%- else -%}
+        {%- set enctype = false -%}
+{%- endif -%}
+<form {% if params.id %}id="{{ params.id }}" {% endif %}{% if params.method %} method="{{ params.method }}" {% endif %}{% if enctype %} enctype="{{ enctype }}" {% endif %}action="{{ params.action }}" class="govcy-form{% if params.classes %} {{ params.classes }}{% endif %}" novalidate="">
     {{ caller() }}
     {#- if it has elements to be called -#}
     {%- if params.elements -%}
