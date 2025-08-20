@@ -2691,7 +2691,7 @@ context.setVariable("hint", t_16);
 var t_17;
 t_17 = (function() {
 var output = "";
-output += runtime.suppressValue((lineno = 21, colno = 41, runtime.callWrap(t_8, "govcyGetContent", context, ["fileView_view",runtime.memberLookup((l_params),"lang")])), env.opts.autoescape);
+output += runtime.suppressValue((lineno = 23, colno = 41, runtime.callWrap(t_8, "govcyGetContent", context, ["fileView_view",runtime.memberLookup((l_params),"lang")])), env.opts.autoescape);
 ;
 return output;
 })()
@@ -2706,7 +2706,7 @@ context.addExport("viewLabel", t_17);
 var t_18;
 t_18 = (function() {
 var output = "";
-output += runtime.suppressValue((lineno = 22, colno = 43, runtime.callWrap(t_8, "govcyGetContent", context, ["fileView_delete",runtime.memberLookup((l_params),"lang")])), env.opts.autoescape);
+output += runtime.suppressValue((lineno = 24, colno = 43, runtime.callWrap(t_8, "govcyGetContent", context, ["fileView_delete",runtime.memberLookup((l_params),"lang")])), env.opts.autoescape);
 ;
 return output;
 })()
@@ -2727,7 +2727,7 @@ t_2 += "-view-control\" ";
 ;
 }
 t_2 += "class=\"govcy-form\">\n    ";
-t_2 += runtime.suppressValue((lineno = 26, colno = 23, runtime.callWrap(t_12, "formControl", context, [{"classes": runtime.memberLookup((l_params),"classes"),"lang": runtime.memberLookup((l_params),"lang")},runtime.makeKeywordArgs({"caller": (function (){var macro_t_19 = runtime.makeMacro(
+t_2 += runtime.suppressValue((lineno = 28, colno = 23, runtime.callWrap(t_12, "formControl", context, [{"classes": runtime.memberLookup((l_params),"classes"),"lang": runtime.memberLookup((l_params),"lang")},runtime.makeKeywordArgs({"caller": (function (){var macro_t_19 = runtime.makeMacro(
 [], 
 [], 
 function (kwargs) {
@@ -2744,7 +2744,7 @@ else {
 t_20 += "<p class=\"govcy-label govcy-label-primary\">";
 ;
 }
-t_20 += runtime.suppressValue((lineno = 27, colno = 135, runtime.callWrap(t_6, "govcyLocalizeContent", context, [runtime.memberLookup((l_params),"label"),runtime.memberLookup((l_params),"lang")])), env.opts.autoescape);
+t_20 += runtime.suppressValue((lineno = 29, colno = 135, runtime.callWrap(t_6, "govcyLocalizeContent", context, [runtime.memberLookup((l_params),"label"),runtime.memberLookup((l_params),"lang")])), env.opts.autoescape);
 if(runtime.memberLookup((l_params),"isPageHeading")) {
 t_20 += "</h1>";
 ;
@@ -2753,7 +2753,7 @@ else {
 t_20 += "</p>";
 ;
 }
-t_20 += runtime.suppressValue((lineno = 29, colno = 20, runtime.callWrap(t_16, "hint", context, [{"hint": runtime.memberLookup((l_params),"hint"),"lang": runtime.memberLookup((l_params),"lang")},runtime.makeKeywordArgs({"caller": (function (){var macro_t_21 = runtime.makeMacro(
+t_20 += runtime.suppressValue((lineno = 31, colno = 20, runtime.callWrap(t_16, "hint", context, [{"hint": runtime.memberLookup((l_params),"hint"),"lang": runtime.memberLookup((l_params),"lang")},runtime.makeKeywordArgs({"caller": (function (){var macro_t_21 = runtime.makeMacro(
 [], 
 [], 
 function (kwargs) {
@@ -2769,27 +2769,41 @@ return new runtime.SafeString(t_22);
 return macro_t_21;})()})])), env.opts.autoescape);
 t_20 += "<a href=\"";
 t_20 += runtime.suppressValue(runtime.memberLookup((l_params),"viewHref"), env.opts.autoescape);
-t_20 += "\">";
+t_20 += "\"";
+if(runtime.memberLookup((l_params),"viewTarget")) {
+t_20 += " target=\"";
+t_20 += runtime.suppressValue(runtime.memberLookup((l_params),"viewTarget"), env.opts.autoescape);
+t_20 += "\"";
+;
+}
+t_20 += ">";
 t_20 += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "viewLabel"), env.opts.autoescape);
 if(runtime.memberLookup((l_params),"visuallyHiddenText")) {
 t_20 += "<span class=\"govcy-visually-hidden\">";
-t_20 += runtime.suppressValue((lineno = 31, colno = 146, runtime.callWrap(t_6, "govcyLocalizeContent", context, [runtime.memberLookup((l_params),"visuallyHiddenText"),runtime.memberLookup((l_params),"lang")])), env.opts.autoescape);
+t_20 += runtime.suppressValue((lineno = 33, colno = 214, runtime.callWrap(t_6, "govcyLocalizeContent", context, [runtime.memberLookup((l_params),"visuallyHiddenText"),runtime.memberLookup((l_params),"lang")])), env.opts.autoescape);
 t_20 += "</span>";
 ;
 }
 t_20 += "</a>";
 t_20 += "<a class=\"govcy-ml-3\" href=\"";
 t_20 += runtime.suppressValue(runtime.memberLookup((l_params),"deleteHref"), env.opts.autoescape);
-t_20 += "\">";
+t_20 += "\"";
+if(runtime.memberLookup((l_params),"deleteTarget")) {
+t_20 += " target=\"";
+t_20 += runtime.suppressValue(runtime.memberLookup((l_params),"deleteTarget"), env.opts.autoescape);
+t_20 += "\"";
+;
+}
+t_20 += ">";
 t_20 += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "deleteLabel"), env.opts.autoescape);
 if(runtime.memberLookup((l_params),"visuallyHiddenText")) {
 t_20 += "<span class=\"govcy-visually-hidden\">";
-t_20 += runtime.suppressValue((lineno = 33, colno = 169, runtime.callWrap(t_6, "govcyLocalizeContent", context, [runtime.memberLookup((l_params),"visuallyHiddenText"),runtime.memberLookup((l_params),"lang")])), env.opts.autoescape);
+t_20 += runtime.suppressValue((lineno = 35, colno = 241, runtime.callWrap(t_6, "govcyLocalizeContent", context, [runtime.memberLookup((l_params),"visuallyHiddenText"),runtime.memberLookup((l_params),"lang")])), env.opts.autoescape);
 t_20 += "</span>";
 ;
 }
 t_20 += "</a>\n        ";
-if(runtime.memberLookup((l_params),"name") && runtime.memberLookup((l_params),"fileId") && runtime.memberLookup((l_params),"sha256")) {
+if(runtime.memberLookup((l_params),"name")) {
 t_20 += "<input type=\"hidden\" name=\"";
 t_20 += runtime.suppressValue(runtime.memberLookup((l_params),"name"), env.opts.autoescape);
 t_20 += "Attachment[fileId]\" value=\"";

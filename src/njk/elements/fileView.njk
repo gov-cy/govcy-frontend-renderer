@@ -2,7 +2,9 @@
  @param {object} label The label text. Will escape text. `{en:"Content",el:"Περιεχομένο"}`
  @param {string} id The input id. Will append '-view-control', for example 'id-card-proof-view-control'. Optional
  @param {string} viewHref The view link's href. Will escape text 
+ @param {string} viewTarget The view link's target. Optional. Will escape text 
  @param {string} deleteHref The delete link's href. Will escape text 
+ @param {string} deleteTarget The delete link's target. Optional. Will escape text 
  @param {object} visuallyHiddenText The visuallyHiddenText text. Optional. Will escape text. `{en:"Content",el:"Περιεχομένο"}` 
  @param {object} hint The hint text. Optional. Will escape text. `{en:"Content",el:"Περιεχομένο"}`
  @param {string} classes Additional classes to add to the outer div. Optional
@@ -29,9 +31,9 @@
         {#- render hint -#}
         {% call hint({hint:params.hint, lang:params.lang}) %}{% endcall %}
         {#- render view -#}
-        <a href="{{ params.viewHref }}">{{viewLabel}}{%if params.visuallyHiddenText%}<span class="govcy-visually-hidden"> {{- govcyLocalizeContent(params.visuallyHiddenText, params.lang) -}}</span>{% endif %}</a>
+        <a href="{{ params.viewHref }}"{%if params.viewTarget%} target="{{ params.viewTarget }}"{% endif %}>{{viewLabel}}{%if params.visuallyHiddenText%}<span class="govcy-visually-hidden"> {{- govcyLocalizeContent(params.visuallyHiddenText, params.lang) -}}</span>{% endif %}</a>
         {#- render delete -#}
-        <a class="govcy-ml-3" href="{{ params.deleteHref }}">{{deleteLabel}}{%if params.visuallyHiddenText%}<span class="govcy-visually-hidden"> {{- govcyLocalizeContent(params.visuallyHiddenText, params.lang) -}}</span>{% endif %}</a>
+        <a class="govcy-ml-3" href="{{ params.deleteHref }}"{%if params.deleteTarget%} target="{{ params.deleteTarget }}"{% endif %}>{{deleteLabel}}{%if params.visuallyHiddenText%}<span class="govcy-visually-hidden"> {{- govcyLocalizeContent(params.visuallyHiddenText, params.lang) -}}</span>{% endif %}</a>
         {% if params.name -%}
         <input type="hidden" name="{{ params.name }}Attachment[fileId]" value="{{ params.fileId }}">
         <input type="hidden" name="{{ params.name }}Attachment[sha256]" value="{{ params.sha256 }}">

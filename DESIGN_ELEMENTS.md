@@ -756,7 +756,9 @@ This element is used to add a fileView as defined in the [UDS - file upload, pre
  @param {object} label The label text. Will escape text. `{en:"Content",el:"Περιεχομένο"}`
  @param {string} id The input id. Will append '-view-control', for example 'id-card-proof-view-control'. Optional
  @param {string} viewHref The view link's href. Will escape text 
- @param {string} deleteHref The delete link's href. Will escape text 
+ @param {string} viewTarget The view link's target. Optional. Will escape text. 
+ @param {string} deleteHref The delete link's href. Optional. Will escape text 
+ @param {string} deleteTarget The delete link's target. Will escape text 
  @param {object} visuallyHiddenText The visuallyHiddenText text. Optional. Will escape text. `{en:"Content",el:"Περιεχομένο"}` 
  @param {object} hint The hint text. Optional. Will escape text. `{en:"Content",el:"Περιεχομένο"}`
  @param {string} classes Additional classes to add to the outer div. Optional
@@ -776,6 +778,8 @@ This element is used to add a fileView as defined in the [UDS - file upload, pre
         "id": "govcy-test-50",
         "viewHref": "#view50",
         "deleteHref": "#delete50",
+        "viewTarget":"_blank",
+        "deleteTarget":"_blank",
         "classes": "govcy-test-class",
         "isPageHeading": true,
         "label": {
@@ -806,6 +810,8 @@ This element is used to add a fileView as defined in the [UDS - file upload, pre
             id:"govcy-test-50",
             viewHref:"#view50",
             deleteHref:"#delete50",
+            viewTarget:"_blank",
+            deleteTarget:"_blank",
             classes:"govcy-test-class",
             isPageHeading: true,
             label:{en:"File view: English with all possible options",el:"Ελληνικά label"},
