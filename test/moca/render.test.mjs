@@ -2106,6 +2106,17 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
+     it(checksNum+'123 `fileView` macro render as expected. with target on links', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([ 
+            `<div\\s*id="govcy-test-123-view-control"\\s*class="govcy-form">`, //form div
+            `([\\s\\S]*?)`, // already tested area
+            `\\s*<a\\s*href="#view123"\\s*target="_blank"\\s*>\\s*View\\s*<span\\s*class="govcy-visually-hidden"\\s*>\\s*English visuallyHiddenText\\s*<\\/span><\\/a>`, //links
+            `\\s*<a\\s*class="govcy-ml-3"\\s*href="#delete123"\\s*target="_blank"\\s*>\\s*Delete\\s*<span\\s*class="govcy-visually-hidden"\\s*>\\s*English visuallyHiddenText\\s*<\\/span><\\/a>`, //links
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
 }
 
 // Export the renderTest function
