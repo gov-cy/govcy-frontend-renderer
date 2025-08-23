@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.22.0] - 2025-08-23
+### Added 
+- New sections on the `govcyBase.njk` 
+    - **afterBody**: the section after the body. Usually reserved for overlay elements
+    - **afterJS**: the section after the JS. Usually reserved for JS scripts
+
 ## [v1.21.0] - 2025-08-20
 ### Added 
 - Support for `target` on `view` and `delete` links of the `fileView` element

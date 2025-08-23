@@ -503,6 +503,8 @@ If your using the `pageData.layout`, you can render html in each of the followin
 - **main**: the main content
 - **footer**: the footer section
 - **bodyEnd**: the end of the body
+- **afterBody**: the section after the body. Usually reserved for overlay elements
+- **afterJS**: the section after the JS. Usually reserved for JS scripts
 
 Use the `govcyElement` macro inside the blocks to render the design elements defined in the `govcyElement.njk` template. More details in defining design elements see in the [design elements](DESIGN_ELEMENTS.md) section.
 
@@ -559,6 +561,8 @@ If your using the `pageData.layout`, you can render html in each of the followin
 - **main**: the main content
 - **footer**: the footer section
 - **bodyEnd**: the end of the body
+- **afterBody**: the section after the body. Usually reserved for overlay elements
+- **afterJS**: the section after the JS. Usually reserved for JS scripts
 
 Define your design elements for each `sections` under the `elements` array. These elements use the same `govcyElement` macro to render the design elements. Do that by defining the `element` and `params` objects. For example:
 
