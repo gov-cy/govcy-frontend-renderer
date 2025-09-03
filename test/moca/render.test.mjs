@@ -1261,8 +1261,8 @@ async function renderChecks(renderedHTML, checksNum){
             `\\s*<dd\\s*class="govcy-summary-list-value"\\s*>`,//opening value dd comlpex
             `\\s*10 March 1990`,//simple value in complex example#
             // INNET DL START
+            `\\s*<h3\\s*class="govcy-visually-hidden">\\s*Entry 1\\s*<\\/h3>`,//entry count in complex example
             `\\s*<dl\\s*class="govcy-summary-list-row-internal">`,//inner dl in complex example
-            `\\s*<dt><span\\s*class="govcy-visually-hidden">\\s*Entry 1\\s*<\\/span><\\/dt>`,//entry count in complex example
             `\\s*<dt\\s*class="govcy-summary-list-key-internal">\\s*Day 1\\s*<\\/dt>`,//dt inner key in complex example
             `\\s*<dd\\s*class="govcy-summary-list-value-internal">\\s*10\\s*<\\/dd>`,//dd inner value in complex example
             `\\s*<dt\\s*class="govcy-summary-list-key-internal">\\s*Month\\s*<\\/dt>`,//dt inner key in complex example
@@ -1281,8 +1281,8 @@ async function renderChecks(renderedHTML, checksNum){
             `\\s*<dt\\s*class="govcy-summary-list-key">\\s*Address\\s*<span\\s*class="govcy-visually-hidden">\\s*2 Entries\\s*<\\/span>\\s*<\\/dt>`,//key complex with 2 entries
             `\\s*<dd\\s*class="govcy-summary-list-value"\\s*>`,//opening value dd comlpex
             // INNET DL START
+            `\\s*<h3\\s*class="govcy-visually-hidden">\\s*Entry 1\\s*<\\/h3>`,//entry count in complex example
             `\\s*<dl\\s*class="govcy-summary-list-row-internal">`,//inner dl in complex example
-            `\\s*<dt><span\\s*class="govcy-visually-hidden">\\s*Entry 1\\s*<\\/span><\\/dt>`,//entry count in complex example
             `\\s*<dt\\s*class="govcy-summary-list-key-internal">\\s*Address line 1\\s*<\\/dt>`,//dt inner key in complex example
             `\\s*<dd\\s*class="govcy-summary-list-value-internal">\\s*1 Some Steet\\s*<\\/dd>`,//dd inner value in complex example
             `\\s*<dt\\s*class="govcy-summary-list-key-internal">\\s*Town\\s*<\\/dt>`,//dt inner key in complex example
@@ -1292,8 +1292,8 @@ async function renderChecks(renderedHTML, checksNum){
             `\\s*<\\/dl>`,//closing dl inner value in complex example
             // INNET DL END
             // INNET DL START
+            `\\s*<h3\\s*class="govcy-visually-hidden">\\s*Entry 2\\s*<\\/h3>`,//entry count in complex example
             `\\s*<dl\\s*class="govcy-summary-list-row-internal">`,//inner dl in complex example
-            `\\s*<dt><span\\s*class="govcy-visually-hidden">\\s*Entry 2\\s*<\\/span><\\/dt>`,//entry count in complex example
             `\\s*<dt\\s*class="govcy-summary-list-key-internal">\\s*Address line 1\\s*<\\/dt>`,//dt inner key in complex example
             `\\s*<dd\\s*class="govcy-summary-list-value-internal">\\s*1 Some Steet\\s*<\\/dd>`,//dd inner value in complex example
             `\\s*<dt\\s*class="govcy-summary-list-key-internal">\\s*Town\\s*<\\/dt>`,//dt inner key in complex example

@@ -48,12 +48,12 @@
 {% macro summaryList(params) -%}
 {#- Import localizer from utilities -#}
 {%- from "../utilities/govcyUtilities.njk" import govcyLocalizeContent, govcyLangAttribute, govcyElementsFromArray, govcyGetContent -%}
+{#- Render visually hidden text for screen readers the entry number -#}
+{%- if params.entryCount -%}
+    {%- set entryText = govcyGetContent('common_entry', params.lang) -%}
+    <h3 class="govcy-visually-hidden">{{ entryText }} {{ params.entryCount}}</h3>
+{%- endif -%}
 <dl {% if params.id %}id="{{ params.id }}" {% endif %}class="{% if not params.isInnerList %}govcy-summary-list{% else %}govcy-summary-list-row-internal{% endif %}{% if params.classes %} {{ params.classes }}{% endif %}"{{ govcyLangAttribute(params.lang) }}>
-    {#- Render visually hidden text for screen readers the entry number -#}
-    {%- if params.entryCount -%}
-        {%- set entryText = govcyGetContent('common_entry', params.lang) -%}
-        <dt><span class="govcy-visually-hidden">{{ entryText }} {{ params.entryCount}}</span></dt>
-    {%- endif -%}
     {%- for item in params.items %}
     {% if not params.isInnerList %}<div class="govcy-summary-list-row">{% endif %}
         {#- KEY -#}
