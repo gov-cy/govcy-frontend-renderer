@@ -5392,6 +5392,23 @@ var t_9 = t_3.govcyGetContent;
 cb(new Error("cannot import 'govcyGetContent'")); return;
 }
 context.setVariable("govcyGetContent", t_9);
+if(runtime.memberLookup((l_params),"entryCount")) {
+var t_10;
+t_10 = (lineno = 52, colno = 39, runtime.callWrap(t_9, "govcyGetContent", context, ["common_entry",runtime.memberLookup((l_params),"lang")]));
+frame.set("entryText", t_10, true);
+if(frame.topLevel) {
+context.setVariable("entryText", t_10);
+}
+if(frame.topLevel) {
+context.addExport("entryText", t_10);
+}
+t_2 += "<h3 class=\"govcy-visually-hidden\">";
+t_2 += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "entryText"), env.opts.autoescape);
+t_2 += " ";
+t_2 += runtime.suppressValue(runtime.memberLookup((l_params),"entryCount"), env.opts.autoescape);
+t_2 += "</h3>";
+;
+}
 t_2 += "<dl ";
 if(runtime.memberLookup((l_params),"id")) {
 t_2 += "id=\"";
@@ -5414,25 +5431,8 @@ t_2 += runtime.suppressValue(runtime.memberLookup((l_params),"classes"), env.opt
 ;
 }
 t_2 += "\"";
-t_2 += runtime.suppressValue((lineno = 50, colno = 239, runtime.callWrap(t_7, "govcyLangAttribute", context, [runtime.memberLookup((l_params),"lang")])), env.opts.autoescape);
+t_2 += runtime.suppressValue((lineno = 55, colno = 239, runtime.callWrap(t_7, "govcyLangAttribute", context, [runtime.memberLookup((l_params),"lang")])), env.opts.autoescape);
 t_2 += ">";
-if(runtime.memberLookup((l_params),"entryCount")) {
-var t_10;
-t_10 = (lineno = 53, colno = 43, runtime.callWrap(t_9, "govcyGetContent", context, ["common_entry",runtime.memberLookup((l_params),"lang")]));
-frame.set("entryText", t_10, true);
-if(frame.topLevel) {
-context.setVariable("entryText", t_10);
-}
-if(frame.topLevel) {
-context.addExport("entryText", t_10);
-}
-t_2 += "<dt><span class=\"govcy-visually-hidden\">";
-t_2 += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "entryText"), env.opts.autoescape);
-t_2 += " ";
-t_2 += runtime.suppressValue(runtime.memberLookup((l_params),"entryCount"), env.opts.autoescape);
-t_2 += "</span></dt>";
-;
-}
 frame = frame.push();
 var t_13 = runtime.memberLookup((l_params),"items");
 if(t_13) {t_13 = runtime.fromIterator(t_13);
