@@ -3201,3 +3201,56 @@ This element is intended to be used inside the `userName` section.
 In order to get the gov.cy styles, you need to add it inside a `.govcy-header` element. 
 
 </details>
+
+<details>
+  <summary>warning</summary>
+  
+## warning
+
+This element is used to add a warning as defined in the [UDS - warning](https://gov-cy.github.io/govcy-design-system-docs/components/warning_text/).
+
+**Element name** : `warning`
+
+**Parameters** :
+```js
+/**
+ @param {string} lang The language used. Can be 'en','el'. Optional. 
+ @param {string} id The id of the warning. Will escape text. Optional 
+ @param {object} text The text. Will escape text, Example `{en:"Content",el:"Περιεχομένο"}` 
+ @param {string} classes Additional classes to add to the outer `<details>`. Optional 
+**/ 
+```
+
+**JSON Example** 
+```json
+{
+    "element": "warning",
+    "params": 
+    {
+        "id":"govcy-test-125",
+        "text":{
+            "en":"English label",
+            "el":"Ελληνικά label"
+        },
+        "classes":"govcy-test-class"
+    }
+}
+```
+
+**Nunjucks Example** 
+
+```Nunjucks
+{{ govcyElement(
+    "warning",
+        {
+            "id":"govcy-test-125",
+            "text":{
+                "en":"English label",
+                "el":"Ελληνικά label"
+            },
+            "classes":"govcy-test-class"
+        }
+    ) 
+}}
+```
+</details>

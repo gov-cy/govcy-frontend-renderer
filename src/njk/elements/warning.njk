@@ -1,0 +1,20 @@
+{# warning 
+ @param {string} lang The language used. Can be 'en','el'. Optional. 
+ @param {string} id The id of the warning. Will escape text. Optional 
+ @param {object} text The text. Will escape text, Example `{en:"Content",el:"Περιεχομένο"}` 
+ @param {string} classes Additional classes to add to the outer `<details>`. Optional 
+ @returns govcy details html 
+#}
+{% macro warning(params) -%}
+{#- Import localizer from utilities -#}
+{%- from "../utilities/govcyUtilities.njk" import govcyLocalizeContent, govcyLangAttribute, govcyElementsFromArray, govcyGetContent -%}
+{#- text is mandatory -#}
+{%- if params.text %}
+<div {% if params.id %}id="{{ params.id }}" {% endif %}class="govcy-warning-text{% if params.classes %} {{ params.classes }}{% endif %}"{{ govcyLangAttribute(params.lang) }}>
+    <span class="govcy-warning-text-icon" aria-hidden="true">!</span>
+    <span class="govcy-warning-text-message">
+        <span class="govcy-visually-hidden">{{- govcyGetContent('warning', params.lang) -}}:</span>
+        {{ govcyLocalizeContent(params.text, params.lang) }}</span>
+</div>
+{% endif %}
+{%- endmacro %}

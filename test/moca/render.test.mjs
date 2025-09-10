@@ -2117,6 +2117,48 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
+     it(checksNum+'124 `warning` macro render as expected', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([ 
+            `<div\\s*id="govcy-test-124"\\s*class="govcy-warning-text">`, // div
+            `\\s*<span\\s*class="govcy-warning-text-icon"\\s*aria-hidden="true">!<\\/span>`, //Explanation mark
+            `\\s*<span\\s*class="govcy-warning-text-message">`, //message span
+            `\\s*<span\\s*class="govcy-visually-hidden">\\s*Warning\\s*:\\s*<\\/span>`, //Visually hidden
+            `\\s*English label\\s*<\\/span>`, //Message and closing span
+            `\\s*<\\/div>`, //closing div
+            
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+     it(checksNum+'125 `warning` macro render as expected - with class', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([ 
+            `<div\\s*id="govcy-test-125"\\s*class="govcy-warning-text\\s*govcy-test-class">`, // div
+            `\\s*<span\\s*class="govcy-warning-text-icon"\\s*aria-hidden="true">!<\\/span>`, //Explanation mark
+            `\\s*<span\\s*class="govcy-warning-text-message">`, //message span
+            `\\s*<span\\s*class="govcy-visually-hidden">\\s*Warning\\s*:\\s*<\\/span>`, //Visually hidden
+            `\\s*English label\\s*<\\/span>`, //Message and closing span
+            `\\s*<\\/div>`, //closing div
+            
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+     it(checksNum+'126 `warning` macro render as expected - with class - with lang=el', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([ 
+            `<div\\s*id="govcy-test-126"\\s*class="govcy-warning-text\\s*govcy-test-class"\\s*lang="el">`, // div
+            `\\s*<span\\s*class="govcy-warning-text-icon"\\s*aria-hidden="true">!<\\/span>`, //Explanation mark
+            `\\s*<span\\s*class="govcy-warning-text-message">`, //message span
+            `\\s*<span\\s*class="govcy-visually-hidden">\\s*Προσοχή\\s*:\\s*<\\/span>`, //Visually hidden
+            `\\s*Ελληνικά label\\s*<\\/span>`, //Message and closing span
+            `\\s*<\\/div>`, //closing div
+            
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
 }
 
 // Export the renderTest function
