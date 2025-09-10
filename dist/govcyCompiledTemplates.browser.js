@@ -167,7 +167,7 @@ frame.set("key", l_key);
 frame.set("lang", l_lang);
 frame.set("isHTML", l_isHTML);
 var t_22 = "";var t_23;
-t_23 = {"backLink_back": {"el": "Πίσω","en": "Back"},"common_or": {"el": "Ή","en": "Or"},"common_and": {"el": "Και","en": "And"},"common_entry": {"en": "Entry","el": "Καταχώρηση"},"common_entries": {"en": "Entries","el": "Καταχωρήσεις"},"dateInput_dayLabel": {"el": "Μέρα","en": "Day"},"dateInput_monthLabel": {"el": "Μήνας","en": "Month"},"dateInput_yearLabel": {"el": "Χρόνος","en": "Year"},"dateInput_monthValue1": {"en": "January","el": "Ιανουάριος"},"dateInput_monthValue2": {"en": "February","el": "Φεβρουάριος"},"dateInput_monthValue3": {"en": "March","el": "Μάρτιος"},"dateInput_monthValue4": {"en": "April","el": "Απρίλιος"},"dateInput_monthValue5": {"en": "May","el": "Μάϊος"},"dateInput_monthValue6": {"en": "June","el": "Ιούνιος"},"dateInput_monthValue7": {"en": "July","el": "Ιούλιος"},"dateInput_monthValue8": {"en": "August","el": "Αύγουστος"},"dateInput_monthValue9": {"en": "September","el": "Σεπτέμβριος"},"dateInput_monthValue10": {"en": "October","el": "Οκτώβριος"},"dateInput_monthValue11": {"en": "November","el": "Νοέμβριος"},"dateInput_monthValue12": {"en": "December","el": "Δεκέμβριος"},"errorMessage_hiddenError": {"en": "Error","el": "Σφάλμα"},"errorSummary_header": {"en": "There is a problem","el": "Υπάρχει πρόβλημα"},"fileView_view": {"en": "View","el": "Προβολή"},"fileView_delete": {"en": "Delete","el": "Διαγραφή"},"progressList_completedLabel": {"en": "Completed","el": "Ολοκληρώθηκε"},"progressList_notCompletedLabel": {"en": "Not completed","el": "Δεν ολοκληρώθηκε"},"progressList_stepLabel": {"en": "Step","el": "Βήμα"},"progressList_ofLabel": {"en": "of","el": "από"},"radios_conditionalLabel": {"en": "This option expands and has more questions,","el": "Αυτή η επιλογή επεκτείνεται και έχει περισσότερες ερωτήσεις,"},"stepByStepStatic_step": {"en": "Step","el": "Βήμα"},"taskList_withStatus": {"en": "with status ","el": "με κατάσταση "},"textArea_charRemaining": {"en": "You have <span></span> characters remaining","el": "Έχετε <span></span> χαρακτήρες που απομένουν"},"textArea_charExceeding": {"en": "You have entered <span></span> characters more","el": "Έχετε περάσει <span></span> χαρακτήρες περισσότερους"},"textArea_wordRemaining": {"en": "You have <span></span> words remaining","el": "Έχετε <span></span> λέξεις που απομένουν"},"textArea_wordsExceeding": {"en": "You have entered <span></span> words more","el": "Έχετε περάσει <span></span> λέξεις περισσότερες"},"userName_signOut": {"en": "Sign out","el": "Αποσύνδεση"},"userName_fromUser": {"en": "from user","el": "από το χρήστη"}};
+t_23 = {"backLink_back": {"el": "Πίσω","en": "Back"},"common_or": {"el": "Ή","en": "Or"},"common_and": {"el": "Και","en": "And"},"common_entry": {"en": "Entry","el": "Καταχώρηση"},"common_entries": {"en": "Entries","el": "Καταχωρήσεις"},"dateInput_dayLabel": {"el": "Μέρα","en": "Day"},"dateInput_monthLabel": {"el": "Μήνας","en": "Month"},"dateInput_yearLabel": {"el": "Χρόνος","en": "Year"},"dateInput_monthValue1": {"en": "January","el": "Ιανουάριος"},"dateInput_monthValue2": {"en": "February","el": "Φεβρουάριος"},"dateInput_monthValue3": {"en": "March","el": "Μάρτιος"},"dateInput_monthValue4": {"en": "April","el": "Απρίλιος"},"dateInput_monthValue5": {"en": "May","el": "Μάϊος"},"dateInput_monthValue6": {"en": "June","el": "Ιούνιος"},"dateInput_monthValue7": {"en": "July","el": "Ιούλιος"},"dateInput_monthValue8": {"en": "August","el": "Αύγουστος"},"dateInput_monthValue9": {"en": "September","el": "Σεπτέμβριος"},"dateInput_monthValue10": {"en": "October","el": "Οκτώβριος"},"dateInput_monthValue11": {"en": "November","el": "Νοέμβριος"},"dateInput_monthValue12": {"en": "December","el": "Δεκέμβριος"},"errorMessage_hiddenError": {"en": "Error","el": "Σφάλμα"},"errorSummary_header": {"en": "There is a problem","el": "Υπάρχει πρόβλημα"},"fileView_view": {"en": "View","el": "Προβολή"},"fileView_delete": {"en": "Delete","el": "Διαγραφή"},"progressList_completedLabel": {"en": "Completed","el": "Ολοκληρώθηκε"},"progressList_notCompletedLabel": {"en": "Not completed","el": "Δεν ολοκληρώθηκε"},"progressList_stepLabel": {"en": "Step","el": "Βήμα"},"progressList_ofLabel": {"en": "of","el": "από"},"radios_conditionalLabel": {"en": "This option expands and has more questions,","el": "Αυτή η επιλογή επεκτείνεται και έχει περισσότερες ερωτήσεις,"},"stepByStepStatic_step": {"en": "Step","el": "Βήμα"},"taskList_withStatus": {"en": "with status ","el": "με κατάσταση "},"textArea_charRemaining": {"en": "You have <span></span> characters remaining","el": "Έχετε <span></span> χαρακτήρες που απομένουν"},"textArea_charExceeding": {"en": "You have entered <span></span> characters more","el": "Έχετε περάσει <span></span> χαρακτήρες περισσότερους"},"textArea_wordRemaining": {"en": "You have <span></span> words remaining","el": "Έχετε <span></span> λέξεις που απομένουν"},"textArea_wordsExceeding": {"en": "You have entered <span></span> words more","el": "Έχετε περάσει <span></span> λέξεις περισσότερες"},"userName_signOut": {"en": "Sign out","el": "Αποσύνδεση"},"userName_fromUser": {"en": "from user","el": "από το χρήστη"},"warning": {"en": "Warning","el": "Προσοχή"}};
 frame.set("govcyContent", t_23, true);
 if(frame.topLevel) {
 context.setVariable("govcyContent", t_23);
@@ -7477,6 +7477,98 @@ root: root
 })();
 })();
 
+(function() {(window.nunjucksPrecompiled = window.nunjucksPrecompiled || {})["elements/warning.njk"] = (function() {
+function root(env, context, frame, runtime, cb) {
+var lineno = 0;
+var colno = 0;
+var output = "";
+try {
+var parentTemplate = null;
+output += "\r\n";
+var macro_t_1 = runtime.makeMacro(
+["params"], 
+[], 
+function (l_params, kwargs) {
+var callerFrame = frame;
+frame = new runtime.Frame();
+kwargs = kwargs || {};
+if (Object.prototype.hasOwnProperty.call(kwargs, "caller")) {
+frame.set("caller", kwargs.caller); }
+frame.set("params", l_params);
+var t_2 = "";env.getTemplate("utilities/govcyUtilities.njk", false, "elements/warning.njk", false, function(t_4,t_3) {
+if(t_4) { cb(t_4); return; }
+t_3.getExported(function(t_5,t_3) {
+if(t_5) { cb(t_5); return; }
+if(Object.prototype.hasOwnProperty.call(t_3, "govcyLocalizeContent")) {
+var t_6 = t_3.govcyLocalizeContent;
+} else {
+cb(new Error("cannot import 'govcyLocalizeContent'")); return;
+}
+context.setVariable("govcyLocalizeContent", t_6);
+if(Object.prototype.hasOwnProperty.call(t_3, "govcyLangAttribute")) {
+var t_7 = t_3.govcyLangAttribute;
+} else {
+cb(new Error("cannot import 'govcyLangAttribute'")); return;
+}
+context.setVariable("govcyLangAttribute", t_7);
+if(Object.prototype.hasOwnProperty.call(t_3, "govcyElementsFromArray")) {
+var t_8 = t_3.govcyElementsFromArray;
+} else {
+cb(new Error("cannot import 'govcyElementsFromArray'")); return;
+}
+context.setVariable("govcyElementsFromArray", t_8);
+if(Object.prototype.hasOwnProperty.call(t_3, "govcyGetContent")) {
+var t_9 = t_3.govcyGetContent;
+} else {
+cb(new Error("cannot import 'govcyGetContent'")); return;
+}
+context.setVariable("govcyGetContent", t_9);
+if(runtime.memberLookup((l_params),"text")) {
+t_2 += "\r\n<div ";
+if(runtime.memberLookup((l_params),"id")) {
+t_2 += "id=\"";
+t_2 += runtime.suppressValue(runtime.memberLookup((l_params),"id"), env.opts.autoescape);
+t_2 += "\" ";
+;
+}
+t_2 += "class=\"govcy-warning-text";
+if(runtime.memberLookup((l_params),"classes")) {
+t_2 += " ";
+t_2 += runtime.suppressValue(runtime.memberLookup((l_params),"classes"), env.opts.autoescape);
+;
+}
+t_2 += "\"";
+t_2 += runtime.suppressValue((lineno = 12, colno = 157, runtime.callWrap(t_7, "govcyLangAttribute", context, [runtime.memberLookup((l_params),"lang")])), env.opts.autoescape);
+t_2 += ">\r\n    <span class=\"govcy-warning-text-icon\" aria-hidden=\"true\">!</span>\r\n    <span class=\"govcy-warning-text-message\">\r\n        <span class=\"govcy-visually-hidden\">";
+t_2 += runtime.suppressValue((lineno = 15, colno = 63, runtime.callWrap(t_9, "govcyGetContent", context, ["warning",runtime.memberLookup((l_params),"lang")])), env.opts.autoescape);
+t_2 += ":</span>\r\n        ";
+t_2 += runtime.suppressValue((lineno = 16, colno = 31, runtime.callWrap(t_6, "govcyLocalizeContent", context, [runtime.memberLookup((l_params),"text"),runtime.memberLookup((l_params),"lang")])), env.opts.autoescape);
+t_2 += "</span>\r\n</div>\r\n";
+;
+}
+})});
+frame = callerFrame;
+return new runtime.SafeString(t_2);
+});
+context.addExport("warning");
+context.setVariable("warning", macro_t_1);
+if(parentTemplate) {
+parentTemplate.rootRenderFunc(env, context, frame, runtime, cb);
+} else {
+cb(null, output);
+}
+;
+} catch (e) {
+  cb(runtime.handleError(e, lineno, colno));
+}
+}
+return {
+root: root
+};
+
+})();
+})();
+
 (function() {(window.nunjucksPrecompiled = window.nunjucksPrecompiled || {})["govcyElement.njk"] = (function() {
 function root(env, context, frame, runtime, cb) {
 var lineno = 0;
@@ -7485,7 +7577,7 @@ var output = "";
 try {
 var parentTemplate = null;
 var t_1;
-t_1 = ["label","legend","hint","button","errorMessage","select","textElement","htmlElement","textInput","radios","checkboxes","fileInput","fileView","backLink","tag","table","summaryList","textArea","markdown","panel","datePicker","dateInput","taskList","errorSummary","details","stepByStepStatic","progressList","userName"];
+t_1 = ["label","legend","hint","button","errorMessage","select","textElement","htmlElement","textInput","radios","checkboxes","fileInput","fileView","backLink","tag","table","summaryList","textArea","markdown","panel","datePicker","dateInput","taskList","errorSummary","details","stepByStepStatic","progressList","userName","warning"];
 frame.set("macroSimpleBlocks", t_1, true);
 if(frame.topLevel) {
 context.setVariable("macroSimpleBlocks", t_1);
