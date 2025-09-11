@@ -79,7 +79,17 @@ To use this template you need to pass the following data:
     "copyrightText" : {"en":"Republic of Cyprus, 2025", "el":"Κυπριακή Δημοκρατία, 2025"},
     "menu" : {"en":"Menu", "el":"Μενου"},
     "title" : {"en":"Service title", "el":"Τιτλός υπηρεσίας"}, 
-    "headerTitle" : {"en":"Header title", "el":"Τιτλός επικεφαλιδας"},
+    "headerTitle" : 
+    {
+        "title": {
+            "en":"Header title", 
+            "el":"Τιτλός επικεφαλιδας"
+        },
+        "href": {
+            "en":"/service-id",
+            "el":"/service-id"
+        }
+    },
     "description" : {"en":"Service description", "el":"Περιγραφή υπηρεσίας"},
     "isTesting" : true,
     "url": "https://gov.cy",
@@ -182,7 +192,19 @@ To use this template you need to pass the following data:
                     <div class="govcy-navigation-container">
                         <div class="govcy-service-container">
                             <a href="https://gov.cy" class="govcy-logo" title="Go to the gov.cy homepage"><img alt="gov.cy Logo"></a>
-                            <span class="govcy-service-name">{{ govcyLocalizeContent(site.headerTitle, site.lang) }}</span>
+                            <span class="govcy-service-name">
+                                {%- if site.headerTitle.href -%}
+                                <a class="govcy-pl-0" href="{{ govcyLocalizeContent(site.headerTitle.href, site.lang, true) }}">
+                                {%- endif -%}
+                                {%- if site.headerTitle.title -%}
+                                {{ govcyLocalizeContent(site.headerTitle.title, site.lang) }}
+                                {%- else -%}
+                                {{ govcyLocalizeContent(site.headerTitle, site.lang) }}
+                                {%- endif -%}
+                                {%- if site.headerTitle.href -%}
+                                </a>
+                                {%- endif -%}
+                                </span>
                         </div>
                         {%- if site.languages -%}
                         <ul class="govcy-menu-items">
