@@ -142,7 +142,17 @@ const inputData =
         "copyrightText" : {"en":"Republic of Cyprus, 2025", "el":"Κυπριακή Δημοκρατία, 2025"},
         "menu" : {"en":"Menu", "el":"Μενου"},
         "title" : {"en":"Service title", "el":"Τιτλός υπηρεσίας"}, 
-        "headerTitle" : {"en":"Header title", "el":"Τιτλός επικεφαλιδας"},
+        "headerTitle" : 
+        {
+            "title": {
+                "en":"Header title", 
+                "el":"Τιτλός επικεφαλιδας"
+            },
+            "href": {
+                "en":"/service-id",
+                "el":"/service-id"
+            }
+        },
         "description" : {"en":"Service description", "el":"Περιγραφή υπηρεσίας"},
         "url" : "https://gov.cy",
         "manifest": "/manifest.json",
@@ -297,7 +307,17 @@ const inputData =
         "copyrightText" : {"en":"Republic of Cyprus, 2025", "el":"Κυπριακή Δημοκρατία, 2025"},
         "menu" : {"en":"Menu", "el":"Μενου"},
         "title" : {"en":"Service title", "el":"Τιτλός υπηρεσίας"}, 
-        "headerTitle" : {"en":"Header title", "el":"Τιτλός επικεφαλιδας"},
+        "headerTitle" : 
+        {
+            "title": {
+                "en":"Header title", 
+                "el":"Τιτλός επικεφαλιδας"
+            },
+            "href": {
+                "en":"/service-id",
+                "el":"/service-id"
+            }
+        },
         "description" : {"en":"Service description", "el":"Περιγραφή υπηρεσίας"},
         "url" : "https://gov.cy",
         "manifest": "manifest.json",
