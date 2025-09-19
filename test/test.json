@@ -3951,6 +3951,163 @@
                                     "classes":"govcy-test-class",
                                     "lang":"el"
                                 }
+                            },
+                            {
+                                "element": "htmlElement",
+                                "params": {
+                                    "text":{"en":"<h2>Multiple things table</h2>","el":"<h2>Multiple things table - EL</h2>"}
+                                }
+                            },
+                            {
+                                "element": "multipleThingsTable",
+                                "params": {
+                                    "id": "govcy-test-127",
+                                    "items": [
+                                    {
+                                        "text": { "en": "+35799123456", "el": "+35799123456 el" },
+                                        "actions": [
+                                        {
+                                            "text": { "en": "Change", "el": "Αλλαγή" },
+                                            "href": "#change1",
+                                            "visuallyHiddenText": { "en": "+35799123456", "el": "+35799123456 el" }
+                                        },
+                                        {
+                                            "text": { "en": "Remove", "el": "Διαγραφή" },
+                                            "href": "#remove1",
+                                            "visuallyHiddenText": { "en": "+35799123456", "el": "+35799123456 el" }
+                                        }
+                                        ]
+                                    },
+                                    {
+                                        "text": { "en": "+35799654321", "el": "+35799654321 el" }
+                                    }
+                                    ]
+                                }
+                            },
+                            {
+                                "element": "multipleThingsTable",
+                                "params": {
+                                    "id": "govcy-test-128",
+                                    "classes": "govcy-test-class",
+                                    "items": [
+                                    {
+                                        "text": { "en": "+35799123456", "el": "+35799123456 el" },
+                                        "actions": [
+                                        {
+                                            "text": { "en": "Change", "el": "Αλλαγή" },
+                                            "href": "#change1",
+                                            "visuallyHiddenText": { "en": "+35799123456", "el": "+35799123456 el" }
+                                        },
+                                        {
+                                            "text": { "en": "Remove", "el": "Διαγραφή" },
+                                            "href": "#remove1",
+                                            "classes": "govcy-test-class",
+                                            "visuallyHiddenText": { "en": "+35799123456", "el": "+35799123456 el" }
+                                        }
+                                        ]
+                                    },
+                                    {
+                                        "text": { "en": "+35799654321", "el": "+35799654321 el" },
+                                        "actions": [
+                                        {
+                                            "text": { "en": "Change", "el": "Αλλαγή" },
+                                            "href": "#change2",
+                                            "visuallyHiddenText": { "en": "+35799654321", "el": "+35799654321 el" }
+                                        },
+                                        {
+                                            "text": { "en": "Remove", "el": "Διαγραφή" },
+                                            "href": "#remove2",
+                                            "classes": "govcy-test-class",
+                                            "visuallyHiddenText": { "en": "+35799654321", "el": "+35799654321 el" }
+                                        }
+                                        ]
+                                    }
+                                    ]
+                                }
+                            },
+                            {
+                                "element": "multipleThingsTable",
+                                "params": {
+                                    "id": "govcy-test-129",
+                                    "lang":"el",
+                                    "classes": "govcy-test-class",
+                                    "items": [
+                                    {
+                                        "text": { "en": "+35799123456", "el": "+35799123456 el" },
+                                        "actions": [
+                                        {
+                                            "text": { "en": "Change", "el": "Αλλαγή" },
+                                            "href": "#change1",
+                                            "visuallyHiddenText": { "en": "+35799123456", "el": "+35799123456 el" }
+                                        },
+                                        {
+                                            "text": { "en": "Remove", "el": "Διαγραφή" },
+                                            "href": "#remove1",
+                                            "classes": "govcy-test-class",
+                                            "visuallyHiddenText": { "en": "+35799123456", "el": "+35799123456 el" }
+                                        }
+                                        ]
+                                    },
+                                    {
+                                        "text": { "en": "+35799654321", "el": "+35799654321 el" },
+                                        "actions": [
+                                        {
+                                            "text": { "en": "Change", "el": "Αλλαγή" },
+                                            "href": "#change2",
+                                            "visuallyHiddenText": { "en": "+35799654321", "el": "+35799654321 el" }
+                                        },
+                                        {
+                                            "text": { "en": "Remove", "el": "Διαγραφή" },
+                                            "href": "#remove2",
+                                            "classes": "govcy-test-class",
+                                            "visuallyHiddenText": { "en": "+35799654321", "el": "+35799654321 el" }
+                                        }
+                                        ]
+                                    }
+                                    ]
+                                }
+                            },
+                            {
+                                "element": "htmlElement",
+                                "params": {
+                                    "text":{"en":"<h2>Inset</h2>","el":"<h2>Inset - EL</h2>"}
+                                }
+                            },
+                            {
+                                "element": "inset",
+                                "params": 
+                                {
+                                    "id":"govcy-test-130",
+                                    "text":{
+                                        "en":"English label",
+                                        "el":"Ελληνικά label"
+                                    }
+                                }
+                            },
+                            {
+                                "element": "inset",
+                                "params": 
+                                {
+                                    "id":"govcy-test-131",
+                                    "text":{
+                                        "en":"English label",
+                                        "el":"Ελληνικά label"
+                                    },
+                                    "classes":"govcy-test-class"
+                                }
+                            },
+                            {
+                                "element": "inset",
+                                "params": 
+                                {
+                                    "id":"govcy-test-132",
+                                    "text":{
+                                        "en":"English label",
+                                        "el":"Ελληνικά label"
+                                    },
+                                    "classes":"govcy-test-class",
+                                    "lang":"el"
+                                }
                             }
                         ]
                     }

@@ -1145,6 +1145,58 @@ Ths element will also allow you to add scripts and other potentially dangerous e
 </details>
 
 <details>
+  <summary>inset</summary>
+  
+## inset
+
+This element is used to add a inset as defined in the [UDS - inset](https://gov-cy.github.io/govcy-design-system-docs/components/inset_text/).
+
+**Element name** : `inset`
+
+**Parameters** :
+```js
+/**
+ @param {string} lang The language used. Can be 'en','el'. Optional. 
+ @param {string} id The id of the inset. Will escape text. Optional 
+ @param {object} text The text. Will escape text, Example `{en:"Content",el:"Περιεχομένο"}` 
+ @param {string} classes Additional classes to add to the outer `<details>`. Optional 
+**/ 
+```
+
+**JSON Example** 
+```json
+{
+    "element": "inset",
+    "params": 
+    {
+        "id":"govcy-test-130",
+        "text":{
+            "en":"English label",
+            "el":"Ελληνικά label"
+        }
+    }
+}
+```
+
+**Nunjucks Example** 
+
+```Nunjucks
+{{ govcyElement(
+    "inset",
+    {
+        "id":"govcy-test-130",
+        "text":{
+            "en":"English label",
+            "el":"Ελληνικά label"
+        }
+    }
+    ) 
+}}
+```
+
+</details>
+
+<details>
   <summary>label</summary>
   
 ## label
@@ -1324,6 +1376,148 @@ Ths element will also allow you to add scripts and other potentially dangerous e
         }
     ) 
 }}
+```
+
+</details>
+
+<details>
+  <summary>multipleThingsTable (or summary list without a key)</summary>
+  
+## multipleThingsTable
+
+This element is used to add html using the [UDS - multiple things table (or summary list without a key)](https://gov-cy.github.io/govcy-design-system-docs/components/summary_list/#showing-repeated-information-without-a-key). 
+
+**Element name** : `multipleThingsTable`
+
+**Parameters** :
+```js
+/**
+ @param {string} lang The language used. Can be 'en','el'. Optional. 
+ @param {string} id The id of the element. Will escape text. Optional 
+ @param {string} classes Additional classes to add to the outer `<details>`. Optional 
+ @param {array} items The array of items which contain elements 
+    i.e. `[
+            {
+                "text": { "en": "+35799123456", "el": "+35799123456" },
+                "actions": [
+                {
+                    "text": { "en": "Change", "el": "Αλλαγή" },
+                    "href": "#",
+                    classes: "govcy-link",
+                    "visuallyHiddenText": { "en": "+35799123456", "el": "+35799123456" }
+                },
+                {
+                    "text": { "en": "Remove", "el": "Διαγραφή" },
+                    "href": "#",
+                    "visuallyHiddenText": { "en": "+35799123456", "el": "+35799123456" }
+                }
+                ]
+            },
+            {
+                "text": { "en": "+35799654321", "el": "+35799654321" },
+                "actions": [
+                {
+                    "text": { "en": "Change", "el": "Αλλαγή" },
+                    "href": "#",
+                    "visuallyHiddenText": { "en": "+35799654321", "el": "+35799654321" }
+                },
+                {
+                    "text": { "en": "Remove", "el": "Διαγραφή" },
+                    "href": "#",
+                    "visuallyHiddenText": { "en": "+35799654321", "el": "+35799654321" }
+                }
+                ]
+            }
+        ]`
+**/ 
+```
+
+**JSON Example** 
+```json
+{
+    "element": "multipleThingsTable",
+    "params": {
+        "id": "govcy-test-128",
+        "classes": "govcy-test-class",
+        "items": [
+            {
+                "text": { "en": "+35799123456", "el": "+35799123456 el" },
+                "actions": [
+                {
+                    "text": { "en": "Change", "el": "Αλλαγή" },
+                    "href": "#change1",
+                    "visuallyHiddenText": { "en": "+35799123456", "el": "+35799123456 el" }
+                },
+                {
+                    "text": { "en": "Remove", "el": "Διαγραφή" },
+                    "href": "#remove1",
+                    "classes": "govcy-test-class",
+                    "visuallyHiddenText": { "en": "+35799123456", "el": "+35799123456 el" }
+                }
+                ]
+            },
+            {
+                "text": { "en": "+35799654321", "el": "+35799654321 el" },
+                "actions": [
+                {
+                    "text": { "en": "Change", "el": "Αλλαγή" },
+                    "href": "#change2",
+                    "visuallyHiddenText": { "en": "+35799654321", "el": "+35799654321 el" }
+                },
+                {
+                    "text": { "en": "Remove", "el": "Διαγραφή" },
+                    "href": "#remove2",
+                    "classes": "govcy-test-class",
+                    "visuallyHiddenText": { "en": "+35799654321", "el": "+35799654321 el" }
+                }
+                ]
+            }
+        ]
+    }
+}
+```
+
+**Nunjucks Example** 
+
+```Nunjucks
+{{ govcyElement("multipleThingsTable",{
+    "id": "govcy-test-128",
+    "classes": "govcy-test-class",
+    "items": [
+        {
+            "text": { "en": "+35799123456", "el": "+35799123456 el" },
+            "actions": [
+            {
+                "text": { "en": "Change", "el": "Αλλαγή" },
+                "href": "#change1",
+                "visuallyHiddenText": { "en": "+35799123456", "el": "+35799123456 el" }
+            },
+            {
+                "text": { "en": "Remove", "el": "Διαγραφή" },
+                "href": "#remove1",
+                "classes": "govcy-test-class",
+                "visuallyHiddenText": { "en": "+35799123456", "el": "+35799123456 el" }
+            }
+            ]
+        },
+        {
+            "text": { "en": "+35799654321", "el": "+35799654321 el" },
+            "actions": [
+            {
+                "text": { "en": "Change", "el": "Αλλαγή" },
+                "href": "#change2",
+                "visuallyHiddenText": { "en": "+35799654321", "el": "+35799654321 el" }
+            },
+            {
+                "text": { "en": "Remove", "el": "Διαγραφή" },
+                "href": "#remove2",
+                "classes": "govcy-test-class",
+                "visuallyHiddenText": { "en": "+35799654321", "el": "+35799654321 el" }
+            }
+            ]
+        }
+    ]
+})}}
 ```
 
 </details>
