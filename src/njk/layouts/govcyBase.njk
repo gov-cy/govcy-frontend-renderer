@@ -155,6 +155,14 @@ To use this template you need to pass the following data:
         dl.govcy-summary-list-row-internal:not(:first-of-type) {
             margin-top: 0.5rem !important;
         }
+        
+        .list-inline-item:not(:last-child) {
+            margin-right: 0 !important;
+        }
+        .list-inline-item:not(:first-child) {
+            margin-left: .5rem;
+        }
+
     </style>
     <title>{% if pageData.title %}{{ govcyLocalizeContent(pageData.title, site.lang) }} - {% endif %}{% if site.title %}{{ govcyLocalizeContent(site.title, site.lang) }} - {% endif %}gov.cy</title>
     <meta name="description" content="{{ govcyLocalizeContent(site.description, site.lang) }}">

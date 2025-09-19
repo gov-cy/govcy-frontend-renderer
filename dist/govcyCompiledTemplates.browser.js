@@ -3284,6 +3284,96 @@ root: root
 })();
 })();
 
+(function() {(window.nunjucksPrecompiled = window.nunjucksPrecompiled || {})["elements/inset.njk"] = (function() {
+function root(env, context, frame, runtime, cb) {
+var lineno = 0;
+var colno = 0;
+var output = "";
+try {
+var parentTemplate = null;
+output += "\r\n";
+var macro_t_1 = runtime.makeMacro(
+["params"], 
+[], 
+function (l_params, kwargs) {
+var callerFrame = frame;
+frame = new runtime.Frame();
+kwargs = kwargs || {};
+if (Object.prototype.hasOwnProperty.call(kwargs, "caller")) {
+frame.set("caller", kwargs.caller); }
+frame.set("params", l_params);
+var t_2 = "";env.getTemplate("utilities/govcyUtilities.njk", false, "elements/inset.njk", false, function(t_4,t_3) {
+if(t_4) { cb(t_4); return; }
+t_3.getExported(function(t_5,t_3) {
+if(t_5) { cb(t_5); return; }
+if(Object.prototype.hasOwnProperty.call(t_3, "govcyLocalizeContent")) {
+var t_6 = t_3.govcyLocalizeContent;
+} else {
+cb(new Error("cannot import 'govcyLocalizeContent'")); return;
+}
+context.setVariable("govcyLocalizeContent", t_6);
+if(Object.prototype.hasOwnProperty.call(t_3, "govcyLangAttribute")) {
+var t_7 = t_3.govcyLangAttribute;
+} else {
+cb(new Error("cannot import 'govcyLangAttribute'")); return;
+}
+context.setVariable("govcyLangAttribute", t_7);
+if(Object.prototype.hasOwnProperty.call(t_3, "govcyElementsFromArray")) {
+var t_8 = t_3.govcyElementsFromArray;
+} else {
+cb(new Error("cannot import 'govcyElementsFromArray'")); return;
+}
+context.setVariable("govcyElementsFromArray", t_8);
+if(Object.prototype.hasOwnProperty.call(t_3, "govcyGetContent")) {
+var t_9 = t_3.govcyGetContent;
+} else {
+cb(new Error("cannot import 'govcyGetContent'")); return;
+}
+context.setVariable("govcyGetContent", t_9);
+if(runtime.memberLookup((l_params),"text")) {
+t_2 += "\r\n<blockquote ";
+if(runtime.memberLookup((l_params),"id")) {
+t_2 += "id=\"";
+t_2 += runtime.suppressValue(runtime.memberLookup((l_params),"id"), env.opts.autoescape);
+t_2 += "\" ";
+;
+}
+t_2 += "class=\"govcy-inset-text";
+if(runtime.memberLookup((l_params),"classes")) {
+t_2 += " ";
+t_2 += runtime.suppressValue(runtime.memberLookup((l_params),"classes"), env.opts.autoescape);
+;
+}
+t_2 += "\"";
+t_2 += runtime.suppressValue((lineno = 12, colno = 162, runtime.callWrap(t_7, "govcyLangAttribute", context, [runtime.memberLookup((l_params),"lang")])), env.opts.autoescape);
+t_2 += ">\r\n    <p>";
+t_2 += runtime.suppressValue((lineno = 13, colno = 30, runtime.callWrap(t_6, "govcyLocalizeContent", context, [runtime.memberLookup((l_params),"text"),runtime.memberLookup((l_params),"lang")])), env.opts.autoescape);
+t_2 += "</p>\r\n</blockquote>";
+;
+}
+})});
+frame = callerFrame;
+return new runtime.SafeString(t_2);
+});
+context.addExport("inset");
+context.setVariable("inset", macro_t_1);
+if(parentTemplate) {
+parentTemplate.rootRenderFunc(env, context, frame, runtime, cb);
+} else {
+cb(null, output);
+}
+;
+} catch (e) {
+  cb(runtime.handleError(e, lineno, colno));
+}
+}
+return {
+root: root
+};
+
+})();
+})();
+
 (function() {(window.nunjucksPrecompiled = window.nunjucksPrecompiled || {})["elements/label.njk"] = (function() {
 function root(env, context, frame, runtime, cb) {
 var lineno = 0;
@@ -3543,6 +3633,165 @@ return new runtime.SafeString(t_2);
 });
 context.addExport("markdown");
 context.setVariable("markdown", macro_t_1);
+if(parentTemplate) {
+parentTemplate.rootRenderFunc(env, context, frame, runtime, cb);
+} else {
+cb(null, output);
+}
+;
+} catch (e) {
+  cb(runtime.handleError(e, lineno, colno));
+}
+}
+return {
+root: root
+};
+
+})();
+})();
+
+(function() {(window.nunjucksPrecompiled = window.nunjucksPrecompiled || {})["elements/multipleThingsTable.njk"] = (function() {
+function root(env, context, frame, runtime, cb) {
+var lineno = 0;
+var colno = 0;
+var output = "";
+try {
+var parentTemplate = null;
+output += "\r\n";
+var macro_t_1 = runtime.makeMacro(
+["params"], 
+[], 
+function (l_params, kwargs) {
+var callerFrame = frame;
+frame = new runtime.Frame();
+kwargs = kwargs || {};
+if (Object.prototype.hasOwnProperty.call(kwargs, "caller")) {
+frame.set("caller", kwargs.caller); }
+frame.set("params", l_params);
+var t_2 = "";env.getTemplate("utilities/govcyUtilities.njk", false, "elements/multipleThingsTable.njk", false, function(t_4,t_3) {
+if(t_4) { cb(t_4); return; }
+t_3.getExported(function(t_5,t_3) {
+if(t_5) { cb(t_5); return; }
+if(Object.prototype.hasOwnProperty.call(t_3, "govcyLocalizeContent")) {
+var t_6 = t_3.govcyLocalizeContent;
+} else {
+cb(new Error("cannot import 'govcyLocalizeContent'")); return;
+}
+context.setVariable("govcyLocalizeContent", t_6);
+if(Object.prototype.hasOwnProperty.call(t_3, "govcyLangAttribute")) {
+var t_7 = t_3.govcyLangAttribute;
+} else {
+cb(new Error("cannot import 'govcyLangAttribute'")); return;
+}
+context.setVariable("govcyLangAttribute", t_7);
+if(Object.prototype.hasOwnProperty.call(t_3, "govcyElementsFromArray")) {
+var t_8 = t_3.govcyElementsFromArray;
+} else {
+cb(new Error("cannot import 'govcyElementsFromArray'")); return;
+}
+context.setVariable("govcyElementsFromArray", t_8);
+if(Object.prototype.hasOwnProperty.call(t_3, "govcyGetContent")) {
+var t_9 = t_3.govcyGetContent;
+} else {
+cb(new Error("cannot import 'govcyGetContent'")); return;
+}
+context.setVariable("govcyGetContent", t_9);
+if(runtime.memberLookup((l_params),"items") && runtime.memberLookup((runtime.memberLookup((l_params),"items")),"length") > 0) {
+t_2 += "\r\n  <table ";
+if(runtime.memberLookup((l_params),"id")) {
+t_2 += "id=\"";
+t_2 += runtime.suppressValue(runtime.memberLookup((l_params),"id"), env.opts.autoescape);
+t_2 += "\" ";
+;
+}
+t_2 += "class=\"govcy-table govcy-table-responsive-vertical";
+if(runtime.memberLookup((l_params),"classes")) {
+t_2 += " ";
+t_2 += runtime.suppressValue(runtime.memberLookup((l_params),"classes"), env.opts.autoescape);
+;
+}
+t_2 += "\"";
+t_2 += runtime.suppressValue((lineno = 44, colno = 186, runtime.callWrap(t_7, "govcyLangAttribute", context, [runtime.memberLookup((l_params),"lang")])), env.opts.autoescape);
+t_2 += ">\r\n    <tbody>";
+frame = frame.push();
+var t_12 = runtime.memberLookup((l_params),"items");
+if(t_12) {t_12 = runtime.fromIterator(t_12);
+var t_11 = t_12.length;
+for(var t_10=0; t_10 < t_12.length; t_10++) {
+var t_13 = t_12[t_10];
+frame.set("item", t_13);
+frame.set("loop.index", t_10 + 1);
+frame.set("loop.index0", t_10);
+frame.set("loop.revindex", t_11 - t_10);
+frame.set("loop.revindex0", t_11 - t_10 - 1);
+frame.set("loop.first", t_10 === 0);
+frame.set("loop.last", t_10 === t_11 - 1);
+frame.set("loop.length", t_11);
+t_2 += "\r\n        <tr class=\"govcy-summary-list-row-internal\">\r\n          <td>";
+t_2 += "<span class=\"govcy-visually-hidden\">";
+t_2 += runtime.suppressValue((lineno = 51, colno = 66, runtime.callWrap(t_9, "govcyGetContent", context, ["common_entry",runtime.memberLookup((l_params),"lang")])), env.opts.autoescape);
+t_2 += " ";
+t_2 += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "loop")),"index"), env.opts.autoescape);
+t_2 += " </span>";
+t_2 += runtime.suppressValue((lineno = 53, colno = 35, runtime.callWrap(t_6, "govcyLocalizeContent", context, [runtime.memberLookup((t_13),"text"),runtime.memberLookup((l_params),"lang")])), env.opts.autoescape);
+t_2 += "</td>\r\n          <td class=\"govcy-text-sm-start govcy-text-md-end\">\r\n            <ul class=\"list-inline govcy-my-0\">";
+frame = frame.push();
+var t_16 = runtime.memberLookup((t_13),"actions");
+if(t_16) {t_16 = runtime.fromIterator(t_16);
+var t_15 = t_16.length;
+for(var t_14=0; t_14 < t_16.length; t_14++) {
+var t_17 = t_16[t_14];
+frame.set("action", t_17);
+frame.set("loop.index", t_14 + 1);
+frame.set("loop.index0", t_14);
+frame.set("loop.revindex", t_15 - t_14);
+frame.set("loop.revindex0", t_15 - t_14 - 1);
+frame.set("loop.first", t_14 === 0);
+frame.set("loop.last", t_14 === t_15 - 1);
+frame.set("loop.length", t_15);
+t_2 += "\r\n                <li class=\"list-inline-item";
+if(runtime.memberLookup((t_17),"classes")) {
+t_2 += " ";
+t_2 += runtime.suppressValue(runtime.memberLookup((t_17),"classes"), env.opts.autoescape);
+;
+}
+t_2 += "\">\r\n                  <a href=\"";
+if(runtime.memberLookup((t_17),"href")) {
+t_2 += runtime.suppressValue(runtime.memberLookup((t_17),"href"), env.opts.autoescape);
+;
+}
+else {
+t_2 += "#";
+;
+}
+t_2 += "\">";
+t_2 += runtime.suppressValue((lineno = 62, colno = 43, runtime.callWrap(t_6, "govcyLocalizeContent", context, [runtime.memberLookup((t_17),"text"),runtime.memberLookup((l_params),"lang")])), env.opts.autoescape);
+if(runtime.memberLookup((t_17),"visuallyHiddenText")) {
+t_2 += "<span class=\"govcy-visually-hidden\">";
+t_2 += runtime.suppressValue((lineno = 65, colno = 79, runtime.callWrap(t_6, "govcyLocalizeContent", context, [runtime.memberLookup((t_17),"visuallyHiddenText"),runtime.memberLookup((l_params),"lang")])), env.opts.autoescape);
+t_2 += "</span>";
+;
+}
+t_2 += "</a>\r\n                </li>";
+;
+}
+}
+frame = frame.pop();
+t_2 += "\r\n            </ul>\r\n          </td>\r\n        </tr>";
+;
+}
+}
+frame = frame.pop();
+t_2 += "\r\n    </tbody>\r\n  </table>";
+;
+}
+})});
+frame = callerFrame;
+return new runtime.SafeString(t_2);
+});
+context.addExport("multipleThingsTable");
+context.setVariable("multipleThingsTable", macro_t_1);
+output += "\r\n";
 if(parentTemplate) {
 parentTemplate.rootRenderFunc(env, context, frame, runtime, cb);
 } else {
@@ -7577,7 +7826,7 @@ var output = "";
 try {
 var parentTemplate = null;
 var t_1;
-t_1 = ["label","legend","hint","button","errorMessage","select","textElement","htmlElement","textInput","radios","checkboxes","fileInput","fileView","backLink","tag","table","summaryList","textArea","markdown","panel","datePicker","dateInput","taskList","errorSummary","details","stepByStepStatic","progressList","userName","warning"];
+t_1 = ["label","legend","hint","button","errorMessage","select","textElement","htmlElement","textInput","radios","checkboxes","fileInput","fileView","backLink","tag","table","summaryList","textArea","markdown","panel","datePicker","dateInput","taskList","errorSummary","details","stepByStepStatic","progressList","userName","warning","multipleThingsTable","inset"];
 frame.set("macroSimpleBlocks", t_1, true);
 if(frame.topLevel) {
 context.setVariable("macroSimpleBlocks", t_1);

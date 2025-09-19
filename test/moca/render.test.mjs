@@ -2154,7 +2154,96 @@ async function renderChecks(renderedHTML, checksNum){
             `\\s*<span\\s*class="govcy-visually-hidden">\\s*Προσοχή\\s*:\\s*<\\/span>`, //Visually hidden
             `\\s*Ελληνικά label\\s*<\\/span>`, //Message and closing span
             `\\s*<\\/div>`, //closing div
-            
+
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+     it(checksNum+'127 `multiple things table` macro render as expected', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([ 
+            `<table\\s*id="govcy-test-127"\\s*class="govcy-table govcy-table-responsive-vertical">\\s*<tbody>`, // table tbody
+            `\\s*<tr\\s*class="govcy-summary-list-row-internal">\\s*<td>\\s*<span\\s*class="govcy-visually-hidden">\\s*Entry 1\\s*<\\/span>\\s*\\+35799123456\\s*<\\/td>`, //tr td
+            `\\s*<td\\s*class="govcy-text-sm-start\\s*govcy-text-md-end">`, //td actions
+            `\\s*<ul\\s*class="list-inline\\s*govcy-my-0">`, //ul
+            `\\s*<li\\s*class="list-inline-item">\\s*<a\\s*href="#change1">\\s*Change\\s*<span\\s*class="govcy-visually-hidden">\\s*\\+35799123456\\s*<\\/span>\\s*<\\/a>\\s*<\\/li>`, //action
+            `\\s*<li\\s*class="list-inline-item">\\s*<a\\s*href="#remove1">\\s*Remove\\s*<span\\s*class="govcy-visually-hidden">\\s*\\+35799123456\\s*<\\/span>\\s*<\\/a>\\s*<\\/li>`, //action
+            `\\s*<\\/ul>\\s*<\\/td>\\s*<\\/tr>`, //closing ul td tr
+            `\\s*<tr\\s*class="govcy-summary-list-row-internal">\\s*<td>\\s*<span\\s*class="govcy-visually-hidden">\\s*Entry 2\\s*<\\/span>\\s*\\+35799654321\\s*<\\/td>`, //tr td
+            `\\s*<td\\s*class="govcy-text-sm-start\\s*govcy-text-md-end">\\s*<ul class="list-inline govcy-my-0">\\s*</ul>\\s*</td>`, //empty action
+            `\\s*<\\/tr>\\s*<\\/tbody>\\s*<\\/table>`, //closing stuff
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+     it(checksNum+'128 `multiple things table` macro render as expected, all options', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([ 
+            `<table\\s*id="govcy-test-128"\\s*class="govcy-table govcy-table-responsive-vertical\\s*govcy-test-class">\\s*<tbody>`, // table tbody
+            `\\s*<tr\\s*class="govcy-summary-list-row-internal">\\s*<td>\\s*<span\\s*class="govcy-visually-hidden">\\s*Entry 1\\s*<\\/span>\\s*\\+35799123456\\s*<\\/td>`, //tr td
+            `\\s*<td\\s*class="govcy-text-sm-start\\s*govcy-text-md-end">`, //td actions
+            `\\s*<ul\\s*class="list-inline\\s*govcy-my-0">`, //ul
+            `\\s*<li\\s*class="list-inline-item">\\s*<a\\s*href="#change1">\\s*Change\\s*<span\\s*class="govcy-visually-hidden">\\s*\\+35799123456\\s*<\\/span>\\s*<\\/a>\\s*<\\/li>`, //action
+            `\\s*<li\\s*class="list-inline-item\\s*govcy-test-class">\\s*<a\\s*href="#remove1">\\s*Remove\\s*<span\\s*class="govcy-visually-hidden">\\s*\\+35799123456\\s*<\\/span>\\s*<\\/a>\\s*<\\/li>`, //action
+            `\\s*<\\/ul>\\s*<\\/td>\\s*<\\/tr>`, //closing ul td tr
+            `\\s*<tr\\s*class="govcy-summary-list-row-internal">\\s*<td>\\s*<span\\s*class="govcy-visually-hidden">\\s*Entry 2\\s*<\\/span>\\s*\\+35799654321\\s*<\\/td>`, //tr td
+            `\\s*<td\\s*class="govcy-text-sm-start\\s*govcy-text-md-end">`, //td actions
+            `\\s*<ul\\s*class="list-inline\\s*govcy-my-0">`, //ul
+            `\\s*<li\\s*class="list-inline-item">\\s*<a\\s*href="#change2">\\s*Change\\s*<span\\s*class="govcy-visually-hidden">\\s*\\+35799654321\\s*<\\/span>\\s*<\\/a>\\s*<\\/li>`, //action
+            `\\s*<li\\s*class="list-inline-item\\s*govcy-test-class">\\s*<a\\s*href="#remove2">\\s*Remove\\s*<span\\s*class="govcy-visually-hidden">\\s*\\+35799654321\\s*<\\/span>\\s*<\\/a>\\s*<\\/li>`, //action
+            `\\s*<\\/ul>\\s*<\\/td>\\s*<\\/tr>`, //closing ul td tr
+            `\\s*<\\/tbody>\\s*<\\/table>`, //closing stuff
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+     it(checksNum+'129 `multiple things table` macro render as expected, all options - lang=el', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([ 
+            `<table\\s*id="govcy-test-129"\\s*class="govcy-table govcy-table-responsive-vertical\\s*govcy-test-class"\\s*lang="el">\\s*<tbody>`, // table tbody
+            `\\s*<tr\\s*class="govcy-summary-list-row-internal">\\s*<td>\\s*<span\\s*class="govcy-visually-hidden">\\s*Καταχώρηση 1\\s*<\\/span>\\s*\\+35799123456 el\\s*<\\/td>`, //tr td
+            `\\s*<td\\s*class="govcy-text-sm-start\\s*govcy-text-md-end">`, //td actions
+            `\\s*<ul\\s*class="list-inline\\s*govcy-my-0">`, //ul
+            `\\s*<li\\s*class="list-inline-item">\\s*<a\\s*href="#change1">\\s*Αλλαγή\\s*<span\\s*class="govcy-visually-hidden">\\s*\\+35799123456 el\\s*<\\/span>\\s*<\\/a>\\s*<\\/li>`, //action
+            `\\s*<li\\s*class="list-inline-item\\s*govcy-test-class">\\s*<a\\s*href="#remove1">\\s*Διαγραφή\\s*<span\\s*class="govcy-visually-hidden">\\s*\\+35799123456 el\\s*<\\/span>\\s*<\\/a>\\s*<\\/li>`, //action
+            `\\s*<\\/ul>\\s*<\\/td>\\s*<\\/tr>`, //closing ul td tr
+            `\\s*<tr\\s*class="govcy-summary-list-row-internal">\\s*<td>\\s*<span\\s*class="govcy-visually-hidden">\\s*Καταχώρηση 2\\s*<\\/span>\\s*\\+35799654321 el\\s*<\\/td>`, //tr td
+            `\\s*<td\\s*class="govcy-text-sm-start\\s*govcy-text-md-end">`, //td actions
+            `\\s*<ul\\s*class="list-inline\\s*govcy-my-0">`, //ul
+            `\\s*<li\\s*class="list-inline-item">\\s*<a\\s*href="#change2">\\s*Αλλαγή\\s*<span\\s*class="govcy-visually-hidden">\\s*\\+35799654321 el\\s*<\\/span>\\s*<\\/a>\\s*<\\/li>`, //action
+            `\\s*<li\\s*class="list-inline-item\\s*govcy-test-class">\\s*<a\\s*href="#remove2">\\s*Διαγραφή\\s*<span\\s*class="govcy-visually-hidden">\\s*\\+35799654321 el\\s*<\\/span>\\s*<\\/a>\\s*<\\/li>`, //action
+            `\\s*<\\/ul>\\s*<\\/td>\\s*<\\/tr>`, //closing ul td tr
+            `\\s*<\\/tbody>\\s*<\\/table>`, //closing stuff
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+     it(checksNum+'130 `Inset` macro render as expected', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([ 
+            `<blockquote\\s*id="govcy-test-130"\\s*class="govcy-inset-text">`, // blockquote
+            `\\s*<p>\\s*English\\s*label\\s*<\\/p>`, // p
+            // `\\s*<\\/blockquote>`, //closing stuff
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+     it(checksNum+'131 `Inset` macro render as expected, all options', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([ 
+            `<blockquote\\s*id="govcy-test-131"\\s*class="govcy-inset-text\\s*govcy-test-class">`, // blockquote
+            `\\s*<p>\\s*English\\s*label\\s*<\\/p>`, // p
+            `\\s*<\\/blockquote>`, //closing stuff
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+     it(checksNum+'132 `Inset` macro render as expected, all options - with lang="el"', async () => {
+        // check for structure   
+        let expectedRegex =  new RegExp ([ 
+            `<blockquote\\s*id="govcy-test-132"\\s*class="govcy-inset-text\\s*govcy-test-class"\\s*lang="el">`, // blockquote
+            `\\s*<p>\\s*Ελληνικά\\s*label\\s*<\\/p>`, // p
+            `\\s*<\\/blockquote>`, //closing stuff
         ].join(''));
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);

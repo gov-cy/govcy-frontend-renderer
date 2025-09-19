@@ -1,0 +1,17 @@
+{# inset 
+ @param {string} lang The language used. Can be 'en','el'. Optional. 
+ @param {string} id The id of the inset. Will escape text. Optional 
+ @param {object} text The text. Will escape text, Example `{en:"Content",el:"Περιεχομένο"}` 
+ @param {string} classes Additional classes to add to the outer `<details>`. Optional 
+ @returns govcy inset html 
+#}
+{% macro inset(params) -%}
+{#- Import localizer from utilities -#}
+{%- from "../utilities/govcyUtilities.njk" import govcyLocalizeContent, govcyLangAttribute, govcyElementsFromArray, govcyGetContent -%}
+{#- text is mandatory -#}
+{%- if params.text %}
+<blockquote {% if params.id %}id="{{ params.id }}" {% endif %}class="govcy-inset-text{% if params.classes %} {{ params.classes }}{% endif %}"{{ govcyLangAttribute(params.lang) }}>
+    <p>{{ govcyLocalizeContent(params.text, params.lang) }}</p>
+</blockquote>
+{%- endif %}
+{%- endmacro %}

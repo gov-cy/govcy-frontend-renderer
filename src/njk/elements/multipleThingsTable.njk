@@ -1,0 +1,78 @@
+{# multipleThingsTable 
+ @param {string} lang The language used. Can be 'en','el'. Optional. 
+ @param {string} id The id of the element. Will escape text. Optional 
+ @param {string} classes Additional classes to add to the outer `<details>`. Optional 
+ @param {array} items The array of items which contain elements 
+    i.e. `[
+            {
+                "text": { "en": "+35799123456", "el": "+35799123456" },
+                "actions": [
+                {
+                    "text": { "en": "Change", "el": "Αλλαγή" },
+                    "href": "#",
+                    classes: "govcy-link",
+                    "visuallyHiddenText": { "en": "+35799123456", "el": "+35799123456" }
+                },
+                {
+                    "text": { "en": "Remove", "el": "Διαγραφή" },
+                    "href": "#",
+                    "visuallyHiddenText": { "en": "+35799123456", "el": "+35799123456" }
+                }
+                ]
+            },
+            {
+                "text": { "en": "+35799654321", "el": "+35799654321" },
+                "actions": [
+                {
+                    "text": { "en": "Change", "el": "Αλλαγή" },
+                    "href": "#",
+                    "visuallyHiddenText": { "en": "+35799654321", "el": "+35799654321" }
+                },
+                {
+                    "text": { "en": "Remove", "el": "Διαγραφή" },
+                    "href": "#",
+                    "visuallyHiddenText": { "en": "+35799654321", "el": "+35799654321" }
+                }
+                ]
+            }
+        ]`
+ @returns govcy multipleThingsTable html 
+#}
+{% macro multipleThingsTable(params) %}
+{#- Import localizer from utilities -#}
+{%- from "../utilities/govcyUtilities.njk" import govcyLocalizeContent, govcyLangAttribute, govcyElementsFromArray, govcyGetContent -%}
+{%- if params.items and params.items.length > 0 %}
+  <table {% if params.id %}id="{{ params.id }}" {% endif %}class="govcy-table govcy-table-responsive-vertical{% if params.classes %} {{ params.classes }}{% endif %}"{{ govcyLangAttribute(params.lang) }}>
+    <tbody>
+      {#- Loop through each row in items -#}
+      {%- for item in params.items %}
+        <tr class="govcy-summary-list-row-internal">
+          <td>
+            {#- Screen reader hidden label, increments by row index -#}
+            <span class="govcy-visually-hidden">{{ govcyGetContent('common_entry', params.lang) }} {{ loop.index }} </span>
+            {#- Display the localized text value (later could support govcyElementsFromArray) -#}
+            {{ govcyLocalizeContent(item.text, params.lang) -}}
+          </td>
+          <td class="govcy-text-sm-start govcy-text-md-end">
+            <ul class="list-inline govcy-my-0">
+              {#- Loop through actions for this row -#}
+              {%- for action in item.actions %}
+                <li class="list-inline-item{% if action.classes %} {{ action.classes }}{% endif %}">
+                  <a href="{% if action.href %}{{ action.href }}{% else %}#{% endif %}">
+                    {#- Visible action text (e.g. Change / Remove) -#}
+                    {{ govcyLocalizeContent(action.text, params.lang) }}
+                    {#- Hidden text for accessibility (e.g. +35799123456) -#}
+                    {%- if action.visuallyHiddenText -%}
+                    <span class="govcy-visually-hidden">{{ govcyLocalizeContent(action.visuallyHiddenText, params.lang) }}</span>
+                    {%- endif -%}
+                  </a>
+                </li>
+              {%- endfor %}
+            </ul>
+          </td>
+        </tr>
+      {%- endfor %}
+    </tbody>
+  </table>
+{%- endif -%}
+{% endmacro %}
