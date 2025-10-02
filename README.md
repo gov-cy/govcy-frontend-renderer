@@ -468,6 +468,7 @@ The `inputData` object has the following structure:
 - **site.cdn.dist**: the CDN of the site. It is used to define the URL of the CDN used for the CSS and JS files. If you need to change the version of the CDN, you can do it by changing this value (in this case you will need to change the `site.cdn.cssIntegrity` and `site.cdn.jsIntegrity` values as well)
 - **site.cdn.cssIntegrity**: the integrity of the CSS file. It is used to define the integrity of the CSS file. If you need to change the version of the CDN, you will need to change this value. https://www.srihash.org/ can help you generate the integrity value.
 - **site.cdn.jsIntegrity**: the integrity of the JS file. It is used to define the integrity of the JS file. If you need to change the version of the CDN, you will need to change this value. https://www.srihash.org/ can help you generate the integrity value.
+- **site.customCSSFile**: the custom CSS file. It is used to add a custom CSS file to the page. This comes after the default CSS file so it will override the default CDN CSS file.
 - **pageData.title**: the title of the page. It is used in the `<title>`, `<meta property="og:title"` and `<meta property="twitter:title"` tags of the head.
 - **pageData.layout**: the layout of the page. It is used to define the layout (or page template) of the page, which is defined in the `layouts/govcyBase.njk` template.
 - **pageData.mainLayout**: the main layout of the page. It can be either `two-thirds` or `max-width`.
