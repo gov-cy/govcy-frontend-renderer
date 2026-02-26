@@ -4858,7 +4858,7 @@ var hasRequiredUtils$1;
 function requireUtils$1 () {
 	if (hasRequiredUtils$1) return utils$4;
 	hasRequiredUtils$1 = 1;
-	(function (exports) {
+	(function (exports$1) {
 
 		const path = require$$0$3;
 		const win32 = process.platform === 'win32';
@@ -4869,19 +4869,19 @@ function requireUtils$1 () {
 		  REGEX_SPECIAL_CHARS_GLOBAL
 		} = requireConstants$2();
 
-		exports.isObject = val => val !== null && typeof val === 'object' && !Array.isArray(val);
-		exports.hasRegexChars = str => REGEX_SPECIAL_CHARS.test(str);
-		exports.isRegexChar = str => str.length === 1 && exports.hasRegexChars(str);
-		exports.escapeRegex = str => str.replace(REGEX_SPECIAL_CHARS_GLOBAL, '\\$1');
-		exports.toPosixSlashes = str => str.replace(REGEX_BACKSLASH, '/');
+		exports$1.isObject = val => val !== null && typeof val === 'object' && !Array.isArray(val);
+		exports$1.hasRegexChars = str => REGEX_SPECIAL_CHARS.test(str);
+		exports$1.isRegexChar = str => str.length === 1 && exports$1.hasRegexChars(str);
+		exports$1.escapeRegex = str => str.replace(REGEX_SPECIAL_CHARS_GLOBAL, '\\$1');
+		exports$1.toPosixSlashes = str => str.replace(REGEX_BACKSLASH, '/');
 
-		exports.removeBackslashes = str => {
+		exports$1.removeBackslashes = str => {
 		  return str.replace(REGEX_REMOVE_BACKSLASH, match => {
 		    return match === '\\' ? '' : match;
 		  });
 		};
 
-		exports.supportsLookbehinds = () => {
+		exports$1.supportsLookbehinds = () => {
 		  const segs = process.version.slice(1).split('.').map(Number);
 		  if (segs.length === 3 && segs[0] >= 9 || (segs[0] === 8 && segs[1] >= 10)) {
 		    return true;
@@ -4889,21 +4889,21 @@ function requireUtils$1 () {
 		  return false;
 		};
 
-		exports.isWindows = options => {
+		exports$1.isWindows = options => {
 		  if (options && typeof options.windows === 'boolean') {
 		    return options.windows;
 		  }
 		  return win32 === true || path.sep === '\\';
 		};
 
-		exports.escapeLast = (input, char, lastIdx) => {
+		exports$1.escapeLast = (input, char, lastIdx) => {
 		  const idx = input.lastIndexOf(char, lastIdx);
 		  if (idx === -1) return input;
-		  if (input[idx - 1] === '\\') return exports.escapeLast(input, char, idx - 1);
+		  if (input[idx - 1] === '\\') return exports$1.escapeLast(input, char, idx - 1);
 		  return `${input.slice(0, idx)}\\${input.slice(idx)}`;
 		};
 
-		exports.removePrefix = (input, state = {}) => {
+		exports$1.removePrefix = (input, state = {}) => {
 		  let output = input;
 		  if (output.startsWith('./')) {
 		    output = output.slice(2);
@@ -4912,7 +4912,7 @@ function requireUtils$1 () {
 		  return output;
 		};
 
-		exports.wrapOutput = (input, state = {}, options = {}) => {
+		exports$1.wrapOutput = (input, state = {}, options = {}) => {
 		  const prepend = options.contains ? '' : '^';
 		  const append = options.contains ? '' : '$';
 
@@ -7484,9 +7484,9 @@ var hasRequiredUtils;
 function requireUtils () {
 	if (hasRequiredUtils) return utils$3;
 	hasRequiredUtils = 1;
-	(function (exports) {
+	(function (exports$1) {
 
-		exports.isInteger = num => {
+		exports$1.isInteger = num => {
 		  if (typeof num === 'number') {
 		    return Number.isInteger(num);
 		  }
@@ -7500,15 +7500,15 @@ function requireUtils () {
 		 * Find a node of the given type
 		 */
 
-		exports.find = (node, type) => node.nodes.find(node => node.type === type);
+		exports$1.find = (node, type) => node.nodes.find(node => node.type === type);
 
 		/**
 		 * Find a node of the given type
 		 */
 
-		exports.exceedsLimit = (min, max, step = 1, limit) => {
+		exports$1.exceedsLimit = (min, max, step = 1, limit) => {
 		  if (limit === false) return false;
-		  if (!exports.isInteger(min) || !exports.isInteger(max)) return false;
+		  if (!exports$1.isInteger(min) || !exports$1.isInteger(max)) return false;
 		  return ((Number(max) - Number(min)) / Number(step)) >= limit;
 		};
 
@@ -7516,7 +7516,7 @@ function requireUtils () {
 		 * Escape the given node with '\\' before node.value
 		 */
 
-		exports.escapeNode = (block, n = 0, type) => {
+		exports$1.escapeNode = (block, n = 0, type) => {
 		  const node = block.nodes[n];
 		  if (!node) return;
 
@@ -7532,7 +7532,7 @@ function requireUtils () {
 		 * Returns true if the given brace node should be enclosed in literal braces
 		 */
 
-		exports.encloseBrace = node => {
+		exports$1.encloseBrace = node => {
 		  if (node.type !== 'brace') return false;
 		  if ((node.commas >> 0 + node.ranges >> 0) === 0) {
 		    node.invalid = true;
@@ -7545,7 +7545,7 @@ function requireUtils () {
 		 * Returns true if a brace node is invalid.
 		 */
 
-		exports.isInvalidBrace = block => {
+		exports$1.isInvalidBrace = block => {
 		  if (block.type !== 'brace') return false;
 		  if (block.invalid === true || block.dollar) return true;
 		  if ((block.commas >> 0 + block.ranges >> 0) === 0) {
@@ -7563,7 +7563,7 @@ function requireUtils () {
 		 * Returns true if a node is an open or close node
 		 */
 
-		exports.isOpenOrClose = node => {
+		exports$1.isOpenOrClose = node => {
 		  if (node.type === 'open' || node.type === 'close') {
 		    return true;
 		  }
@@ -7574,7 +7574,7 @@ function requireUtils () {
 		 * Reduce an array of text nodes.
 		 */
 
-		exports.reduce = nodes => nodes.reduce((acc, node) => {
+		exports$1.reduce = nodes => nodes.reduce((acc, node) => {
 		  if (node.type === 'text') acc.push(node.value);
 		  if (node.type === 'range') node.type = 'text';
 		  return acc;
@@ -7584,7 +7584,7 @@ function requireUtils () {
 		 * Flatten an array
 		 */
 
-		exports.flatten = (...args) => {
+		exports$1.flatten = (...args) => {
 		  const result = [];
 
 		  const flat = arr => {
@@ -9294,72 +9294,72 @@ var hasRequiredConstants;
 function requireConstants () {
 	if (hasRequiredConstants) return constants;
 	hasRequiredConstants = 1;
-	(function (exports) {
+	(function (exports$1) {
 
 		const {sep} = require$$0$3;
 		const {platform} = process;
 		const os = require$$2$1;
 
-		exports.EV_ALL = 'all';
-		exports.EV_READY = 'ready';
-		exports.EV_ADD = 'add';
-		exports.EV_CHANGE = 'change';
-		exports.EV_ADD_DIR = 'addDir';
-		exports.EV_UNLINK = 'unlink';
-		exports.EV_UNLINK_DIR = 'unlinkDir';
-		exports.EV_RAW = 'raw';
-		exports.EV_ERROR = 'error';
+		exports$1.EV_ALL = 'all';
+		exports$1.EV_READY = 'ready';
+		exports$1.EV_ADD = 'add';
+		exports$1.EV_CHANGE = 'change';
+		exports$1.EV_ADD_DIR = 'addDir';
+		exports$1.EV_UNLINK = 'unlink';
+		exports$1.EV_UNLINK_DIR = 'unlinkDir';
+		exports$1.EV_RAW = 'raw';
+		exports$1.EV_ERROR = 'error';
 
-		exports.STR_DATA = 'data';
-		exports.STR_END = 'end';
-		exports.STR_CLOSE = 'close';
+		exports$1.STR_DATA = 'data';
+		exports$1.STR_END = 'end';
+		exports$1.STR_CLOSE = 'close';
 
-		exports.FSEVENT_CREATED = 'created';
-		exports.FSEVENT_MODIFIED = 'modified';
-		exports.FSEVENT_DELETED = 'deleted';
-		exports.FSEVENT_MOVED = 'moved';
-		exports.FSEVENT_CLONED = 'cloned';
-		exports.FSEVENT_UNKNOWN = 'unknown';
-		exports.FSEVENT_FLAG_MUST_SCAN_SUBDIRS = 1;
-		exports.FSEVENT_TYPE_FILE = 'file';
-		exports.FSEVENT_TYPE_DIRECTORY = 'directory';
-		exports.FSEVENT_TYPE_SYMLINK = 'symlink';
+		exports$1.FSEVENT_CREATED = 'created';
+		exports$1.FSEVENT_MODIFIED = 'modified';
+		exports$1.FSEVENT_DELETED = 'deleted';
+		exports$1.FSEVENT_MOVED = 'moved';
+		exports$1.FSEVENT_CLONED = 'cloned';
+		exports$1.FSEVENT_UNKNOWN = 'unknown';
+		exports$1.FSEVENT_FLAG_MUST_SCAN_SUBDIRS = 1;
+		exports$1.FSEVENT_TYPE_FILE = 'file';
+		exports$1.FSEVENT_TYPE_DIRECTORY = 'directory';
+		exports$1.FSEVENT_TYPE_SYMLINK = 'symlink';
 
-		exports.KEY_LISTENERS = 'listeners';
-		exports.KEY_ERR = 'errHandlers';
-		exports.KEY_RAW = 'rawEmitters';
-		exports.HANDLER_KEYS = [exports.KEY_LISTENERS, exports.KEY_ERR, exports.KEY_RAW];
+		exports$1.KEY_LISTENERS = 'listeners';
+		exports$1.KEY_ERR = 'errHandlers';
+		exports$1.KEY_RAW = 'rawEmitters';
+		exports$1.HANDLER_KEYS = [exports$1.KEY_LISTENERS, exports$1.KEY_ERR, exports$1.KEY_RAW];
 
-		exports.DOT_SLASH = `.${sep}`;
+		exports$1.DOT_SLASH = `.${sep}`;
 
-		exports.BACK_SLASH_RE = /\\/g;
-		exports.DOUBLE_SLASH_RE = /\/\//;
-		exports.SLASH_OR_BACK_SLASH_RE = /[/\\]/;
-		exports.DOT_RE = /\..*\.(sw[px])$|~$|\.subl.*\.tmp/;
-		exports.REPLACER_RE = /^\.[/\\]/;
+		exports$1.BACK_SLASH_RE = /\\/g;
+		exports$1.DOUBLE_SLASH_RE = /\/\//;
+		exports$1.SLASH_OR_BACK_SLASH_RE = /[/\\]/;
+		exports$1.DOT_RE = /\..*\.(sw[px])$|~$|\.subl.*\.tmp/;
+		exports$1.REPLACER_RE = /^\.[/\\]/;
 
-		exports.SLASH = '/';
-		exports.SLASH_SLASH = '//';
-		exports.BRACE_START = '{';
-		exports.BANG = '!';
-		exports.ONE_DOT = '.';
-		exports.TWO_DOTS = '..';
-		exports.STAR = '*';
-		exports.GLOBSTAR = '**';
-		exports.ROOT_GLOBSTAR = '/**/*';
-		exports.SLASH_GLOBSTAR = '/**';
-		exports.DIR_SUFFIX = 'Dir';
-		exports.ANYMATCH_OPTS = {dot: true};
-		exports.STRING_TYPE = 'string';
-		exports.FUNCTION_TYPE = 'function';
-		exports.EMPTY_STR = '';
-		exports.EMPTY_FN = () => {};
-		exports.IDENTITY_FN = val => val;
+		exports$1.SLASH = '/';
+		exports$1.SLASH_SLASH = '//';
+		exports$1.BRACE_START = '{';
+		exports$1.BANG = '!';
+		exports$1.ONE_DOT = '.';
+		exports$1.TWO_DOTS = '..';
+		exports$1.STAR = '*';
+		exports$1.GLOBSTAR = '**';
+		exports$1.ROOT_GLOBSTAR = '/**/*';
+		exports$1.SLASH_GLOBSTAR = '/**';
+		exports$1.DIR_SUFFIX = 'Dir';
+		exports$1.ANYMATCH_OPTS = {dot: true};
+		exports$1.STRING_TYPE = 'string';
+		exports$1.FUNCTION_TYPE = 'function';
+		exports$1.EMPTY_STR = '';
+		exports$1.EMPTY_FN = () => {};
+		exports$1.IDENTITY_FN = val => val;
 
-		exports.isWindows = platform === 'win32';
-		exports.isMacos = platform === 'darwin';
-		exports.isLinux = platform === 'linux';
-		exports.isIBMi = os.type() === 'OS400'; 
+		exports$1.isWindows = platform === 'win32';
+		exports$1.isMacos = platform === 'darwin';
+		exports$1.isLinux = platform === 'linux';
+		exports$1.isIBMi = os.type() === 'OS400'; 
 	} (constants));
 	return constants;
 }
@@ -11681,7 +11681,7 @@ var loaders$1 = nodeLoaders;
 
 var tests$1 = {};
 
-(function (exports) {
+(function (exports$1) {
 
 	var SafeString = runtime$1.SafeString;
 
@@ -11693,7 +11693,7 @@ var tests$1 = {};
 	function callable(value) {
 	  return typeof value === 'function';
 	}
-	exports.callable = callable;
+	exports$1.callable = callable;
 
 	/**
 	 * Returns `true` if the object is strictly not `undefined`.
@@ -11703,7 +11703,7 @@ var tests$1 = {};
 	function defined(value) {
 	  return value !== undefined;
 	}
-	exports.defined = defined;
+	exports$1.defined = defined;
 
 	/**
 	 * Returns `true` if the operand (one) is divisble by the test's argument
@@ -11715,7 +11715,7 @@ var tests$1 = {};
 	function divisibleby(one, two) {
 	  return one % two === 0;
 	}
-	exports.divisibleby = divisibleby;
+	exports$1.divisibleby = divisibleby;
 
 	/**
 	 * Returns true if the string has been escaped (i.e., is a SafeString).
@@ -11725,7 +11725,7 @@ var tests$1 = {};
 	function escaped(value) {
 	  return value instanceof SafeString;
 	}
-	exports.escaped = escaped;
+	exports$1.escaped = escaped;
 
 	/**
 	 * Returns `true` if the arguments are strictly equal.
@@ -11735,11 +11735,11 @@ var tests$1 = {};
 	function equalto(one, two) {
 	  return one === two;
 	}
-	exports.equalto = equalto;
+	exports$1.equalto = equalto;
 
 	// Aliases
-	exports.eq = exports.equalto;
-	exports.sameas = exports.equalto;
+	exports$1.eq = exports$1.equalto;
+	exports$1.sameas = exports$1.equalto;
 
 	/**
 	 * Returns `true` if the value is evenly divisible by 2.
@@ -11749,7 +11749,7 @@ var tests$1 = {};
 	function even(value) {
 	  return value % 2 === 0;
 	}
-	exports.even = even;
+	exports$1.even = even;
 
 	/**
 	 * Returns `true` if the value is falsy - if I recall correctly, '', 0, false,
@@ -11762,7 +11762,7 @@ var tests$1 = {};
 	function falsy(value) {
 	  return !value;
 	}
-	exports.falsy = falsy;
+	exports$1.falsy = falsy;
 
 	/**
 	 * Returns `true` if the operand (one) is greater or equal to the test's
@@ -11774,7 +11774,7 @@ var tests$1 = {};
 	function ge(one, two) {
 	  return one >= two;
 	}
-	exports.ge = ge;
+	exports$1.ge = ge;
 
 	/**
 	 * Returns `true` if the operand (one) is greater than the test's argument
@@ -11786,10 +11786,10 @@ var tests$1 = {};
 	function greaterthan(one, two) {
 	  return one > two;
 	}
-	exports.greaterthan = greaterthan;
+	exports$1.greaterthan = greaterthan;
 
 	// alias
-	exports.gt = exports.greaterthan;
+	exports$1.gt = exports$1.greaterthan;
 
 	/**
 	 * Returns `true` if the operand (one) is less than or equal to the test's
@@ -11801,7 +11801,7 @@ var tests$1 = {};
 	function le(one, two) {
 	  return one <= two;
 	}
-	exports.le = le;
+	exports$1.le = le;
 
 	/**
 	 * Returns `true` if the operand (one) is less than the test's passed argument
@@ -11813,10 +11813,10 @@ var tests$1 = {};
 	function lessthan(one, two) {
 	  return one < two;
 	}
-	exports.lessthan = lessthan;
+	exports$1.lessthan = lessthan;
 
 	// alias
-	exports.lt = exports.lessthan;
+	exports$1.lt = exports$1.lessthan;
 
 	/**
 	 * Returns `true` if the string is lowercased.
@@ -11826,7 +11826,7 @@ var tests$1 = {};
 	function lower(value) {
 	  return value.toLowerCase() === value;
 	}
-	exports.lower = lower;
+	exports$1.lower = lower;
 
 	/**
 	 * Returns `true` if the operand (one) is less than or equal to the test's
@@ -11838,7 +11838,7 @@ var tests$1 = {};
 	function ne(one, two) {
 	  return one !== two;
 	}
-	exports.ne = ne;
+	exports$1.ne = ne;
 
 	/**
 	 * Returns true if the value is strictly equal to `null`.
@@ -11848,7 +11848,7 @@ var tests$1 = {};
 	function nullTest(value) {
 	  return value === null;
 	}
-	exports.null = nullTest;
+	exports$1.null = nullTest;
 
 	/**
 	 * Returns true if value is a number.
@@ -11858,7 +11858,7 @@ var tests$1 = {};
 	function number(value) {
 	  return typeof value === 'number';
 	}
-	exports.number = number;
+	exports$1.number = number;
 
 	/**
 	 * Returns `true` if the value is *not* evenly divisible by 2.
@@ -11868,7 +11868,7 @@ var tests$1 = {};
 	function odd(value) {
 	  return value % 2 === 1;
 	}
-	exports.odd = odd;
+	exports$1.odd = odd;
 
 	/**
 	 * Returns `true` if the value is a string, `false` if not.
@@ -11878,7 +11878,7 @@ var tests$1 = {};
 	function string(value) {
 	  return typeof value === 'string';
 	}
-	exports.string = string;
+	exports$1.string = string;
 
 	/**
 	 * Returns `true` if the value is not in the list of things considered falsy:
@@ -11889,7 +11889,7 @@ var tests$1 = {};
 	function truthy(value) {
 	  return !!value;
 	}
-	exports.truthy = truthy;
+	exports$1.truthy = truthy;
 
 	/**
 	 * Returns `true` if the value is undefined.
@@ -11899,7 +11899,7 @@ var tests$1 = {};
 	function undefinedTest(value) {
 	  return value === undefined;
 	}
-	exports.undefined = undefinedTest;
+	exports$1.undefined = undefinedTest;
 
 	/**
 	 * Returns `true` if the string is uppercased.
@@ -11909,7 +11909,7 @@ var tests$1 = {};
 	function upper(value) {
 	  return value.toUpperCase() === value;
 	}
-	exports.upper = upper;
+	exports$1.upper = upper;
 
 	/**
 	 * If ES6 features are available, returns `true` if the value implements the
@@ -11928,7 +11928,7 @@ var tests$1 = {};
 	    return Array.isArray(value) || typeof value === 'string';
 	  }
 	}
-	exports.iterable = iterable;
+	exports$1.iterable = iterable;
 
 	/**
 	 * If ES6 features are available, returns `true` if the value is an object hash
@@ -11945,7 +11945,7 @@ var tests$1 = {};
 	    return bool;
 	  }
 	}
-	exports.mapping = mapping; 
+	exports$1.mapping = mapping; 
 } (tests$1));
 
 function _cycler(items) {
@@ -13035,7 +13035,7 @@ function configure(templatesPath, opts) {
   }
   return e;
 }
-var nunjucks = {
+var nunjucks$1 = {
   Environment: Environment,
   Template: Template,
   Loader: Loader,
@@ -13076,7 +13076,7 @@ var nunjucks = {
   precompileString: precompile ? precompile.precompileString : undefined
 };
 
-var nunjucks$1 = /*@__PURE__*/getDefaultExportFromCjs(nunjucks);
+var nunjucks = /*@__PURE__*/getDefaultExportFromCjs(nunjucks$1);
 
 /* eslint-disable no-bitwise */
 
@@ -18167,7 +18167,14 @@ function linkify (state, silent) {
   if (url.length <= proto.length) return false
 
   // disallow '*' at the end of the link (conflicts with emphasis)
-  url = url.replace(/\*+$/, '');
+  // do manual backsearch to avoid perf issues with regex /\*+$/ on "****...****a".
+  let urlEnd = url.length;
+  while (urlEnd > 0 && url.charCodeAt(urlEnd - 1) === 0x2A/* * */) {
+    urlEnd--;
+  }
+  if (urlEnd !== url.length) {
+    url = url.slice(0, urlEnd);
+  }
 
   const fullUrl = state.md.normalizeLink(url);
   if (!state.md.validateLink(fullUrl)) return false
@@ -22320,7 +22327,7 @@ const defaultOptions = {
  * @param {MarkdownIt} md
  * @param {Options=} options_
  */
-var markdownItAttrs = function attributes(md, options_) {
+var markdownItAttrs$1 = function attributes(md, options_) {
   let options = Object.assign({}, defaultOptions);
   options = Object.assign(options, options_);
 
@@ -22476,7 +22483,7 @@ function last(arr) {
   return arr.slice(-1)[0] || {};
 }
 
-var markdownItAttrs$1 = /*@__PURE__*/getDefaultExportFromCjs(markdownItAttrs);
+var markdownItAttrs = /*@__PURE__*/getDefaultExportFromCjs(markdownItAttrs$1);
 
 /**
  * Used to render HTML based on UDS components
@@ -22500,7 +22507,7 @@ class govcyFrontendRenderer {
         const templateDirectory = require$$0$3.join(__dirname,'../src/njk');
 
         // Create a new nunjucks environment
-        const env =  new nunjucks$1.Environment(new nunjucks$1.FileSystemLoader(templateDirectory));
+        const env =  new nunjucks.Environment(new nunjucks.FileSystemLoader(templateDirectory));
         // Add a global nunjucks variable 'globalData' with the data passed 
         env.addGlobal('globalData', data);
         // Add a custom 'merge' filter
@@ -22509,12 +22516,12 @@ class govcyFrontendRenderer {
         });
         // Initialize Markdown-it
         const md = new MarkdownIt();
-        md.use(markdownItAttrs$1);
+        md.use(markdownItAttrs);
         // Add a custom Markdown filter
         env.addFilter('markdown', (input) => {
           if (!input) return ''; // Handle empty input
             const htmlOutput = md.render(input); // Convert Markdown to HTML
-            return new nunjucks$1.runtime.SafeString(htmlOutput); // Mark as safe to prevent escaping
+            return new nunjucks.runtime.SafeString(htmlOutput); // Mark as safe to prevent escaping
         });
         const renderedContent = env.renderString(input, data);
         //console.log(renderedContent);
