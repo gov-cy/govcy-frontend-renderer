@@ -11,7 +11,7 @@ var GovcyFrontendRendererBrowser = (function () {
 
 	/*! Browser bundle of nunjucks 3.2.4  */
 
-	(function (module, exports) {
+	(function (module, exports$1) {
 		(function webpackUniversalModuleDefinition(root, factory) {
 			module.exports = factory();
 		})(typeof self !== 'undefined' ? self : commonjsGlobal, function() {
@@ -51,9 +51,9 @@ var GovcyFrontendRendererBrowser = (function () {
 		/******/ 	__webpack_require__.c = installedModules;
 		/******/
 		/******/ 	// define getter function for harmony exports
-		/******/ 	__webpack_require__.d = function(exports, name, getter) {
-		/******/ 		if(!__webpack_require__.o(exports, name)) {
-		/******/ 			Object.defineProperty(exports, name, {
+		/******/ 	__webpack_require__.d = function(exports$1, name, getter) {
+		/******/ 		if(!__webpack_require__.o(exports$1, name)) {
+		/******/ 			Object.defineProperty(exports$1, name, {
 		/******/ 				configurable: false,
 		/******/ 				enumerable: true,
 		/******/ 				get: getter
@@ -82,7 +82,7 @@ var GovcyFrontendRendererBrowser = (function () {
 		/************************************************************************/
 		/******/ ([
 		/* 0 */
-		/***/ (function(module, exports, __webpack_require__) {
+		/***/ (function(module, exports$1, __webpack_require__) {
 
 
 		var ArrayProto = Array.prototype;
@@ -96,18 +96,18 @@ var GovcyFrontendRendererBrowser = (function () {
 		  '\\': '&#92;'
 		};
 		var escapeRegex = /[&"'<>\\]/g;
-		var exports = module.exports = {};
+		var exports$1 = module.exports = {};
 		function hasOwnProp(obj, k) {
 		  return ObjProto.hasOwnProperty.call(obj, k);
 		}
-		exports.hasOwnProp = hasOwnProp;
+		exports$1.hasOwnProp = hasOwnProp;
 		function lookupEscape(ch) {
 		  return escapeMap[ch];
 		}
 		function _prettifyError(path, withInternals, err) {
 		  if (!err.Update) {
 		    // not one of ours, cast it
-		    err = new exports.TemplateError(err);
+		    err = new exports$1.TemplateError(err);
 		  }
 		  err.Update(path);
 
@@ -119,7 +119,7 @@ var GovcyFrontendRendererBrowser = (function () {
 		  }
 		  return err;
 		}
-		exports._prettifyError = _prettifyError;
+		exports$1._prettifyError = _prettifyError;
 		function TemplateError(message, lineno, colno) {
 		  var err;
 		  var cause;
@@ -203,27 +203,27 @@ var GovcyFrontendRendererBrowser = (function () {
 		    }
 		  });
 		}
-		exports.TemplateError = TemplateError;
+		exports$1.TemplateError = TemplateError;
 		function escape(val) {
 		  return val.replace(escapeRegex, lookupEscape);
 		}
-		exports.escape = escape;
+		exports$1.escape = escape;
 		function isFunction(obj) {
 		  return ObjProto.toString.call(obj) === '[object Function]';
 		}
-		exports.isFunction = isFunction;
+		exports$1.isFunction = isFunction;
 		function isArray(obj) {
 		  return ObjProto.toString.call(obj) === '[object Array]';
 		}
-		exports.isArray = isArray;
+		exports$1.isArray = isArray;
 		function isString(obj) {
 		  return ObjProto.toString.call(obj) === '[object String]';
 		}
-		exports.isString = isString;
+		exports$1.isString = isString;
 		function isObject(obj) {
 		  return ObjProto.toString.call(obj) === '[object Object]';
 		}
-		exports.isObject = isObject;
+		exports$1.isObject = isObject;
 
 		/**
 		 * @param {string|number} attr
@@ -262,7 +262,7 @@ var GovcyFrontendRendererBrowser = (function () {
 		    return _item;
 		  };
 		}
-		exports.getAttrGetter = getAttrGetter;
+		exports$1.getAttrGetter = getAttrGetter;
 		function groupBy(obj, val, throwOnUndefined) {
 		  var result = {};
 		  var iterator = isFunction(val) ? val : getAttrGetter(val);
@@ -276,11 +276,11 @@ var GovcyFrontendRendererBrowser = (function () {
 		  }
 		  return result;
 		}
-		exports.groupBy = groupBy;
+		exports$1.groupBy = groupBy;
 		function toArray(obj) {
 		  return Array.prototype.slice.call(obj);
 		}
-		exports.toArray = toArray;
+		exports$1.toArray = toArray;
 		function without(array) {
 		  var result = [];
 		  if (!array) {
@@ -296,7 +296,7 @@ var GovcyFrontendRendererBrowser = (function () {
 		  }
 		  return result;
 		}
-		exports.without = without;
+		exports$1.without = without;
 		function repeat(char_, n) {
 		  var str = '';
 		  for (var i = 0; i < n; i++) {
@@ -304,7 +304,7 @@ var GovcyFrontendRendererBrowser = (function () {
 		  }
 		  return str;
 		}
-		exports.repeat = repeat;
+		exports$1.repeat = repeat;
 		function each(obj, func, context) {
 		  if (obj == null) {
 		    return;
@@ -317,7 +317,7 @@ var GovcyFrontendRendererBrowser = (function () {
 		    }
 		  }
 		}
-		exports.each = each;
+		exports$1.each = each;
 		function map(obj, func) {
 		  var results = [];
 		  if (obj == null) {
@@ -334,7 +334,7 @@ var GovcyFrontendRendererBrowser = (function () {
 		  }
 		  return results;
 		}
-		exports.map = map;
+		exports$1.map = map;
 		function asyncIter(arr, iter, cb) {
 		  var i = -1;
 		  function next() {
@@ -347,7 +347,7 @@ var GovcyFrontendRendererBrowser = (function () {
 		  }
 		  next();
 		}
-		exports.asyncIter = asyncIter;
+		exports$1.asyncIter = asyncIter;
 		function asyncFor(obj, iter, cb) {
 		  var keys = keys_(obj || {});
 		  var len = keys.length;
@@ -363,11 +363,11 @@ var GovcyFrontendRendererBrowser = (function () {
 		  }
 		  next();
 		}
-		exports.asyncFor = asyncFor;
+		exports$1.asyncFor = asyncFor;
 		function indexOf(arr, searchElement, fromIndex) {
 		  return Array.prototype.indexOf.call(arr || [], searchElement, fromIndex);
 		}
-		exports.indexOf = indexOf;
+		exports$1.indexOf = indexOf;
 		function keys_(obj) {
 		  /* eslint-disable no-restricted-syntax */
 		  var arr = [];
@@ -378,19 +378,19 @@ var GovcyFrontendRendererBrowser = (function () {
 		  }
 		  return arr;
 		}
-		exports.keys = keys_;
+		exports$1.keys = keys_;
 		function _entries(obj) {
 		  return keys_(obj).map(function (k) {
 		    return [k, obj[k]];
 		  });
 		}
-		exports._entries = _entries;
+		exports$1._entries = _entries;
 		function _values(obj) {
 		  return keys_(obj).map(function (k) {
 		    return obj[k];
 		  });
 		}
-		exports._values = _values;
+		exports$1._values = _values;
 		function extend(obj1, obj2) {
 		  obj1 = obj1 || {};
 		  keys_(obj2).forEach(function (k) {
@@ -398,7 +398,7 @@ var GovcyFrontendRendererBrowser = (function () {
 		  });
 		  return obj1;
 		}
-		exports._assign = exports.extend = extend;
+		exports$1._assign = exports$1.extend = extend;
 		function inOperator(key, val) {
 		  if (isArray(val) || isString(val)) {
 		    return val.indexOf(key) !== -1;
@@ -407,11 +407,11 @@ var GovcyFrontendRendererBrowser = (function () {
 		  }
 		  throw new Error('Cannot use "in" operator to search for "' + key + '" in unexpected types.');
 		}
-		exports.inOperator = inOperator;
+		exports$1.inOperator = inOperator;
 
 		/***/ }),
 		/* 1 */
-		/***/ (function(module, exports, __webpack_require__) {
+		/***/ (function(module, exports$1, __webpack_require__) {
 
 
 		// A simple class system, more documentation to come
@@ -515,7 +515,7 @@ var GovcyFrontendRendererBrowser = (function () {
 
 		/***/ }),
 		/* 2 */
-		/***/ (function(module, exports, __webpack_require__) {
+		/***/ (function(module, exports$1, __webpack_require__) {
 
 
 		var lib = __webpack_require__(0);
@@ -852,7 +852,7 @@ var GovcyFrontendRendererBrowser = (function () {
 
 		/***/ }),
 		/* 3 */
-		/***/ (function(module, exports, __webpack_require__) {
+		/***/ (function(module, exports$1, __webpack_require__) {
 
 
 		function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
@@ -1206,13 +1206,13 @@ var GovcyFrontendRendererBrowser = (function () {
 
 		/***/ }),
 		/* 4 */
-		/***/ (function(module, exports) {
+		/***/ (function(module, exports$1) {
 
 
 
 		/***/ }),
 		/* 5 */
-		/***/ (function(module, exports, __webpack_require__) {
+		/***/ (function(module, exports$1, __webpack_require__) {
 
 
 		function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.create(superClass.prototype); subClass.prototype.constructor = subClass; _setPrototypeOf(subClass, superClass); }
@@ -2243,7 +2243,7 @@ var GovcyFrontendRendererBrowser = (function () {
 
 		/***/ }),
 		/* 6 */
-		/***/ (function(module, exports, __webpack_require__) {
+		/***/ (function(module, exports$1, __webpack_require__) {
 
 
 		function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.create(superClass.prototype); subClass.prototype.constructor = subClass; _setPrototypeOf(subClass, superClass); }
@@ -2268,7 +2268,7 @@ var GovcyFrontendRendererBrowser = (function () {
 
 		/***/ }),
 		/* 7 */
-		/***/ (function(module, exports, __webpack_require__) {
+		/***/ (function(module, exports$1, __webpack_require__) {
 
 
 		function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.create(superClass.prototype); subClass.prototype.constructor = subClass; _setPrototypeOf(subClass, superClass); }
@@ -2820,7 +2820,7 @@ var GovcyFrontendRendererBrowser = (function () {
 
 		/***/ }),
 		/* 8 */
-		/***/ (function(module, exports, __webpack_require__) {
+		/***/ (function(module, exports$1, __webpack_require__) {
 
 
 		function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.create(superClass.prototype); subClass.prototype.constructor = subClass; _setPrototypeOf(subClass, superClass); }
@@ -3852,7 +3852,7 @@ var GovcyFrontendRendererBrowser = (function () {
 
 		/***/ }),
 		/* 9 */
-		/***/ (function(module, exports, __webpack_require__) {
+		/***/ (function(module, exports$1, __webpack_require__) {
 
 
 		var lib = __webpack_require__(0);
@@ -4330,7 +4330,7 @@ var GovcyFrontendRendererBrowser = (function () {
 
 		/***/ }),
 		/* 10 */
-		/***/ (function(module, exports, __webpack_require__) {
+		/***/ (function(module, exports$1, __webpack_require__) {
 
 
 		function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.create(superClass.prototype); subClass.prototype.constructor = subClass; _setPrototypeOf(subClass, superClass); }
@@ -4428,7 +4428,7 @@ var GovcyFrontendRendererBrowser = (function () {
 
 		/***/ }),
 		/* 11 */
-		/***/ (function(module, exports, __webpack_require__) {
+		/***/ (function(module, exports$1, __webpack_require__) {
 
 
 		var lib = __webpack_require__(0);
@@ -4514,7 +4514,7 @@ var GovcyFrontendRendererBrowser = (function () {
 
 		/***/ }),
 		/* 12 */
-		/***/ (function(module, exports, __webpack_require__) {
+		/***/ (function(module, exports$1, __webpack_require__) {
 
 
 		// rawAsap provides everything we need except exception management.
@@ -4585,7 +4585,7 @@ var GovcyFrontendRendererBrowser = (function () {
 
 		/***/ }),
 		/* 13 */
-		/***/ (function(module, exports, __webpack_require__) {
+		/***/ (function(module, exports$1, __webpack_require__) {
 		/* WEBPACK VAR INJECTION */(function(global) {
 
 		// Use the fastest means possible to execute a task in its own turn, with
@@ -4805,11 +4805,11 @@ var GovcyFrontendRendererBrowser = (function () {
 		// back into ASAP proper.
 		// https://github.com/tildeio/rsvp.js/blob/cddf7232546a9cf858524b75cde6f9edf72620a7/lib/rsvp/asap.js
 
-		/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(14)));
+		/* WEBPACK VAR INJECTION */}.call(exports$1, __webpack_require__(14)));
 
 		/***/ }),
 		/* 14 */
-		/***/ (function(module, exports) {
+		/***/ (function(module, exports$1) {
 
 		var g;
 
@@ -4836,7 +4836,7 @@ var GovcyFrontendRendererBrowser = (function () {
 
 		/***/ }),
 		/* 15 */
-		/***/ (function(module, exports, __webpack_require__) {
+		/***/ (function(module, exports$1, __webpack_require__) {
 
 		var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;// MIT license (by Elan Shanker).
 		(function(globals) {
@@ -4913,7 +4913,7 @@ var GovcyFrontendRendererBrowser = (function () {
 		  {
 		    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = (function () {
 		      return waterfall;
-		    }).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+		    }).apply(exports$1, __WEBPACK_AMD_DEFINE_ARRAY__),
 						__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)); // RequireJS
 		  }
 		})();
@@ -4921,7 +4921,7 @@ var GovcyFrontendRendererBrowser = (function () {
 
 		/***/ }),
 		/* 16 */
-		/***/ (function(module, exports, __webpack_require__) {
+		/***/ (function(module, exports$1, __webpack_require__) {
 		// Copyright Joyent, Inc. and other Node contributors.
 		//
 		// Permission is hereby granted, free of charge, to any person obtaining a
@@ -5422,7 +5422,7 @@ var GovcyFrontendRendererBrowser = (function () {
 
 		/***/ }),
 		/* 17 */
-		/***/ (function(module, exports, __webpack_require__) {
+		/***/ (function(module, exports$1, __webpack_require__) {
 
 
 		var nodes = __webpack_require__(3);
@@ -5592,19 +5592,19 @@ var GovcyFrontendRendererBrowser = (function () {
 
 		/***/ }),
 		/* 18 */
-		/***/ (function(module, exports, __webpack_require__) {
+		/***/ (function(module, exports$1, __webpack_require__) {
 
 
 		var lib = __webpack_require__(0);
 		var r = __webpack_require__(2);
-		var exports = module.exports = {};
+		var exports$1 = module.exports = {};
 		function normalize(value, defaultValue) {
 		  if (value === null || value === undefined || value === false) {
 		    return defaultValue;
 		  }
 		  return value;
 		}
-		exports.abs = Math.abs;
+		exports$1.abs = Math.abs;
 		function isNaN(num) {
 		  return num !== num; // eslint-disable-line no-self-compare
 		}
@@ -5630,13 +5630,13 @@ var GovcyFrontendRendererBrowser = (function () {
 		  }
 		  return res;
 		}
-		exports.batch = batch;
+		exports$1.batch = batch;
 		function capitalize(str) {
 		  str = normalize(str, '');
 		  var ret = str.toLowerCase();
 		  return r.copySafeness(str, ret.charAt(0).toUpperCase() + ret.slice(1));
 		}
-		exports.capitalize = capitalize;
+		exports$1.capitalize = capitalize;
 		function center(str, width) {
 		  str = normalize(str, '');
 		  width = width || 80;
@@ -5648,7 +5648,7 @@ var GovcyFrontendRendererBrowser = (function () {
 		  var post = lib.repeat(' ', spaces / 2);
 		  return r.copySafeness(str, pre + str + post);
 		}
-		exports.center = center;
+		exports$1.center = center;
 		function default_(val, def, bool) {
 		  if (bool) {
 		    return val || def;
@@ -5658,7 +5658,7 @@ var GovcyFrontendRendererBrowser = (function () {
 		}
 
 		// TODO: it is confusing to export something called 'default'
-		exports['default'] = default_; // eslint-disable-line dot-notation
+		exports$1['default'] = default_; // eslint-disable-line dot-notation
 
 		function dictsort(val, caseSensitive, by) {
 		  if (!lib.isObject(val)) {
@@ -5694,11 +5694,11 @@ var GovcyFrontendRendererBrowser = (function () {
 
 		  return array;
 		}
-		exports.dictsort = dictsort;
+		exports$1.dictsort = dictsort;
 		function dump(obj, spaces) {
 		  return JSON.stringify(obj, null, spaces);
 		}
-		exports.dump = dump;
+		exports$1.dump = dump;
 		function escape(str) {
 		  if (str instanceof r.SafeString) {
 		    return str;
@@ -5706,7 +5706,7 @@ var GovcyFrontendRendererBrowser = (function () {
 		  str = str === null || str === undefined ? '' : str;
 		  return r.markSafe(lib.escape(str.toString()));
 		}
-		exports.escape = escape;
+		exports$1.escape = escape;
 		function safe(str) {
 		  if (str instanceof r.SafeString) {
 		    return str;
@@ -5714,20 +5714,20 @@ var GovcyFrontendRendererBrowser = (function () {
 		  str = str === null || str === undefined ? '' : str;
 		  return r.markSafe(str.toString());
 		}
-		exports.safe = safe;
+		exports$1.safe = safe;
 		function first(arr) {
 		  return arr[0];
 		}
-		exports.first = first;
+		exports$1.first = first;
 		function forceescape(str) {
 		  str = str === null || str === undefined ? '' : str;
 		  return r.markSafe(lib.escape(str.toString()));
 		}
-		exports.forceescape = forceescape;
+		exports$1.forceescape = forceescape;
 		function groupby(arr, attr) {
 		  return lib.groupBy(arr, attr, this.env.opts.throwOnUndefined);
 		}
-		exports.groupby = groupby;
+		exports$1.groupby = groupby;
 		function indent(str, width, indentfirst) {
 		  str = normalize(str, '');
 		  if (str === '') {
@@ -5742,7 +5742,7 @@ var GovcyFrontendRendererBrowser = (function () {
 		  }).join('\n');
 		  return r.copySafeness(str, res);
 		}
-		exports.indent = indent;
+		exports$1.indent = indent;
 		function join(arr, del, attr) {
 		  del = del || '';
 		  if (attr) {
@@ -5752,11 +5752,11 @@ var GovcyFrontendRendererBrowser = (function () {
 		  }
 		  return arr.join(del);
 		}
-		exports.join = join;
+		exports$1.join = join;
 		function last(arr) {
 		  return arr[arr.length - 1];
 		}
-		exports.last = last;
+		exports$1.last = last;
 		function lengthFilter(val) {
 		  var value = normalize(val, '');
 		  if (value !== undefined) {
@@ -5772,7 +5772,7 @@ var GovcyFrontendRendererBrowser = (function () {
 		  }
 		  return 0;
 		}
-		exports.length = lengthFilter;
+		exports$1.length = lengthFilter;
 		function list(val) {
 		  if (lib.isString(val)) {
 		    return val.split('');
@@ -5791,23 +5791,23 @@ var GovcyFrontendRendererBrowser = (function () {
 		    throw new lib.TemplateError('list filter: type not iterable');
 		  }
 		}
-		exports.list = list;
+		exports$1.list = list;
 		function lower(str) {
 		  str = normalize(str, '');
 		  return str.toLowerCase();
 		}
-		exports.lower = lower;
+		exports$1.lower = lower;
 		function nl2br(str) {
 		  if (str === null || str === undefined) {
 		    return '';
 		  }
 		  return r.copySafeness(str, str.replace(/\r\n|\n/g, '<br />\n'));
 		}
-		exports.nl2br = nl2br;
+		exports$1.nl2br = nl2br;
 		function random(arr) {
 		  return arr[Math.floor(Math.random() * arr.length)];
 		}
-		exports.random = random;
+		exports$1.random = random;
 
 		/**
 		 * Construct select or reject filter
@@ -5828,20 +5828,20 @@ var GovcyFrontendRendererBrowser = (function () {
 		  }
 		  return filter;
 		}
-		exports.reject = getSelectOrReject(false);
+		exports$1.reject = getSelectOrReject(false);
 		function rejectattr(arr, attr) {
 		  return arr.filter(function (item) {
 		    return !item[attr];
 		  });
 		}
-		exports.rejectattr = rejectattr;
-		exports.select = getSelectOrReject(true);
+		exports$1.rejectattr = rejectattr;
+		exports$1.select = getSelectOrReject(true);
 		function selectattr(arr, attr) {
 		  return arr.filter(function (item) {
 		    return !!item[attr];
 		  });
 		}
-		exports.selectattr = selectattr;
+		exports$1.selectattr = selectattr;
 		function replace(str, old, new_, maxCount) {
 		  var originalStr = str;
 		  if (old instanceof RegExp) {
@@ -5905,7 +5905,7 @@ var GovcyFrontendRendererBrowser = (function () {
 		  }
 		  return r.copySafeness(originalStr, res);
 		}
-		exports.replace = replace;
+		exports$1.replace = replace;
 		function reverse(val) {
 		  var arr;
 		  if (lib.isString(val)) {
@@ -5922,7 +5922,7 @@ var GovcyFrontendRendererBrowser = (function () {
 		  }
 		  return arr;
 		}
-		exports.reverse = reverse;
+		exports$1.reverse = reverse;
 		function round(val, precision, method) {
 		  precision = precision || 0;
 		  var factor = Math.pow(10, precision);
@@ -5936,7 +5936,7 @@ var GovcyFrontendRendererBrowser = (function () {
 		  }
 		  return rounder(val * factor) / factor;
 		}
-		exports.round = round;
+		exports$1.round = round;
 		function slice(arr, slices, fillWith) {
 		  var sliceLength = Math.floor(arr.length / slices);
 		  var extra = arr.length % slices;
@@ -5956,7 +5956,7 @@ var GovcyFrontendRendererBrowser = (function () {
 		  }
 		  return res;
 		}
-		exports.slice = slice;
+		exports$1.slice = slice;
 		function sum(arr, attr, start) {
 		  if (start === void 0) {
 		    start = 0;
@@ -5970,8 +5970,8 @@ var GovcyFrontendRendererBrowser = (function () {
 		    return a + b;
 		  }, 0);
 		}
-		exports.sum = sum;
-		exports.sort = r.makeMacro(['value', 'reverse', 'case_sensitive', 'attribute'], [], function sortFilter(arr, reversed, caseSens, attr) {
+		exports$1.sum = sum;
+		exports$1.sort = r.makeMacro(['value', 'reverse', 'case_sensitive', 'attribute'], [], function sortFilter(arr, reversed, caseSens, attr) {
 		  var _this = this;
 		  // Copy it
 		  var array = lib.map(arr, function (v) {
@@ -6001,7 +6001,7 @@ var GovcyFrontendRendererBrowser = (function () {
 		function string(obj) {
 		  return r.copySafeness(obj, obj);
 		}
-		exports.string = string;
+		exports$1.string = string;
 		function striptags(input, preserveLinebreaks) {
 		  input = normalize(input, '');
 		  var tags = /<\/?([a-z][a-z0-9]*)\b[^>]*>|<!--[\s\S]*?-->/gi;
@@ -6017,7 +6017,7 @@ var GovcyFrontendRendererBrowser = (function () {
 		  }
 		  return r.copySafeness(input, res);
 		}
-		exports.striptags = striptags;
+		exports$1.striptags = striptags;
 		function title(str) {
 		  str = normalize(str, '');
 		  var words = str.split(' ').map(function (word) {
@@ -6025,11 +6025,11 @@ var GovcyFrontendRendererBrowser = (function () {
 		  });
 		  return r.copySafeness(str, words.join(' '));
 		}
-		exports.title = title;
+		exports$1.title = title;
 		function trim(str) {
 		  return r.copySafeness(str, str.replace(/^\s*|\s*$/g, ''));
 		}
-		exports.trim = trim;
+		exports$1.trim = trim;
 		function truncate(input, length, killwords, end) {
 		  var orig = input;
 		  input = normalize(input, '');
@@ -6049,12 +6049,12 @@ var GovcyFrontendRendererBrowser = (function () {
 		  input += end !== undefined && end !== null ? end : '...';
 		  return r.copySafeness(orig, input);
 		}
-		exports.truncate = truncate;
+		exports$1.truncate = truncate;
 		function upper(str) {
 		  str = normalize(str, '');
 		  return str.toUpperCase();
 		}
-		exports.upper = upper;
+		exports$1.upper = upper;
 		function urlencode(obj) {
 		  var enc = encodeURIComponent;
 		  if (lib.isString(obj)) {
@@ -6068,7 +6068,7 @@ var GovcyFrontendRendererBrowser = (function () {
 		    }).join('&');
 		  }
 		}
-		exports.urlencode = urlencode;
+		exports$1.urlencode = urlencode;
 
 		// For the jinja regexp, see
 		// https://github.com/mitsuhiko/jinja2/blob/f15b814dcba6aa12bc74d1f7d0c881d55f7126be/jinja2/utils.py#L20-L23
@@ -6115,18 +6115,18 @@ var GovcyFrontendRendererBrowser = (function () {
 		  });
 		  return words.join('');
 		}
-		exports.urlize = urlize;
+		exports$1.urlize = urlize;
 		function wordcount(str) {
 		  str = normalize(str, '');
 		  var words = str ? str.match(/\w+/g) : null;
 		  return words ? words.length : null;
 		}
-		exports.wordcount = wordcount;
+		exports$1.wordcount = wordcount;
 		function float(val, def) {
 		  var res = parseFloat(val);
 		  return isNaN(res) ? def : res;
 		}
-		exports.float = float;
+		exports$1.float = float;
 		var intFilter = r.makeMacro(['value', 'default', 'base'], [], function doInt(value, defaultValue, base) {
 		  if (base === void 0) {
 		    base = 10;
@@ -6134,15 +6134,15 @@ var GovcyFrontendRendererBrowser = (function () {
 		  var res = parseInt(value, base);
 		  return isNaN(res) ? defaultValue : res;
 		});
-		exports.int = intFilter;
+		exports$1.int = intFilter;
 
 		// Aliases
-		exports.d = exports.default;
-		exports.e = exports.escape;
+		exports$1.d = exports$1.default;
+		exports$1.e = exports$1.escape;
 
 		/***/ }),
 		/* 19 */
-		/***/ (function(module, exports, __webpack_require__) {
+		/***/ (function(module, exports$1, __webpack_require__) {
 
 
 		function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.create(superClass.prototype); subClass.prototype.constructor = subClass; _setPrototypeOf(subClass, superClass); }
@@ -6177,7 +6177,7 @@ var GovcyFrontendRendererBrowser = (function () {
 
 		/***/ }),
 		/* 20 */
-		/***/ (function(module, exports, __webpack_require__) {
+		/***/ (function(module, exports$1, __webpack_require__) {
 
 
 		var SafeString = __webpack_require__(2).SafeString;
@@ -6190,7 +6190,7 @@ var GovcyFrontendRendererBrowser = (function () {
 		function callable(value) {
 		  return typeof value === 'function';
 		}
-		exports.callable = callable;
+		exports$1.callable = callable;
 
 		/**
 		 * Returns `true` if the object is strictly not `undefined`.
@@ -6200,7 +6200,7 @@ var GovcyFrontendRendererBrowser = (function () {
 		function defined(value) {
 		  return value !== undefined;
 		}
-		exports.defined = defined;
+		exports$1.defined = defined;
 
 		/**
 		 * Returns `true` if the operand (one) is divisble by the test's argument
@@ -6212,7 +6212,7 @@ var GovcyFrontendRendererBrowser = (function () {
 		function divisibleby(one, two) {
 		  return one % two === 0;
 		}
-		exports.divisibleby = divisibleby;
+		exports$1.divisibleby = divisibleby;
 
 		/**
 		 * Returns true if the string has been escaped (i.e., is a SafeString).
@@ -6222,7 +6222,7 @@ var GovcyFrontendRendererBrowser = (function () {
 		function escaped(value) {
 		  return value instanceof SafeString;
 		}
-		exports.escaped = escaped;
+		exports$1.escaped = escaped;
 
 		/**
 		 * Returns `true` if the arguments are strictly equal.
@@ -6232,11 +6232,11 @@ var GovcyFrontendRendererBrowser = (function () {
 		function equalto(one, two) {
 		  return one === two;
 		}
-		exports.equalto = equalto;
+		exports$1.equalto = equalto;
 
 		// Aliases
-		exports.eq = exports.equalto;
-		exports.sameas = exports.equalto;
+		exports$1.eq = exports$1.equalto;
+		exports$1.sameas = exports$1.equalto;
 
 		/**
 		 * Returns `true` if the value is evenly divisible by 2.
@@ -6246,7 +6246,7 @@ var GovcyFrontendRendererBrowser = (function () {
 		function even(value) {
 		  return value % 2 === 0;
 		}
-		exports.even = even;
+		exports$1.even = even;
 
 		/**
 		 * Returns `true` if the value is falsy - if I recall correctly, '', 0, false,
@@ -6259,7 +6259,7 @@ var GovcyFrontendRendererBrowser = (function () {
 		function falsy(value) {
 		  return !value;
 		}
-		exports.falsy = falsy;
+		exports$1.falsy = falsy;
 
 		/**
 		 * Returns `true` if the operand (one) is greater or equal to the test's
@@ -6271,7 +6271,7 @@ var GovcyFrontendRendererBrowser = (function () {
 		function ge(one, two) {
 		  return one >= two;
 		}
-		exports.ge = ge;
+		exports$1.ge = ge;
 
 		/**
 		 * Returns `true` if the operand (one) is greater than the test's argument
@@ -6283,10 +6283,10 @@ var GovcyFrontendRendererBrowser = (function () {
 		function greaterthan(one, two) {
 		  return one > two;
 		}
-		exports.greaterthan = greaterthan;
+		exports$1.greaterthan = greaterthan;
 
 		// alias
-		exports.gt = exports.greaterthan;
+		exports$1.gt = exports$1.greaterthan;
 
 		/**
 		 * Returns `true` if the operand (one) is less than or equal to the test's
@@ -6298,7 +6298,7 @@ var GovcyFrontendRendererBrowser = (function () {
 		function le(one, two) {
 		  return one <= two;
 		}
-		exports.le = le;
+		exports$1.le = le;
 
 		/**
 		 * Returns `true` if the operand (one) is less than the test's passed argument
@@ -6310,10 +6310,10 @@ var GovcyFrontendRendererBrowser = (function () {
 		function lessthan(one, two) {
 		  return one < two;
 		}
-		exports.lessthan = lessthan;
+		exports$1.lessthan = lessthan;
 
 		// alias
-		exports.lt = exports.lessthan;
+		exports$1.lt = exports$1.lessthan;
 
 		/**
 		 * Returns `true` if the string is lowercased.
@@ -6323,7 +6323,7 @@ var GovcyFrontendRendererBrowser = (function () {
 		function lower(value) {
 		  return value.toLowerCase() === value;
 		}
-		exports.lower = lower;
+		exports$1.lower = lower;
 
 		/**
 		 * Returns `true` if the operand (one) is less than or equal to the test's
@@ -6335,7 +6335,7 @@ var GovcyFrontendRendererBrowser = (function () {
 		function ne(one, two) {
 		  return one !== two;
 		}
-		exports.ne = ne;
+		exports$1.ne = ne;
 
 		/**
 		 * Returns true if the value is strictly equal to `null`.
@@ -6345,7 +6345,7 @@ var GovcyFrontendRendererBrowser = (function () {
 		function nullTest(value) {
 		  return value === null;
 		}
-		exports.null = nullTest;
+		exports$1.null = nullTest;
 
 		/**
 		 * Returns true if value is a number.
@@ -6355,7 +6355,7 @@ var GovcyFrontendRendererBrowser = (function () {
 		function number(value) {
 		  return typeof value === 'number';
 		}
-		exports.number = number;
+		exports$1.number = number;
 
 		/**
 		 * Returns `true` if the value is *not* evenly divisible by 2.
@@ -6365,7 +6365,7 @@ var GovcyFrontendRendererBrowser = (function () {
 		function odd(value) {
 		  return value % 2 === 1;
 		}
-		exports.odd = odd;
+		exports$1.odd = odd;
 
 		/**
 		 * Returns `true` if the value is a string, `false` if not.
@@ -6375,7 +6375,7 @@ var GovcyFrontendRendererBrowser = (function () {
 		function string(value) {
 		  return typeof value === 'string';
 		}
-		exports.string = string;
+		exports$1.string = string;
 
 		/**
 		 * Returns `true` if the value is not in the list of things considered falsy:
@@ -6386,7 +6386,7 @@ var GovcyFrontendRendererBrowser = (function () {
 		function truthy(value) {
 		  return !!value;
 		}
-		exports.truthy = truthy;
+		exports$1.truthy = truthy;
 
 		/**
 		 * Returns `true` if the value is undefined.
@@ -6396,7 +6396,7 @@ var GovcyFrontendRendererBrowser = (function () {
 		function undefinedTest(value) {
 		  return value === undefined;
 		}
-		exports.undefined = undefinedTest;
+		exports$1.undefined = undefinedTest;
 
 		/**
 		 * Returns `true` if the string is uppercased.
@@ -6406,7 +6406,7 @@ var GovcyFrontendRendererBrowser = (function () {
 		function upper(value) {
 		  return value.toUpperCase() === value;
 		}
-		exports.upper = upper;
+		exports$1.upper = upper;
 
 		/**
 		 * If ES6 features are available, returns `true` if the value implements the
@@ -6425,7 +6425,7 @@ var GovcyFrontendRendererBrowser = (function () {
 		    return Array.isArray(value) || typeof value === 'string';
 		  }
 		}
-		exports.iterable = iterable;
+		exports$1.iterable = iterable;
 
 		/**
 		 * If ES6 features are available, returns `true` if the value is an object hash
@@ -6442,11 +6442,11 @@ var GovcyFrontendRendererBrowser = (function () {
 		    return bool;
 		  }
 		}
-		exports.mapping = mapping;
+		exports$1.mapping = mapping;
 
 		/***/ }),
 		/* 21 */
-		/***/ (function(module, exports, __webpack_require__) {
+		/***/ (function(module, exports$1, __webpack_require__) {
 
 
 		function _cycler(items) {
@@ -6515,7 +6515,7 @@ var GovcyFrontendRendererBrowser = (function () {
 
 		/***/ }),
 		/* 22 */
-		/***/ (function(module, exports, __webpack_require__) {
+		/***/ (function(module, exports$1, __webpack_require__) {
 
 		var path = __webpack_require__(4);
 		module.exports = function express(env, app) {
@@ -6541,7 +6541,7 @@ var GovcyFrontendRendererBrowser = (function () {
 
 		/***/ }),
 		/* 23 */
-		/***/ (function(module, exports, __webpack_require__) {
+		/***/ (function(module, exports$1, __webpack_require__) {
 
 
 		var fs = __webpack_require__(4);
@@ -6653,7 +6653,7 @@ var GovcyFrontendRendererBrowser = (function () {
 
 		/***/ }),
 		/* 24 */
-		/***/ (function(module, exports, __webpack_require__) {
+		/***/ (function(module, exports$1, __webpack_require__) {
 
 
 		function precompileGlobal(templates, opts) {
@@ -6674,7 +6674,7 @@ var GovcyFrontendRendererBrowser = (function () {
 
 		/***/ }),
 		/* 25 */
-		/***/ (function(module, exports, __webpack_require__) {
+		/***/ (function(module, exports$1, __webpack_require__) {
 
 		function installCompat() {
 
@@ -12065,7 +12065,14 @@ var GovcyFrontendRendererBrowser = (function () {
 	  if (url.length <= proto.length) return false
 
 	  // disallow '*' at the end of the link (conflicts with emphasis)
-	  url = url.replace(/\*+$/, '');
+	  // do manual backsearch to avoid perf issues with regex /\*+$/ on "****...****a".
+	  let urlEnd = url.length;
+	  while (urlEnd > 0 && url.charCodeAt(urlEnd - 1) === 0x2A/* * */) {
+	    urlEnd--;
+	  }
+	  if (urlEnd !== url.length) {
+	    url = url.slice(0, urlEnd);
+	  }
 
 	  const fullUrl = state.md.normalizeLink(url);
 	  if (!state.md.validateLink(fullUrl)) return false
