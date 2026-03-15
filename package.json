@@ -1,6 +1,6 @@
 {
   "name": "@gov-cy/govcy-frontend-renderer",
-  "version": "1.26.7",
+  "version": "1.26.8",
   "description": "Render html for design elements of the Unified design system using njk or json template.",
   "author": "DMRID - DSF Team",
   "license": "MIT",
@@ -56,6 +56,7 @@
   "overrides": {
     "tar-fs": "^3.1.1",
     "minimatch": "^10.2.1",
-    "serialize-javascript": "^7.0.3"
+    "serialize-javascript": "^7.0.3",
+    "yauzl": "^3.2.1"
   }
 }
