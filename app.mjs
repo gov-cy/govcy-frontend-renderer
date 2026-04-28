@@ -68,7 +68,7 @@ app.get('/testjson', (req, res) => {
  * @returns {string} Safe scenario key.
  */
 function resolveHeaderScenario(scenario) {
-  const allowedScenarios = new Set(['full', 'navOnly', 'languagesOnly', 'dropdown2Levels', 'plainHeader', 'malformed']);
+  const allowedScenarios = new Set(['full', 'navOnly', 'languagesOnly', 'dropdown2Levels', 'plainHeader', 'menuHiddenLabel', 'malformed']);
   return allowedScenarios.has(scenario) ? scenario : 'full';
 }
 

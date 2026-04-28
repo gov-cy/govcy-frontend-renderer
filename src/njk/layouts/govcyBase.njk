@@ -78,6 +78,7 @@ To use this template you need to pass the following data:
     ],
     "copyrightText" : {"en":"Republic of Cyprus, 2025", "el":"Κυπριακή Δημοκρατία, 2025"},
     "menu" : {"en":"Menu", "el":"Μενου"},
+    "menuHideLabelVisibility": true,
     "navigation": {
         "items": [
             {
@@ -284,7 +285,7 @@ To use this template you need to pass the following data:
                                     aria-label="{{ iLang.alt }}" lang="{{ iLang.code }}">{{ iLang.label }}</a></span>
                                 </li>{%- endfor %}
                             {%- endif -%}
-                            <li class="govcy-mobile-menu govcy-mobile-menu-only govcy-dropdown govcy-ms-auto"><span><a href="#" class="govcy-menu-item govcy-expand-btn">{{ menuLabel }}</a></span></li>
+                            <li class="govcy-mobile-menu govcy-mobile-menu-only govcy-dropdown govcy-ms-auto"><span><a href="#" class="govcy-menu-item govcy-expand-btn">{%- if site.menuHideLabelVisibility -%}<span class="govcy-visually-hidden">{{ menuLabel }}</span>{%- else -%}{{ menuLabel }}{%- endif -%}</a></span></li>
                         </ul>
                         {%- endif %}
                     </div>

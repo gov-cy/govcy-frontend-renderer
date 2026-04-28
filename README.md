@@ -145,7 +145,8 @@ const inputData =
             "items": [
                 {
                     "label": {"en":"Home", "el":"Home"},
-                    "href": {"en":"/en", "el":"/el"}
+                    "href": {"en":"/en", "el":"/el"},
+                    "current": true
                 },
                 {
                     "label": {"en":"Contact", "el":"Contact"},
@@ -322,7 +323,8 @@ const inputData =
             "items": [
                 {
                     "label": {"en":"Home", "el":"Home"},
-                    "href": {"en":"/en", "el":"/el"}
+                    "href": {"en":"/en", "el":"/el"},
+                    "current": true
                 },
                 {
                     "label": {"en":"Contact", "el":"Contact"},
@@ -483,8 +485,9 @@ The `inputData` object has the following structure:
 - **site.footerLinks**: the links of the footer.
 - **site.footerIcons**: the icons with links of the footer.
 - **site.copyrightText**: the text of the copyright in the footer, including the year.
-- **site.menu**: the menu label.
-- **site.navigation**: the header navigation structure. See [Navigation explained](#navigation-explained).
+- **site.menu**: the menu label (optional).
+- **site.navigation**: the header navigation structure (optional). See [Navigation explained](#navigation-explained).
+- **site.menuHideLabelVisibility**: if true, hides the visibility of the menu hide label and only shows the humburger icon on small screens (optional). 
 - **site.title**: the title of the site. It is used in the `<title>`, `<meta property="og:title"` and `<meta property="twitter:title"` tags of the head.
 - **site.description**: the description of the site. It is used in the `<meta name="description"`, `<meta property="og:description"` and `<meta property="twitter:description"` tags of the head.
 - **site.url**: the URL of the site. It is used in the `<meta property="og:url"` and `<meta property="twitter:url"` tags of the head.

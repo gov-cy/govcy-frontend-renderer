@@ -82,6 +82,13 @@ function runHeaderNavigationChecks(mode) {
             expect(renderedHTML).to.not.match(/govcy-header-language-area/);
         });
 
+        it('renders menuHiddenLabel scenario with visually hidden mobile menu label', () => {
+            const renderedHTML = renderHeaderNavigation(mode, 'menuHiddenLabel');
+
+            // Keep menu text for screen readers but hide it visually.
+            expect(renderedHTML).to.match(/<a href="#" class="govcy-menu-item govcy-expand-btn">\s*<span class="govcy-visually-hidden">\s*Menu override\s*<\/span>\s*<\/a>/);
+        });
+
         it('ignores malformed navigation entries safely', () => {
             const renderedHTML = renderHeaderNavigation(mode, 'malformed');
 
