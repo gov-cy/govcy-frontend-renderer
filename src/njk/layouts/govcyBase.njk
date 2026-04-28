@@ -1,4 +1,4 @@
-{# Page template as defined in UDS
+﻿{# Page template as defined in UDS
 To use this template you need to pass the following data:
 
 ```
@@ -78,6 +78,65 @@ To use this template you need to pass the following data:
     ],
     "copyrightText" : {"en":"Republic of Cyprus, 2025", "el":"Κυπριακή Δημοκρατία, 2025"},
     "menu" : {"en":"Menu", "el":"Μενου"},
+    "navigation": {
+        "items": [
+            {
+                "label": {
+                    "en": "Home",
+                    "el": "Αρχική"
+                },
+                "href": {
+                    "en": "/en",
+                    "el": "/el"
+                }
+            },
+            {
+                "label": {
+                    "en": "Services",
+                    "el": "Υπηρεσίες"
+                },
+                "href": {
+                    "en": "#",
+                    "el": "#"
+                },
+                "children": [
+                    {
+                        "label": {
+                            "en": "Certificates",
+                            "el": "Πιστοποιητικά"
+                        },
+                        "href": {
+                            "en": "#",
+                            "el": "#"
+                        },
+                        "children": [
+                            {
+                                "label": {
+                                    "en": "Birth certificate",
+                                    "el": "Πιστοποιητικό γέννησης"
+                                },
+                                "href": {
+                                    "en": "/en/services/birth-certificate",
+                                    "el": "/el/services/birth-certificate"
+                                },
+                                "current": true
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "label": {
+                    "en": "Contact",
+                    "el": "Επικοινωνία"
+                },
+                "href": {
+                    "en": "/en/contact",
+                    "el": "/el/contact"
+                }
+            }
+        ]
+    },
     "title" : {"en":"Service title", "el":"Τιτλός υπηρεσίας"}, 
     "headerTitle" : 
     {
@@ -114,7 +173,7 @@ To use this template you need to pass the following data:
 ```
 #}
 {#- Import localizer from utilities -#}
-{%- from "../utilities/govcyUtilities.njk" import govcyLocalizeContent, govcyLangAttribute -%}
+{%- from "../utilities/govcyUtilities.njk" import govcyLocalizeContent, govcyLangAttribute, govcyGetContent -%}
 <!doctype html>
 <html lang="{{ site.lang }}">
   <head>
@@ -191,6 +250,7 @@ To use this template you need to pass the following data:
                     <div class="govcy-navigation-container">
                         <div class="govcy-service-container">
                             <a href="https://gov.cy" class="govcy-logo" title="Go to the gov.cy homepage"><img alt="gov.cy Logo"></a>
+                            {%- if site.headerTitle -%}
                             <span class="govcy-service-name">
                                 {%- if site.headerTitle.href -%}
                                 <a class="govcy-pl-0" href="{{ govcyLocalizeContent(site.headerTitle.href, site.lang, true) }}">
@@ -204,31 +264,134 @@ To use this template you need to pass the following data:
                                 </a>
                                 {%- endif -%}
                                 </span>
+                            {%- endif -%}
                         </div>
-                        {%- if site.languages -%}
+                        {%- set hasLanguages = site.languages and site.languages.length > 0 -%}
+                        {%- set hasNavigation = site.navigation and site.navigation.items and site.navigation.items.length > 0 -%}
+                        {%- set menuLabel = govcyGetContent('header_menu', site.lang) -%}
+                        {%- if site.menu -%}
+                            {%- set menuLabel = govcyLocalizeContent(site.menu, site.lang) -%}
+                        {%- elseif pageData.menu -%}
+                            {%- set menuLabel = govcyLocalizeContent(pageData.menu, site.lang) -%}
+                        {%- endif -%}
+                        {%- if hasLanguages or hasNavigation -%}
                         <ul class="govcy-menu-items">
-                            {%- for iLang in site.languages %}
-                            <li class="govcy-desktop-menu-only"><span><a href="{{ iLang.href }}"
-                                class="govcy-menu-item{% if iLang.code == site.lang %} active{% endif %}" 
-                                {% if iLang.code == site.lang %} aria-current="true"{% endif %}
-                                aria-label="{{ iLang.alt }}" lang="{{ iLang.code }}">{{ iLang.label }}</a></span>
-                            </li>{%- endfor %}
-                            <li class="govcy-mobile-menu govcy-mobile-menu-only govcy-dropdown govcy-ms-auto"><span><a href="#" class="govcy-menu-item govcy-expand-btn">{{ govcyLocalizeContent(pageData.menu, site.lang) }}</a></span></li>
+                            {%- if hasLanguages -%}
+                                {%- for iLang in site.languages %}
+                                <li class="govcy-desktop-menu-only"><span><a href="{{ iLang.href }}"
+                                    class="govcy-menu-item{% if iLang.code == site.lang %} active{% endif %}" 
+                                    {% if iLang.code == site.lang %} aria-current="true"{% endif %}
+                                    aria-label="{{ iLang.alt }}" lang="{{ iLang.code }}">{{ iLang.label }}</a></span>
+                                </li>{%- endfor %}
+                            {%- endif -%}
+                            <li class="govcy-mobile-menu govcy-mobile-menu-only govcy-dropdown govcy-ms-auto"><span><a href="#" class="govcy-menu-item govcy-expand-btn">{{ menuLabel }}</a></span></li>
                         </ul>
                         {%- endif %}
                     </div>
                 </div>
             </div>
 
-            {%- if site.languages -%}
+            {%- if hasLanguages or hasNavigation -%}
             <div class="govcy-header-menu-area">
-                <nav class="govcy-mainmenu" aria-label="{{ govcyLocalizeContent(pageData.menu, site.lang) }}">
+                <nav class="govcy-mainmenu" aria-label="{{ menuLabel }}">
                     <div class="govcy-container">
+                        {%- if hasLanguages -%}
                         <ul class="govcy-menu-items govcy-header-language-area govcy-mobile-menu-only">
                             {%- for iLang in site.languages %}
                             <li><a href="{{ iLang.href }}" class="govcy-menu-item{% if iLang.code == site.lang %} active{% endif %}" {% if iLang.code == site.lang %} aria-current="true"{% endif %} aria-label="{{ iLang.alt }}" lang="{{ iLang.code }}">{{ iLang.label }}</a></li>
                             {%- endfor %}
                         </ul>
+                        {%- endif -%}
+                        {%- if hasNavigation -%}
+                        <ul class="govcy-menu-items" aria-label="{{ govcyGetContent('header_mainMenuAria', site.lang) }}">
+                            {%- for navItem in site.navigation.items -%}
+                                {%- set navLabel = navItem.label -%}
+                                {%- if navLabel -%}
+                                    {%- set navLabel = govcyLocalizeContent(navItem.label, site.lang) -%}
+                                {%- endif -%}
+                                {%- if navLabel -%}
+                                    {%- set navHref = navItem.href -%}
+                                    {%- if navHref -%}
+                                        {%- set navHref = govcyLocalizeContent(navItem.href, site.lang, true) -%}
+                                    {%- else -%}
+                                        {%- set navHref = '#' -%}
+                                    {%- endif -%}
+                                    {%- set navChildren = navItem.children -%}
+                                    {%- set hasNavChildren = navChildren and navChildren.length > 0 -%}
+                                    {%- set hasCurrentL2L3 = false -%}
+                                    {%- if hasNavChildren -%}
+                                        {%- for navChild in navChildren -%}
+                                            {%- if navChild.current -%}{%- set hasCurrentL2L3 = true -%}{%- endif -%}
+                                            {%- if navChild.children and navChild.children.length > 0 -%}
+                                                {%- for navGrandChild in navChild.children -%}
+                                                    {%- if navGrandChild.current -%}{%- set hasCurrentL2L3 = true -%}{%- endif -%}
+                                                {%- endfor -%}
+                                            {%- endif -%}
+                                        {%- endfor -%}
+                                    {%- endif -%}
+                                    {%- set isCurrentL1 = navItem.current -%}
+                                    {%- set isActiveL1 = isCurrentL1 or hasCurrentL2L3 -%}
+                                    {%- if hasNavChildren -%}
+                                        <li class="govcy-dropdown">
+                                            <a href="{{ navHref | default('#') }}" class="govcy-menu-item govcy-expand-btn{% if isActiveL1 %} active{% endif %}" aria-haspopup="true" aria-expanded="false">{{ navLabel }}<i></i></a>
+                                            <ul class="govcy-dropdown-menu govcy-expandable">
+                                                {%- for navChild in navChildren -%}
+                                                    {%- set navChildLabel = navChild.label -%}
+                                                    {%- if navChildLabel -%}
+                                                        {%- set navChildLabel = govcyLocalizeContent(navChild.label, site.lang) -%}
+                                                    {%- endif -%}
+                                                    {%- if navChildLabel -%}
+                                                        {%- set navChildHref = navChild.href -%}
+                                                        {%- if navChildHref -%}
+                                                            {%- set navChildHref = govcyLocalizeContent(navChild.href, site.lang, true) -%}
+                                                        {%- else -%}
+                                                            {%- set navChildHref = '#' -%}
+                                                        {%- endif -%}
+                                                        {%- set navGrandChildren = navChild.children -%}
+                                                        {%- set hasNavGrandChildren = navGrandChildren and navGrandChildren.length > 0 -%}
+                                                        {%- set hasCurrentL3 = false -%}
+                                                        {%- if hasNavGrandChildren -%}
+                                                            {%- for navGrandChild in navGrandChildren -%}
+                                                                {%- if navGrandChild.current -%}{%- set hasCurrentL3 = true -%}{%- endif -%}
+                                                            {%- endfor -%}
+                                                        {%- endif -%}
+                                                        {%- set isCurrentL2 = navChild.current -%}
+                                                        {%- set isActiveL2 = isCurrentL2 or hasCurrentL3 -%}
+                                                        {%- if hasNavGrandChildren -%}
+                                                            <li class="govcy-dropdown govcy-dropdown-right">
+                                                                <a href="{{ navChildHref | default('#') }}" class="govcy-menu-item govcy-expand-btn{% if isActiveL2 %} active{% endif %}" aria-haspopup="true" aria-expanded="false">{{ navChildLabel }}<i></i></a>
+                                                                <ul class="govcy-right-menu govcy-expandable">
+                                                                    {%- for navGrandChild in navGrandChildren -%}
+                                                                        {%- set navGrandChildLabel = navGrandChild.label -%}
+                                                                        {%- if navGrandChildLabel -%}
+                                                                            {%- set navGrandChildLabel = govcyLocalizeContent(navGrandChild.label, site.lang) -%}
+                                                                        {%- endif -%}
+                                                                        {%- if navGrandChildLabel -%}
+                                                                            {%- set navGrandChildHref = navGrandChild.href -%}
+                                                                            {%- if navGrandChildHref -%}
+                                                                                {%- set navGrandChildHref = govcyLocalizeContent(navGrandChild.href, site.lang, true) -%}
+                                                                            {%- else -%}
+                                                                                {%- set navGrandChildHref = '#' -%}
+                                                                            {%- endif -%}
+                                                                            <li><a href="{{ navGrandChildHref | default('#') }}" class="govcy-menu-item{% if navGrandChild.current %} active{% endif %}" {% if navGrandChild.current %}aria-current="true"{% endif %}>{{ navGrandChildLabel }}</a></li>
+                                                                        {%- endif -%}
+                                                                    {%- endfor -%}
+                                                                </ul>
+                                                            </li>
+                                                        {%- else -%}
+                                                            <li><a href="{{ navChildHref | default('#') }}" class="govcy-menu-item{% if isCurrentL2 %} active{% endif %}" {% if isCurrentL2 %}aria-current="true"{% endif %}>{{ navChildLabel }}</a></li>
+                                                        {%- endif -%}
+                                                    {%- endif -%}
+                                                {%- endfor -%}
+                                            </ul>
+                                        </li>
+                                    {%- else -%}
+                                        <li><a href="{{ navHref | default('#') }}" class="govcy-menu-item{% if isCurrentL1 %} active{% endif %}" {% if isCurrentL1 %}aria-current="true"{% endif %}>{{ navLabel }}</a></li>
+                                    {%- endif -%}
+                                {%- endif -%}
+                            {%- endfor -%}
+                        </ul>
+                        {%- endif -%}
                     </div>
                 </nav>
             </div>

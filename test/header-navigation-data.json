@@ -1,0 +1,267 @@
+{
+  "full": {
+    "site": {
+      "lang": "en",
+      "menu": {
+        "en": "Menu override",
+        "el": "Μενού override"
+      },
+      "languages": [
+        {
+          "code": "el",
+          "label": "EL",
+          "alt": "Ελληνική γλώσσα",
+          "href": "?lang=el"
+        },
+        {
+          "code": "en",
+          "label": "EN",
+          "alt": "English language",
+          "href": "?lang=en"
+        }
+      ],
+      "navigation": {
+        "items": [
+          {
+            "label": {
+              "en": "Home",
+              "el": "Αρχική"
+            },
+            "href": {
+              "en": "/en",
+              "el": "/el"
+            }
+          },
+          {
+            "label": {
+              "en": "Services",
+              "el": "Υπηρεσίες"
+            },
+            "href": {
+              "en": "#",
+              "el": "#"
+            },
+            "children": [
+              {
+                "label": {
+                  "en": "Certificates",
+                  "el": "Πιστοποιητικά"
+                },
+                "href": {
+                  "en": "#",
+                  "el": "#"
+                },
+                "children": [
+                  {
+                    "label": {
+                      "en": "Birth certificate",
+                      "el": "Πιστοποιητικό γέννησης"
+                    },
+                    "href": {
+                      "en": "/en/services/birth-certificate",
+                      "el": "/el/services/birth-certificate"
+                    },
+                    "current": true
+                  },
+                  {
+                    "label": {
+                      "en": "Death certificate",
+                      "el": "Πιστοποιητικό θανάτου"
+                    },
+                    "href": {
+                      "en": "/en/services/death-certificate",
+                      "el": "/el/services/death-certificate"
+                    }
+                  }
+                ]
+              },
+              {
+                "label": {
+                  "en": "Other services",
+                  "el": "Άλλες υπηρεσίες"
+                },
+                "href": {
+                  "en": "/en/services/other-services",
+                  "el": "/el/services/other-services"
+                }
+              }
+            ]
+          },
+          {
+            "label": {
+              "en": "Contact",
+              "el": "Επικοινωνία"
+            },
+            "href": {
+              "en": "/en/contact",
+              "el": "/el/contact"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "navOnly": {
+    "site": {
+      "lang": "en",
+      "languages": [],
+      "navigation": {
+        "items": [
+          {
+            "label": {
+              "en": "Home",
+              "el": "Αρχική"
+            },
+            "href": {
+              "en": "/en",
+              "el": "/el"
+            },
+            "current": true
+          },
+          {
+            "label": {
+              "en": "About",
+              "el": "Σχετικά"
+            },
+            "href": {
+              "en": "/en/about",
+              "el": "/el/about"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "languagesOnly": {
+    "site": {
+      "lang": "en",
+      "languages": [
+        {
+          "code": "el",
+          "label": "EL",
+          "alt": "Ελληνική γλώσσα",
+          "href": "?lang=el"
+        },
+        {
+          "code": "en",
+          "label": "EN",
+          "alt": "English language",
+          "href": "?lang=en"
+        }
+      ],
+      "navigation": {
+        "items": []
+      }
+    }
+  },
+  "dropdown2Levels": {
+    "site": {
+      "lang": "en",
+      "languages": [
+        {
+          "code": "el",
+          "label": "EL",
+          "alt": "Ελληνική γλώσσα",
+          "href": "?lang=el"
+        },
+        {
+          "code": "en",
+          "label": "EN",
+          "alt": "English language",
+          "href": "?lang=en"
+        }
+      ],
+      "navigation": {
+        "items": [
+          {
+            "label": {
+              "en": "Home",
+              "el": "Αρχική"
+            },
+            "href": {
+              "en": "/en",
+              "el": "/el"
+            }
+          },
+          {
+            "label": {
+              "en": "Page 1",
+              "el": "Σελίδα 1"
+            },
+            "href": {
+              "en": "#",
+              "el": "#"
+            },
+            "children": [
+              {
+                "label": {
+                  "en": "Subpage 1",
+                  "el": "Υποσελίδα 1"
+                },
+                "href": {
+                  "en": "/en/page-1/subpage-1",
+                  "el": "/el/page-1/subpage-1"
+                }
+              },
+              {
+                "label": {
+                  "en": "Subpage 2",
+                  "el": "Υποσελίδα 2"
+                },
+                "href": {
+                  "en": "/en/page-1/subpage-2",
+                  "el": "/el/page-1/subpage-2"
+                }
+              }
+            ]
+          },
+          {
+            "label": {
+              "en": "Contact",
+              "el": "Επικοινωνία"
+            },
+            "href": {
+              "en": "/en/contact",
+              "el": "/el/contact"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "plainHeader": {
+    "site": {
+      "lang": "en",
+      "languages": [],
+      "navigation": {
+        "items": []
+      }
+    }
+  },
+  "malformed": {
+    "site": {
+      "lang": "en",
+      "navigation": {
+        "items": [
+          {
+            "href": {
+              "en": "/en/invalid",
+              "el": "/el/invalid"
+            }
+          },
+          {
+            "label": {
+              "en": "Valid page",
+              "el": "Έγκυρη σελίδα"
+            },
+            "href": {
+              "en": "/en/valid",
+              "el": "/el/valid"
+            },
+            "current": true
+          }
+        ]
+      }
+    }
+  }
+}

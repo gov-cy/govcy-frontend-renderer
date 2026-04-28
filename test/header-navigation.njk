@@ -1,0 +1,19 @@
+{% extends "layouts/govcyBase.njk" %}
+
+{# Header navigation fixture template for NJK rendering tests #}
+{% block main %}
+<p id="header-nav-njk-marker">Header navigation NJK fixture</p>
+{% endblock %}
+{% block userName %}
+    <div class="govcy-header-top-area govcy-test-class">
+        <div class="govcy-container">
+            <div class="govcy-header-top-area-wrapper">
+                <ul class="govcy-sign-in">
+                    <li>George Smith</li>
+                    <li><span>|</span></li>
+                    <li><a href="#">Sign out<span class="govcy-visually-hidden-error"> from user George Smith</span></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}

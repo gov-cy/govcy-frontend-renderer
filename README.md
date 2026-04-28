@@ -1,4 +1,4 @@
-[![npm (scoped)](https://img.shields.io/npm/v/@gov-cy/govcy-frontend-renderer)](https://www.npmjs.com/package/@gov-cy/govcy-frontend-renderer)
+﻿[![npm (scoped)](https://img.shields.io/npm/v/@gov-cy/govcy-frontend-renderer)](https://www.npmjs.com/package/@gov-cy/govcy-frontend-renderer)
 ![License](https://img.shields.io/github/license/gov-cy/govcy-frontend-renderer)
 [![Unit test](https://github.com/gov-cy/govcy-frontend-renderer/actions/workflows/unit-test.yml/badge.svg)](https://github.com/gov-cy/govcy-frontend-renderer/actions/workflows/unit-test.yml)
 [![tag-and-publish-on-version-change](https://github.com/gov-cy/govcy-frontend-renderer/actions/workflows/tag-and-publish-on-version-change.yml/badge.svg)](https://github.com/gov-cy/govcy-frontend-renderer/actions/workflows/tag-and-publish-on-version-change.yml)
@@ -141,6 +141,18 @@ const inputData =
         ],
         "copyrightText" : {"en":"Republic of Cyprus, 2025", "el":"Κυπριακή Δημοκρατία, 2025"},
         "menu" : {"en":"Menu", "el":"Μενου"},
+        "navigation": {
+            "items": [
+                {
+                    "label": {"en":"Home", "el":"Home"},
+                    "href": {"en":"/en", "el":"/el"}
+                },
+                {
+                    "label": {"en":"Contact", "el":"Contact"},
+                    "href": {"en":"/en/contact", "el":"/el/contact"}
+                }
+            ]
+        },
         "title" : {"en":"Service title", "el":"Τιτλός υπηρεσίας"}, 
         "headerTitle" : 
         {
@@ -306,6 +318,18 @@ const inputData =
         ],
         "copyrightText" : {"en":"Republic of Cyprus, 2025", "el":"Κυπριακή Δημοκρατία, 2025"},
         "menu" : {"en":"Menu", "el":"Μενου"},
+        "navigation": {
+            "items": [
+                {
+                    "label": {"en":"Home", "el":"Home"},
+                    "href": {"en":"/en", "el":"/el"}
+                },
+                {
+                    "label": {"en":"Contact", "el":"Contact"},
+                    "href": {"en":"/en/contact", "el":"/el/contact"}
+                }
+            ]
+        },
         "title" : {"en":"Service title", "el":"Τιτλός υπηρεσίας"}, 
         "headerTitle" : 
         {
@@ -460,6 +484,7 @@ The `inputData` object has the following structure:
 - **site.footerIcons**: the icons with links of the footer.
 - **site.copyrightText**: the text of the copyright in the footer, including the year.
 - **site.menu**: the menu label.
+- **site.navigation**: the header navigation structure. See [Navigation explained](#navigation-explained).
 - **site.title**: the title of the site. It is used in the `<title>`, `<meta property="og:title"` and `<meta property="twitter:title"` tags of the head.
 - **site.description**: the description of the site. It is used in the `<meta name="description"`, `<meta property="og:description"` and `<meta property="twitter:description"` tags of the head.
 - **site.url**: the URL of the site. It is used in the `<meta property="og:url"` and `<meta property="twitter:url"` tags of the head.
@@ -472,6 +497,19 @@ The `inputData` object has the following structure:
 - **pageData.title**: the title of the page. It is used in the `<title>`, `<meta property="og:title"` and `<meta property="twitter:title"` tags of the head.
 - **pageData.layout**: the layout of the page. It is used to define the layout (or page template) of the page, which is defined in the `layouts/govcyBase.njk` template.
 - **pageData.mainLayout**: the main layout of the page. It can be either `two-thirds` or `max-width`.
+
+#### Navigation explained
+Use `site.navigation.items` to define header navigation links.
+
+- Each item supports:
+  - `label`: localized object, for example `{ "en": "Home", "el": "Αρχική" }` (required)
+  - `href`: localized object, for example `{ "en": "/en", "el": "/el" }` (required for links, use `"#"` for toggle-like parent links)
+  - `current`: boolean for the current page item (optional)
+- If an item's `label` is missing for the current language, that item is skipped.
+- If an item's `href` is missing for the current language, it falls back to `"#"`.
+- For accessibility:
+  - current item is rendered with `active` and `aria-current="true"`
+  - parent dropdown toggles of current descendants are rendered with `active`
 
 ### Input Template explained 
 The input template can either be a JSON template or a nunjucks template string. It is used to define the design elements to be rendered.
