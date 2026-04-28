@@ -1,0 +1,36 @@
+{
+  "sections": [
+    {
+      "name": "main",
+      "elements": [
+        {
+          "element": "textElement",
+          "params": {
+            "id": "header-nav-json-marker",
+            "type": "p",
+            "text": {
+              "en": "Header navigation JSON fixture",
+              "el": "Header navigation JSON fixture"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "userName",
+      "elements": [
+        {
+          "element": "userName",
+          "params": {
+            "name": {
+              "en": "George Smith",
+              "el": "Γιώργος Σμιθ"
+            },
+            "signOutLink": "#",
+            "classes": "govcy-test-class"
+          }
+        }
+      ]
+    }
+  ]
+}
