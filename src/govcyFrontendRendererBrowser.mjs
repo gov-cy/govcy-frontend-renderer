@@ -175,6 +175,13 @@ class GovcyFrontendRendererBrowser {
                 parent.querySelectorAll('.govcy-radio-input').forEach((element) => {
                     new GOVCY.ConditionalContactToggler(element);
                 });
+
+                // Initialize Share
+                if (typeof GOVCY.Share !== 'undefined') {
+                    parent.querySelectorAll('.govcy-share').forEach((element) => {
+                        new GOVCY.Share(element);
+                    });
+                }
             }
         }
     }

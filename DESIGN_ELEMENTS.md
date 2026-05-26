@@ -1988,6 +1988,101 @@ In order to get the gov.cy styles, you need to add it inside a `form` element.
 </details>
 
 <details>
+  <summary>share</summary>
+  
+## share
+
+This element is used to add share as defined in the [UDS - share](https://gov-cy.github.io/govcy-design-system-docs/components/share/).
+
+**Element name** : `share`
+
+**Parameters** :
+```js
+/**
+ @param {string} id The id of the share component. Will escape text. Optional
+ @param {string} classes Additional classes to add to the share wrapper. Optional
+ @param {string} lang The language used. Can be 'en','el'. Optional.
+ @param {object} text The text to be shared. Required. Example `{en:"Content",el:"Περιεχόμενο"}`
+ @param {object} url The URL to be shared. Optional. Localized object. Example `{en:"https://example.com/en",el:"https://example.com/el"}`
+ @param {object} title The title used in share actions. Optional. Example `{en:"Request for consent",el:"Αίτημα συγκατάθεσης"}`
+ @param {object} previewTitle The preview section title. Optional. Example `{en:"Notification content",el:"Περιεχόμενο ειδοποίησης"}`
+ @param {boolean} hasShare Whether to show share action. Optional, default is true.
+ @param {boolean} hasSms Whether to show SMS action. Optional, default is true.
+ @param {boolean} hasEmail Whether to show email action. Optional, default is true.
+ @param {boolean} hasPreview Whether to show preview section. Optional, default is true.
+ @param {boolean} hasCopy Whether to show copy action. Optional, default is true.
+**/ 
+```
+
+**JSON Example** 
+```json
+{
+    "element": "share",
+    "params": {
+        "id":"govcy-test-135",
+        "classes":"govcy-test-class",
+        "text":{
+            "en":"Share all actions text https://example.com/consent?lang=en&id=135",
+            "el":"Κείμενο για όλες τις ενέργειες https://example.com/consent?lang=el&id=135"
+        },
+        "title":{
+            "en":"Request for consent",
+            "el":"Αίτημα συγκατάθεσης"
+        },
+        "url":{
+            "en":"https://en.example.com/share",
+            "el":"https://el.example.com/share"
+        },
+        "previewTitle":{
+            "en":"Notification content",
+            "el":"Περιεχόμενο ειδοποίησης"
+        },
+        "hasShare":true,
+        "hasSms":true,
+        "hasEmail":true,
+        "hasPreview":true,
+        "hasCopy":true
+    }
+}
+```
+
+**Nunjucks Example** 
+
+```Nunjucks
+{{ 
+    govcyElement(
+        "share",
+        {
+            "id":"govcy-test-135",
+            "classes":"govcy-test-class",
+            "text":{
+                "en":"Share all actions text https://example.com/consent?lang=en&id=135",
+                "el":"Κείμενο για όλες τις ενέργειες https://example.com/consent?lang=el&id=135"
+            },
+            "title":{
+                "en":"Request for consent",
+                "el":"Αίτημα συγκατάθεσης"
+            },
+            "url":{
+                "en":"https://en.example.com/share",
+                "el":"https://el.example.com/share"
+            },
+            "previewTitle":{
+                "en":"Notification content",
+                "el":"Περιεχόμενο ειδοποίησης"
+            },
+            "hasShare":true,
+            "hasSms":true,
+            "hasEmail":true,
+            "hasPreview":true,
+            "hasCopy":true
+        }
+    ) 
+}}
+```
+</details>
+
+<details>
   <summary>stepByStepStatic</summary>
   
 ## stepByStepStatic
