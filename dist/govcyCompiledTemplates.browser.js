@@ -167,7 +167,7 @@ frame.set("key", l_key);
 frame.set("lang", l_lang);
 frame.set("isHTML", l_isHTML);
 var t_22 = "";var t_23;
-t_23 = {"backLink_back": {"el": "Πίσω","en": "Back"},"common_or": {"el": "Ή","en": "Or"},"common_and": {"el": "Και","en": "And"},"common_entry": {"en": "Entry","el": "Καταχώρηση"},"common_entries": {"en": "Entries","el": "Καταχωρήσεις"},"dateInput_dayLabel": {"el": "Μέρα","en": "Day"},"dateInput_monthLabel": {"el": "Μήνας","en": "Month"},"dateInput_yearLabel": {"el": "Χρόνος","en": "Year"},"dateInput_monthValue1": {"en": "January","el": "Ιανουάριος"},"dateInput_monthValue2": {"en": "February","el": "Φεβρουάριος"},"dateInput_monthValue3": {"en": "March","el": "Μάρτιος"},"dateInput_monthValue4": {"en": "April","el": "Απρίλιος"},"dateInput_monthValue5": {"en": "May","el": "Μάϊος"},"dateInput_monthValue6": {"en": "June","el": "Ιούνιος"},"dateInput_monthValue7": {"en": "July","el": "Ιούλιος"},"dateInput_monthValue8": {"en": "August","el": "Αύγουστος"},"dateInput_monthValue9": {"en": "September","el": "Σεπτέμβριος"},"dateInput_monthValue10": {"en": "October","el": "Οκτώβριος"},"dateInput_monthValue11": {"en": "November","el": "Νοέμβριος"},"dateInput_monthValue12": {"en": "December","el": "Δεκέμβριος"},"errorMessage_hiddenError": {"en": "Error","el": "Σφάλμα"},"errorSummary_header": {"en": "There is a problem","el": "Υπάρχει πρόβλημα"},"header_menu": {"en": "Menu","el": "Μενού"},"header_mainMenuAria": {"en": "Main menu","el": "Κύριο μενού"},"fileView_view": {"en": "View","el": "Προβολή"},"fileView_delete": {"en": "Delete","el": "Διαγραφή"},"progressList_completedLabel": {"en": "Completed","el": "Ολοκληρώθηκε"},"progressList_notCompletedLabel": {"en": "Not completed","el": "Δεν ολοκληρώθηκε"},"progressList_stepLabel": {"en": "Step","el": "Βήμα"},"progressList_ofLabel": {"en": "of","el": "από"},"radios_conditionalLabel": {"en": "This option expands and has more questions,","el": "Αυτή η επιλογή επεκτείνεται και έχει περισσότερες ερωτήσεις,"},"stepByStepStatic_step": {"en": "Step","el": "Βήμα"},"taskList_withStatus": {"en": "with status ","el": "με κατάσταση "},"textArea_charRemaining": {"en": "You have <span></span> characters remaining","el": "Έχετε <span></span> χαρακτήρες που απομένουν"},"textArea_charExceeding": {"en": "You have entered <span></span> characters more","el": "Έχετε περάσει <span></span> χαρακτήρες περισσότερους"},"textArea_wordRemaining": {"en": "You have <span></span> words remaining","el": "Έχετε <span></span> λέξεις που απομένουν"},"textArea_wordsExceeding": {"en": "You have entered <span></span> words more","el": "Έχετε περάσει <span></span> λέξεις περισσότερες"},"userName_signOut": {"en": "Sign out","el": "Αποσύνδεση"},"userName_fromUser": {"en": "from user","el": "από το χρήστη"},"warning": {"en": "Warning","el": "Προσοχή"}};
+t_23 = {"empty_text": {"en": "","el": ""},"backLink_back": {"el": "Πίσω","en": "Back"},"common_or": {"el": "Ή","en": "Or"},"common_and": {"el": "Και","en": "And"},"common_entry": {"en": "Entry","el": "Καταχώρηση"},"common_entries": {"en": "Entries","el": "Καταχωρήσεις"},"dateInput_dayLabel": {"el": "Μέρα","en": "Day"},"dateInput_monthLabel": {"el": "Μήνας","en": "Month"},"dateInput_yearLabel": {"el": "Χρόνος","en": "Year"},"dateInput_monthValue1": {"en": "January","el": "Ιανουάριος"},"dateInput_monthValue2": {"en": "February","el": "Φεβρουάριος"},"dateInput_monthValue3": {"en": "March","el": "Μάρτιος"},"dateInput_monthValue4": {"en": "April","el": "Απρίλιος"},"dateInput_monthValue5": {"en": "May","el": "Μάϊος"},"dateInput_monthValue6": {"en": "June","el": "Ιούνιος"},"dateInput_monthValue7": {"en": "July","el": "Ιούλιος"},"dateInput_monthValue8": {"en": "August","el": "Αύγουστος"},"dateInput_monthValue9": {"en": "September","el": "Σεπτέμβριος"},"dateInput_monthValue10": {"en": "October","el": "Οκτώβριος"},"dateInput_monthValue11": {"en": "November","el": "Νοέμβριος"},"dateInput_monthValue12": {"en": "December","el": "Δεκέμβριος"},"errorMessage_hiddenError": {"en": "Error","el": "Σφάλμα"},"errorSummary_header": {"en": "There is a problem","el": "Υπάρχει πρόβλημα"},"header_menu": {"en": "Menu","el": "Μενού"},"header_mainMenuAria": {"en": "Main menu","el": "Κύριο μενού"},"fileView_view": {"en": "View","el": "Προβολή"},"fileView_delete": {"en": "Delete","el": "Διαγραφή"},"progressList_completedLabel": {"en": "Completed","el": "Ολοκληρώθηκε"},"progressList_notCompletedLabel": {"en": "Not completed","el": "Δεν ολοκληρώθηκε"},"progressList_stepLabel": {"en": "Step","el": "Βήμα"},"progressList_ofLabel": {"en": "of","el": "από"},"radios_conditionalLabel": {"en": "This option expands and has more questions,","el": "Αυτή η επιλογή επεκτείνεται και έχει περισσότερες ερωτήσεις,"},"stepByStepStatic_step": {"en": "Step","el": "Βήμα"},"share_share": {"en": "Share","el": "Share (κοινή χρήση)"},"share_sms": {"en": "SMS","el": "SMS"},"share_email": {"en": "Email","el": "Email"},"share_preview": {"en": "Notification content","el": "Περιεχόμενο ειδοποίησης"},"share_copy": {"en": "Copy","el": "Αντιγραφή"},"share_copySuccess": {"en": "Copied","el": "Αντιγράφηκε"},"taskList_withStatus": {"en": "with status ","el": "με κατάσταση "},"textArea_charRemaining": {"en": "You have <span></span> characters remaining","el": "Έχετε <span></span> χαρακτήρες που απομένουν"},"textArea_charExceeding": {"en": "You have entered <span></span> characters more","el": "Έχετε περάσει <span></span> χαρακτήρες περισσότερους"},"textArea_wordRemaining": {"en": "You have <span></span> words remaining","el": "Έχετε <span></span> λέξεις που απομένουν"},"textArea_wordsExceeding": {"en": "You have entered <span></span> words more","el": "Έχετε περάσει <span></span> λέξεις περισσότερες"},"userName_signOut": {"en": "Sign out","el": "Αποσύνδεση"},"userName_fromUser": {"en": "from user","el": "από το χρήστη"},"warning": {"en": "Warning","el": "Προσοχή"}};
 frame.set("govcyContent", t_23, true);
 if(frame.topLevel) {
 context.setVariable("govcyContent", t_23);
@@ -5305,6 +5305,285 @@ root: root
 })();
 })();
 
+(function() {(window.nunjucksPrecompiled = window.nunjucksPrecompiled || {})["elements/share.njk"] = (function() {
+function root(env, context, frame, runtime, cb) {
+var lineno = 0;
+var colno = 0;
+var output = "";
+try {
+var parentTemplate = null;
+output += "\n";
+var macro_t_1 = runtime.makeMacro(
+["params"], 
+[], 
+function (l_params, kwargs) {
+var callerFrame = frame;
+frame = new runtime.Frame();
+kwargs = kwargs || {};
+if (Object.prototype.hasOwnProperty.call(kwargs, "caller")) {
+frame.set("caller", kwargs.caller); }
+frame.set("params", l_params);
+var t_2 = "";env.getTemplate("utilities/govcyUtilities.njk", false, "elements/share.njk", false, function(t_4,t_3) {
+if(t_4) { cb(t_4); return; }
+t_3.getExported(function(t_5,t_3) {
+if(t_5) { cb(t_5); return; }
+if(Object.prototype.hasOwnProperty.call(t_3, "govcyLocalizeContent")) {
+var t_6 = t_3.govcyLocalizeContent;
+} else {
+cb(new Error("cannot import 'govcyLocalizeContent'")); return;
+}
+context.setVariable("govcyLocalizeContent", t_6);
+if(Object.prototype.hasOwnProperty.call(t_3, "govcyLangAttribute")) {
+var t_7 = t_3.govcyLangAttribute;
+} else {
+cb(new Error("cannot import 'govcyLangAttribute'")); return;
+}
+context.setVariable("govcyLangAttribute", t_7);
+if(Object.prototype.hasOwnProperty.call(t_3, "govcyGetContent")) {
+var t_8 = t_3.govcyGetContent;
+} else {
+cb(new Error("cannot import 'govcyGetContent'")); return;
+}
+context.setVariable("govcyGetContent", t_8);
+if(runtime.memberLookup((l_params),"text")) {
+var t_9;
+t_9 = (lineno = 20, colno = 39, runtime.callWrap(t_6, "govcyLocalizeContent", context, [runtime.memberLookup((l_params),"text"),runtime.memberLookup((l_params),"lang")]));
+frame.set("text", t_9, true);
+if(frame.topLevel) {
+context.setVariable("text", t_9);
+}
+if(frame.topLevel) {
+context.addExport("text", t_9);
+}
+if(runtime.contextOrFrameLookup(context, frame, "text")) {
+var t_10;
+t_10 = env.getFilter("default").call(context, runtime.memberLookup((l_params),"hasShare"),true);
+frame.set("hasShare", t_10, true);
+if(frame.topLevel) {
+context.setVariable("hasShare", t_10);
+}
+if(frame.topLevel) {
+context.addExport("hasShare", t_10);
+}
+var t_11;
+t_11 = env.getFilter("default").call(context, runtime.memberLookup((l_params),"hasSms"),true);
+frame.set("hasSms", t_11, true);
+if(frame.topLevel) {
+context.setVariable("hasSms", t_11);
+}
+if(frame.topLevel) {
+context.addExport("hasSms", t_11);
+}
+var t_12;
+t_12 = env.getFilter("default").call(context, runtime.memberLookup((l_params),"hasEmail"),true);
+frame.set("hasEmail", t_12, true);
+if(frame.topLevel) {
+context.setVariable("hasEmail", t_12);
+}
+if(frame.topLevel) {
+context.addExport("hasEmail", t_12);
+}
+var t_13;
+t_13 = env.getFilter("default").call(context, runtime.memberLookup((l_params),"hasPreview"),true);
+frame.set("hasPreview", t_13, true);
+if(frame.topLevel) {
+context.setVariable("hasPreview", t_13);
+}
+if(frame.topLevel) {
+context.addExport("hasPreview", t_13);
+}
+var t_14;
+t_14 = env.getFilter("default").call(context, runtime.memberLookup((l_params),"hasCopy"),true);
+frame.set("hasCopy", t_14, true);
+if(frame.topLevel) {
+context.setVariable("hasCopy", t_14);
+}
+if(frame.topLevel) {
+context.addExport("hasCopy", t_14);
+}
+if(runtime.contextOrFrameLookup(context, frame, "hasShare") || runtime.contextOrFrameLookup(context, frame, "hasSms") || runtime.contextOrFrameLookup(context, frame, "hasEmail") || runtime.contextOrFrameLookup(context, frame, "hasPreview") || runtime.contextOrFrameLookup(context, frame, "hasCopy")) {
+var t_15;
+t_15 = (lineno = 30, colno = 48, runtime.callWrap(t_8, "govcyGetContent", context, ["share_share",runtime.memberLookup((l_params),"lang")]));
+frame.set("shareLabel", t_15, true);
+if(frame.topLevel) {
+context.setVariable("shareLabel", t_15);
+}
+if(frame.topLevel) {
+context.addExport("shareLabel", t_15);
+}
+var t_16;
+t_16 = (lineno = 31, colno = 46, runtime.callWrap(t_8, "govcyGetContent", context, ["share_sms",runtime.memberLookup((l_params),"lang")]));
+frame.set("smsLabel", t_16, true);
+if(frame.topLevel) {
+context.setVariable("smsLabel", t_16);
+}
+if(frame.topLevel) {
+context.addExport("smsLabel", t_16);
+}
+var t_17;
+t_17 = (lineno = 32, colno = 48, runtime.callWrap(t_8, "govcyGetContent", context, ["share_email",runtime.memberLookup((l_params),"lang")]));
+frame.set("emailLabel", t_17, true);
+if(frame.topLevel) {
+context.setVariable("emailLabel", t_17);
+}
+if(frame.topLevel) {
+context.addExport("emailLabel", t_17);
+}
+var t_18;
+t_18 = (runtime.memberLookup((l_params),"previewTitle")?(lineno = 33, colno = 55, runtime.callWrap(t_6, "govcyLocalizeContent", context, [runtime.memberLookup((l_params),"previewTitle"),runtime.memberLookup((l_params),"lang")])):(lineno = 33, colno = 133, runtime.callWrap(t_8, "govcyGetContent", context, ["share_preview",runtime.memberLookup((l_params),"lang")])));
+frame.set("previewLabel", t_18, true);
+if(frame.topLevel) {
+context.setVariable("previewLabel", t_18);
+}
+if(frame.topLevel) {
+context.addExport("previewLabel", t_18);
+}
+var t_19;
+t_19 = (lineno = 34, colno = 47, runtime.callWrap(t_8, "govcyGetContent", context, ["share_copy",runtime.memberLookup((l_params),"lang")]));
+frame.set("copyLabel", t_19, true);
+if(frame.topLevel) {
+context.setVariable("copyLabel", t_19);
+}
+if(frame.topLevel) {
+context.addExport("copyLabel", t_19);
+}
+var t_20;
+t_20 = (lineno = 35, colno = 49, runtime.callWrap(t_8, "govcyGetContent", context, ["share_copySuccess",runtime.memberLookup((l_params),"lang")]));
+frame.set("copySuccess", t_20, true);
+if(frame.topLevel) {
+context.setVariable("copySuccess", t_20);
+}
+if(frame.topLevel) {
+context.addExport("copySuccess", t_20);
+}
+var t_21;
+t_21 = (runtime.memberLookup((l_params),"title")?(lineno = 36, colno = 48, runtime.callWrap(t_6, "govcyLocalizeContent", context, [runtime.memberLookup((l_params),"title"),runtime.memberLookup((l_params),"lang")])):"");
+frame.set("title", t_21, true);
+if(frame.topLevel) {
+context.setVariable("title", t_21);
+}
+if(frame.topLevel) {
+context.addExport("title", t_21);
+}
+var t_22;
+t_22 = "";
+frame.set("resolvedUrl", t_22, true);
+if(frame.topLevel) {
+context.setVariable("resolvedUrl", t_22);
+}
+if(frame.topLevel) {
+context.addExport("resolvedUrl", t_22);
+}
+if(runtime.memberLookup((l_params),"url")) {
+var t_23;
+t_23 = (lineno = 40, colno = 58, runtime.callWrap(t_6, "govcyLocalizeContent", context, [runtime.memberLookup((l_params),"url"),runtime.memberLookup((l_params),"lang")]));
+frame.set("resolvedUrl", t_23, true);
+if(frame.topLevel) {
+context.setVariable("resolvedUrl", t_23);
+}
+if(frame.topLevel) {
+context.addExport("resolvedUrl", t_23);
+}
+;
+}
+t_2 += "<div";
+if(runtime.memberLookup((l_params),"id")) {
+t_2 += " id=\"";
+t_2 += runtime.suppressValue(runtime.memberLookup((l_params),"id"), env.opts.autoescape);
+t_2 += "\"";
+;
+}
+t_2 += "\n                class=\"govcy-share";
+if(runtime.memberLookup((l_params),"classes")) {
+t_2 += " ";
+t_2 += runtime.suppressValue(runtime.memberLookup((l_params),"classes"), env.opts.autoescape);
+;
+}
+t_2 += "\"\n                data-govcy-share-title=\"";
+t_2 += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "title"), env.opts.autoescape);
+t_2 += "\"\n                data-govcy-share-text=\"";
+t_2 += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "text"), env.opts.autoescape);
+t_2 += "\"\n                data-govcy-share-url=\"";
+t_2 += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "resolvedUrl"), env.opts.autoescape);
+t_2 += "\"\n                data-govcy-share-copy-success-message=\"";
+t_2 += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "copySuccess"), env.opts.autoescape);
+t_2 += "\"\n                ";
+t_2 += runtime.suppressValue((lineno = 49, colno = 37, runtime.callWrap(t_7, "govcyLangAttribute", context, [runtime.memberLookup((l_params),"lang")])), env.opts.autoescape);
+t_2 += ">";
+if(runtime.contextOrFrameLookup(context, frame, "hasShare") || runtime.contextOrFrameLookup(context, frame, "hasSms") || runtime.contextOrFrameLookup(context, frame, "hasEmail")) {
+t_2 += "<ul class=\"govcy-list-unstyled govcy-share__list\">";
+if(runtime.contextOrFrameLookup(context, frame, "hasShare")) {
+t_2 += "<li class=\"govcy-mb-2 govcy-share__item\">\n                        <a tabindex=\"0\" role=\"button\" class=\"govcy-link-no-visited-state govcy-share__btn\">\n                            <svg aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"currentColor\" class=\"govcy-share__icon\" viewBox=\"0 0 16 16\">\n                                <path fill-rule=\"evenodd\" d=\"M3.5 6a.5.5 0 0 0-.5.5v8a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5v-8a.5.5 0 0 0-.5-.5h-2a.5.5 0 0 1 0-1h2A1.5 1.5 0 0 1 14 6.5v8a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 14.5v-8A1.5 1.5 0 0 1 3.5 5h2a.5.5 0 0 1 0 1z\"/>\n                                <path fill-rule=\"evenodd\" d=\"M7.646.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 1.707V10.5a.5.5 0 0 1-1 0V1.707L5.354 3.854a.5.5 0 1 1-.708-.708z\"/>\n                            </svg>\n                            ";
+t_2 += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "shareLabel"), env.opts.autoescape);
+t_2 += "\n                        </a>\n                    </li>";
+;
+}
+if(runtime.contextOrFrameLookup(context, frame, "hasSms")) {
+t_2 += "<li class=\"govcy-mb-2 govcy-share__item\">\n                        <a role=\"button\" class=\"govcy-link-no-visited-state govcy-share__sms\" href=\"sms:?body=";
+t_2 += runtime.suppressValue(env.getFilter("urlencode").call(context, ("" + "" + runtime.contextOrFrameLookup(context, frame, "text"))), env.opts.autoescape);
+t_2 += "\">\n                            <svg aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"currentColor\" class=\"govcy-share__icon\" viewBox=\"0 0 16 16\">\n                                <path d=\"M2 1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h9.586a2 2 0 0 1 1.414.586l2 2V2a1 1 0 0 0-1-1zm12-1a2 2 0 0 1 2 2v12.793a.5.5 0 0 1-.854.353l-2.853-2.853a1 1 0 0 0-.707-.293H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2z\"/>\n                                <path d=\"M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5M3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6m0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5\"/>\n                            </svg>\n                            ";
+t_2 += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "smsLabel"), env.opts.autoescape);
+t_2 += "\n                        </a>\n                    </li>";
+;
+}
+if(runtime.contextOrFrameLookup(context, frame, "hasEmail")) {
+t_2 += "<li class=\"govcy-mb-2 govcy-share__item\">\n                        <a role=\"button\" class=\"govcy-link-no-visited-state govcy-share__email\" href=\"mailto:?subject=";
+t_2 += runtime.suppressValue(env.getFilter("urlencode").call(context, ("" + "" + runtime.contextOrFrameLookup(context, frame, "title"))), env.opts.autoescape);
+t_2 += "&body=";
+t_2 += runtime.suppressValue(env.getFilter("urlencode").call(context, ("" + "" + runtime.contextOrFrameLookup(context, frame, "text"))), env.opts.autoescape);
+t_2 += "\">\n                            <svg aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"currentColor\" class=\"govcy-share__icon\" viewBox=\"0 0 16 16\">\n                                <path d=\"M2 2a2 2 0 0 0-2 2v8.01A2 2 0 0 0 2 14h5.5a.5.5 0 0 0 0-1H2a1 1 0 0 1-.966-.741l5.64-3.471L8 9.583l7-4.2V8.5a.5.5 0 0 0 1 0V4a2 2 0 0 0-2-2zm3.708 6.208L1 11.105V5.383zM1 4.217V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v.217l-7 4.2z\"/>\n                                <path d=\"M14.247 14.269c1.01 0 1.587-.857 1.587-2.025v-.21C15.834 10.43 14.64 9 12.52 9h-.035C10.42 9 9 10.36 9 12.432v.214C9 14.82 10.438 16 12.358 16h.044c.594 0 1.018-.074 1.237-.175v-.73c-.245.11-.673.18-1.18.18h-.044c-1.334 0-2.571-.788-2.571-2.655v-.157c0-1.657 1.058-2.724 2.64-2.724h.04c1.535 0 2.484 1.05 2.484 2.326v.118c0 .975-.324 1.39-.639 1.39-.232 0-.41-.148-.41-.42v-2.19h-.906v.569h-.03c-.084-.298-.368-.63-.954-.63-.778 0-1.259.555-1.259 1.4v.528c0 .892.49 1.434 1.26 1.434.471 0 .896-.227 1.014-.643h.043c.118.42.617.648 1.12.648m-2.453-1.588v-.227c0-.546.227-.791.573-.791.297 0 .572.192.572.708v.367c0 .573-.253.744-.564.744-.354 0-.581-.215-.581-.8Z\"/>\n                            </svg>\n                            ";
+t_2 += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "emailLabel"), env.opts.autoescape);
+t_2 += "\n                        </a>\n                    </li>";
+;
+}
+t_2 += "</ul>";
+;
+}
+if(runtime.contextOrFrameLookup(context, frame, "hasPreview")) {
+t_2 += "<p class=\"govcy-fw-bolder\">";
+t_2 += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "previewLabel"), env.opts.autoescape);
+t_2 += "</p>\n                <pre class=\"govcy-share__message\">";
+t_2 += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "text"), env.opts.autoescape);
+t_2 += "</pre>";
+;
+}
+if(runtime.contextOrFrameLookup(context, frame, "hasCopy")) {
+t_2 += "<ul class=\"govcy-list-unstyled govcy-share__list\">\n                    <li class=\"govcy-mb-2 govcy-share__item\">\n                    <a tabindex=\"0\" role=\"button\" class=\"govcy-link-no-visited-state govcy-share__copy-btn\">\n                        <svg aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"currentColor\" class=\"govcy-share__icon\" viewBox=\"0 0 16 16\">\n                            <path fill-rule=\"evenodd\" d=\"M4 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1h1v1a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h1v1z\"/>\n                        </svg>\n                        ";
+t_2 += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "copyLabel"), env.opts.autoescape);
+t_2 += "\n                    </a>\n                    </li>\n                </ul>\n                <div class=\"govcy-share__toast\" role=\"alert\" aria-live=\"assertive\" aria-atomic=\"true\"></div>";
+;
+}
+t_2 += "</div>";
+;
+}
+;
+}
+;
+}
+})});
+frame = callerFrame;
+return new runtime.SafeString(t_2);
+});
+context.addExport("share");
+context.setVariable("share", macro_t_1);
+output += "\n";
+if(parentTemplate) {
+parentTemplate.rootRenderFunc(env, context, frame, runtime, cb);
+} else {
+cb(null, output);
+}
+;
+} catch (e) {
+  cb(runtime.handleError(e, lineno, colno));
+}
+}
+return {
+root: root
+};
+
+})();
+})();
+
 (function() {(window.nunjucksPrecompiled = window.nunjucksPrecompiled || {})["elements/stepByStepStatic.njk"] = (function() {
 function root(env, context, frame, runtime, cb) {
 var lineno = 0;
@@ -7826,7 +8105,7 @@ var output = "";
 try {
 var parentTemplate = null;
 var t_1;
-t_1 = ["label","legend","hint","button","errorMessage","select","textElement","htmlElement","textInput","radios","checkboxes","fileInput","fileView","backLink","tag","table","summaryList","textArea","markdown","panel","datePicker","dateInput","taskList","errorSummary","details","stepByStepStatic","progressList","userName","warning","multipleThingsTable","inset"];
+t_1 = ["label","legend","hint","button","errorMessage","select","textElement","htmlElement","textInput","radios","checkboxes","fileInput","fileView","backLink","tag","table","summaryList","textArea","markdown","panel","datePicker","dateInput","taskList","errorSummary","details","stepByStepStatic","progressList","userName","warning","share","multipleThingsTable","inset"];
 frame.set("macroSimpleBlocks", t_1, true);
 if(frame.topLevel) {
 context.setVariable("macroSimpleBlocks", t_1);

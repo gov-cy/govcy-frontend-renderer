@@ -20,7 +20,7 @@ Though the project is not intended to be used for production purposes and does p
 
 The project uses [nunjucks](https://mozilla.github.io/nunjucks/) templates to built the html.
 
-The package currently works with the **version 3.2.0** of the design system.
+The package currently works with the **version 3.3.0** of the design system.
 
 ## Features
 

@@ -10,14 +10,14 @@ import { govcyFrontendRenderer } from '../../dist/index.mjs';
  * @param {string} inputMode "njk" or "json" 
  * @returns rendered HTML as string 
  */
-function renderTest(inputMode){
+function renderTest(inputMode) {
     const renderer = new govcyFrontendRenderer();
     const __filename = fileURLToPath(import.meta.url); // get the resolved path to the file
     const __dirname = path.dirname(__filename); // get the name of the directory
     let inputString = null //
     if (inputMode === 'json') {
         inputString = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'test.json'), 'utf8')); // get the json data
-    }else if (inputMode === 'njk') {
+    } else if (inputMode === 'njk') {
         inputString = fs.readFileSync(path.join(__dirname, '..', 'test.njk'), 'utf8'); // get the njk template
     }
     const siteData = JSON.parse(fs.readFileSync(path.join(__dirname, '..', '..', 'site-data.json'), 'utf8')); // get site data
@@ -27,13 +27,13 @@ function renderTest(inputMode){
     let rtn = null;
     if (inputMode === 'json') {
         rtn = renderer.renderFromJSON(inputString, inputData)
-    }else if (inputMode === 'njk') {
+    } else if (inputMode === 'njk') {
         rtn = renderer.renderFromString(inputString, inputData)
     }
     return rtn;
 }
 
-function renderLangTest(){
+function renderLangTest() {
     const renderer = new govcyFrontendRenderer();
 
     let inputString = (num) =>
@@ -43,13 +43,13 @@ function renderLangTest(){
         {{ govcyElement("textElement",{text:{en:"English ",el:"Greek"}, lang:"el", type:"p", id:"govcy-test-3-${num}-3"}) }}
         `;
     let rtn = renderer.renderFromString(inputString(1), {})
-    rtn += renderer.renderFromString(inputString(2), {site:{lang:'en'}});
-    rtn += renderer.renderFromString(inputString(3), {site:{lang:'el'}});
+    rtn += renderer.renderFromString(inputString(2), { site: { lang: 'en' } });
+    rtn += renderer.renderFromString(inputString(3), { site: { lang: 'el' } });
     return rtn;
 }
 
 
-function renderJsonTest(siteData){
+function renderJsonTest(siteData) {
     const renderer = new govcyFrontendRenderer();
     let inputJSON = {
         "sections": [
@@ -66,7 +66,7 @@ function renderJsonTest(siteData){
     };
     let rtn = renderer.renderFromJSON(inputJSON, siteData);
     return rtn;
-}   
+}
 
 /**
  * Perform tests on rendered HTML
@@ -74,83 +74,83 @@ function renderJsonTest(siteData){
  * @param {string} renderedHTML The rendered HTML 
  * @param {string} checksNum The prefix of the checksNum 
  */
-async function renderChecks(renderedHTML, checksNum){
-    it(checksNum+'1 `renderFromString` should not be empty ', async () => {
+async function renderChecks(renderedHTML, checksNum) {
+    it(checksNum + '1 `renderFromString` should not be empty ', async () => {
         expect(renderedHTML).to.not.be.empty;
     });
-    it(checksNum+'2 `hint` macro render as expected', async () => {
+    it(checksNum + '2 `hint` macro render as expected', async () => {
         // check for structure  
         let expectedRegex = /<span id="govcy-test-2"([\s\S]*?)class="govcy-hint\s*govcy-test-class"([\s\S]*?)<\/span>/;
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'3 `label` macro render as expected. Options classes, for, id, isPrimary:false', async () => {
+    it(checksNum + '3 `label` macro render as expected. Options classes, for, id, isPrimary:false', async () => {
         // check for structure  
         let expectedRegex = /<label id="govcy-test-3"([\s\S]*?)class="govcy-label\s*govcy-test-class"([\s\S]*?)for="govcy-label-for-id"([\s\S]*?)&lt;b&gt;([\s\S]*?)<\/label>/;
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'4 `label` macro render as expected. Options for, isPrimary, isPageHeading, isHTML id', async () => {
+    it(checksNum + '4 `label` macro render as expected. Options for, isPrimary, isPageHeading, isHTML id', async () => {
         // check for structure  
         let expectedRegex = /<h1><label id="govcy-test-4"([\s\S]*?)class="govcy-label\s*govcy-label-primary"([\s\S]*?)for="govcy-label-for-id"([\s\S]*?)<b>([\s\S]*?)<\/label><\/h1>/;
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'5 `legend` macro render as expected. Options isPageHeading, classes, id', async () => {
+    it(checksNum + '5 `legend` macro render as expected. Options isPageHeading, classes, id', async () => {
         // check for structure  
         let expectedRegex = /<legend id="govcy-test-5"([\s\S]*?)class="govcy-legend\s*govcy-test-class"([\s\S]*?)><h1>([\s\S]*?)<\/h1><\/legend>/;
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'6 `legend` macro render as expected. Options isPageHeading:false , id', async () => {
+    it(checksNum + '6 `legend` macro render as expected. Options isPageHeading:false , id', async () => {
         // check for structure  
         let expectedRegex = /<legend id="govcy-test-6"([\s\S]*?)class="govcy-legend"([\s\S]*?)>This is the legend by itself. Options isPageHeading:false, id<\/legend>/;
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'7 `button` macro render as expected. Default options', async () => {
+    it(checksNum + '7 `button` macro render as expected. Default options', async () => {
         // check for structure  
         let expectedRegex = /<button\s*type="button"\s*id="govcy-test-7"([\s\S]*?)class="govcy-btn-primary"([\s\S]*?)>Primary default options<\/button>/;
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'8 `button` macro render as expected. Options variant:secondary, type:submit, classes:govcy-test-class', async () => {
+    it(checksNum + '8 `button` macro render as expected. Options variant:secondary, type:submit, classes:govcy-test-class', async () => {
         // check for structure  
         let expectedRegex = /<button\s*type="submit"\s*id="govcy-test-8"([\s\S]*?)class="govcy-btn-secondary([\s\S]*?)govcy-test-class"([\s\S]*?)>([\s\S]*?)<\/button>/;
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'9 `button` macro render as expected. Options variant:success', async () => {
+    it(checksNum + '9 `button` macro render as expected. Options variant:success', async () => {
         // check for structure  
         let expectedRegex = /<button\s*type="button"\s*id="govcy-test-9"([\s\S]*?)class="govcy-btn-success"([\s\S]*?)>([\s\S]*?)<\/button>/;
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'10 `errorMessage` macro render as expected. Options id, classes. lang: "el"', async () => {
+    it(checksNum + '10 `errorMessage` macro render as expected. Options id, classes. lang: "el"', async () => {
         // check for structure  
         let expectedRegex = /<p\s*id="govcy-test-10"\s*class="govcy-input-error-msg govcy-test-class"\s*lang="el"\s*>([\s\S]*?)<span class="govcy-visually-hidden-error">Σφάλμα:<\/span>([\s\S]*?)<\/p>/;
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'11 `errorMessage` macro render as expected. Options lang: en', async () => {
+    it(checksNum + '11 `errorMessage` macro render as expected. Options lang: en', async () => {
         // check for structure  
         let expectedRegex = /<p\s*id="govcy-test-11"\s*class="govcy-input-error-msg\s*"\s*>([\s\S]*?)<span class="govcy-visually-hidden-error">Error:<\/span>([\s\S]*?)<\/p>/;
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'12 `formControl` macro render as expected. Options isError:true, classes, id', async () => {
+    it(checksNum + '12 `formControl` macro render as expected. Options isError:true, classes, id', async () => {
         // check for structure  
         let expectedRegex = /<div\s*id="govcy-test-12"\s*class="govcy-form-control\s*govcy-form-control-error\s*govcy-test-class"\s*>([\s\S]*?)<\/div>/;
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'13 `form` macro render as expected. Options classes, id', async () => {
+    it(checksNum + '13 `form` macro render as expected. Options classes, id', async () => {
         // check for structure  
         let expectedRegex = /<form\s*id="govcy-test-13"\s*action=""\s*class="govcy-form\s*govcy-test-class"\s*novalidate=""\s*>([\s\S]*?)<\/form>/;
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'14 `form` macro render as expected. Options action', async () => {
+    it(checksNum + '14 `form` macro render as expected. Options action', async () => {
         // check for structure  
         let expectedRegex = /<form\s*id="govcy-test-14"\s*action="test-action"\s*class="govcy-form"\s*novalidate=""\s*>([\s\S]*?)<\/form>/;
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'15 `formControl` macro render as expected. Options id', async () => {
+    it(checksNum + '15 `formControl` macro render as expected. Options id', async () => {
         // check for structure  
         let expectedRegex = /<div\s*id="govcy-test-15"\s*class="govcy-form-control"\s*>([\s\S]*?)<\/div>/;
         expect(renderedHTML).to.match(expectedRegex);
     });
     // only test this when rendering from njk
-    if (checksNum==1) {
-        it(checksNum+'16 `govcyLocalizeContent` macro render as expected.', async () => {
+    if (checksNum == 1) {
+        it(checksNum + '16 `govcyLocalizeContent` macro render as expected.', async () => {
             // check for structure   
             let expectedRegex = /&lt;b&gt;Should show English escaped&lt;\/b&gt;/;
             expect(renderedHTML).to.match(expectedRegex);
@@ -162,9 +162,9 @@ async function renderChecks(renderedHTML, checksNum){
             expect(renderedHTML).to.match(expectedRegex);
         });
     }
-    it(checksNum+'17 `select` macro render as expected. Default options. Checks for form control, label, select and options', async () => {
+    it(checksNum + '17 `select` macro render as expected. Default options. Checks for form control, label, select and options', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([ 
+        let expectedRegex = new RegExp([
             `<div\\s*class="govcy-form-control">`,//form control
             `\\s*<label\\s*class="govcy-label\\s*govcy-label-primary"\\s*for="govcy-test-17">([\\s\\S]*?)<\\/label>`,//label
             `\\s*<select\\s*id="govcy-test-17"\\s*name="govcy-test-17"\\s*\\s*class="govcy-select\\s*"([\\s\\S]*?)>([\\s\\S]*?)<\\/select>`,//select
@@ -172,16 +172,16 @@ async function renderChecks(renderedHTML, checksNum){
         ].join(''));
         expect(renderedHTML).to.match(expectedRegex);
         // check for options   
-        expectedRegex =  new RegExp ([ 
+        expectedRegex = new RegExp([
             `<select([\\s\\S]*?)id="govcy-test-17"([\\s\\S]*?)>`,//select
             `\\s*<option\\s*value="">None<\\/option>\\s*<option\\s*value="published">Recently published<\\/option>`,//options
             `([\\s\\S]*?)<\\/select>` //closing tags
         ].join(''));
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'18 `select` macro render as expected. Options error, hint. Checks for form control, label, select and options', async () => {
+    it(checksNum + '18 `select` macro render as expected. Options error, hint. Checks for form control, label, select and options', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([ 
+        let expectedRegex = new RegExp([
             `<div\\s*class="govcy-form-control\\s*govcy-form-control-error">`,//form control
             `\\s*<label\\s*class="govcy-label\\s*govcy-label-primary"\\s*for="govcy-test-18">([\\s\\S]*?)<\\/label>`,//label
             `\\s*<span\\s*id="govcy-test-18-hint"\\s*class="govcy-hint">([\\s\\S]*?)<\\/span>`,//hint
@@ -191,16 +191,16 @@ async function renderChecks(renderedHTML, checksNum){
         ].join(''));
         expect(renderedHTML).to.match(expectedRegex);
         // check for options   
-        expectedRegex =  new RegExp ([ 
+        expectedRegex = new RegExp([
             `<select([\\s\\S]*?)id="govcy-test-18"([\\s\\S]*?)>`,//select
             `\\s*<option\\s*value="">None<\\/option>\\s*<option\\s*value="published">Recently published<\\/option>`,//options
             `([\\s\\S]*?)<\\/select>` //closing tags
         ].join(''));
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'19 `select` macro render as expected. Options error, hint, isPageHeading. Checks for form control, label, select and options', async () => {
+    it(checksNum + '19 `select` macro render as expected. Options error, hint, isPageHeading. Checks for form control, label, select and options', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([ 
+        let expectedRegex = new RegExp([
             `<div\\s*class="govcy-form-control\\s*govcy-form-control-error">`,//form control
             `\\s*<h1><label\\s*class="govcy-label\\s*govcy-label-primary"\\s*for="govcy-test-19">([\\s\\S]*?)<\\/label>\\s*<\\/h1>`,//label
             `\\s*<span\\s*id="govcy-test-19-hint"\\s*class="govcy-hint">([\\s\\S]*?)<\\/span>`,//hint
@@ -210,16 +210,16 @@ async function renderChecks(renderedHTML, checksNum){
         ].join(''));
         expect(renderedHTML).to.match(expectedRegex);
         // check for options   
-        expectedRegex =  new RegExp ([ 
+        expectedRegex = new RegExp([
             `<select([\\s\\S]*?)id="govcy-test-19"([\\s\\S]*?)>`,//select
             `\\s*<option\\s*value="">None<\\/option>\\s*<option\\s*value="published">Recently published<\\/option>`,//options
             `([\\s\\S]*?)<\\/select>` //closing tags
         ].join(''));
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'20 `select` macro render as expected. Options hint. Checks for form control, label, select and options', async () => {
+    it(checksNum + '20 `select` macro render as expected. Options hint. Checks for form control, label, select and options', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([ 
+        let expectedRegex = new RegExp([
             `<div\\s*class="govcy-form-control\\s*">`,//form control
             `\\s*<label\\s*class="govcy-label\\s*govcy-label-primary"\\s*for="govcy-test-20">([\\s\\S]*?)<\\/label>`,//label
             `\\s*<span\\s*id="govcy-test-20-hint"\\s*class="govcy-hint">([\\s\\S]*?)<\\/span>`,//hint
@@ -228,16 +228,16 @@ async function renderChecks(renderedHTML, checksNum){
         ].join(''));
         expect(renderedHTML).to.match(expectedRegex);
         // check for options   
-        expectedRegex =  new RegExp ([ 
+        expectedRegex = new RegExp([
             `<select([\\s\\S]*?)id="govcy-test-20"([\\s\\S]*?)>`,//select
             `\\s*<option\\s*value="">None<\\/option>\\s*<option\\s*value="published">Recently published<\\/option>`,//options
             `([\\s\\S]*?)<\\/select>` //closing tags
         ].join(''));
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'21 `select` macro render as expected. Options lang:"el". Checks for label, hint, error, options', async () => {
+    it(checksNum + '21 `select` macro render as expected. Options lang:"el". Checks for label, hint, error, options', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([ 
+        let expectedRegex = new RegExp([
             `<div\\s*class="govcy-form-control\\s*govcy-form-control-error">`,//form control
             `\\s*<label\\s*class="govcy-label\\s*govcy-label-primary"\\s*for="govcy-test-21"([\\s\\S]*?)lang="el">\\s*Περιεχομένο label\\s*<\\/label>`,//label
             `\\s*<span\\s*id="govcy-test-21-hint"([\\s\\S]*?)lang="el">\\s*Περιεχομένο hint\\s*<\\/span>`,//hint
@@ -247,16 +247,16 @@ async function renderChecks(renderedHTML, checksNum){
         ].join(''));
         expect(renderedHTML).to.match(expectedRegex);
         // check for content   
-        expectedRegex =  new RegExp ([ 
+        expectedRegex = new RegExp([
             `<select([\\s\\S]*?)id="govcy-test-21"([\\s\\S]*?)>`,//select
             `\\s*<option\\s*value="">Κανένα<\\/option>\\s*<option\\s*value="published">Πρόσφατα<\/option>([\\s\\S]*?)`,//options
             `<\\/select>` //closing tags
         ].join(''));
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'22 `form` and `formControl` macro render as expected when used with `elements`', async () => {
+    it(checksNum + '22 `form` and `formControl` macro render as expected when used with `elements`', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([ 
+        let expectedRegex = new RegExp([
             `<form\\s*id="govcy-test-22"([\\s\\S]*?)>`,//form 
             `\\s*<div\\s*id="govcy-test-23"([\\s\\S]*?)>`,//form control
             `\\s*<div\\s*class="govcy-form-control">\\s*<label\\s*class="govcy-label\\s*govcy-label-primary"\\s*for="govcy-test-23a">([\\s\\S]*?)</label>`,//select label
@@ -268,22 +268,22 @@ async function renderChecks(renderedHTML, checksNum){
         ].join(''));
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'24 `textElement` macro render as expected', async () => {
+    it(checksNum + '24 `textElement` macro render as expected', async () => {
         // check for structure
-        let expectedRegex =  new RegExp ([ 
+        let expectedRegex = new RegExp([
             `<p\\s*id="govcy-test-24a"\\s*class="govcy-test-class"\\s*>\\s*Default content\\s*<\\/p>`//p
         ].join(''));
         expect(renderedHTML).to.match(expectedRegex);
-        expectedRegex =  new RegExp ([ 
+        expectedRegex = new RegExp([
             `<h3\\s*id="govcy-test-24b"\\s*lang="el">\\s*Default Περιεχομένο\\s*<\\/h3>`//h3
         ].join(''));
         expect(renderedHTML).to.match(expectedRegex);
     });
     // Do not test this on client side
-    if (checksNum!=4) {
-        it(checksNum+'25 check that something is rendered in a different section, in this case `beforeMain`', async () => {
+    if (checksNum != 4) {
+        it(checksNum + '25 check that something is rendered in a different section, in this case `beforeMain`', async () => {
             // check for structure   
-            let expectedRegex =  new RegExp ([ 
+            let expectedRegex = new RegExp([
                 `<section\\s*class="govcy-container"\\s*id="beforeMainContainer">`,//section 
                 `\\s*<p\\s*id="govcy-test-25">`,//p
                 `([\\s\\S]*?)<\\/p>([\\s\\S]*?)<\\/section>` //closing tags
@@ -291,7 +291,7 @@ async function renderChecks(renderedHTML, checksNum){
             expect(renderedHTML).to.match(expectedRegex);
         });
     }
-    it(checksNum+'26 Lang attribute with `govcyLocalizeContent` macro renders as expected for `button`,`hint`, `legend`, `textElement`.', async () => {
+    it(checksNum + '26 Lang attribute with `govcyLocalizeContent` macro renders as expected for `button`,`hint`, `legend`, `textElement`.', async () => {
         // check for structure  
         // error message is checked in 10. 
         // hint, label, legend error message, select is checked in 21.
@@ -304,9 +304,9 @@ async function renderChecks(renderedHTML, checksNum){
         expectedRegex = /<p\s*id="govcy-test-26d"\s*lang="el">\s*Ελληνικά\s*<\/p>/;
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'27a `textInput` macro render as expected. Text with minimum options', async () => {
+    it(checksNum + '27a `textInput` macro render as expected. Text with minimum options', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([ 
+        let expectedRegex = new RegExp([
             `<div\\s*class="govcy-form-control">`,//form control 
             `\\s*<label\\s*id="govcy-test-27a-label"\\s*class="govcy-label\\s*govcy-label-primary"\\s*for="govcy-test-27a">\\s*1. Text with minimum options\\s*<\\/label>`,//label
             `\\s*<input\\s*id="govcy-test-27a"\\s*type="text"\\s*spellcheck="false"\\s*class="govcy-text-input">`, //input
@@ -315,9 +315,9 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'27b `textInput` macro render as expected. isPageHeading:true', async () => {
+    it(checksNum + '27b `textInput` macro render as expected. isPageHeading:true', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([ 
+        let expectedRegex = new RegExp([
             `<div\\s*class="govcy-form-control">`,//form control 
             `\\s*<h1>\\s*<label\\s*id="govcy-test-27b-label"\\s*class="govcy-label\\s*govcy-label-primary"\\s*for="govcy-test-27b">\\s*2. Text input with isPageHeading:true\\s*<\\/label>\\s*<\\/h1>`,//label
             `\\s*<input\\s*id="govcy-test-27b"\\s*type="text"\\s*spellcheck="false"\\s*class="govcy-text-input">`, //input
@@ -326,9 +326,9 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'27c `textInput` macro render as expected. Ελληνικά. with most options, type:tel, fixedWidth:50', async () => {
+    it(checksNum + '27c `textInput` macro render as expected. Ελληνικά. with most options, type:tel, fixedWidth:50', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([ 
+        let expectedRegex = new RegExp([
             `<div\\s*class="govcy-form-control\\s*govcy-form-control-error\\s*govcy-test-class\\s*"\\s*lang="el">`,//form control 
             `\\s*<label\\s*id="govcy-test-27c-label"\\s*class="govcy-label\\s*govcy-label-primary"\\s*for="govcy-test-27c"\\s*lang="el">\\s*3. Ελληνικά. Text input with most options, type:tel, fixedWidth:50\\s*<\\/label>`,//label
             `\\s*<span\\s*id="govcy-test-27c-hint"\\s*class="govcy-hint"\\s*lang="el">\\s*Περιεχομένο\\s*hint\\s*<\\/span>`,//hint
@@ -339,9 +339,9 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'27d `textInput` macro render as expected. type:email', async () => {
+    it(checksNum + '27d `textInput` macro render as expected. type:email', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([ 
+        let expectedRegex = new RegExp([
             `<div\\s*class="govcy-form-control">`,//form control 
             `\\s*<label\\s*id="govcy-test-27d-label"\\s*class="govcy-label\\s*govcy-label-primary"\\s*for="govcy-test-27d">\\s*4\\. Text type:email\\s*<\\/label>`,//label
             `\\s*<input\\s*id="govcy-test-27d"\\s*name="govcy-test-27d"\\s*type="email"\\s*spellcheck="false"\\s*autocomplete="email"\\s*class="govcy-text-input">`, //input
@@ -350,9 +350,9 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'27e `textInput` macro render as expected. type:numeric', async () => {
+    it(checksNum + '27e `textInput` macro render as expected. type:numeric', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([ 
+        let expectedRegex = new RegExp([
             `<div\\s*class="govcy-form-control">`,//form control 
             `\\s*<label\\s*id="govcy-test-27e-label"\\s*class="govcy-label\\s*govcy-label-primary"\\s*for="govcy-test-27e"\\s*>\\s*5. Text type:numeric\\s*<\\/label>`,//label
             `\\s*<input\\s*id="govcy-test-27e"\\s*name="govcy-test-27e"\\s*type="text"\\s*pattern="\\[0-9\\]\\*"\\s*inputmode="numeric"\\s*spellcheck="false"\\s*class="govcy-text-input"\\s*>`, //input
@@ -361,9 +361,9 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'27f `textInput` macro render as expected. type:name', async () => {
+    it(checksNum + '27f `textInput` macro render as expected. type:name', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([ 
+        let expectedRegex = new RegExp([
             `<div\\s*class="govcy-form-control">`,//form control 
             `\\s*<label\\s*id="govcy-test-27f-label"\\s*class="govcy-label\\s*govcy-label-primary"\\s*for="govcy-test-27f"\\s*>\\s*6. Text type:name\\s*<\\/label>`,//label
             `\\s*<input\\s*id="govcy-test-27f"\\s*name="govcy-test-27f"\\s*type="text"\\s*spellcheck="false"\\s*autocomplete="name"\\s*class="govcy-text-input">`, //input
@@ -372,9 +372,9 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'27h `textInput` macro render as expected. fixedWidth:35', async () => {
+    it(checksNum + '27h `textInput` macro render as expected. fixedWidth:35', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([ 
+        let expectedRegex = new RegExp([
             `<div\\s*class="govcy-form-control">`,//form control 
             `\\s*<label\\s*id="govcy-test-27g-label"\\s*class="govcy-label\\s*govcy-label-primary\\s*"\\s*for="govcy-test-27g"\\s*>\\s*7. Text fixedWidth:35\\s*<\\/label>`,//label
             `\\s*<input\\s*id="govcy-test-27g"\\s*name="govcy-test-27g"\\s*type="text"\\s*spellcheck="false"\\s*class="govcy-text-input\\s*govcy-text-input-char_35\\s*"\\s*>`, //input
@@ -383,9 +383,9 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         // expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'27i `textInput` macro render as expected. isSpellcheck=true', async () => {
+    it(checksNum + '27i `textInput` macro render as expected. isSpellcheck=true', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([ 
+        let expectedRegex = new RegExp([
             `<div\\s*class="govcy-form-control">`,//form control 
             `\\s*<label\\s*id="govcy-test-27i-label"\\s*class="govcy-label\\s*govcy-label-primary"\\s*for="govcy-test-27i"\\s*>\\s*9. Text spellcheck true\\s*<\\/label>`,//label
             `\\s*<input\\s*id="govcy-test-27i"\\s*name="govcy-test-27i"\\s*type="text"\\s*spellcheck="true"\\s*class="govcy-text-input"\\s*>`, //input
@@ -394,9 +394,9 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'27j `textInput` macro render as expected. autocomplete:tel', async () => {
+    it(checksNum + '27j `textInput` macro render as expected. autocomplete:tel', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([ 
+        let expectedRegex = new RegExp([
             `<div\\s*class="govcy-form-control">`,//form control 
             `\\s*<label\\s*id="govcy-test-27j-label"\\s*class="govcy-label\\s*govcy-label-primary"\\s*for="govcy-test-27j"\\s*>\\s*10. Text autocomplete:tel\\s*<\\/label>`,//label
             `\\s*<input\\s*id="govcy-test-27j"\\s*name="govcy-test-27j"\\s*type="text"\\s*spellcheck="false"\\s*autocomplete="tel"\\s*class="govcy-text-input"\\s*>`, //input
@@ -405,27 +405,27 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'28 `fieldset` macro render as expected. defaults', async () => {
+    it(checksNum + '28 `fieldset` macro render as expected. defaults', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([ 
+        let expectedRegex = new RegExp([
             `<fieldset\\s*id="govcy-test-28"\\s*class="govcy-fieldset">`,//fieldset 
             `\\s*<\\/fieldset>` //closing tags
         ].join(''));
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'29 `fieldset` macro render as expected. options classes, ariaDescribedBy, lang', async () => {
+    it(checksNum + '29 `fieldset` macro render as expected. options classes, ariaDescribedBy, lang', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([ 
+        let expectedRegex = new RegExp([
             `<fieldset\\s*id="govcy-test-29"\\s*class="govcy-fieldset\\s*govcy-test-class"\\s*aria-describedby="govcy-test-29-aria"\\s*lang="el"\\s*>`,//fieldset 
             `\\s*<\\/fieldset>` //closing tags
         ].join(''));
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'30 `fieldset` macro render as expected. has elements', async () => {
+    it(checksNum + '30 `fieldset` macro render as expected. has elements', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([ 
+        let expectedRegex = new RegExp([
             `<fieldset\\s*id="govcy-test-30"\\s*class="govcy-fieldset"\\s*>`,//fieldset 
             `\\s*<div\\s*class="govcy-form-control">`,//input form control
             `\\s*<label\\s*id="govcy-test-30a-label"([\\s\\S]*?)<\\/label>`,//label
@@ -437,9 +437,9 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'31 `radios` macro render as expected. default options', async () => {
+    it(checksNum + '31 `radios` macro render as expected. default options', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([ 
+        let expectedRegex = new RegExp([
             `<fieldset\\s*class="govcy-fieldset">`,//fieldset 
             `\\s*<legend\\s*class="govcy-legend">\\s*Radios: English default options\\s*<\\/legend>`,//legend
             `\\s*<div\\s*class="govcy-form-control">`,//form control
@@ -448,9 +448,9 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'32 `radios` macro render as expected. with items', async () => {
+    it(checksNum + '32 `radios` macro render as expected. with items', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([ 
+        let expectedRegex = new RegExp([
             `<fieldset\\s*class="govcy-fieldset">`,//fieldset 
             `\\s*<legend\\s*class="govcy-legend">\\s*Radios: English with items\\s*<\\/legend>`,//legend
             `\\s*<div\\s*class="govcy-form-control">`,//form control
@@ -467,9 +467,9 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'33 `radios` macro render as expected. with items and error', async () => {
+    it(checksNum + '33 `radios` macro render as expected. with items and error', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([ 
+        let expectedRegex = new RegExp([
             `<fieldset\\s*class="govcy-fieldset"\\s*aria-describedby="\\s*govcy-test-33-error">`,//fieldset 
             `\\s*<legend\\s*class="govcy-legend">\\s*Radios: English with items and error\\s*<\\/legend>`,//legend
             `\\s*<div\\s*class="govcy-form-control\\s*govcy-form-control-error">`,//form control
@@ -487,9 +487,9 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'34 `radios` macro render as expected. with `and` item', async () => {
+    it(checksNum + '34 `radios` macro render as expected. with `and` item', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([ 
+        let expectedRegex = new RegExp([
             `<fieldset\\s*class="govcy-fieldset">`,//fieldset 
             `\\s*<legend\\s*class="govcy-legend">\\s*Radios: English with and item\\s*<\\/legend>`,//legend
             `\\s*<div\\s*class="govcy-form-control">`,//form control
@@ -505,9 +505,9 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'35 `radios` macro render as expected. with inline items', async () => {
+    it(checksNum + '35 `radios` macro render as expected. with inline items', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([ 
+        let expectedRegex = new RegExp([
             `<fieldset\\s*class="govcy-fieldset">`,//fieldset 
             `\\s*<legend\\s*class="govcy-legend">\\s*Radios: English with inline items\\s*<\\/legend>`,//legend
             `\\s*<div\\s*class="govcy-form-control">`,//form control
@@ -529,9 +529,9 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'36 `radios` macro render as expected. with all options possible, isPageHeading, radios with hint, altAndText', async () => {
+    it(checksNum + '36 `radios` macro render as expected. with all options possible, isPageHeading, radios with hint, altAndText', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([ 
+        let expectedRegex = new RegExp([
             `<fieldset\\s*class="govcy-fieldset\\s*govcy-test-class"\\s*aria-describedby="\\s*govcy-test-36-hint\\s*govcy-test-36-error\\s*"\\s*>`,//fieldset 
             `\\s*<legend\\s*class="govcy-legend">\\s*<h1>\\s*Radios: English with all options possible\\s*<\\/h1>\\s*<\\/legend>`,//legend
             `\\s*<div\\s*class="govcy-form-control\\s*govcy-form-control-error">`,//form control
@@ -552,9 +552,9 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'37 `radios` macro render as expected. lang:el', async () => {
+    it(checksNum + '37 `radios` macro render as expected. lang:el', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([ 
+        let expectedRegex = new RegExp([
             `<fieldset\\s*class="govcy-fieldset\\s*govcy-test-class"\\s*aria-describedby="\\s*govcy-test-37-hint\\s*govcy-test-37-error\\s*"\\s*lang="el"\\s*>`,//fieldset 
             `\\s*<legend\\s*class="govcy-legend"\\s*lang="el">\\s*<h1>\\s*Radios: Ελληνικά with all options possible\\s*<\\/h1>\\s*<\\/legend>`,//legend
             `([\\s\\S]*?)`,
@@ -579,9 +579,9 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'38 `checkboxes` macro render as expected. default options', async () => {
+    it(checksNum + '38 `checkboxes` macro render as expected. default options', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([ 
+        let expectedRegex = new RegExp([
             `<fieldset\\s*class="govcy-fieldset">`,//fieldset 
             `\\s*<legend\\s*class="govcy-legend">\\s*Checkboxes: English default options\\s*<\\/legend>`,//legend
             `\\s*<div\\s*class="govcy-form-control">`,//form control
@@ -590,9 +590,9 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'39 `checkboxes` macro render as expected. with items', async () => {
+    it(checksNum + '39 `checkboxes` macro render as expected. with items', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([ 
+        let expectedRegex = new RegExp([
             `<fieldset\\s*class="govcy-fieldset">`,//fieldset 
             `\\s*<legend\\s*class="govcy-legend">\\s*Checkboxes: English with items\\s*<\\/legend>`,//legend
             `\\s*<div\\s*class="govcy-form-control">`,//form control
@@ -609,9 +609,9 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'40 `checkboxes` macro render as expected. with items and error', async () => {
+    it(checksNum + '40 `checkboxes` macro render as expected. with items and error', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([ 
+        let expectedRegex = new RegExp([
             `<fieldset\\s*class="govcy-fieldset"\\s*aria-describedby="\\s*govcy-test-40-error">`,//fieldset 
             `\\s*<legend\\s*class="govcy-legend">\\s*Checkboxes: English with items and error\\s*<\\/legend>`,//legend
             `\\s*<div\\s*class="govcy-form-control\\s*govcy-form-control-error">`,//form control
@@ -629,9 +629,9 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'41 `checkboxes` macro render as expected. with `and` item', async () => {
+    it(checksNum + '41 `checkboxes` macro render as expected. with `and` item', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([ 
+        let expectedRegex = new RegExp([
             `<fieldset\\s*class="govcy-fieldset">`,//fieldset 
             `\\s*<legend\\s*class="govcy-legend">\\s*Checkboxes: English with and item\\s*<\\/legend>`,//legend
             `\\s*<div\\s*class="govcy-form-control">`,//form control
@@ -647,9 +647,9 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'42 `checkboxes` macro render as expected. with all options possible, isPageHeading, checkboxes with hint, altAndText', async () => {
+    it(checksNum + '42 `checkboxes` macro render as expected. with all options possible, isPageHeading, checkboxes with hint, altAndText', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([ 
+        let expectedRegex = new RegExp([
             `<fieldset\\s*class="govcy-fieldset\\s*govcy-test-class"\\s*aria-describedby="\\s*govcy-test-42-hint\\s*govcy-test-42-error\\s*"\\s*>`,//fieldset 
             `\\s*<legend\\s*class="govcy-legend">\\s*<h1>\\s*Checkboxes: English with all options possible\\s*<\\/h1>\\s*<\\/legend>`,//legend
             `\\s*<div\\s*class="govcy-form-control\\s*govcy-form-control-error">`,//form control
@@ -670,9 +670,9 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'43 `checkboxes` macro render as expected. lang:el', async () => {
+    it(checksNum + '43 `checkboxes` macro render as expected. lang:el', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([ 
+        let expectedRegex = new RegExp([
             `<fieldset\\s*class="govcy-fieldset\\s*govcy-test-class"\\s*aria-describedby="\\s*govcy-test-43-hint\\s*govcy-test-43-error\\s*"\\s*lang="el"\\s*>`,//fieldset 
             `\\s*<legend\\s*class="govcy-legend"\\s*lang="el">\\s*<h1>\\s*Checkboxes: Ελληνικά with all options possible\\s*<\\/h1>\\s*<\\/legend>`,//legend
             `([\\s\\S]*?)`,
@@ -697,9 +697,9 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'44 `fileInput` macro render as expected. with default options', async () => {
+    it(checksNum + '44 `fileInput` macro render as expected. with default options', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([ 
+        let expectedRegex = new RegExp([
             `<div\\s*id="govcy-test-44-input-control"\\s*class="govcy-form-control">`, //form control
             `\\s*<label\\s*id="govcy-test-44-label"\\s*class="govcy-label\\s*govcy-label-primary"\\s*for="govcy-test-44"\\s*>\\s*File input: English with default options\\s*<\\/label>`, //label
             `\\s*<input\\s*id="govcy-test-44"\\s*type="file"\\s*class="govcy-file-upload">`, //file input
@@ -708,9 +708,9 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'45 `fileInput` macro render as expected. with hint', async () => {
+    it(checksNum + '45 `fileInput` macro render as expected. with hint', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([ 
+        let expectedRegex = new RegExp([
             `<div\\s*id="govcy-test-45-input-control"\\s*class="govcy-form-control">`, //form control
             `\\s*<label\\s*id="govcy-test-45-label"\\s*class="govcy-label\\s*govcy-label-primary"\\s*for="govcy-test-45"\\s*>\\s*File input: English with hint\\s*<\\/label>`, //label
             `\\s*<span\\s*id="govcy-test-45-hint"\\s*class="govcy-hint"\\s*>\\s*PDF, JPG, JPEG, PNG are the acceptable formats\\s*<\\/span>`, //hint
@@ -722,9 +722,9 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'46 `fileInput` macro render as expected. with all possible options. id, name, classes, hint, label, error, isPageHeading', async () => {
+    it(checksNum + '46 `fileInput` macro render as expected. with all possible options. id, name, classes, hint, label, error, isPageHeading', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([ 
+        let expectedRegex = new RegExp([
             `<div\\s*id="govcy-test-46-input-control"\\s*class="govcy-form-control govcy-form-control-error">`, //form control
             `\\s*<h1>\\s*<label\\s*id="govcy-test-46-label"\\s*class="govcy-label\\s*govcy-label-primary"\\s*for="govcy-test-46"\\s*>\\s*File input: English with all possible options\\s*<\\/label>\\s*<\\/h1>`, //label
             `\\s*<span\\s*id="govcy-test-46-hint"\\s*class="govcy-hint">\\s*English hint\\s*<\\/span>`, //hint
@@ -737,9 +737,9 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'47 `fileInput` macro render as expected. lang:el', async () => {
+    it(checksNum + '47 `fileInput` macro render as expected. lang:el', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([ 
+        let expectedRegex = new RegExp([
             `<div\\s*id="govcy-test-47-input-control"\\s*class="govcy-form-control govcy-form-control-error">`, //form control
             `\\s*<h1>\\s*<label\\s*id="govcy-test-47-label"\\s*class="govcy-label\\s*govcy-label-primary"\\s*for="govcy-test-47"\\s*lang="el"\\s*>\\s*Ελληνικά with all possible options\\s*<\\/label>\\s*<\\/h1>`, //label
             `([\\s\\S]*?)`,
@@ -752,9 +752,9 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'48 `fileView` macro render as expected. with default options', async () => {
+    it(checksNum + '48 `fileView` macro render as expected. with default options', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([ 
+        let expectedRegex = new RegExp([
             `<div\\s*id="govcy-test-48-view-control"\\s*class="govcy-form">`, //form div
             `\\s*<div class="govcy-form-control">`, //form control
             `\\s*<p\\s*class="govcy-label\\s*govcy-label-primary">\\s*File view: English with default options\\s*<\\/p>`, //label
@@ -764,9 +764,9 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'49 `fileView` macro render as expected. with hint', async () => {
+    it(checksNum + '49 `fileView` macro render as expected. with hint', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([ 
+        let expectedRegex = new RegExp([
             `<div\\s*id="govcy-test-49-view-control"\\s*class="govcy-form">`, //form div
             `\\s*<div class="govcy-form-control">`, //form control
             `\\s*<p\\s*class="govcy-label\\s*govcy-label-primary">\\s*File view: English with hint\\s*<\\/p>`, //label
@@ -777,9 +777,9 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'50 `fileView` macro render as expected. with all possible options', async () => {
+    it(checksNum + '50 `fileView` macro render as expected. with all possible options', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([ 
+        let expectedRegex = new RegExp([
             `<div\\s*id="govcy-test-50-view-control"\\s*class="govcy-form">`, //form div
             `\\s*<div class="govcy-form-control\\s*govcy-test-class">`, //form control
             `\\s*<h1>\\s*File view: English with all possible options\\s*<\\/h1>`, //label
@@ -791,9 +791,9 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'51 `fileView` macro render as expected. with lang:el', async () => {
+    it(checksNum + '51 `fileView` macro render as expected. with lang:el', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([ 
+        let expectedRegex = new RegExp([
             `<div\\s*id="govcy-test-51-view-control"\\s*class="govcy-form">`, //form div
             `\\s*<div class="govcy-form-control\\s*govcy-test-class"\\s*lang="el"\\s*>`, //form control
             `\\s*<h1>\\s*Ελληνικά label with lang:el\\s*<\\/h1>`, //label
@@ -805,73 +805,73 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'52 `backLink` macro render as expected. default options', async () => {
+    it(checksNum + '52 `backLink` macro render as expected. default options', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([ 
+        let expectedRegex = new RegExp([
             `<a\\s*class="govcy-back-link"\\s*href="javascript:history.back\\(\\)">\\s*Back\\s*<\\/a>`, //back link
         ].join(''));
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'53 `backLink` macro render as expected. with text options', async () => {
+    it(checksNum + '53 `backLink` macro render as expected. with text options', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([ 
+        let expectedRegex = new RegExp([
             `<a\\s*class="govcy-back-link"\\s*href="javascript:history.back\\(\\)">\\s*Back EN govcy-test-53\\s*<\\/a>`, //back link
         ].join(''));
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'54 `backLink` macro render as expected. with text and classes options', async () => {
+    it(checksNum + '54 `backLink` macro render as expected. with text and classes options', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([ 
+        let expectedRegex = new RegExp([
             `<a\\s*class="govcy-back-link\\s*govcy-test-54"\\s*href="javascript:history.back\\(\\)">\\s*Back EN with classes\\s*<\\/a>`, //back link
         ].join(''));
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'55 `backLink` macro render as expected. with text, href and classes options', async () => {
+    it(checksNum + '55 `backLink` macro render as expected. with text, href and classes options', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([ 
+        let expectedRegex = new RegExp([
             `<a\\s*class="govcy-back-link\\s*govcy-test-55"\\s*href="#">\\s*Back EN with classes and href\\s*<\\/a>`, //back link
         ].join(''));
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'56 `backLink` macro render as expected. with text, href and classes options', async () => {
+    it(checksNum + '56 `backLink` macro render as expected. with text, href and classes options', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([ 
+        let expectedRegex = new RegExp([
             `<a\\s*class="govcy-back-link\\s*govcy-test-56"\\s*href="#"\\s*lang="el">\\s*Πίσω EL with classes and href\\s*<\\/a>`, //back link
         ].join(''));
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'57 `tag` macro render as expected. default options', async () => {
+    it(checksNum + '57 `tag` macro render as expected. default options', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([ 
+        let expectedRegex = new RegExp([
             `<span\\s*class="govcy-tag">\\s*ENGLISH tag 57\\s*<\\/span>`, //tag
         ].join(''));
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'58 `tag` macro render as expected. with classes options', async () => {
+    it(checksNum + '58 `tag` macro render as expected. with classes options', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([ 
+        let expectedRegex = new RegExp([
             `<span\\s*class="govcy-tag\\s*govcy-tag-gray">\\s*ENGLISH tag 58\\s*<\\/span>`, //tag
         ].join(''));
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'59 `tag` macro render as expected. with classes and lang options', async () => {
+    it(checksNum + '59 `tag` macro render as expected. with classes and lang options', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([ 
+        let expectedRegex = new RegExp([
             `<span\\s*class="govcy-tag\\s*govcy-tag-orange"\\s*lang="el">\\s*ΕΛΛΗΝΙΚΑ tag 59\\s*<\\/span>`, //tag
         ].join(''));
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'60 `table` default options', async () => {
+    it(checksNum + '60 `table` default options', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([ 
+        let expectedRegex = new RegExp([
             `<table\\s*id="govcy-test-60"\\s*class="govcy-table">`, //table
             `\\s*<tbody>`, //tbody
             `\\s*<\\/tbody>\\s*<\\/table>` //closing tags
@@ -879,9 +879,9 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'61 `table` simple table', async () => {
+    it(checksNum + '61 `table` simple table', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([ 
+        let expectedRegex = new RegExp([
             `<table\\s*id="govcy-test-61"\\s*class="govcy-table">`, //table
             `\\s*<thead>`, //thead
             `\\s*<tr>`, //tr
@@ -903,9 +903,9 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'62 `table` Simple table with firstCellIsHeader:ture and responsiveType:vertical-headers', async () => {
+    it(checksNum + '62 `table` Simple table with firstCellIsHeader:ture and responsiveType:vertical-headers', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([ 
+        let expectedRegex = new RegExp([
             `<table\\s*id="govcy-test-62"\\s*class="govcy-table\\s*govcy-table-responsive-vertical">`, //table
             `\\s*<thead>`, //thead
             `\\s*<tr>`, //tr
@@ -928,9 +928,9 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'63 `table` Simple table with firstCellIsHeader:ture and responsiveType:vertical-no-headers', async () => {
+    it(checksNum + '63 `table` Simple table with firstCellIsHeader:ture and responsiveType:vertical-no-headers', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([ 
+        let expectedRegex = new RegExp([
             `<table\\s*id="govcy-test-63"\\s*class="govcy-table\\s*govcy-table-responsive-vertical">`, //table
             `\\s*<thead>`, //thead
             `\\s*<tr>`, //tr
@@ -953,9 +953,9 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'64 `table` Simple table with firstCellIsHeader:ture and responsiveType:horisontal', async () => {
+    it(checksNum + '64 `table` Simple table with firstCellIsHeader:ture and responsiveType:horisontal', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([ 
+        let expectedRegex = new RegExp([
             `<div\\s*class="govcy-table-responsive">`, //table
             `\\s*<table\\s*id="govcy-test-64"\\s*class="govcy-table">`, //table
             `\\s*<thead>`, //thead
@@ -979,9 +979,9 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'65 `table` Table with most options. On rows and head with colspan and rowspan, classes and multiple elements', async () => {
+    it(checksNum + '65 `table` Table with most options. On rows and head with colspan and rowspan, classes and multiple elements', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([ 
+        let expectedRegex = new RegExp([
             `<table\\s*id="govcy-test-65"\\s*class="govcy-table\\s*govcy-test-class">`, //table
             `\\s*<thead>`, //thead
             `\\s*<tr>`, //tr
@@ -1007,9 +1007,9 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'66 `Table` Table with most options in lang:el', async () => {
+    it(checksNum + '66 `Table` Table with most options in lang:el', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([ 
+        let expectedRegex = new RegExp([
             `<table\\s*id="govcy-test-66"\\s*class="govcy-table\\s*govcy-table-responsive-vertical"\\s*lang="el">`, //table
             `([\\s\\S]*?)`,
             `Μηνας`,
@@ -1045,18 +1045,18 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'67 `summaryList` default options', async () => {
+    it(checksNum + '67 `summaryList` default options', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([ 
+        let expectedRegex = new RegExp([
             `<dl\\s*id="govcy-test-67"\\s*class="govcy-summary-list">`, //dl
             `\\s*<\\/dl>` //closing tags
         ].join(''));
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'68 `summaryList` Simple, no actions', async () => {
+    it(checksNum + '68 `summaryList` Simple, no actions', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([ 
+        let expectedRegex = new RegExp([
             `<dl\\s*id="govcy-test-68"\\s*class="govcy-summary-list">`, //dl
             `\\s*<div\\s*class="govcy-summary-list-row">`, //row div
             `\\s*<dt\\s*class="govcy-summary-list-key">\\s*Name\\s*<\\/dt>`, //dt
@@ -1076,9 +1076,9 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'69 `summaryList` with multiple elements and actions', async () => {
+    it(checksNum + '69 `summaryList` with multiple elements and actions', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([ 
+        let expectedRegex = new RegExp([
             `<dl\\s*id="govcy-test-69"\\s*class="govcy-summary-list">`, //dl
             `\\s*<div\\s*class="govcy-summary-list-row">`, //row div
             `\\s*<dt\\s*class="govcy-summary-list-key">\\s*Name\\s*<\\/dt>`, //dt
@@ -1112,8 +1112,8 @@ async function renderChecks(renderedHTML, checksNum){
             `\\s*<li\\s*class="list-inline-item">`, //open list
             `\\s*<a href="#1">\\s*Enter contact\\s*</a>`, //action
             `\\s*</li>`, //close list
-            ,`\\s*<\\/ul>`, //close dd
-            ,`\\s*<\\/dd>`, //close dd
+            , `\\s*<\\/ul>`, //close dd
+            , `\\s*<\\/dd>`, //close dd
             `\\s*<\\/div>`, //closing div
             // `([\\s\\S]*?)`,
             `\\s*<\\/dl>` //closing tags
@@ -1121,9 +1121,9 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'70 `summaryList` multiple elements and actions in Greek', async () => {
+    it(checksNum + '70 `summaryList` multiple elements and actions in Greek', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([            
+        let expectedRegex = new RegExp([
             `<dl\\s*id="govcy-test-70"\\s*class="govcy-summary-list" lang="el">`, //dl
             `([\\s\\S]*?)`,
             `el Name`,
@@ -1161,9 +1161,9 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'71 `conditional radios` macro render as expected. with all options possible and elements in items', async () => {
+    it(checksNum + '71 `conditional radios` macro render as expected. with all options possible and elements in items', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([ 
+        let expectedRegex = new RegExp([
             `<fieldset\\s*class="govcy-fieldset\\s*govcy-test-class"\\s*aria-describedby="\\s*govcy-test-71-hint\\s*govcy-test-71-error\\s*"\\s*lang="el"\\s*>`,//fieldset 
             `\\s*<legend\\s*class="govcy-legend"\\s*lang="el">\\s*<h1>\\s*Radios: Ελληνικά with all options possible\\s*<\\/h1>\\s*<\\/legend>`,//legend
             `\\s*<div\\s*class="govcy-form-control\\s*govcy-form-control-error">`,//form control
@@ -1182,7 +1182,7 @@ async function renderChecks(renderedHTML, checksNum){
             `\\s*<div\\s*id="govcy-test-71a1-input-control"\\s*class="govcy-form-control"\\s*>`, //form control 2 for conditional file input (withour error, controlled via hideFormControlError)
             `([\\s\\S]*?)govcy-test-71a1([\\s\\S]*?)`, // not interested in control specifics here, tested before 
             `\\s*<\\/div>`, //closing tags for conditional div 2
-            `([\\s\\S]*?)`, 
+            `([\\s\\S]*?)`,
             `\\s*<div\\s*class="govcy-form-control">`, //form control in last conditional element
             `\\s*<label\\s*class="\\s*govcy-label\\s*govcy-label-primary"\\s*for="govcy-test-71c"\\s*lang="el"\\s*>\\s*Χώρα\\s*<\\/label>`, //label in last conditional element
             `\\s*<select\\s*id="govcy-test-71c"\\s*name="govcy-test-71c"\\s*class="govcy-select"\\s*lang="el"\\s*>`, //select in last conditional element
@@ -1194,9 +1194,9 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'72 `textArea` macro render as expected. Default options', async () => {
+    it(checksNum + '72 `textArea` macro render as expected. Default options', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([ 
+        let expectedRegex = new RegExp([
             `<div\\s*class="govcy-form-control">`,//form control 
             `\\s*<label\\s*id="govcy-test-72-label"\\s*class="govcy-label\\s*govcy-label-primary"\\s*for="govcy-test-72"\\s*>\\s*Default Text area\\s*<\\/label>`,//label
             `\\s*<textarea\\s*id="govcy-test-72"\\s*rows="5"\\s*spellcheck="false"\\s*class="govcy-text-area">\\s*<\\/textarea>`, //textarea
@@ -1205,9 +1205,9 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'73 `textArea` macro render as expected. Default Text area with most options, autocomplete, character count char', async () => {
+    it(checksNum + '73 `textArea` macro render as expected. Default Text area with most options, autocomplete, character count char', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([ 
+        let expectedRegex = new RegExp([
             `<div\\s*class="govcy-form-control\\s*govcy-form-control-error\\s*govcy-test-class">`,//form control 
             `\\s*<h1>\\s*<label\\s*id="govcy-test-73-label"\\s*class="govcy-label\\s*govcy-label-primary"\\s*for="govcy-test-73"\\s*>\\s*Default Text area with most options, autocomplete, character count char\\s*<\\/label>\\s*<\\/h1>`,//label
             `\\s*<span\\s*id="govcy-test-73-hint"\\s*class="govcy-hint">\\s*English hint\\s*<\\/span>`, //hint
@@ -1222,9 +1222,9 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'74 `textArea` with most options, autocomplete, character count word, lang el', async () => {
+    it(checksNum + '74 `textArea` with most options, autocomplete, character count word, lang el', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([            
+        let expectedRegex = new RegExp([
             `<div\\s*class="govcy-form-control\\s*govcy-form-control-error\\s*govcy-test-class"\\s* lang="el">`,//form control 
             `\\s*<h1>\\s*<label\\s*id="govcy-test-74-label"`,//label
             `([\\s\\S]*?)`,
@@ -1243,9 +1243,9 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'75 `summaryList` Complex Summary List', async () => {
+    it(checksNum + '75 `summaryList` Complex Summary List', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([            
+        let expectedRegex = new RegExp([
             `\\s*<dl\\s*id="govcy-test-75"\\s*class="govcy-summary-list">`,//external dl 
             //1st row simple 
             `\\s*<div\\s*class="govcy-summary-list-row">`,//div
@@ -1316,9 +1316,9 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'76 `summaryList` Complex Summary List EL', async () => {
+    it(checksNum + '76 `summaryList` Complex Summary List EL', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([            
+        let expectedRegex = new RegExp([
             `\\s*<dl\\s*id="govcy-test-76"\\s*class="govcy-summary-list" lang="el">`,//external dl 
             `([\\s\\S]*?)`,
             `EL Date of birth`,
@@ -1348,9 +1348,9 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'77 `markdown` English', async () => {
+    it(checksNum + '77 `markdown` English', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([            
+        let expectedRegex = new RegExp([
             `<p>\\s*govcy-test-77-start<\\/p>`,
             `\\s*<h2>\\s*Header 2\\s*<\\/h2>`,
             `\\s*<p>\\s*This is a <strong>\\s*Markdown-it\\s*<\\/strong>\\s*example rendered in <em>\\s*Nunjucks\\s*<\\/em>\\s*.\\s*<br>`,
@@ -1361,9 +1361,9 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'79 `Panel` default', async () => {
+    it(checksNum + '79 `Panel` default', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([
+        let expectedRegex = new RegExp([
             `<div\\s*id="govcy-test-79"\\s*class="govcy-alert-completed-notification">`, //external div
             `\\s*<div\\s*class="govcy-alert-completed-notification-body\\s*govcy-bg-success">\\s*<\\/div>`, //notification body div
             `\\s*<\\/div>`, //closing tag
@@ -1371,9 +1371,9 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'81 `Panel` background danger', async () => {
+    it(checksNum + '81 `Panel` background danger', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([
+        let expectedRegex = new RegExp([
             `<div\\s*id="govcy-test-80"\\s*class="govcy-alert-completed-notification">`, //external div
             `\\s*<div\\s*class="govcy-alert-completed-notification-body\\s*govcy-bg-danger">`, //notification body div
             `\\s*<h1>\\s*Your application has been sent\\s*<\\/h1>`, //header
@@ -1385,9 +1385,9 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'81 `Panel` with all options', async () => {
+    it(checksNum + '81 `Panel` with all options', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([
+        let expectedRegex = new RegExp([
             `<div\\s*id="govcy-test-81"\\s*class="govcy-alert-completed-notification">`, //external div
             `\\s*<div\\s*class="govcy-alert-completed-notification-body\\s*govcy-bg-success">`, //notification body div
             `\\s*<h1>\\s*Your application has been sent\\s*<\\/h1>`, //header
@@ -1400,9 +1400,9 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'82 `Panel` with all options lang="el"', async () => {
+    it(checksNum + '82 `Panel` with all options lang="el"', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([
+        let expectedRegex = new RegExp([
             `<div\\s*id="govcy-test-82"\\s*class="govcy-alert-completed-notification"\\s*lang="el">`, //external div
             `\\s*<div\\s*class="govcy-alert-completed-notification-body\\s*govcy-bg-success">`, //notification body div
             `\\s*<h1>\\s*Η αίτησή σας έχει σταλεί\\s*<\\/h1>`, //header
@@ -1415,17 +1415,17 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'83a `Form` with `enctype`', async () => {
+    it(checksNum + '83a `Form` with `enctype`', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([
+        let expectedRegex = new RegExp([
             `<form\\s*id="govcy-test-83a"\\s*enctype="multipart/form-data"\\s*action=""\\s*class="govcy-form"\\s*novalidate="">`, //form with enctype
         ].join(''));
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'83 `Date Picker` with default options', async () => {
+    it(checksNum + '83 `Date Picker` with default options', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([
+        let expectedRegex = new RegExp([
             `<div\\s*class="govcy-form-control">`, //div form control
             `\\s*<label\\s*class="govcy-label\\s*govcy-label-primary"\\s*for="govcy-test-83"\\s*>\\s*Default\\s*values\\s*<\\/label>`, //label
             `\\s*<div\\s*class="govcy-date-picker">`, //date picker div
@@ -1435,9 +1435,9 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'84 `Date Picker` with all options', async () => {
+    it(checksNum + '84 `Date Picker` with all options', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([
+        let expectedRegex = new RegExp([
             `<div\\s*class="govcy-form-control\\s*govcy-form-control-error\\s*test-class">`, //div form control
             `\\s*<h1>\\s*<label\\s*class="govcy-label\\s*govcy-label-primary"\\s*for="govcy-test-84"\\s*>\\s*Default values\\s*<\\/label>\\s*<\\/h1>`, //label
             `\\s*<span\\s*id="govcy-test-84-hint"\\s*class="govcy-hint">\\s*This is a hint\\s*<\\/span>`, //hint
@@ -1449,9 +1449,9 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'85 `Date Picker` with all options lang="el"', async () => {
+    it(checksNum + '85 `Date Picker` with all options lang="el"', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([
+        let expectedRegex = new RegExp([
             `<div\\s*class="govcy-form-control\\s*govcy-form-control-error\\s*test-class">`, //div form control
             `\\s*<h1>\\s*<label\\s*class="govcy-label\\s*govcy-label-primary"\\s*for="govcy-test-85"\\s*lang="el">\\s*Default values el\\s*<\\/label>\\s*<\\/h1>`, //label
             `\\s*<span\\s*id="govcy-test-85-hint"\\s*class="govcy-hint"\\s*lang="el">\\s*This is a hint el\\s*<\\/span>`, //hint
@@ -1463,9 +1463,9 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'86 `Date Input` with default options', async () => {
+    it(checksNum + '86 `Date Input` with default options', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([
+        let expectedRegex = new RegExp([
             `<fieldset\\s*class="govcy-fieldset"\\s*role="group"\\s*>`, //fieldset
             `\\s*<legend\\s*class="govcy-legend">\\s*Default values\\s*<\\/legend>`, //legend
             `\\s*<div\\s*class="govcy-form-control">`, //form control
@@ -1506,9 +1506,9 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'87 `Date Input` with all options', async () => {
+    it(checksNum + '87 `Date Input` with all options', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([
+        let expectedRegex = new RegExp([
             `<fieldset\\s*class="govcy-fieldset\\s*govcy-test-class"\\s*role="group"\\s*aria-describedby="govcy-test-87-hint\\s*govcy-test-87-error"\\s*>`, //fieldset
             `\\s*<legend\\s*class="govcy-legend"\\s*>\\s*<h1>\\s*All options\\s*<\\/h1>\\s*<\\/legend>`, //legend
             `\\s*<div\\s*class="govcy-form-control\\s*govcy-form-control-error">`, //form control
@@ -1551,9 +1551,9 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'88 `Date Input` with all options lang="el"', async () => {
+    it(checksNum + '88 `Date Input` with all options lang="el"', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([            
+        let expectedRegex = new RegExp([
             `\\s*<fieldset\\s*class="govcy-fieldset\\s*govcy-test-class"\\s*role="group"\\s*aria-describedby="govcy-test-88-hint\\s*govcy-test-88-error"\\s*lang="el">`,//external dl 
             `([\\s\\S]*?)`,
             `All options el`,
@@ -1599,9 +1599,9 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'89 `Task List` with default options', async () => {
+    it(checksNum + '89 `Task List` with default options', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([
+        let expectedRegex = new RegExp([
             `<table\\s*class="govcy-table"\\s*id="govcy-test-89">\\s*<tbody>`, //table
             //row 1
             `\\s*<tr\\s*id="govcy-test-89-row-1">`, //table row
@@ -1644,9 +1644,9 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'90 `Task List` with all options', async () => {
+    it(checksNum + '90 `Task List` with all options', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([
+        let expectedRegex = new RegExp([
             `<table\\s*class="govcy-table\\s*govcy-test-class\\s*"\\s*id="govcy-test-90">\\s*<tbody>`, //table
             //row 1
             `\\s*<tr\\s*id="govcy-test-90-row-1">`, //table row
@@ -1662,9 +1662,9 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'91 `Task List` with all options lang="el"', async () => {
+    it(checksNum + '91 `Task List` with all options lang="el"', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([
+        let expectedRegex = new RegExp([
             `<table\\s*class="govcy-table\\s*govcy-test-class\\s*"\\s*id="govcy-test-91"\\s*lang="el">\\s*<tbody>`, //table
             //row 1
             `\\s*<tr\\s*id="govcy-test-91-row-1">`, //table row
@@ -1680,9 +1680,9 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'92 `Radios` with `elements`', async () => {
+    it(checksNum + '92 `Radios` with `elements`', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([
+        let expectedRegex = new RegExp([
             `<fieldset\\s*class="govcy-fieldset"\\s*aria-describedby="govcy-test-92-hint\\s*govcy-test-92-error">`, //fieldset
             `\\s*<legend\\s*class="govcy-legend"\\s*>\\s*<h1>\\s*Radios: with elements\\s*<\\/h1>\\s*<\\/legend>`, //legend
             `\\s*<p>\\s*A paragraph\\s*<\\/p>\\s*<p>\\s*Another paragraph\\s*<\\/p>\\s*<span\\s*class="govcy-tag\\s*govcy-tag-gray"\\s*lang="el"\\s*>\\s*el Adult\\s*<\\/span>\\s*<p>\\s*Another paragraph\\s*<\\/p>`, //elements
@@ -1693,9 +1693,9 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'93 `Radios` with `elements` lang="el"', async () => {
+    it(checksNum + '93 `Radios` with `elements` lang="el"', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([
+        let expectedRegex = new RegExp([
             `<fieldset\\s*class="govcy-fieldset"\\s*aria-describedby="govcy-test-93-hint\\s*govcy-test-93-error"\\s*lang="el">`, //fieldset
             `\\s*<legend\\s*class="govcy-legend"\\s*lang="el"\\s*>\\s*<h1>\\s*Ελληνικά radios legend\\s*<\\/h1>\\s*<\\/legend>`, //legend
             `\\s*<p\\s*lang="el"\\s*>\\s*A paragraph el\\s*<\\/p>\\s*<p\\s*lang="el"\\s*>\\s*Another paragraph el\\s*<\\/p>\\s*<span\\s*class="govcy-tag\\s*govcy-tag-gray"\\s*lang="el"\\s*>\\s*el Adult\\s*<\\/span>\\s*<p\\s*lang="el"\\s*>\\s*Another paragraph el\\s*<\\/p>`, //elements
@@ -1706,9 +1706,9 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'94 `Checkboxes` with `elements`', async () => {
+    it(checksNum + '94 `Checkboxes` with `elements`', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([
+        let expectedRegex = new RegExp([
             `<fieldset\\s*class="govcy-fieldset"\\s*aria-describedby="govcy-test-94-hint\\s*govcy-test-94-error">`, //fieldset
             `\\s*<legend\\s*class="govcy-legend"\\s*>\\s*<h1>\\s*Checkboxes: with elements\\s*<\\/h1>\\s*<\\/legend>`, //legend
             `\\s*<p>\\s*A paragraph\\s*<\\/p>\\s*<p>\\s*Another paragraph\\s*<\\/p>\\s*<span\\s*class="govcy-tag\\s*govcy-tag-gray"\\s*lang="el"\\s*>\\s*el Adult\\s*<\\/span>\\s*<p>\\s*Another paragraph\\s*<\\/p>`, //elements
@@ -1719,9 +1719,9 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'95 `Checkboxes` with `elements` lang="el"', async () => {
+    it(checksNum + '95 `Checkboxes` with `elements` lang="el"', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([
+        let expectedRegex = new RegExp([
             `<fieldset\\s*class="govcy-fieldset"\\s*aria-describedby="govcy-test-95-hint\\s*govcy-test-95-error"\\s*lang="el">`, //fieldset
             `\\s*<legend\\s*class="govcy-legend"\\s*lang="el"\\s*>\\s*<h1>\\s*Ελληνικά checkboxes legend\\s*<\\/h1>\\s*<\\/legend>`, //legend
             `\\s*<p\\s*lang="el"\\s*>\\s*A paragraph el\\s*<\\/p>\\s*<p\\s*lang="el"\\s*>\\s*Another paragraph el\\s*<\\/p>\\s*<span\\s*class="govcy-tag\\s*govcy-tag-gray"\\s*lang="el"\\s*>\\s*el Adult\\s*<\\/span>\\s*<p\\s*lang="el"\\s*>\\s*Another paragraph el\\s*<\\/p>`, //elements
@@ -1732,9 +1732,9 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'96 `Error Summary` with default options', async () => {
+    it(checksNum + '96 `Error Summary` with default options', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([
+        let expectedRegex = new RegExp([
             `<div\\s*id="govcy-test-96"\\s*class="govcy-alert-error govcy-br-5 govcy-br-danger govcy-p-3">`, //error summary div
             `\\s*<h2\\s*role="alert"\\s*id="govcy-test-96-title">\\s*There is a problem\\s*<\\/h2>`, //h2 title 
             `\\s*<p>`, //p opening tag 
@@ -1746,9 +1746,9 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'97 `Error Summary` with all options', async () => {
+    it(checksNum + '97 `Error Summary` with all options', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([
+        let expectedRegex = new RegExp([
             `<div\\s*id="govcy-test-97"\\s*class="govcy-alert-error govcy-br-5 govcy-br-danger govcy-p-3">`, //error summary div
             `\\s*<h2\\s*role="alert"\\s*id="govcy-test-97-title">\\s*Error\\s*<\\/h2>`, //h2 title 
             `\\s*<p>`, //p opening tag 
@@ -1762,9 +1762,9 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'98 `Error Summary` with all options lang="el"', async () => {
+    it(checksNum + '98 `Error Summary` with all options lang="el"', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([
+        let expectedRegex = new RegExp([
             `<div\\s*id="govcy-test-98"\\s*class="govcy-alert-error govcy-br-5 govcy-br-danger govcy-p-3"\\s*lang="el">`, //error summary div
             `\\s*<h2\\s*role="alert"\\s*id="govcy-test-98-title">\\s*Σφάλμα\\s*<\\/h2>`, //h2 title 
             `([\\s\\S]*?)`,
@@ -1781,9 +1781,9 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'99 `Details` with all options', async () => {
+    it(checksNum + '99 `Details` with all options', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([
+        let expectedRegex = new RegExp([
             `<details\\s*id="govcy-test-99"\\s*class="govcy-details\\s*govcy-test-class">`, //details
             `\\s*<summary\\s*class="govcy-details__summary">`, //summary 
             `\\s*<span\\s*class="govcy-details__summary-text"\\s*>\\s*How to control cookies\\s*<\\/span>`, //summary 
@@ -1797,9 +1797,9 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'100 `Details` with all options lang="el"', async () => {
+    it(checksNum + '100 `Details` with all options lang="el"', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([
+        let expectedRegex = new RegExp([
             `<details\\s*id="govcy-test-100"\\s*class="govcy-details\\s*govcy-test-class"\\s*lang="el">`, //details
             `\\s*<summary\\s*class="govcy-details__summary">`, //summary 
             `\\s*<span\\s*class="govcy-details__summary-text"\\s*>\\s*Πως να ελέγξετε τα cookies\\s*<\\/span>`, //summary 
@@ -1813,9 +1813,9 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'101 `Step by step static` with all options', async () => {
+    it(checksNum + '101 `Step by step static` with all options', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([
+        let expectedRegex = new RegExp([
             `<div\\s*class="govcy-accordion\\s*govcy-accordion-steps\\s*govcy-mb-0\\s*govcy-test-class"\\s*id="govcy-test-101">`, //opening div
             //item 1
             `\\s*<div\\s*class="govcy-accordion-item"\\s*id="govcy-test-101-item-1">`, //item open
@@ -1846,9 +1846,9 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'102 `Step by step static` with all options lang="el"', async () => {
+    it(checksNum + '102 `Step by step static` with all options lang="el"', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([
+        let expectedRegex = new RegExp([
             `<div\\s*class="govcy-accordion\\s*govcy-accordion-steps\\s*govcy-mb-0\\s*govcy-test-class"\\s*id="govcy-test-102"\\s*lang="el">`, //opening div
             //item 1
             `\\s*<div\\s*class="govcy-accordion-item"\\s*id="govcy-test-102-item-1">`, //item open
@@ -1879,9 +1879,9 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'103 `Progress list` with counter only', async () => {
+    it(checksNum + '103 `Progress list` with counter only', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([
+        let expectedRegex = new RegExp([
             `<div\\s*id="govcy-test-103-counter"\\s*class="govcy-step-indicator__counter">`, //opening div
             `\\s*<span\\s*class="govcy-visually-hidden">Step\\s*<\\/span>`, //step visually hidden
             `\\s*<span\\s*class="govcy-step-indicator__current-counter">\\s*2\\s*<\\/span> of 3`, //from to 
@@ -1890,9 +1890,9 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'104 `Progress list` with counter and steps', async () => {
+    it(checksNum + '104 `Progress list` with counter and steps', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([
+        let expectedRegex = new RegExp([
             `<div\\s*id="govcy-test-104"\\s*class="govcy-step-indicator">`, //div start
             `\\s*<ol\\s*class="govcy-step-indicator__segments">`, //ol start
             `\\s*<li\\s*class="govcy-step-indicator__segment\\s*govcy-step-indicator__segment--complete">\\s*<\\/li>`, //complete step
@@ -1907,9 +1907,9 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'105 `Progress list` with Counter, steps and labels', async () => {
+    it(checksNum + '105 `Progress list` with Counter, steps and labels', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([
+        let expectedRegex = new RegExp([
             `<div\\s*id="govcy-test-105"\\s*class="govcy-step-indicator">`, //div start
             `\\s*<ol\\s*class="govcy-step-indicator__segments">`, //ol start
             `\\s*<li\\s*class="govcy-step-indicator__segment\\s*govcy-step-indicator__segment--complete">\\s*<span\\s*class="govcy-step-indicator__label">\\s*Step 1\\s*<span\\s*class="govcy-visually-hidden">\\s*Completed\\s*<\\/span>\\s*<\\/span>\\s*<\\/li>`, //complete step
@@ -1924,9 +1924,9 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'106 `Progress list` with All params', async () => {
+    it(checksNum + '106 `Progress list` with All params', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([
+        let expectedRegex = new RegExp([
             `<div\\s*id="govcy-test-106"\\s*class="govcy-step-indicator\\s*govcy-test-class">`, //div start
             `\\s*<ol\\s*class="govcy-step-indicator__segments">`, //ol start
             `\\s*<li\\s*class="govcy-step-indicator__segment\\s*govcy-step-indicator__segment--complete">\\s*<span\\s*class="govcy-step-indicator__label">\\s*Step 1\\s*<span\\s*class="govcy-visually-hidden">\\s*Completed custom\\s*<\\/span>\\s*<\\/span>\\s*<\\/li>`, //complete step
@@ -1941,9 +1941,9 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'107 `Progress list` with lang="el"', async () => {
+    it(checksNum + '107 `Progress list` with lang="el"', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([
+        let expectedRegex = new RegExp([
             `<div\\s*id="govcy-test-107"\\s*class="govcy-step-indicator\\s*govcy-test-class"\\s*lang="el"\\s*>`, //div start
             `\\s*<ol\\s*class="govcy-step-indicator__segments">`, //ol start
             `\\s*<li\\s*class="govcy-step-indicator__segment\\s*govcy-step-indicator__segment--complete">\\s*<span\\s*class="govcy-step-indicator__label">\\s*Βήμα 1\\s*<span\\s*class="govcy-visually-hidden">\\s*Ολοκληρώθηκε custom\\s*<\\/span>\\s*<\\/span>\\s*<\\/li>`, //complete step
@@ -1958,58 +1958,58 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'108 `Input values - Text input` escaped value', async () => {
+    it(checksNum + '108 `Input values - Text input` escaped value', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([
+        let expectedRegex = new RegExp([
             `<input\\s*id="govcy-test-108"\\s*value="Text input value &#39;"\\s*name="govcy-test-108"\\s*type="text"\\s*spellcheck="false"\\s*class="govcy-text-input\\s*"\\s*>`, //input
         ].join(''));
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'109 `Input values - Text input` unescaped value', async () => {
+    it(checksNum + '109 `Input values - Text input` unescaped value', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([
+        let expectedRegex = new RegExp([
             `<input\\s*id="govcy-test-109"\\s*value="Text input value \\'"\\s*name="govcy-test-109"\\s*type="text"\\s*spellcheck="false"\\s*class="govcy-text-input\\s*"\\s*>`, //input
         ].join(''));
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'110 `Input values - Select`', async () => {
+    it(checksNum + '110 `Input values - Select`', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([
+        let expectedRegex = new RegExp([
             `<select id="govcy-test-110" name="govcy-test-110" class="govcy-select" >`, //select
             `\\s*<option\\s*value="cy"\\s*>\\s*Cyprus\\s*<\\/option>\\s*<option\\s*value="el"\\s*selected\\s*>\\s*Greece\\s*<\\/option>`, //options 
         ].join(''));
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'111 `Input values - Text area` escaped value', async () => {
+    it(checksNum + '111 `Input values - Text area` escaped value', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([
+        let expectedRegex = new RegExp([
             `<textarea\\s*id="govcy-test-111"\\s*name="govcy-test-111"\\s*rows="5"\\s*spellcheck="false"\\s*class="govcy-text-area"\\s*>\\s*Text Area value &#39;\\s*<\\/textarea>`, //input
         ].join(''));
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'112 `Input values - Text area` unescaped value', async () => {
+    it(checksNum + '112 `Input values - Text area` unescaped value', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([
+        let expectedRegex = new RegExp([
             `<textarea\\s*id="govcy-test-112"\\s*name="govcy-test-112"\\s*rows="5"\\s*spellcheck="false"\\s*class="govcy-text-area"\\s*>\\s*Text Area value '\\s*<\\/textarea>`, //input
         ].join(''));
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'113 `Input values - Date picker`', async () => {
+    it(checksNum + '113 `Input values - Date picker`', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([
+        let expectedRegex = new RegExp([
             `<div class="govcy-date-picker"\\s*data-default-value="2020-01-01">\\s*<input\\s*type="text"\\s*class="govcy-text-input\\s*"\\s*id="govcy-test-113"`, //input
         ].join(''));
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'114 `Input values - Date input`', async () => {
+    it(checksNum + '114 `Input values - Date input`', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([
+        let expectedRegex = new RegExp([
             `<input\\s*id="govcy-test-114_day"\\s*name="govcy-test-114_day"\\s*value="31"`, //day value
             `([\\s\\S]*?)`,
             `\\s*<select\\s*id="govcy-test-114_month"\\s*name="govcy-test-114_month"`,
@@ -2021,9 +2021,9 @@ async function renderChecks(renderedHTML, checksNum){
         //  console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'115 `Input values - Checkboxes` value with string', async () => {
+    it(checksNum + '115 `Input values - Checkboxes` value with string', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([
+        let expectedRegex = new RegExp([
             `<input\\s*class="govcy-checkbox-input"\\s*name="govcy-test-115"\\s*value="1"\\s*type="checkbox"\\s*id="govcy-test-115-option-1"\\s*>`, //not checked
             `([\\s\\S]*?)`,
             `<input\\s*class="govcy-checkbox-input"\\s*name="govcy-test-115"\\s*checked\\s*value="2"\\s*type="checkbox"\\s*id="govcy-test-115-option-2"\\s*>`, //checked
@@ -2033,9 +2033,9 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'116 `Input values - Checkboxes` value with array', async () => {
+    it(checksNum + '116 `Input values - Checkboxes` value with array', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([
+        let expectedRegex = new RegExp([
             `<input\\s*class="govcy-checkbox-input"\\s*name="govcy-test-116"\\s*value="1"\\s*type="checkbox"\\s*id="govcy-test-116-option-1"\\s*>`, //not checked
             `([\\s\\S]*?)`,
             `<input\\s*class="govcy-checkbox-input"\\s*name="govcy-test-116"\\s*checked\\s*value="2"\\s*type="checkbox"\\s*id="govcy-test-116-option-2"\\s*>`, //checked
@@ -2045,9 +2045,9 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'117 `Input values - Radios`', async () => {
+    it(checksNum + '117 `Input values - Radios`', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([
+        let expectedRegex = new RegExp([
             `<input\\s*class="govcy-radio-input"\\s*name="govcy-test-117"\\s*value="1"\\s*type="radio"\\s*id="govcy-test-117-option-1"\\s*>`, //not checked
             `([\\s\\S]*?)`,
             `<input\\s*class="govcy-radio-input"\\s*name="govcy-test-117"\\s*checked\\s*value="2"\\s*type="radio"\\s*id="govcy-test-117-option-2"\\s*>`, //checked
@@ -2057,9 +2057,9 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'118 `User name component` with all values', async () => {
+    it(checksNum + '118 `User name component` with all values', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([
+        let expectedRegex = new RegExp([
             `<div\\s*id="govcy-test-118"\\s*class="govcy-header-top-area\\s*govcy-test-class\\s*">`, //div
             `\\s*<div\\s*class="govcy-container">\\s*<div\\s*class="govcy-header-top-area-wrapper">\\s*<ul\\s*class="govcy-sign-in">`, //containers
             `\\s*<li>\\s*George Smith\\s*<\\/li>`, //user name
@@ -2070,9 +2070,9 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'119 `User name component` with all values lang=el', async () => {
+    it(checksNum + '119 `User name component` with all values lang=el', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([
+        let expectedRegex = new RegExp([
             `<div\\s*id="govcy-test-119"\\s*class="govcy-header-top-area\\s*govcy-test-class"\\s*lang="el"\\s*>`, //div
             `\\s*<div\\s*class="govcy-container">\\s*<div\\s*class="govcy-header-top-area-wrapper">\\s*<ul\\s*class="govcy-sign-in">`, //containers
             `\\s*<li>\\s*Γιώργος Σμιθ\\s*<\\/li>`, //user name
@@ -2083,17 +2083,17 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-    it(checksNum+'120 `textElement` with showNewLine', async () => {
+    it(checksNum + '120 `textElement` with showNewLine', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([
+        let expectedRegex = new RegExp([
             `<span\\s*id="govcy-test-120"\\s*style="white-space: pre-line;"\\s*>`, //closing tags
         ].join(''));
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-     it(checksNum+'122 `fileView` macro render as expected. with hidden valies', async () => {
+    it(checksNum + '122 `fileView` macro render as expected. with hidden valies', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([ 
+        let expectedRegex = new RegExp([
             `<div\\s*id="govcy-test-122-view-control"\\s*class="govcy-form">`, //form div
             `\\s*<div class="govcy-form-control">`, //form control
             `\\s*<p\\s*class="govcy-label\\s*govcy-label-primary">\\s*File view: English with hidden\\s*<\\/p>`, //label
@@ -2106,9 +2106,9 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-     it(checksNum+'123 `fileView` macro render as expected. with target on links', async () => {
+    it(checksNum + '123 `fileView` macro render as expected. with target on links', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([ 
+        let expectedRegex = new RegExp([
             `<div\\s*id="govcy-test-123-view-control"\\s*class="govcy-form">`, //form div
             `([\\s\\S]*?)`, // already tested area
             `\\s*<a\\s*href="#view123"\\s*target="_blank"\\s*>\\s*View\\s*<span\\s*class="govcy-visually-hidden"\\s*>\\s*English visuallyHiddenText\\s*<\\/span><\\/a>`, //links
@@ -2117,37 +2117,37 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-     it(checksNum+'124 `warning` macro render as expected', async () => {
+    it(checksNum + '124 `warning` macro render as expected', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([ 
+        let expectedRegex = new RegExp([
             `<div\\s*id="govcy-test-124"\\s*class="govcy-warning-text">`, // div
             `\\s*<span\\s*class="govcy-warning-text-icon"\\s*aria-hidden="true">!<\\/span>`, //Explanation mark
             `\\s*<span\\s*class="govcy-warning-text-message">`, //message span
             `\\s*<span\\s*class="govcy-visually-hidden">\\s*Warning\\s*:\\s*<\\/span>`, //Visually hidden
             `\\s*English label\\s*<\\/span>`, //Message and closing span
             `\\s*<\\/div>`, //closing div
-            
+
         ].join(''));
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-     it(checksNum+'125 `warning` macro render as expected - with class', async () => {
+    it(checksNum + '125 `warning` macro render as expected - with class', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([ 
+        let expectedRegex = new RegExp([
             `<div\\s*id="govcy-test-125"\\s*class="govcy-warning-text\\s*govcy-test-class">`, // div
             `\\s*<span\\s*class="govcy-warning-text-icon"\\s*aria-hidden="true">!<\\/span>`, //Explanation mark
             `\\s*<span\\s*class="govcy-warning-text-message">`, //message span
             `\\s*<span\\s*class="govcy-visually-hidden">\\s*Warning\\s*:\\s*<\\/span>`, //Visually hidden
             `\\s*English label\\s*<\\/span>`, //Message and closing span
             `\\s*<\\/div>`, //closing div
-            
+
         ].join(''));
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-     it(checksNum+'126 `warning` macro render as expected - with class - with lang=el', async () => {
+    it(checksNum + '126 `warning` macro render as expected - with class - with lang=el', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([ 
+        let expectedRegex = new RegExp([
             `<div\\s*id="govcy-test-126"\\s*class="govcy-warning-text\\s*govcy-test-class"\\s*lang="el">`, // div
             `\\s*<span\\s*class="govcy-warning-text-icon"\\s*aria-hidden="true">!<\\/span>`, //Explanation mark
             `\\s*<span\\s*class="govcy-warning-text-message">`, //message span
@@ -2159,9 +2159,9 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-     it(checksNum+'127 `multiple things table` macro render as expected', async () => {
+    it(checksNum + '127 `multiple things table` macro render as expected', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([ 
+        let expectedRegex = new RegExp([
             `<table\\s*id="govcy-test-127"\\s*class="govcy-table govcy-table-responsive-vertical">\\s*<tbody>`, // table tbody
             `\\s*<tr\\s*class="govcy-summary-list-row-internal">\\s*<td>\\s*<span\\s*class="govcy-visually-hidden">\\s*Entry 1\\s*<\\/span>\\s*\\+35799123456\\s*<\\/td>`, //tr td
             `\\s*<td\\s*class="govcy-text-sm-start\\s*govcy-text-md-end">`, //td actions
@@ -2176,9 +2176,9 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-     it(checksNum+'128 `multiple things table` macro render as expected, all options', async () => {
+    it(checksNum + '128 `multiple things table` macro render as expected, all options', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([ 
+        let expectedRegex = new RegExp([
             `<table\\s*id="govcy-test-128"\\s*class="govcy-table govcy-table-responsive-vertical\\s*govcy-test-class">\\s*<tbody>`, // table tbody
             `\\s*<tr\\s*class="govcy-summary-list-row-internal">\\s*<td>\\s*<span\\s*class="govcy-visually-hidden">\\s*Entry 1\\s*<\\/span>\\s*\\+35799123456\\s*<\\/td>`, //tr td
             `\\s*<td\\s*class="govcy-text-sm-start\\s*govcy-text-md-end">`, //td actions
@@ -2197,9 +2197,9 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-     it(checksNum+'129 `multiple things table` macro render as expected, all options - lang=el', async () => {
+    it(checksNum + '129 `multiple things table` macro render as expected, all options - lang=el', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([ 
+        let expectedRegex = new RegExp([
             `<table\\s*id="govcy-test-129"\\s*class="govcy-table govcy-table-responsive-vertical\\s*govcy-test-class"\\s*lang="el">\\s*<tbody>`, // table tbody
             `\\s*<tr\\s*class="govcy-summary-list-row-internal">\\s*<td>\\s*<span\\s*class="govcy-visually-hidden">\\s*Καταχώρηση 1\\s*<\\/span>\\s*\\+35799123456 el\\s*<\\/td>`, //tr td
             `\\s*<td\\s*class="govcy-text-sm-start\\s*govcy-text-md-end">`, //td actions
@@ -2218,9 +2218,9 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-     it(checksNum+'130 `Inset` macro render as expected', async () => {
+    it(checksNum + '130 `Inset` macro render as expected', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([ 
+        let expectedRegex = new RegExp([
             `<blockquote\\s*id="govcy-test-130"\\s*class="govcy-inset-text">`, // blockquote
             `\\s*<p>\\s*English\\s*label\\s*<\\/p>`, // p
             // `\\s*<\\/blockquote>`, //closing stuff
@@ -2228,9 +2228,9 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-     it(checksNum+'131 `Inset` macro render as expected, all options', async () => {
+    it(checksNum + '131 `Inset` macro render as expected, all options', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([ 
+        let expectedRegex = new RegExp([
             `<blockquote\\s*id="govcy-test-131"\\s*class="govcy-inset-text\\s*govcy-test-class">`, // blockquote
             `\\s*<p>\\s*English\\s*label\\s*<\\/p>`, // p
             `\\s*<\\/blockquote>`, //closing stuff
@@ -2238,15 +2238,108 @@ async function renderChecks(renderedHTML, checksNum){
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
     });
-     it(checksNum+'132 `Inset` macro render as expected, all options - with lang="el"', async () => {
+    it(checksNum + '132 `Inset` macro render as expected, all options - with lang="el"', async () => {
         // check for structure   
-        let expectedRegex =  new RegExp ([ 
+        let expectedRegex = new RegExp([
             `<blockquote\\s*id="govcy-test-132"\\s*class="govcy-inset-text\\s*govcy-test-class"\\s*lang="el">`, // blockquote
             `\\s*<p>\\s*Ελληνικά\\s*label\\s*<\\/p>`, // p
             `\\s*<\\/blockquote>`, //closing stuff
         ].join(''));
         // console.log(expectedRegex);
         expect(renderedHTML).to.match(expectedRegex);
+    });
+    it(checksNum + '134 `Share` macro render as expected, default options (all actions)', async () => {
+        // check for structure (excluding svg internals)
+        let expectedRegex = new RegExp([
+            `<div\\s*id="govcy-test-134"\\s*class="govcy-share"`, // wrapper
+            `\\s*data-govcy-share-title=""`, // title attr empty
+            `\\s*data-govcy-share-text="Give your consent here https:\\/\\/en\\.example\\.com\\/consent"`, // text attr
+            `\\s*data-govcy-share-url=""`, // url attr empty
+            `\\s*data-govcy-share-copy-success-message="Copied"`, // copy success attr
+            `\\s*>\\s*<ul\\s*class="govcy-list-unstyled\\s*govcy-share__list">`, // actions list
+            `\\s*<li\\s*class="govcy-mb-2\\s*govcy-share__item">`, // list item
+            `\\s*<a\\s*tabindex="0"\\s*role="button"\\s*class="govcy-link-no-visited-state\\s*govcy-share__btn">\\s*<svg([\\s\\S]*?)<\\/svg>\\s*Share\\s*<\\/a>\\s*<\\/li>`, // action
+            `\\s*<li\\s*class="govcy-mb-2\\s*govcy-share__item">`, // list item
+            `\\s*<a\\s*role="button"\\s*class="govcy-link-no-visited-state\\s*govcy-share__sms"\\s*href="sms:\\?body=Give%20your%20consent%20here%20https%3A%2F%2Fen\\.example\\.com%2Fconsent">\\s*<svg([\\s\\S]*?)<\\/svg>\\s*SMS\\s*<\\/a>\\s*<\\/li>`, // action
+            `\\s*<li\\s*class="govcy-mb-2\\s*govcy-share__item">`, // list item
+            `\\s*<a\\s*role="button"\\s*class="govcy-link-no-visited-state\\s*govcy-share__email"\\s*href="mailto:\\?subject=&body=Give%20your%20consent%20here%20https%3A%2F%2Fen\\.example\\.com%2Fconsent">\\s*<svg([\\s\\S]*?)<\\/svg>\\s*Email\\s*<\\/a>\\s*<\\/li>`, // action
+            `\\s*<\\/ul>`, // actions list end
+            `\\s*<p\\s*class="govcy-fw-bolder">\\s*Notification content\\s*<\\/p>`, // preview label
+            `\\s*<pre\\s*class="govcy-share__message">\\s*Give your consent here https:\\/\\/en\\.example\\.com\\/consent\\s*<\\/pre>`, // preview text
+            `\\s*<ul\\s*class="govcy-list-unstyled\\s*govcy-share__list">\\s*<li\\s*class="govcy-mb-2\\s*govcy-share__item">\\s*<a\\s*tabindex="0"\\s*role="button"\\s*class="govcy-link-no-visited-state\\s*govcy-share__copy-btn">\\s*<svg([\\s\\S]*?)<\\/svg>\\s*Copy\\s*<\\/a>\\s*<\\/li>\\s*<\\/ul>`, // copy action
+            `\\s*<div\\s*class="govcy-share__toast"\\s*role="alert"\\s*aria-live="assertive"\\s*aria-atomic="true">\\s*<\\/div>`, // toast
+            `\\s*<\\/div>` // wrapper end
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+    it(checksNum + '135 `Share` macro render as expected, all options and custom values', async () => {
+        // check for structure (excluding svg internals)
+        let expectedRegex = new RegExp([
+            `<div\\s*id="govcy-test-135"\\s*class="govcy-share\\s*govcy-test-class"`, // wrapper
+            `\\s*data-govcy-share-title="Request for consent"`, // title attr
+            `\\s*data-govcy-share-text="Share all actions text https:\\/\\/example\\.com\\/consent\\?lang=en&amp;id=135"`, // text attr
+            `\\s*data-govcy-share-url="https:\\/\\/en\\.example\\.com\\/share"`, // url attr
+            `\\s*data-govcy-share-copy-success-message="Copied"`, // copy success attr
+            `\\s*>\\s*<ul\\s*class="govcy-list-unstyled\\s*govcy-share__list">`, // actions list
+            `\\s*<li\\s*class="govcy-mb-2\\s*govcy-share__item">`, // list item
+            `\\s*<a\\s*tabindex="0"\\s*role="button"\\s*class="govcy-link-no-visited-state\\s*govcy-share__btn">\\s*<svg([\\s\\S]*?)<\\/svg>\\s*Share\\s*<\\/a>\\s*<\\/li>`, // action
+            `\\s*<li\\s*class="govcy-mb-2\\s*govcy-share__item">`, // list item
+            `\\s*<a\\s*role="button"\\s*class="govcy-link-no-visited-state\\s*govcy-share__sms"\\s*href="sms:\\?body=Share%20all%20actions%20text%20https%3A%2F%2Fexample\\.com%2Fconsent%3Flang%3Den%26amp%3Bid%3D135">\\s*<svg([\\s\\S]*?)<\\/svg>\\s*SMS\\s*<\\/a>\\s*<\\/li>`, // action
+            `\\s*<li\\s*class="govcy-mb-2\\s*govcy-share__item">`, // list item
+            `\\s*<a\\s*role="button"\\s*class="govcy-link-no-visited-state\\s*govcy-share__email"\\s*href="mailto:\\?subject=Request%20for%20consent&body=Share%20all%20actions%20text%20https%3A%2F%2Fexample\\.com%2Fconsent%3Flang%3Den%26amp%3Bid%3D135">\\s*<svg([\\s\\S]*?)<\\/svg>\\s*Email\\s*<\\/a>\\s*<\\/li>`, // action
+            `\\s*<\\/ul>`, // actions list end
+            `\\s*<p\\s*class="govcy-fw-bolder">\\s*Notification content\\s*<\\/p>`, // preview label
+            `\\s*<pre\\s*class="govcy-share__message">\\s*Share all actions text https:\\/\\/example\\.com\\/consent\\?lang=en&amp;id=135\\s*<\\/pre>`, // preview text
+            `\\s*<ul\\s*class="govcy-list-unstyled\\s*govcy-share__list">\\s*<li\\s*class="govcy-mb-2\\s*govcy-share__item">\\s*<a\\s*tabindex="0"\\s*role="button"\\s*class="govcy-link-no-visited-state\\s*govcy-share__copy-btn">\\s*<svg([\\s\\S]*?)<\\/svg>\\s*Copy\\s*<\\/a>\\s*<\\/li>\\s*<\\/ul>`, // copy action
+            `\\s*<div\\s*class="govcy-share__toast"\\s*role="alert"\\s*aria-live="assertive"\\s*aria-atomic="true">\\s*<\\/div>`, // toast
+            `\\s*<\\/div>` // wrapper end
+        ].join(''));
+        // console.log(expectedRegex);
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+    it(checksNum + '136 `Share` macro render as expected, preview and copy only', async () => {
+        // wrapper exists
+        let expectedRegex = new RegExp([
+            `<div\\s*id="govcy-test-136"\\s*class="govcy-share"`,
+            `([\\s\\S]*?)data-govcy-share-copy-success-message="Copied"`,
+            `([\\s\\S]*?)<\\/div>`
+        ].join(''));
+        expect(renderedHTML).to.match(expectedRegex);
+
+        const block136Match = renderedHTML.match(
+            /<div\s*id="govcy-test-136"[\s\S]*?<\/div>\s*<\/div>/
+        );
+        expect(block136Match).to.not.be.null;
+
+        const block136 = block136Match[0];
+        expect(block136).to.not.match(/govcy-share__btn/);
+        expect(block136).to.not.match(/govcy-share__sms/);
+        expect(block136).to.not.match(/govcy-share__email/);
+
+        // preview and copy are present
+        expectedRegex = new RegExp([
+            `<div\\s*id="govcy-test-136"([\\s\\S]*?)>`,
+            `([\\s\\S]*?)<p\\s*class="govcy-fw-bolder">\\s*Notification content\\s*<\\/p>`,
+            `([\\s\\S]*?)<pre\\s*class="govcy-share__message">([\\s\\S]*?)English text with only copy([\\s\\S]*?)<\\/pre>`,
+            `([\\s\\S]*?)<a\\s*tabindex="0"\\s*role="button"\\s*class="govcy-link-no-visited-state\\s*govcy-share__copy-btn">`,
+            `([\\s\\S]*?)<div\\s*class="govcy-share__toast"\\s*role="alert"\\s*aria-live="assertive"\\s*aria-atomic="true"><\\/div>`
+        ].join(''));
+        expect(renderedHTML).to.match(expectedRegex);
+    });
+    it(checksNum + '137 `Share` macro render as expected with lang="el"', async () => {
+        const block137Match = renderedHTML.match(
+            /<div\s*id="govcy-test-137"[\s\S]*?<\/div>\s*<\/div>/
+        );
+        expect(block137Match).to.not.be.null;
+
+        const block137 = block137Match[0];
+        expect(block137).to.match(/id="govcy-test-137"/);
+        expect(block137).to.match(/lang="el"/);
+        expect(block137).to.match(/data-govcy-share-title="Αίτημα συγκατάθεσης EL"/);
+        expect(block137).to.match(/data-govcy-share-text="Περιεχόμενο ειδοποίησης EL/);
+        expect(block137).to.match(/<p\s*class="govcy-fw-bolder">\s*Περιεχόμενο ειδοποίησης\s*<\/p>/);
+        expect(block137).to.match(/Share \(κοινή χρήση\)/);
     });
 }
 

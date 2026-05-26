@@ -39,6 +39,7 @@
 {% macro govcyGetContent(key, lang, isHTML) -%}
     {# Centralized multilingual content storage #}
     {%- set govcyContent = {
+        empty_text: {en:"",el:""},
         backLink_back: {el: "Πίσω", en: "Back"},
         common_or: {el: "Ή", en: "Or"},
         common_and: {el: "Και", en: "And"},
@@ -71,6 +72,12 @@
         progressList_ofLabel: {en:"of",el:"από"},
         radios_conditionalLabel: {en:"This option expands and has more questions,",el:"Αυτή η επιλογή επεκτείνεται και έχει περισσότερες ερωτήσεις,"},
         stepByStepStatic_step: {en:"Step",el:"Βήμα"},
+        share_share: {en:"Share",el:"Share (κοινή χρήση)"},
+        share_sms: {en:"SMS",el:"SMS"},
+        share_email: {en:"Email",el:"Email"},
+        share_preview: {en:"Notification content",el:"Περιεχόμενο ειδοποίησης"},
+        share_copy: {en:"Copy",el:"Αντιγραφή"},
+        share_copySuccess: {en:"Copied",el:"Αντιγράφηκε"},
         taskList_withStatus: {en:"with status ",el:"με κατάσταση "},
         textArea_charRemaining: {en:"You have <span></span> characters remaining",el:"Έχετε <span></span> χαρακτήρες που απομένουν"},
         textArea_charExceeding: {en:"You have entered <span></span> characters more",el:"Έχετε περάσει <span></span> χαρακτήρες περισσότερους"},
