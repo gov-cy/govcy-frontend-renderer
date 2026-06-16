@@ -242,6 +242,60 @@ describe('7. Testing `govcyFrontendRenderer.renderFromJSON` footerIcons renderin
         let expectedRegex = /govcy-eu-logo/;
         expect(renderedHTML).to.not.match(expectedRegex);
     });
-});
 
+    it('7.4 `renderFromJSON` with footerIcons presets (EN)', async () => {
+        renderedHTML = renderJsonTest(
+            {
+                site: {
+                    lang: 'en',
+                    footerIcons: [
+                        {
+                            preset: "dsf-badge",
+                            badgeId: "E-Serv-07-MC-2025_2"
+                        },
+                        {
+                            preset: "eu-next-generation"
+                        },
+                        {
+                            preset: "cyprus-tomorrow"
+                        }
+                    ]
+                },
+                pageData: {
+                    title: { en: "Page title", el: "Τίτλος σελίδας" },
+                    layout: "layouts/govcyBase.njk",
+                    mainLayout: "max-width"
+                }
+            }
+        );
+        expect(renderedHTML).to.match(/<span data-dsf-badge="E-Serv-07-MC-2025_2"><\/span>/);
+        expect(renderedHTML).to.match(/<script async src="https:\/\/dsf-seals.staging.service.gov.cy\/embed\.js"><\/script>/);
+        expect(renderedHTML).to.match(/<a href="https:\/\/europa\.eu\/" target="_blank" title="Go to EU website">\s*<img[^>]+src="https:\/\/cdn\.jsdelivr\.net\/gh\/gov-cy\/govcy-design-system-docs@main\/src\/img\/FundedbyEU_NextGeneration_H53-EN\.png"[^>]+alt="Funded by the EU Next Generation EU"/);
+        expect(renderedHTML).to.match(/<a href="http:\/\/www\.cyprus-tomorrow\.gov\.cy\/" target="_blank" title="Go to Cyprus Tomorrow website">\s*<img[^>]+src="https:\/\/cdn\.jsdelivr\.net\/gh\/gov-cy\/govcy-design-system-docs@main\/src\/img\/CYpros%20to%20aurio%20logo%20eng_H53_EN\.png"[^>]+alt="Cyprus tomorrow, recovery and resilience plan"/);
+    });
+
+    it('7.5 `renderFromJSON` with footerIcons preset overrides', async () => {
+        renderedHTML = renderJsonTest(
+            {
+                site: {
+                    lang: 'en',
+                    footerIcons: [
+                        {
+                            preset: "eu-next-generation",
+                            href: { en: "https://example.com/eu", el: "https://example.com/eu-el" },
+                            title: { en: "Custom EU title", el: "Custom EU title EL" },
+                            classes: "govcy-mr-3"
+                        }
+                    ]
+                },
+                pageData: {
+                    title: { en: "Page title", el: "Τίτλος σελίδας" },
+                    layout: "layouts/govcyBase.njk",
+                    mainLayout: "max-width"
+                }
+            }
+        );
+        expect(renderedHTML).to.match(/<a href="https:\/\/example\.com\/eu" target="_blank" title="Custom EU title">\s*<img class="govcy-eu-logo govcy-mb-2 govcy-mr-3"[^>]+alt="Funded by the EU Next Generation EU"/);
+    });
+});
 
