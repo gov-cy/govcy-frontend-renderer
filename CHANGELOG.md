@@ -23,6 +23,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ]
 ```
 
+### Security
+- Updated vulnerable **production/runtime dependencies** (`dependencies`).
+- **Impact:** npm package consumers **are affected**.
+
 ## [v1.28.1] - 2026-05-26
 ## Added
 - Added share component
