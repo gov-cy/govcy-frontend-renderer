@@ -5,7 +5,29 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [v1.28.0] - 2026-05-26
+## [v1.29.0] - 2026-06-15
+## Added
+- `footerIcons` **presets**: Added the following presets: 
+```json
+"footerIcons": [
+  {
+    "preset": "dsf-badge",
+    "badgeId": "E-Serv-07-MC-2025_2"
+  },
+  {
+    "preset": "eu-next-generation"
+  },
+  {
+    "preset": "cyprus-tomorrow"
+  }
+]
+```
+
+### Security
+- Updated vulnerable **production/runtime dependencies** (`dependencies`).
+- **Impact:** npm package consumers **are affected**.
+
+## [v1.28.1] - 2026-05-26
 ## Added
 - Added share component
 
