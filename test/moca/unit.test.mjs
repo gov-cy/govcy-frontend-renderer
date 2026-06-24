@@ -129,6 +129,31 @@ describe('5. Testing `govcyFrontendRenderer.renderFromJSON` matomo rendering', (
         // console.log(renderedHTML);
         let expectedRegex = /<!-- Matomo -->\s*<script>[\s\S]*https\:\/\/matomo.example.com[\s\S]*12[\s\S]*<\/script>\s*<!-- End Matomo Code -->/;
         expect(renderedHTML).to.match(expectedRegex);
+        expect(renderedHTML).to.not.include("_paq.push(['setUserId'");
+    });
+    it('5.5 `renderFromJSON` with matomo userId data ', async () => {
+        const userId = 'test-user-\'quoted\'-"double"-backslash-\\-newline-\n-end';
+        renderedHTML = renderJsonTest(
+            {
+                site:
+                {
+                    lang:'en',
+                    matomo: {
+                        url: "https://matomo.example.com",
+                        siteId: "12",
+                        userId
+                    }
+                },
+                pageData: {
+                    title: {en: "Page title", el: "Τίτλος σελίδας"},
+                    layout: "layouts/govcyBase.njk",
+                    mainLayout: "max-width"
+                }
+            }
+        );
+        const setUserId = `_paq.push(['setUserId', ${JSON.stringify(userId)}]);`;
+        expect(renderedHTML).to.include(setUserId);
+        expect(renderedHTML.indexOf(setUserId)).to.be.lessThan(renderedHTML.indexOf("_paq.push(['trackPageView']);"));
     });
 });
 

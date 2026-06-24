@@ -59,6 +59,11 @@
         "description" : {"en":"Service description", "el":"Περιγραφή υπηρεσίας"},
         "isTesting" : true,
         "url" : "https://gov.cy",
+        "matomo": {
+            "url": "//wp.matomo.dits.dmrid.gov.cy/",
+            "siteId": "1234",
+            "userId": "test-user-'quoted'-\"double\"-backslash-\\-newline-\n-end"
+        },
         "cdn" : {
             "dist" : "https://cdn.jsdelivr.net/gh/gov-cy/govcy-design-system@3.3.0/dist",
             "cssIntegrity" : "sha384-rHFUrRnhP5au9GBPh7bYGoiPOJ51Vmbm7AQA43AW1wMouajbQy35Q38U1Fw2WDVS",
