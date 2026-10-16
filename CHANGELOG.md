@@ -5,6 +5,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.30.6] - 2026-10-16
+### Fixed
+- Removed leftover `nodemon` from `devDependencies` so `package.json` and `package-lock.json` are in sync and `npm ci` works in CI.
+
 ## [v1.30.5] - 2026-10-16
 ### Security
 - Updated vulnerable dependencies (`markdown-it`, `proxy-addr`, `brace-expansion`, `braces`).
