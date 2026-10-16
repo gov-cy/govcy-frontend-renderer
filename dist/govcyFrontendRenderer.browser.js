@@ -8122,7 +8122,6 @@ var GovcyFrontendRendererBrowser = (function () {
 	}
 
 	function isValidEntityCode (c) {
-	  /* eslint no-bitwise:0 */
 	  // broken sequence
 	  if (c >= 0xD800 && c <= 0xDFFF) { return false }
 	  // never used
@@ -8150,8 +8149,8 @@ var GovcyFrontendRendererBrowser = (function () {
 	  return String.fromCharCode(c)
 	}
 
-	const UNESCAPE_MD_RE  = /\\([!"#$%&'()*+,\-./:;<=>?@[\\\]^_`{|}~])/g;
-	const ENTITY_RE       = /&([a-z#][a-z0-9]{1,31});/gi;
+	const UNESCAPE_MD_RE = /\\([!"#$%&'()*+,\-./:;<=>?@[\\\]^_`{|}~])/g;
+	const ENTITY_RE = /&([a-z#][a-z0-9]{1,31});/gi;
 	const UNESCAPE_ALL_RE = new RegExp(UNESCAPE_MD_RE.source + '|' + ENTITY_RE.source, 'gi');
 
 	const DIGITAL_ENTITY_TEST_RE = /^#((?:x[a-f0-9]{1,8}|[0-9]{1,8}))$/i;
@@ -8176,12 +8175,6 @@ var GovcyFrontendRendererBrowser = (function () {
 
 	  return match
 	}
-
-	/* function replaceEntities(str) {
-	  if (str.indexOf('&') < 0) { return str; }
-
-	  return str.replace(ENTITY_RE, replaceEntityPattern);
-	} */
 
 	function unescapeMd (str) {
 	  if (str.indexOf('\\') < 0) { return str }
@@ -8251,8 +8244,6 @@ var GovcyFrontendRendererBrowser = (function () {
 	  }
 	  return false
 	}
-
-	/* eslint-disable max-len */
 
 	// Currently without astral characters support.
 	function isPunctChar (ch) {
@@ -8513,7 +8504,7 @@ var GovcyFrontendRendererBrowser = (function () {
 	    if (code < 0x20 || code === 0x7F) { break }
 
 	    if (code === 0x5C /* \ */ && pos + 1 < max) {
-	      if (str.charCodeAt(pos + 1) === 0x20) { break }
+	      if (str.charCodeAt(pos + 1) === 0x20) { pos++; continue }
 	      pos += 2;
 	      continue
 	    }
@@ -8629,7 +8620,7 @@ var GovcyFrontendRendererBrowser = (function () {
 	default_rules.code_inline = function (tokens, idx, options, env, slf) {
 	  const token = tokens[idx];
 
-	  return  '<code' + slf.renderAttrs(token) + '>' +
+	  return '<code' + slf.renderAttrs(token) + '>' +
 	          escapeHtml(token.content) +
 	          '</code>'
 	};
@@ -8637,7 +8628,7 @@ var GovcyFrontendRendererBrowser = (function () {
 	default_rules.code_block = function (tokens, idx, options, env, slf) {
 	  const token = tokens[idx];
 
-	  return  '<pre' + slf.renderAttrs(token) + '><code>' +
+	  return '<pre' + slf.renderAttrs(token) + '><code>' +
 	          escapeHtml(tokens[idx].content) +
 	          '</code></pre>\n'
 	};
@@ -9290,28 +9281,28 @@ var GovcyFrontendRendererBrowser = (function () {
 	   *
 	   * Type of the token (string, e.g. "paragraph_open")
 	   **/
-	  this.type     = type;
+	  this.type = type;
 
 	  /**
 	   * Token#tag -> String
 	   *
 	   * html tag name, e.g. "p"
 	   **/
-	  this.tag      = tag;
+	  this.tag = tag;
 
 	  /**
 	   * Token#attrs -> Array
 	   *
 	   * Html attributes. Format: `[ [ name1, value1 ], [ name2, value2 ] ]`
 	   **/
-	  this.attrs    = null;
+	  this.attrs = null;
 
 	  /**
 	   * Token#map -> Array
 	   *
 	   * Source map info. Format: `[ line_begin, line_end ]`
 	   **/
-	  this.map      = null;
+	  this.map = null;
 
 	  /**
 	   * Token#nesting -> Number
@@ -9322,14 +9313,14 @@ var GovcyFrontendRendererBrowser = (function () {
 	   * -  `0` means the tag is self-closing
 	   * - `-1` means the tag is closing
 	   **/
-	  this.nesting  = nesting;
+	  this.nesting = nesting;
 
 	  /**
 	   * Token#level -> Number
 	   *
 	   * nesting level, the same as `state.level`
 	   **/
-	  this.level    = 0;
+	  this.level = 0;
 
 	  /**
 	   * Token#children -> Array
@@ -9344,14 +9335,14 @@ var GovcyFrontendRendererBrowser = (function () {
 	   * In a case of self-closing tag (code, html, fence, etc.),
 	   * it has contents of this tag.
 	   **/
-	  this.content  = '';
+	  this.content = '';
 
 	  /**
 	   * Token#markup -> String
 	   *
 	   * '*' or '_' for emphasis, fence string for fence, etc.
 	   **/
-	  this.markup   = '';
+	  this.markup = '';
 
 	  /**
 	   * Token#info -> String
@@ -9362,14 +9353,14 @@ var GovcyFrontendRendererBrowser = (function () {
 	   * - The value "auto" for autolink "link_open" and "link_close" tokens
 	   * - The string value of the item marker for ordered-list "list_item_open" tokens
 	   **/
-	  this.info     = '';
+	  this.info = '';
 
 	  /**
 	   * Token#meta -> Object
 	   *
 	   * A place for plugins to store an arbitrary data
 	   **/
-	  this.meta     = null;
+	  this.meta = null;
 
 	  /**
 	   * Token#block -> Boolean
@@ -9377,7 +9368,7 @@ var GovcyFrontendRendererBrowser = (function () {
 	   * True for block-level tokens, false for inline tokens.
 	   * Used in renderer to calculate line breaks
 	   **/
-	  this.block    = false;
+	  this.block = false;
 
 	  /**
 	   * Token#hidden -> Boolean
@@ -9385,7 +9376,7 @@ var GovcyFrontendRendererBrowser = (function () {
 	   * If it's true, ignore this element when rendering. Used for tight lists
 	   * to hide paragraphs.
 	   **/
-	  this.hidden   = false;
+	  this.hidden = false;
 	}
 
 	/**
@@ -9481,8 +9472,8 @@ var GovcyFrontendRendererBrowser = (function () {
 	// Normalize input string
 
 	// https://spec.commonmark.org/0.29/#line-ending
-	const NEWLINES_RE  = /\r\n?|\n/g;
-	const NULL_RE      = /\0/g;
+	const NEWLINES_RE = /\r\n?|\n/g;
+	const NULL_RE = /\0/g;
 
 	function normalize (state) {
 	  let str;
@@ -9500,9 +9491,9 @@ var GovcyFrontendRendererBrowser = (function () {
 	  let token;
 
 	  if (state.inlineMode) {
-	    token          = new state.Token('inline', '', 0);
-	    token.content  = state.src;
-	    token.map      = [0, 1];
+	    token = new state.Token('inline', '', 0);
+	    token.content = state.src;
+	    token.map = [0, 1];
 	    token.children = [];
 	    state.tokens.push(token);
 	  } else {
@@ -9527,7 +9518,6 @@ var GovcyFrontendRendererBrowser = (function () {
 	// Currently restricted by `md.validateLink()` to http/https/ftp
 	//
 
-
 	function isLinkOpen$1 (str) {
 	  return /^<a[>\s]/i.test(str)
 	}
@@ -9546,7 +9536,8 @@ var GovcyFrontendRendererBrowser = (function () {
 	      continue
 	    }
 
-	    let tokens = blockTokens[j].children;
+	    const tokens = blockTokens[j].children;
+	    const replacements = [];
 
 	    let htmlLinkLevel = 0;
 
@@ -9616,42 +9607,69 @@ var GovcyFrontendRendererBrowser = (function () {
 	          const pos = links[ln].index;
 
 	          if (pos > lastPos) {
-	            const token   = new state.Token('text', '', 0);
+	            const token = new state.Token('text', '', 0);
 	            token.content = text.slice(lastPos, pos);
-	            token.level   = level;
+	            token.level = level;
 	            nodes.push(token);
 	          }
 
-	          const token_o   = new state.Token('link_open', 'a', 1);
-	          token_o.attrs   = [['href', fullUrl]];
-	          token_o.level   = level++;
-	          token_o.markup  = 'linkify';
-	          token_o.info    = 'auto';
+	          const token_o = new state.Token('link_open', 'a', 1);
+	          token_o.attrs = [['href', fullUrl]];
+	          token_o.level = level++;
+	          token_o.markup = 'linkify';
+	          token_o.info = 'auto';
 	          nodes.push(token_o);
 
-	          const token_t   = new state.Token('text', '', 0);
+	          const token_t = new state.Token('text', '', 0);
 	          token_t.content = urlText;
-	          token_t.level   = level;
+	          token_t.level = level;
 	          nodes.push(token_t);
 
-	          const token_c   = new state.Token('link_close', 'a', -1);
-	          token_c.level   = --level;
-	          token_c.markup  = 'linkify';
-	          token_c.info    = 'auto';
+	          const token_c = new state.Token('link_close', 'a', -1);
+	          token_c.level = --level;
+	          token_c.markup = 'linkify';
+	          token_c.info = 'auto';
 	          nodes.push(token_c);
 
 	          lastPos = links[ln].lastIndex;
 	        }
 	        if (lastPos < text.length) {
-	          const token   = new state.Token('text', '', 0);
+	          const token = new state.Token('text', '', 0);
 	          token.content = text.slice(lastPos);
-	          token.level   = level;
+	          token.level = level;
 	          nodes.push(token);
 	        }
 
-	        // replace current node
-	        blockTokens[j].children = tokens = arrayReplaceAt(tokens, i, nodes);
+	        replacements.push({ index: i, nodes });
 	      }
+	    }
+
+	    if (replacements.length > 0) {
+	      let newTokensLength = tokens.length;
+	      for (const replacement of replacements) {
+	        newTokensLength += replacement.nodes.length - 1;
+	      }
+
+	      const newTokens = new Array(newTokensLength);
+	      let replacementIndex = 0;
+	      let newTokenIndex = 0;
+
+	      replacements.reverse();
+
+	      for (let i = 0; i < tokens.length; i++) {
+	        const replacement = replacements[replacementIndex];
+
+	        if (replacement?.index === i) {
+	          for (const node of replacement.nodes) {
+	            newTokens[newTokenIndex++] = node;
+	          }
+	          replacementIndex++;
+	        } else {
+	          newTokens[newTokenIndex++] = tokens[i];
+	        }
+	      }
+
+	      blockTokens[j].children = newTokens;
 	    }
 	  }
 	}
@@ -9765,6 +9783,19 @@ var GovcyFrontendRendererBrowser = (function () {
 	const QUOTE_TEST_RE = /['"]/;
 	const QUOTE_RE = /['"]/g;
 	const APOSTROPHE = '\u2019'; /* ’ */
+	// Caps memory on malicious input
+	const MAX_OPENERS = 1000;
+
+	function truncateStack (stack, heads, length) {
+	  while (stack.length > length) {
+	    const item = stack.pop();
+	    if (item.isSingleQuote) {
+	      heads.single = item.prevSameQuoteIdx;
+	    } else {
+	      heads.double = item.prevSameQuoteIdx;
+	    }
+	  }
+	}
 
 	function addReplacement (replacements, tokenIdx, pos, ch) {
 	  if (!replacements[tokenIdx]) {
@@ -9794,6 +9825,8 @@ var GovcyFrontendRendererBrowser = (function () {
 	  let j;
 
 	  const stack = [];
+	  // stack indexes of topmost openers of each type (-1 if none)
+	  const heads = { single: -1, double: -1 };
 	  // token index -> list of replacements in the original token content
 	  const replacements = {};
 
@@ -9805,7 +9838,7 @@ var GovcyFrontendRendererBrowser = (function () {
 	    for (j = stack.length - 1; j >= 0; j--) {
 	      if (stack[j].level <= thisLevel) { break }
 	    }
-	    stack.length = j + 1;
+	    truncateStack(stack, heads, j + 1);
 
 	    if (token.type !== 'text') { continue }
 
@@ -9909,39 +9942,45 @@ var GovcyFrontendRendererBrowser = (function () {
 	      }
 
 	      if (canClose) {
-	        // this could be a closing quote, rewind the stack to get a match
-	        for (j = stack.length - 1; j >= 0; j--) {
-	          let item = stack[j];
-	          if (stack[j].level < thisLevel) { break }
-	          if (item.single === isSingle && stack[j].level === thisLevel) {
-	            item = stack[j];
+	        // Stack levels never decrease, so an opener of this type below
+	        // the current level means there is no match
+	        j = isSingle ? heads.single : heads.double;
+	        if (j >= 0 && stack[j].level === thisLevel) {
+	          const item = stack[j];
 
-	            let openQuote;
-	            let closeQuote;
-	            if (isSingle) {
-	              openQuote = state.md.options.quotes[2];
-	              closeQuote = state.md.options.quotes[3];
-	            } else {
-	              openQuote = state.md.options.quotes[0];
-	              closeQuote = state.md.options.quotes[1];
-	            }
-
-	            addReplacement(replacements, i, t.index, closeQuote);
-	            addReplacement(replacements, item.token, item.pos, openQuote);
-
-	            stack.length = j;
-	            continue OUTER
+	          let openQuote;
+	          let closeQuote;
+	          if (isSingle) {
+	            openQuote = state.md.options.quotes[2];
+	            closeQuote = state.md.options.quotes[3];
+	          } else {
+	            openQuote = state.md.options.quotes[0];
+	            closeQuote = state.md.options.quotes[1];
 	          }
+
+	          addReplacement(replacements, i, t.index, closeQuote);
+	          addReplacement(replacements, item.tokenIdx, item.contentPos, openQuote);
+
+	          truncateStack(stack, heads, j);
+	          continue OUTER
 	        }
 	      }
 
 	      if (canOpen) {
+	        if (stack.length >= MAX_OPENERS) { return }
 	        stack.push({
-	          token: i,
-	          pos: t.index,
-	          single: isSingle,
-	          level: thisLevel
+	          tokenIdx: i,
+	          contentPos: t.index,
+	          isSingleQuote: isSingle,
+	          level: thisLevel,
+	          // stack index of the previous opener of the same quote type, -1 if none
+	          prevSameQuoteIdx: isSingle ? heads.single : heads.double
 	        });
+	        if (isSingle) {
+	          heads.single = stack.length - 1;
+	        } else {
+	          heads.double = stack.length - 1;
+	        }
 	      } else if (canClose && isSingle) {
 	        addReplacement(replacements, i, t.index, APOSTROPHE);
 	      }
@@ -10020,15 +10059,15 @@ var GovcyFrontendRendererBrowser = (function () {
 
 
 	const _rules$2 = [
-	  ['normalize',      normalize],
-	  ['block',          block],
-	  ['inline',         inline],
-	  ['linkify',        linkify$1],
-	  ['replacements',   replace],
-	  ['smartquotes',    smartquotes],
+	  ['normalize', normalize],
+	  ['block', block],
+	  ['inline', inline],
+	  ['linkify', linkify$1],
+	  ['replacements', replace],
+	  ['smartquotes', smartquotes],
 	  // `text_join` finds `text_special` tokens (for escape sequences)
 	  // and joins them with the rest of the text
-	  ['text_join',      text_join]
+	  ['text_join', text_join]
 	];
 
 	/**
@@ -10069,7 +10108,7 @@ var GovcyFrontendRendererBrowser = (function () {
 	  this.src = src;
 
 	  // link to parser instance
-	  this.md     = md;
+	  this.md = md;
 
 	  this.env = env;
 
@@ -10100,11 +10139,11 @@ var GovcyFrontendRendererBrowser = (function () {
 
 	  // required block content indent (for example, if we are
 	  // inside a list, it would be positioned after list marker)
-	  this.blkIndent  = 0;
-	  this.line       = 0; // line index in src
-	  this.lineMax    = 0; // lines count
-	  this.tight      = false;  // loose/tight mode for lists
-	  this.ddIndent   = -1; // indent of the current dd block (-1 if there isn't any)
+	  this.blkIndent = 0;
+	  this.line = 0; // line index in src
+	  this.lineMax = 0; // lines count
+	  this.tight = false;  // loose/tight mode for lists
+	  this.ddIndent = -1; // indent of the current dd block (-1 if there isn't any)
 	  this.listIndent = -1; // indent of the current list block (-1 if there isn't any)
 
 	  // can be 'blockquote', 'list', 'root', 'paragraph' or 'reference'
@@ -10431,11 +10470,11 @@ var GovcyFrontendRendererBrowser = (function () {
 	  for (let i = 0; i < columns.length; i++) {
 	    const token_ho = state.push('th_open', 'th', 1);
 	    if (aligns[i]) {
-	      token_ho.attrs  = [['style', 'text-align:' + aligns[i]]];
+	      token_ho.attrs = [['style', 'text-align:' + aligns[i]]];
 	    }
 
 	    const token_il = state.push('inline', '', 0);
-	    token_il.content  = columns[i].trim();
+	    token_il.content = columns[i].trim();
 	    token_il.children = [];
 
 	    state.push('th_close', 'th', -1);
@@ -10482,11 +10521,11 @@ var GovcyFrontendRendererBrowser = (function () {
 	    for (let i = 0; i < columnCount; i++) {
 	      const token_tdo = state.push('td_open', 'td', 1);
 	      if (aligns[i]) {
-	        token_tdo.attrs  = [['style', 'text-align:' + aligns[i]]];
+	        token_tdo.attrs = [['style', 'text-align:' + aligns[i]]];
 	      }
 
 	      const token_il = state.push('inline', '', 0);
-	      token_il.content  = columns[i] ? columns[i].trim() : '';
+	      token_il.content = columns[i] ? columns[i].trim() : '';
 	      token_il.children = [];
 
 	      state.push('td_close', 'td', -1);
@@ -10531,9 +10570,9 @@ var GovcyFrontendRendererBrowser = (function () {
 
 	  state.line = last;
 
-	  const token   = state.push('code_block', 'code', 0);
+	  const token = state.push('code_block', 'code', 0);
 	  token.content = state.getLines(startLine, last, 4 + state.blkIndent, false) + '\n';
-	  token.map     = [startLine, state.line];
+	  token.map = [startLine, state.line];
 
 	  return true
 	}
@@ -10624,11 +10663,11 @@ var GovcyFrontendRendererBrowser = (function () {
 
 	  state.line = nextLine + (haveEndMarker ? 1 : 0);
 
-	  const token   = state.push('fence', 'code', 0);
-	  token.info    = params;
+	  const token = state.push('fence', 'code', 0);
+	  token.info = params;
 	  token.content = state.getLines(startLine + 1, nextLine, len, true);
-	  token.markup  = markup;
-	  token.map     = [startLine, state.line];
+	  token.markup = markup;
+	  token.map = [startLine, state.line];
 
 	  return true
 	}
@@ -10652,10 +10691,10 @@ var GovcyFrontendRendererBrowser = (function () {
 	  // so no point trying to find the end of it in silent mode
 	  if (silent) { return true }
 
-	  const oldBMarks  = [];
+	  const oldBMarks = [];
 	  const oldBSCount = [];
-	  const oldSCount  = [];
-	  const oldTShift  = [];
+	  const oldSCount = [];
+	  const oldTShift = [];
 
 	  const terminatorRules = state.md.block.ruler.getRules('blockquote');
 
@@ -10815,14 +10854,14 @@ var GovcyFrontendRendererBrowser = (function () {
 	  const oldIndent = state.blkIndent;
 	  state.blkIndent = 0;
 
-	  const token_o  = state.push('blockquote_open', 'blockquote', 1);
+	  const token_o = state.push('blockquote_open', 'blockquote', 1);
 	  token_o.markup = '>';
 	  const lines = [startLine, 0];
-	  token_o.map    = lines;
+	  token_o.map = lines;
 
 	  state.md.block.tokenize(state, startLine, nextLine);
 
-	  const token_c  = state.push('blockquote_close', 'blockquote', -1);
+	  const token_c = state.push('blockquote_close', 'blockquote', -1);
 	  token_c.markup = '>';
 
 	  state.lineMax = oldLineMax;
@@ -10875,8 +10914,8 @@ var GovcyFrontendRendererBrowser = (function () {
 
 	  state.line = startLine + 1;
 
-	  const token  = state.push('hr', 'hr', 0);
-	  token.map    = [startLine, state.line];
+	  const token = state.push('hr', 'hr', 0);
+	  token.map = [startLine, state.line];
 	  token.markup = Array(cnt + 1).join(String.fromCharCode(marker));
 
 	  return true
@@ -11039,16 +11078,16 @@ var GovcyFrontendRendererBrowser = (function () {
 	  const listTokIdx = state.tokens.length;
 
 	  if (isOrdered) {
-	    token       = state.push('ordered_list_open', 'ol', 1);
+	    token = state.push('ordered_list_open', 'ol', 1);
 	    if (markerValue !== 1) {
 	      token.attrs = [['start', markerValue]];
 	    }
 	  } else {
-	    token       = state.push('bullet_list_open', 'ul', 1);
+	    token = state.push('bullet_list_open', 'ul', 1);
 	  }
 
 	  const listLines = [nextLine, 0];
-	  token.map    = listLines;
+	  token.map = listLines;
 	  token.markup = String.fromCharCode(markerCharCode);
 
 	  //
@@ -11101,10 +11140,10 @@ var GovcyFrontendRendererBrowser = (function () {
 	    const indent = initial + indentAfterMarker;
 
 	    // Run subparser & write tokens
-	    token        = state.push('list_item_open', 'li', 1);
+	    token = state.push('list_item_open', 'li', 1);
 	    token.markup = String.fromCharCode(markerCharCode);
 	    const itemLines = [nextLine, 0];
-	    token.map    = itemLines;
+	    token.map = itemLines;
 	    if (isOrdered) {
 	      token.info = state.src.slice(start, posAfterMarker - 1);
 	    }
@@ -11153,7 +11192,7 @@ var GovcyFrontendRendererBrowser = (function () {
 	    state.sCount[nextLine] = oldSCount;
 	    state.tight = oldTight;
 
-	    token        = state.push('list_item_close', 'li', -1);
+	    token = state.push('list_item_close', 'li', -1);
 	    token.markup = String.fromCharCode(markerCharCode);
 
 	    nextLine = state.line;
@@ -11213,114 +11252,141 @@ var GovcyFrontendRendererBrowser = (function () {
 	  return true
 	}
 
+	// CommonMark limits reference labels to 999 Unicode code points.
+	const MAX_LABEL_LENGTH = 999;
+
+	function countCodePoints (str) {
+	  let length = str.length;
+
+	  for (let i = 0; i < str.length - 1; i++) {
+	    const high = str.charCodeAt(i);
+	    if (high < 0xD800 || high > 0xDBFF) { continue }
+
+	    const low = str.charCodeAt(i + 1);
+	    if (low >= 0xDC00 && low <= 0xDFFF) {
+	      length--;
+	      i++;
+	    }
+	  }
+
+	  return length
+	}
+
+	// Exclusive end offset of the line, after its newline if present
+	function lineEnd (state, line) {
+	  return Math.min(state.eMarks[line] + 1, state.src.length)
+	}
+
+	// Returns -1 if the reference can't continue on this line
+	function getNextLinePos (state, nextLine) {
+	  const endLine = state.lineMax;
+
+	  if (nextLine >= endLine || state.isEmpty(nextLine)) {
+	    // empty line or end of input
+	    return -1
+	  }
+
+	  let isContinuation = false;
+
+	  // this would be a code block normally, but after paragraph
+	  // it's considered a lazy continuation regardless of what's there
+	  if (state.sCount[nextLine] - state.blkIndent > 3) { isContinuation = true; }
+
+	  // quirk for blockquotes, this line should already be checked by that rule
+	  if (state.sCount[nextLine] < 0) { isContinuation = true; }
+
+	  if (!isContinuation) {
+	    const terminatorRules = state.md.block.ruler.getRules('reference');
+	    const oldParentType = state.parentType;
+	    state.parentType = 'reference';
+
+	    // Some tags can terminate paragraph without empty line.
+	    let terminate = false;
+	    for (let i = 0, l = terminatorRules.length; i < l; i++) {
+	      if (terminatorRules[i](state, nextLine, endLine, true)) {
+	        terminate = true;
+	        break
+	      }
+	    }
+
+	    state.parentType = oldParentType;
+	    if (terminate) {
+	      // terminated by another block
+	      return -1
+	    }
+	  }
+
+	  return state.bMarks[nextLine] + state.tShift[nextLine]
+	}
+
 	function reference (state, startLine, _endLine, silent) {
+	  const src = state.src;
 	  let pos = state.bMarks[startLine] + state.tShift[startLine];
-	  let max = state.eMarks[startLine];
 	  let nextLine = startLine + 1;
 
 	  // if it's indented more than 3 spaces, it should be a code block
 	  if (state.sCount[startLine] - state.blkIndent >= 4) { return false }
 
-	  if (state.src.charCodeAt(pos) !== 0x5B/* [ */) { return false }
+	  if (src.charCodeAt(pos) !== 0x5B/* [ */) { return false }
 
-	  function getNextLine (nextLine) {
-	    const endLine = state.lineMax;
+	  // Scan the source directly: indexing a string after each appended line
+	  // can make V8 copy the accumulated prefix on every continuation.
+	  let max = lineEnd(state, startLine);
 
-	    if (nextLine >= endLine || state.isEmpty(nextLine)) {
-	      // empty line or end of input
-	      return null
-	    }
-
-	    let isContinuation = false;
-
-	    // this would be a code block normally, but after paragraph
-	    // it's considered a lazy continuation regardless of what's there
-	    if (state.sCount[nextLine] - state.blkIndent > 3) { isContinuation = true; }
-
-	    // quirk for blockquotes, this line should already be checked by that rule
-	    if (state.sCount[nextLine] < 0) { isContinuation = true; }
-
-	    if (!isContinuation) {
-	      const terminatorRules = state.md.block.ruler.getRules('reference');
-	      const oldParentType = state.parentType;
-	      state.parentType = 'reference';
-
-	      // Some tags can terminate paragraph without empty line.
-	      let terminate = false;
-	      for (let i = 0, l = terminatorRules.length; i < l; i++) {
-	        if (terminatorRules[i](state, nextLine, endLine, true)) {
-	          terminate = true;
-	          break
-	        }
-	      }
-
-	      state.parentType = oldParentType;
-	      if (terminate) {
-	        // terminated by another block
-	        return null
-	      }
-	    }
-
-	    const pos = state.bMarks[nextLine] + state.tShift[nextLine];
-	    const max = state.eMarks[nextLine];
-
-	    // max + 1 explicitly includes the newline
-	    return state.src.slice(pos, max + 1)
-	  }
-
-	  let str = state.src.slice(pos, max + 1);
-
-	  max = str.length;
+	  let rawLabel = '';
 	  let labelEnd = -1;
+	  let segmentStart = ++pos;
 
-	  for (pos = 1; pos < max; pos++) {
-	    const ch = str.charCodeAt(pos);
-	    if (ch === 0x5B /* [ */) {
-	      return false
-	    } else if (ch === 0x5D /* ] */) {
+	  while (pos < max) {
+	    if (rawLabel.length + pos - segmentStart > MAX_LABEL_LENGTH * 2) { return false }
+
+	    let ch = src.charCodeAt(pos);
+	    if (ch === 0x5B /* [ */) { return false }
+	    if (ch === 0x5D /* ] */) {
 	      labelEnd = pos;
 	      break
-	    } else if (ch === 0x0A /* \n */) {
-	      const lineContent = getNextLine(nextLine);
-	      if (lineContent !== null) {
-	        str += lineContent;
-	        max = str.length;
-	        nextLine++;
-	      }
-	    } else if (ch === 0x5C /* \ */) {
-	      pos++;
-	      if (pos < max && str.charCodeAt(pos) === 0x0A) {
-	        const lineContent = getNextLine(nextLine);
-	        if (lineContent !== null) {
-	          str += lineContent;
-	          max = str.length;
-	          nextLine++;
-	        }
-	      }
 	    }
+	    if (ch === 0x5C /* \ */) { ch = src.charCodeAt(++pos); }
+
+	    if (ch === 0x0A /* \n */ && pos < max) {
+	      const nextPos = getNextLinePos(state, nextLine);
+	      if (nextPos < 0) { return false }
+	      rawLabel += src.slice(segmentStart, max);
+	      pos = segmentStart = nextPos;
+	      max = lineEnd(state, nextLine++);
+	      continue
+	    }
+	    pos++;
 	  }
 
-	  if (labelEnd < 0 || str.charCodeAt(labelEnd + 1) !== 0x3A/* : */) { return false }
+	  if (labelEnd < 0 || src.charCodeAt(labelEnd + 1) !== 0x3A/* : */) { return false }
+
+	  rawLabel += src.slice(segmentStart, labelEnd);
+
+	  if (rawLabel.length > MAX_LABEL_LENGTH && countCodePoints(rawLabel) > MAX_LABEL_LENGTH) {
+	    return false
+	  }
 
 	  // [label]:   destination   'title'
 	  //         ^^^ skip optional whitespace here
-	  for (pos = labelEnd + 2; pos < max; pos++) {
-	    const ch = str.charCodeAt(pos);
+	  pos = labelEnd + 2;
+	  while (pos < max) {
+	    const ch = src.charCodeAt(pos);
 	    if (ch === 0x0A) {
-	      const lineContent = getNextLine(nextLine);
-	      if (lineContent !== null) {
-	        str += lineContent;
-	        max = str.length;
-	        nextLine++;
-	      }
-	    } else if (isSpace(ch)) ; else {
+	      const nextPos = getNextLinePos(state, nextLine);
+	      if (nextPos < 0) { break }
+	      pos = nextPos;
+	      max = lineEnd(state, nextLine++);
+	    } else if (isSpace(ch)) {
+	      pos++;
+	    } else {
 	      break
 	    }
 	  }
 
 	  // [label]:   destination   'title'
 	  //            ^^^^^^^^^^^ parse this
-	  const destRes = state.md.helpers.parseLinkDestination(str, pos, max);
+	  const destRes = state.md.helpers.parseLinkDestination(src, pos, max);
 	  if (!destRes.ok) { return false }
 
 	  const href = state.md.normalizeLink(destRes.str);
@@ -11330,76 +11396,77 @@ var GovcyFrontendRendererBrowser = (function () {
 
 	  // save cursor state, we could require to rollback later
 	  const destEndPos = pos;
+	  const destEndMax = max;
 	  const destEndLineNo = nextLine;
 
 	  // [label]:   destination   'title'
 	  //                       ^^^ skipping those spaces
-	  const start = pos;
-	  for (; pos < max; pos++) {
-	    const ch = str.charCodeAt(pos);
+	  while (pos < max) {
+	    const ch = src.charCodeAt(pos);
 	    if (ch === 0x0A) {
-	      const lineContent = getNextLine(nextLine);
-	      if (lineContent !== null) {
-	        str += lineContent;
-	        max = str.length;
-	        nextLine++;
-	      }
-	    } else if (isSpace(ch)) ; else {
+	      const nextPos = getNextLinePos(state, nextLine);
+	      if (nextPos < 0) { break }
+	      pos = nextPos;
+	      max = lineEnd(state, nextLine++);
+	    } else if (isSpace(ch)) {
+	      pos++;
+	    } else {
 	      break
 	    }
 	  }
 
 	  // [label]:   destination   'title'
 	  //                          ^^^^^^^ parse this
-	  let titleRes = state.md.helpers.parseLinkTitle(str, pos, max);
+	  const titleStart = pos;
+	  let titleRes = state.md.helpers.parseLinkTitle(src, pos, max);
 	  while (titleRes.can_continue) {
-	    const lineContent = getNextLine(nextLine);
-	    if (lineContent === null) break
-	    str += lineContent;
-	    pos = max;
-	    max = str.length;
-	    nextLine++;
-	    titleRes = state.md.helpers.parseLinkTitle(str, pos, max, titleRes);
+	    const nextPos = getNextLinePos(state, nextLine);
+	    if (nextPos < 0) break
+	    pos = nextPos;
+	    max = lineEnd(state, nextLine++);
+	    titleRes = state.md.helpers.parseLinkTitle(src, pos, max, titleRes);
 	  }
 	  let title;
 
-	  if (pos < max && start !== pos && titleRes.ok) {
+	  if (titleStart !== destEndPos && titleRes.ok) {
 	    title = titleRes.str;
 	    pos = titleRes.pos;
 	  } else {
 	    title = '';
 	    pos = destEndPos;
+	    max = destEndMax;
 	    nextLine = destEndLineNo;
 	  }
 
 	  // skip trailing spaces until the rest of the line
 	  while (pos < max) {
-	    const ch = str.charCodeAt(pos);
+	    const ch = src.charCodeAt(pos);
 	    if (!isSpace(ch)) { break }
 	    pos++;
 	  }
 
-	  if (pos < max && str.charCodeAt(pos) !== 0x0A) {
+	  if (pos < max && src.charCodeAt(pos) !== 0x0A) {
 	    if (title) {
 	      // garbage at the end of the line after title,
 	      // but it could still be a valid reference if we roll back
 	      title = '';
 	      pos = destEndPos;
+	      max = destEndMax;
 	      nextLine = destEndLineNo;
 	      while (pos < max) {
-	        const ch = str.charCodeAt(pos);
+	        const ch = src.charCodeAt(pos);
 	        if (!isSpace(ch)) { break }
 	        pos++;
 	      }
 	    }
 	  }
 
-	  if (pos < max && str.charCodeAt(pos) !== 0x0A) {
+	  if (pos < max && src.charCodeAt(pos) !== 0x0A) {
 	    // garbage at the end of the line
 	    return false
 	  }
 
-	  const label = normalizeReference(str.slice(1, labelEnd));
+	  const label = normalizeReference(rawLabel);
 	  if (!label) {
 	    // CommonMark 0.20 disallows empty labels
 	    return false
@@ -11490,26 +11557,19 @@ var GovcyFrontendRendererBrowser = (function () {
 
 	// Regexps to match html elements
 
-	const attr_name     = '[a-zA-Z_:][a-zA-Z0-9:._-]*';
+	const attr_name = '[a-zA-Z_:][a-zA-Z0-9:._-]*';
 
-	const unquoted      = '[^"\'=<>`\\x00-\\x20]+';
+	const unquoted = '[^"\'=<>`\\x00-\\x20]+';
 	const single_quoted = "'[^']*'";
 	const double_quoted = '"[^"]*"';
 
-	const attr_value  = '(?:' + unquoted + '|' + single_quoted + '|' + double_quoted + ')';
+	const attr_value = '(?:' + unquoted + '|' + single_quoted + '|' + double_quoted + ')';
 
-	const attribute   = '(?:\\s+' + attr_name + '(?:\\s*=\\s*' + attr_value + ')?)';
+	const attribute = '(?:\\s+' + attr_name + '(?:\\s*=\\s*' + attr_value + ')?)';
 
-	const open_tag    = '<[A-Za-z][A-Za-z0-9\\-]*' + attribute + '*\\s*\\/?>';
+	const open_tag = '<[A-Za-z][A-Za-z0-9\\-]*' + attribute + '*\\s*\\/?>';
 
-	const close_tag   = '<\\/[A-Za-z][A-Za-z0-9\\-]*\\s*>';
-	const comment     = '<!---?>|<!--(?:[^-]|-[^-]|--[^>])*-->';
-	const processing  = '<[?][\\s\\S]*?[?]>';
-	const declaration = '<![A-Za-z][^>]*>';
-	const cdata       = '<!\\[CDATA\\[[\\s\\S]*?\\]\\]>';
-
-	const HTML_TAG_RE = new RegExp('^(?:' + open_tag + '|' + close_tag + '|' + comment +
-	                        '|' + processing + '|' + declaration + '|' + cdata + ')');
+	const close_tag = '<\\/[A-Za-z][A-Za-z0-9\\-]*\\s*>';
 	const HTML_OPEN_CLOSE_TAG_RE = new RegExp('^(?:' + open_tag + '|' + close_tag + ')');
 
 	// HTML block
@@ -11520,12 +11580,12 @@ var GovcyFrontendRendererBrowser = (function () {
 	//
 	const HTML_SEQUENCES = [
 	  [/^<(script|pre|style|textarea)(?=(\s|>|$))/i, /<\/(script|pre|style|textarea)>/i, true],
-	  [/^<!--/,        /-->/,   true],
-	  [/^<\?/,         /\?>/,   true],
-	  [/^<![A-Z]/,     />/,     true],
+	  [/^<!--/, /-->/, true],
+	  [/^<\?/, /\?>/, true],
+	  [/^<![A-Za-z]/, />/, true],
 	  [/^<!\[CDATA\[/, /\]\]>/, true],
 	  [new RegExp('^</?(' + block_names.join('|') + ')(?=(\\s|/?>|$))', 'i'), /^$/, true],
-	  [new RegExp(HTML_OPEN_CLOSE_TAG_RE.source + '\\s*$'),  /^$/, false]
+	  [new RegExp(HTML_OPEN_CLOSE_TAG_RE.source + '\\s*$'), /^$/, false]
 	];
 
 	function html_block (state, startLine, endLine, silent) {
@@ -11584,8 +11644,8 @@ var GovcyFrontendRendererBrowser = (function () {
 
 	  state.line = nextLine;
 
-	  const token   = state.push('html_block', '', 0);
-	  token.map     = [startLine, nextLine];
+	  const token = state.push('html_block', '', 0);
+	  token.map = [startLine, nextLine];
 	  token.content = state.getLines(startLine, nextLine, state.blkIndent, true);
 
 	  return true
@@ -11601,7 +11661,7 @@ var GovcyFrontendRendererBrowser = (function () {
 	  // if it's indented more than 3 spaces, it should be a code block
 	  if (state.sCount[startLine] - state.blkIndent >= 4) { return false }
 
-	  let ch  = state.src.charCodeAt(pos);
+	  let ch = state.src.charCodeAt(pos);
 
 	  if (ch !== 0x23/* # */ || pos >= max) { return false }
 
@@ -11627,16 +11687,16 @@ var GovcyFrontendRendererBrowser = (function () {
 
 	  state.line = startLine + 1;
 
-	  const token_o  = state.push('heading_open', 'h' + String(level), 1);
+	  const token_o = state.push('heading_open', 'h' + String(level), 1);
 	  token_o.markup = '########'.slice(0, level);
-	  token_o.map    = [startLine, state.line];
+	  token_o.map = [startLine, state.line];
 
-	  const token_i    = state.push('inline', '', 0);
-	  token_i.content  = asciiTrim(state.src.slice(pos, max));
-	  token_i.map      = [startLine, state.line];
+	  const token_i = state.push('inline', '', 0);
+	  token_i.content = asciiTrim(state.src.slice(pos, max));
+	  token_i.map = [startLine, state.line];
 	  token_i.children = [];
 
-	  const token_c  = state.push('heading_close', 'h' + String(level), -1);
+	  const token_c = state.push('heading_close', 'h' + String(level), -1);
 	  token_c.markup = '########'.slice(0, level);
 
 	  return true
@@ -11710,17 +11770,17 @@ var GovcyFrontendRendererBrowser = (function () {
 
 	  state.line = nextLine + 1;
 
-	  const token_o    = state.push('heading_open', 'h' + String(level), 1);
-	  token_o.markup   = String.fromCharCode(marker);
-	  token_o.map      = [startLine, state.line];
+	  const token_o = state.push('heading_open', 'h' + String(level), 1);
+	  token_o.markup = String.fromCharCode(marker);
+	  token_o.map = [startLine, state.line];
 
-	  const token_i    = state.push('inline', '', 0);
-	  token_i.content  = content;
-	  token_i.map      = [startLine, state.line - 1];
+	  const token_i = state.push('inline', '', 0);
+	  token_i.content = content;
+	  token_i.map = [startLine, state.line - 1];
 	  token_i.children = [];
 
-	  const token_c    = state.push('heading_close', 'h' + String(level), -1);
-	  token_c.markup   = String.fromCharCode(marker);
+	  const token_c = state.push('heading_close', 'h' + String(level), -1);
+	  token_c.markup = String.fromCharCode(marker);
 
 	  state.parentType = oldParentType;
 
@@ -11760,12 +11820,12 @@ var GovcyFrontendRendererBrowser = (function () {
 
 	  state.line = nextLine;
 
-	  const token_o    = state.push('paragraph_open', 'p', 1);
-	  token_o.map      = [startLine, state.line];
+	  const token_o = state.push('paragraph_open', 'p', 1);
+	  token_o.map = [startLine, state.line];
 
-	  const token_i    = state.push('inline', '', 0);
-	  token_i.content  = content;
-	  token_i.map      = [startLine, state.line];
+	  const token_i = state.push('inline', '', 0);
+	  token_i.content = content;
+	  token_i.map = [startLine, state.line];
 	  token_i.children = [];
 
 	  state.push('paragraph_close', 'p', -1);
@@ -11785,17 +11845,17 @@ var GovcyFrontendRendererBrowser = (function () {
 	const _rules$1 = [
 	  // First 2 params - rule name & source. Secondary array - list of rules,
 	  // which can be terminated by this one.
-	  ['table',      table,      ['paragraph', 'reference']],
-	  ['code',       code],
-	  ['fence',      fence,      ['paragraph', 'reference', 'blockquote', 'list']],
+	  ['table', table, ['paragraph', 'reference']],
+	  ['code', code],
+	  ['fence', fence, ['paragraph', 'reference', 'blockquote', 'list']],
 	  ['blockquote', blockquote, ['paragraph', 'reference', 'blockquote', 'list']],
-	  ['hr',         hr,         ['paragraph', 'reference', 'blockquote', 'list']],
-	  ['list',       list,       ['paragraph', 'reference', 'blockquote']],
-	  ['reference',  reference],
+	  ['hr', hr, ['paragraph', 'reference', 'blockquote', 'list']],
+	  ['list', list, ['paragraph', 'reference', 'blockquote']],
+	  ['reference', reference],
 	  ['html_block', html_block, ['paragraph', 'reference', 'blockquote']],
-	  ['heading',    heading,    ['paragraph', 'reference', 'blockquote']],
-	  ['lheading',   lheading],
-	  ['paragraph',  paragraph]
+	  ['heading', heading, ['paragraph', 'reference', 'blockquote']],
+	  ['lheading', lheading],
+	  ['paragraph', paragraph]
 	];
 
 	/**
@@ -11924,6 +11984,10 @@ var GovcyFrontendRendererBrowser = (function () {
 	  this.backticks = {};
 	  this.backticksScanned = false;
 
+	  // Set when html comment / PI / declaration / CDATA has no terminator,
+	  // to skip further scans of these constructs
+	  this.skipHtmlSpecial = false;
+
 	  // Counter used to disable inline linkify-it execution
 	  // inside <a> and markdown links
 	  this.linkLevel = 0;
@@ -12036,8 +12100,8 @@ var GovcyFrontendRendererBrowser = (function () {
 	  const right_flanking =
 	    !isLastWhiteSpace && (!isLastPunctChar || isNextWhiteSpace || isNextPunctChar);
 
-	  const can_open  = left_flanking  && (canSplitWord || !right_flanking || isLastPunctChar);
-	  const can_close = right_flanking && (canSplitWord || !left_flanking  || isNextPunctChar);
+	  const can_open = left_flanking && (canSplitWord || !right_flanking || isLastPunctChar);
+	  const can_close = right_flanking && (canSplitWord || !left_flanking || isNextPunctChar);
 
 	  return { can_open, can_close, length: count }
 	};
@@ -12132,10 +12196,20 @@ var GovcyFrontendRendererBrowser = (function () {
 	  return true;
 	}; */
 
-	// Process links like https://example.org/
+	// Early process links like https://example.org/ to have priority
+	// over emphasis, etc.
 
 	// RFC3986: scheme = ALPHA *( ALPHA / DIGIT / "+" / "-" / "." )
-	const SCHEME_RE = /(?:^|[^a-z0-9.+-])([a-z][a-z0-9.+-]*)$/i;
+	function isAsciiAlpha (code) {
+	  return (code >= 0x41 && code <= 0x5A) || (code >= 0x61 && code <= 0x7A)
+	}
+
+	function isSchemeChar (code) {
+	  return (code >= 0x41 && code <= 0x5A) ||
+	    (code >= 0x61 && code <= 0x7A) ||
+	    (code >= 0x30 && code <= 0x39) ||
+	    code === 0x2B || code === 0x2D || code === 0x2E
+	}
 
 	function linkify (state, silent) {
 	  if (!state.md.options.linkify) return false
@@ -12149,19 +12223,27 @@ var GovcyFrontendRendererBrowser = (function () {
 	  if (state.src.charCodeAt(pos + 1) !== 0x2F/* / */) return false
 	  if (state.src.charCodeAt(pos + 2) !== 0x2F/* / */) return false
 
-	  const match = state.pending.match(SCHEME_RE);
-	  if (!match) return false
+	  // Search backwards for the scheme, but no more than 10 characters, the length
+	  // of the pending string, or the length of the source prefix.
+	  // Use state.src instead of state.pending because it is faster to access.
+	  const protoMin = pos - Math.min(10, state.pending.length, pos);
+	  let protoStart = pos;
+	  while (protoStart > protoMin && isSchemeChar(state.src.charCodeAt(protoStart - 1))) {
+	    protoStart--;
+	  }
 
-	  const proto = match[1];
+	  if (protoStart === pos || !isAsciiAlpha(state.src.charCodeAt(protoStart))) return false
 
-	  const link = state.md.linkify.matchAtStart(state.src.slice(pos - proto.length));
+	  const protoLength = pos - protoStart;
+
+	  const link = state.md.linkify.matchAtStart(state.src.slice(protoStart));
 	  if (!link) return false
 
 	  let url = link.url;
 
 	  // invalid link, but still detected by linkify somehow;
 	  // need to check to prevent infinite loop below
-	  if (url.length <= proto.length) return false
+	  if (url.length <= protoLength) return false
 
 	  // disallow '*' at the end of the link (conflicts with emphasis)
 	  // do manual backsearch to avoid perf issues with regex /\*+$/ on "****...****a".
@@ -12177,7 +12259,7 @@ var GovcyFrontendRendererBrowser = (function () {
 	  if (!state.md.validateLink(fullUrl)) return false
 
 	  if (!silent) {
-	    state.pending = state.pending.slice(0, -proto.length);
+	    state.pending = state.pending.slice(0, -protoLength);
 
 	    const token_o = state.push('link_open', 'a', 1);
 	    token_o.attrs = [['href', fullUrl]];
@@ -12192,7 +12274,7 @@ var GovcyFrontendRendererBrowser = (function () {
 	    token_c.info = 'auto';
 	  }
 
-	  state.pos += url.length - proto.length;
+	  state.pos += url.length - protoLength;
 	  return true
 	}
 
@@ -12277,6 +12359,20 @@ var GovcyFrontendRendererBrowser = (function () {
 	    return true
 	  }
 
+	  // '\' before a space is a literal backslash. Don't consume the space, so a
+	  // trailing two-space hard line break is still detected by the newline rule.
+	  if (ch1 === 0x20) {
+	    if (!silent) {
+	      const token = state.push('text_special', '', 0);
+	      token.content = '\\';
+	      token.markup = '\\';
+	      token.info = 'escape';
+	    }
+
+	    state.pos = pos;
+	    return true
+	  }
+
 	  let escapedStr = state.src[pos];
 
 	  if (ch1 >= 0xD800 && ch1 <= 0xDBFF && pos + 1 < max) {
@@ -12300,7 +12396,7 @@ var GovcyFrontendRendererBrowser = (function () {
 	    }
 
 	    token.markup = origStr;
-	    token.info   = 'escape';
+	    token.info = 'escape';
 	  }
 
 	  state.pos = pos + 1;
@@ -12390,13 +12486,13 @@ var GovcyFrontendRendererBrowser = (function () {
 	  let token;
 
 	  if (len % 2) {
-	    token         = state.push('text', '', 0);
+	    token = state.push('text', '', 0);
 	    token.content = ch;
 	    len--;
 	  }
 
 	  for (let i = 0; i < len; i += 2) {
-	    token         = state.push('text', '', 0);
+	    token = state.push('text', '', 0);
 	    token.content = ch + ch;
 
 	    state.delimiters.push({
@@ -12432,18 +12528,18 @@ var GovcyFrontendRendererBrowser = (function () {
 
 	    const endDelim = delimiters[startDelim.end];
 
-	    token         = state.tokens[startDelim.token];
-	    token.type    = 's_open';
-	    token.tag     = 's';
+	    token = state.tokens[startDelim.token];
+	    token.type = 's_open';
+	    token.tag = 's';
 	    token.nesting = 1;
-	    token.markup  = '~~';
+	    token.markup = '~~';
 	    token.content = '';
 
-	    token         = state.tokens[endDelim.token];
-	    token.type    = 's_close';
-	    token.tag     = 's';
+	    token = state.tokens[endDelim.token];
+	    token.type = 's_close';
+	    token.tag = 's';
 	    token.nesting = -1;
-	    token.markup  = '~~';
+	    token.markup = '~~';
 	    token.content = '';
 
 	    if (state.tokens[endDelim.token - 1].type === 'text' &&
@@ -12578,18 +12674,18 @@ var GovcyFrontendRendererBrowser = (function () {
 
 	    const ch = String.fromCharCode(startDelim.marker);
 
-	    const token_o   = state.tokens[startDelim.token];
-	    token_o.type    = isStrong ? 'strong_open' : 'em_open';
-	    token_o.tag     = isStrong ? 'strong' : 'em';
+	    const token_o = state.tokens[startDelim.token];
+	    token_o.type = isStrong ? 'strong_open' : 'em_open';
+	    token_o.tag = isStrong ? 'strong' : 'em';
 	    token_o.nesting = 1;
-	    token_o.markup  = isStrong ? ch + ch : ch;
+	    token_o.markup = isStrong ? ch + ch : ch;
 	    token_o.content = '';
 
-	    const token_c   = state.tokens[endDelim.token];
-	    token_c.type    = isStrong ? 'strong_close' : 'em_close';
-	    token_c.tag     = isStrong ? 'strong' : 'em';
+	    const token_c = state.tokens[endDelim.token];
+	    token_c.type = isStrong ? 'strong_close' : 'em_close';
+	    token_c.tag = isStrong ? 'strong' : 'em';
 	    token_c.nesting = -1;
-	    token_c.markup  = isStrong ? ch + ch : ch;
+	    token_c.markup = isStrong ? ch + ch : ch;
 	    token_c.content = '';
 
 	    if (isStrong) {
@@ -12742,7 +12838,7 @@ var GovcyFrontendRendererBrowser = (function () {
 
 	    const token_o = state.push('link_open', 'a', 1);
 	    const attrs = [['href', href]];
-	    token_o.attrs  = attrs;
+	    token_o.attrs = attrs;
 	    if (title) {
 	      attrs.push(['title', title]);
 	    }
@@ -12900,7 +12996,7 @@ var GovcyFrontendRendererBrowser = (function () {
 	// Process autolinks '<protocol:...>'
 
 	/* eslint max-len:0 */
-	const EMAIL_RE    = /^([a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*)$/;
+	const EMAIL_RE = /^([a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*)$/;
 	/* eslint-disable-next-line no-control-regex */
 	const AUTOLINK_RE = /^([a-zA-Z][a-zA-Z0-9+.-]{1,31}):([^<>\x00-\x20]*)$/;
 
@@ -12928,17 +13024,17 @@ var GovcyFrontendRendererBrowser = (function () {
 	    if (!state.md.validateLink(fullUrl)) { return false }
 
 	    if (!silent) {
-	      const token_o   = state.push('link_open', 'a', 1);
-	      token_o.attrs   = [['href', fullUrl]];
-	      token_o.markup  = 'autolink';
-	      token_o.info    = 'auto';
+	      const token_o = state.push('link_open', 'a', 1);
+	      token_o.attrs = [['href', fullUrl]];
+	      token_o.markup = 'autolink';
+	      token_o.info = 'auto';
 
-	      const token_t   = state.push('text', '', 0);
+	      const token_t = state.push('text', '', 0);
 	      token_t.content = state.md.normalizeLinkText(url);
 
-	      const token_c   = state.push('link_close', 'a', -1);
-	      token_c.markup  = 'autolink';
-	      token_c.info    = 'auto';
+	      const token_c = state.push('link_close', 'a', -1);
+	      token_c.markup = 'autolink';
+	      token_c.info = 'auto';
 	    }
 
 	    state.pos += url.length + 2;
@@ -12950,17 +13046,17 @@ var GovcyFrontendRendererBrowser = (function () {
 	    if (!state.md.validateLink(fullUrl)) { return false }
 
 	    if (!silent) {
-	      const token_o   = state.push('link_open', 'a', 1);
-	      token_o.attrs   = [['href', fullUrl]];
-	      token_o.markup  = 'autolink';
-	      token_o.info    = 'auto';
+	      const token_o = state.push('link_open', 'a', 1);
+	      token_o.attrs = [['href', fullUrl]];
+	      token_o.markup = 'autolink';
+	      token_o.info = 'auto';
 
-	      const token_t   = state.push('text', '', 0);
+	      const token_t = state.push('text', '', 0);
 	      token_t.content = state.md.normalizeLinkText(url);
 
-	      const token_c   = state.push('link_close', 'a', -1);
-	      token_c.markup  = 'autolink';
-	      token_c.info    = 'auto';
+	      const token_c = state.push('link_close', 'a', -1);
+	      token_c.markup = 'autolink';
+	      token_c.info = 'auto';
 	    }
 
 	    state.pos += url.length + 2;
@@ -12986,6 +13082,43 @@ var GovcyFrontendRendererBrowser = (function () {
 	  return (lc >= 0x61/* a */) && (lc <= 0x7a/* z */)
 	}
 
+	// Comment, processing instruction, declaration or CDATA: fixed opener,
+	// then everything up to the first terminator. Returns end position or -1.
+	function scanSpecial (state, pos) {
+	  const src = state.src;
+	  let start;
+	  let terminator;
+
+	  if (src.startsWith('<!--', pos)) {
+	    if (src.startsWith('>', pos + 4)) { return pos + 5 }
+	    if (src.startsWith('->', pos + 4)) { return pos + 6 }
+	    start = pos + 4;
+	    terminator = '-->';
+	  } else if (src.startsWith('<![CDATA[', pos)) {
+	    start = pos + 9;
+	    terminator = ']]>';
+	  } else if (src.charCodeAt(pos + 1) === 0x3F/* ? */) {
+	    start = pos + 2;
+	    terminator = '?>';
+	  } else if (isLetter(src.charCodeAt(pos + 2))) {
+	    start = pos + 3;
+	    terminator = '>';
+	  } else {
+	    return -1
+	  }
+
+	  if (state.skipHtmlSpecial) { return -1 }
+
+	  const end = src.indexOf(terminator, start);
+	  if (end < 0) {
+	    // One flag for all constructs to keep code simple. Valid constructs after
+	    // an unclosed one in the same paragraph become text, that's acceptable.
+	    state.skipHtmlSpecial = true;
+	    return -1
+	  }
+	  return end + terminator.length
+	}
+
 	function html_inline (state, silent) {
 	  if (!state.md.options.html) { return false }
 
@@ -12997,26 +13130,28 @@ var GovcyFrontendRendererBrowser = (function () {
 	    return false
 	  }
 
-	  // Quick fail on second char
+	  let end;
 	  const ch = state.src.charCodeAt(pos + 1);
-	  if (ch !== 0x21/* ! */ &&
-	      ch !== 0x3F/* ? */ &&
-	      ch !== 0x2F/* / */ &&
-	      !isLetter(ch)) {
+
+	  if (ch === 0x21/* ! */ || ch === 0x3F/* ? */) {
+	    end = scanSpecial(state, pos);
+	  } else if (ch === 0x2F/* / */ || isLetter(ch)) {
+	    const match = state.src.slice(pos).match(HTML_OPEN_CLOSE_TAG_RE);
+	    end = match ? pos + match[0].length : -1;
+	  } else {
 	    return false
 	  }
 
-	  const match = state.src.slice(pos).match(HTML_TAG_RE);
-	  if (!match) { return false }
+	  if (end < 0) { return false }
 
 	  if (!silent) {
 	    const token = state.push('html_inline', '', 0);
-	    token.content = match[0];
+	    token.content = state.src.slice(pos, end);
 
-	    if (isLinkOpen(token.content))  state.linkLevel++;
+	    if (isLinkOpen(token.content)) state.linkLevel++;
 	    if (isLinkClose(token.content)) state.linkLevel--;
 	  }
-	  state.pos += match[0].length;
+	  state.pos = end;
 	  return true
 	}
 
@@ -13024,7 +13159,7 @@ var GovcyFrontendRendererBrowser = (function () {
 
 
 	const DIGITAL_RE = /^&#((?:x[a-f0-9]{1,6}|[0-9]{1,7}));/i;
-	const NAMED_RE   = /^&([a-z][a-z0-9]{1,31});/i;
+	const NAMED_RE = /^&([a-z][a-z0-9]{1,31});/i;
 
 	function entity (state, silent) {
 	  const pos = state.pos;
@@ -13042,10 +13177,10 @@ var GovcyFrontendRendererBrowser = (function () {
 	      if (!silent) {
 	        const code = match[1][0].toLowerCase() === 'x' ? parseInt(match[1].slice(1), 16) : parseInt(match[1], 10);
 
-	        const token   = state.push('text_special', '', 0);
+	        const token = state.push('text_special', '', 0);
 	        token.content = isValidEntityCode(code) ? fromCodePoint(code) : fromCodePoint(0xFFFD);
-	        token.markup  = match[0];
-	        token.info    = 'entity';
+	        token.markup = match[0];
+	        token.info = 'entity';
 	      }
 	      state.pos += match[0].length;
 	      return true
@@ -13056,10 +13191,10 @@ var GovcyFrontendRendererBrowser = (function () {
 	      const decoded = decodeHTMLStrict(match[0]);
 	      if (decoded !== match[0]) {
 	        if (!silent) {
-	          const token   = state.push('text_special', '', 0);
+	          const token = state.push('text_special', '', 0);
 	          token.content = decoded;
-	          token.markup  = match[0];
-	          token.info    = 'entity';
+	          token.markup = match[0];
+	          token.info = 'entity';
 	        }
 	        state.pos += match[0].length;
 	        return true
@@ -13157,8 +13292,8 @@ var GovcyFrontendRendererBrowser = (function () {
 	          jumps[closerIdx] = closerIdx - openerIdx + lastJump;
 	          jumps[openerIdx] = lastJump;
 
-	          closer.open  = false;
-	          opener.end   = closerIdx;
+	          closer.open = false;
+	          opener.end = closerIdx;
 	          opener.close = false;
 	          newMinOpenerIdx = -1;
 	          // treat next token as start of run,
@@ -13244,18 +13379,18 @@ var GovcyFrontendRendererBrowser = (function () {
 	// Parser rules
 
 	const _rules = [
-	  ['text',            text],
-	  ['linkify',         linkify],
-	  ['newline',         newline],
-	  ['escape',          escape],
-	  ['backticks',       backtick],
-	  ['strikethrough',   r_strikethrough.tokenize],
-	  ['emphasis',        r_emphasis.tokenize],
-	  ['link',            link],
-	  ['image',           image],
-	  ['autolink',        autolink],
-	  ['html_inline',     html_inline],
-	  ['entity',          entity]
+	  ['text', text],
+	  ['linkify', linkify],
+	  ['newline', newline],
+	  ['escape', escape],
+	  ['backticks', backtick],
+	  ['strikethrough', r_strikethrough.tokenize],
+	  ['emphasis', r_emphasis.tokenize],
+	  ['link', link],
+	  ['image', image],
+	  ['autolink', autolink],
+	  ['html_inline', html_inline],
+	  ['entity', entity]
 	];
 
 	// `rule2` ruleset was created specifically for emphasis/strikethrough
@@ -13264,12 +13399,12 @@ var GovcyFrontendRendererBrowser = (function () {
 	// Don't use this for anything except pairs (plugins working with `balance_pairs`).
 	//
 	const _rules2 = [
-	  ['balance_pairs',   link_pairs],
-	  ['strikethrough',   r_strikethrough.postProcess],
-	  ['emphasis',        r_emphasis.postProcess],
+	  ['balance_pairs', link_pairs],
+	  ['strikethrough', r_strikethrough.postProcess],
+	  ['emphasis', r_emphasis.postProcess],
 	  // rules for pairs separate '**' into its own text tokens, which may be left unused,
 	  // rule below merges unused segments back with the rest of the text
-	  ['fragments_join',  fragments_join]
+	  ['fragments_join', fragments_join]
 	];
 
 	/**
