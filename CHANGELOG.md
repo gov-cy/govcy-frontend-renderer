@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.30.7] - 2026-11-02
+### Security
+- Updated the development-only dependency tree, including `puppeteer`, `glob` and `minimatch`; added npm overrides for `glob` and `minimatch`.
+- The low-severity `deepmerge` advisory remains through `@rollup/plugin-node-resolve`.
+- No production/runtime dependencies changed. **Impact:** npm package consumers are **not affected**.
+
 ## [v1.30.6] - 2026-10-16
 ### Fixed
 - Removed leftover `nodemon` from `devDependencies` so `package.json` and `package-lock.json` are in sync and `npm ci` works in CI.
